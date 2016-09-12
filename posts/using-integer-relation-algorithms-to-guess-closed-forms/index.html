@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using integer relation algorithms to guess closed forms | Gopinath A R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Gopinath">
+<link rel="prev" href="../compiling-softwares-that-require-later-versions-of-gcc/" title="Compiling softwares that require later versions of GCC" type="text/html">
+<meta property="og:site_name" content="Gopinath A R">
+<meta property="og:title" content="Using integer relation algorithms to guess closed forms">
+<meta property="og:url" content="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/">
+<meta property="og:description" content="In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
+In particular, we'll use the excellent math toolkit by David Bailey aimed at experimental mathematics ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-07-02T19:51:29+05:30">
+<meta property="article:tag" content="mathjax">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="../../stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Using integer relation algorithms to guess closed forms</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Gopinath
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2016-07-02T19:51:29+05:30" itemprop="datePublished" title="2016-07-02 19:51">2016-07-02 19:51</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
+In particular, we'll use the excellent math toolkit by David Bailey aimed at experimental mathematics arprec, compile and run mathtool.</p>
+<p>The following problems are taken from brilliant.org</p>
+<p>Q1.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{\frac{\pi}{3}} x \left(\ln{\left(2 \sin{\frac{x}{2}}\right)}\right)^2 \, dx = \frac{c\, \pi^a}{b}
+\end{equation*}
+</div>
+<p>Find $a, b,$ and <span class="math">\(c\)</span>.</p>
+<p>Start mathtool, and enter the commands in sequence:
+(Only the relevent output is shown after command executions)</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_54909469799640468b530902cef02935-0"> 0</a>
+<a href="#rest_code_54909469799640468b530902cef02935-1"> 1</a>
+<a href="#rest_code_54909469799640468b530902cef02935-2"> 2</a>
+<a href="#rest_code_54909469799640468b530902cef02935-3"> 3</a>
+<a href="#rest_code_54909469799640468b530902cef02935-4"> 4</a>
+<a href="#rest_code_54909469799640468b530902cef02935-5"> 5</a>
+<a href="#rest_code_54909469799640468b530902cef02935-6"> 6</a>
+<a href="#rest_code_54909469799640468b530902cef02935-7"> 7</a>
+<a href="#rest_code_54909469799640468b530902cef02935-8"> 8</a>
+<a href="#rest_code_54909469799640468b530902cef02935-9"> 9</a>
+<a href="#rest_code_54909469799640468b530902cef02935-10">10</a>
+<a href="#rest_code_54909469799640468b530902cef02935-11">11</a>
+<a href="#rest_code_54909469799640468b530902cef02935-12">12</a>
+<a href="#rest_code_54909469799640468b530902cef02935-13">13</a>
+<a href="#rest_code_54909469799640468b530902cef02935-14">14</a>
+<a href="#rest_code_54909469799640468b530902cef02935-15">15</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_54909469799640468b530902cef02935-0"></a>integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
+<a name="rest_code_54909469799640468b530902cef02935-1"></a>-- snip --
+<a name="rest_code_54909469799640468b530902cef02935-2"></a>&gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
+<a name="rest_code_54909469799640468b530902cef02935-3"></a>epsilon=-50
+<a name="rest_code_54909469799640468b530902cef02935-4"></a>pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
+<a name="rest_code_54909469799640468b530902cef02935-5"></a>-- snip --
+<a name="rest_code_54909469799640468b530902cef02935-6"></a>&gt; Relation:  0 =
+<a name="rest_code_54909469799640468b530902cef02935-7"></a>&gt; +  6480.* pslq001
+<a name="rest_code_54909469799640468b530902cef02935-8"></a>&gt; +     0.* pslq002
+<a name="rest_code_54909469799640468b530902cef02935-9"></a>&gt; +     0.* pslq003
+<a name="rest_code_54909469799640468b530902cef02935-10"></a>&gt; +   -17.* pslq004
+<a name="rest_code_54909469799640468b530902cef02935-11"></a>&gt; Result[ 37] through Result[ 40] =
+<a name="rest_code_54909469799640468b530902cef02935-12"></a>&gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_54909469799640468b530902cef02935-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_54909469799640468b530902cef02935-14"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_54909469799640468b530902cef02935-15"></a>&gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
+</pre></td>
+</tr></table>
+<p>So, the above output means, <span class="math">\(0= 6480\times 0.255548541292907628552389761683331310377371752536366075420056165916 - 17\times \pi^4\)</span>, and hence <span class="math">\(c=17, a=4, b=6480\)</span></p>
+<p>When doing such computations, it's good to have more digits when computing integral or sums, and reduce the epsilon value when using pslq, so that it checks for fewer decimal places when trying for an integer relation. Otherwise, it is likely to miss the relation when the numerical accuracy is kept high. digits=100 and epsilon=-50 worked well for me in most cases.</p>
+<p>Q2:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{2\log{\phi}} \log{\left(2\, \sinh{\frac{x}{2}}\right)} = -\frac{\pi^a}{b}
+\end{equation*}
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-0"> 0</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-1"> 1</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-2"> 2</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-3"> 3</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-4"> 4</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-5"> 5</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-6"> 6</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-7"> 7</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-8"> 8</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-9"> 9</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-10">10</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-11">11</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-12">12</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-13">13</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-14">14</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-15">15</a>
+<a href="#rest_code_245e78cdccae4dbeb1d64565cac34e73-16">16</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-0"></a>epsilon=-100
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-1"></a>integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-2"></a>&gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-3"></a>epsilon=-50
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-4"></a>pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-5"></a>&gt; Relation:  0 =
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-6"></a>&gt; +  10.* pslq001
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-7"></a>&gt; +   0.* pslq002
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-8"></a>&gt; +   1.* pslq003
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-9"></a>&gt; +   0.* pslq004
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-10"></a>&gt; +   0.* pslq005
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-11"></a>&gt; Result[ 29] through Result[ 33] =
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-12"></a>&gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-14"></a>&gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-15"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+</pre></td>
+</tr></table>
+<p>In this example, mathtool chokes when lower limit is 0 saying argument is too large, so keep it close to 0. Then using pslq, we see that a=2 and b=10.</p>
+<p>Q3.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{-\infty}^{\infty} \dfrac{\log{\left(1 + e^{2x}\right)}}{1 + e^{3\, x}} = \frac{a \pi^b}{c}
+\end{equation*}
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_4139e71bd17c4bdeb566d24bbbcd4300-0">0</a>
+<a href="#rest_code_4139e71bd17c4bdeb566d24bbbcd4300-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_4139e71bd17c4bdeb566d24bbbcd4300-0"></a>epsilon=-100
+<a name="rest_code_4139e71bd17c4bdeb566d24bbbcd4300-1"></a>Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
+</pre></td>
+</tr></table>
+<p>If we try to execute it directly, it complains "argument too large". So, we transform it by substituting <span class="math">\(e^x=y\)</span></p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d26c19908bf8409784c304f463332a6b-0"> 0</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-1"> 1</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-2"> 2</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-3"> 3</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-4"> 4</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-5"> 5</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-6"> 6</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-7"> 7</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-8"> 8</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-9"> 9</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-10">10</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-11">11</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-12">12</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-13">13</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-14">14</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-15">15</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-16">16</a>
+<a href="#rest_code_d26c19908bf8409784c304f463332a6b-17">17</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_d26c19908bf8409784c304f463332a6b-0"></a>Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-1"></a>&gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-2"></a>epsilon=-50
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-3"></a>pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-4"></a>&gt; Relation:  0 =
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-5"></a>&gt; +  216.* pslq001
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-6"></a>&gt; +    0.* pslq002
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-7"></a>&gt; +  -13.* pslq003
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-8"></a>&gt; +    0.* pslq004
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-9"></a>&gt; +    0.* pslq005
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-10"></a>&gt; +    0.* pslq006
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-11"></a>&gt; Result[  7] through Result[ 12] =
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-12"></a>&gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-14"></a>&gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-15"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-17"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+</pre></td>
+</tr></table>
+<p>Hence, <span class="math">\(a=13, b=2, c=216\)</span></p>
+<p>Q4.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^1 \log{x}\log{\left(1-x\right)} dx = \frac{a}{b}-\frac{\pi^c}{d}
+\end{equation*}
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-0"> 0</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-1"> 1</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-2"> 2</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-3"> 3</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-4"> 4</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-5"> 5</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-6"> 6</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-7"> 7</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-8"> 8</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-9"> 9</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-10">10</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-11">11</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-12">12</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-13">13</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-14">14</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-15">15</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-16">16</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-17">17</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-18">18</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-19">19</a>
+<a href="#rest_code_93083e6c2982479c845ab337c8c8d7f8-20">20</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-0"></a>epsilon=-100
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-1"></a>integrate[log[x]*log[1-x],{x,0,1}]
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-2"></a>&gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-3"></a>epsilon=-50
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-4"></a>pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-5"></a>&gt; Relation:  0 =
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-6"></a>&gt; +  -6.* pslq001
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-7"></a>&gt; +  12.* pslq002
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-8"></a>&gt; +   0.* pslq003
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-9"></a>&gt; +  -1.* pslq004
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-10"></a>&gt; +   0.* pslq005
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-11"></a>&gt; +   0.* pslq006
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-12"></a>&gt; +   0.* pslq007
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-13"></a>&gt; Result[ 27] through Result[ 33] =
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-14"></a>&gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-15"></a>&gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-17"></a>&gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-18"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-19"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-20"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+</pre></td>
+</tr></table>
+<p>Therefore, <span class="math">\(a=2, b=1, c=2, d=6\)</span></p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../compiling-softwares-that-require-later-versions-of-gcc/" rel="prev" title="Compiling softwares that require later versions of GCC">Previous post</a>
+            </li>
+        </ul></nav></aside><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

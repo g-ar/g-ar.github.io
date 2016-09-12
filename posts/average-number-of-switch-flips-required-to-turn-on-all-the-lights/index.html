@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Average Number Of Switch Flips Required To Turn On All The Lights | Gopinath A R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Gopinath">
+<link rel="prev" href="../configuring-broadband-connection-using-pppoeconf/" title="Configuring Broadband Connection using pppoeconf" type="text/html">
+<link rel="next" href="../c-code-to-assembly-using-gcc-and-gdb/" title="C code to assembly using gcc and gdb" type="text/html">
+<meta property="og:site_name" content="Gopinath A R">
+<meta property="og:title" content="Average Number Of Switch Flips Required To Turn On All The Lights">
+<meta property="og:url" content="https://g-ar.github.io/posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/">
+<meta property="og:description" content="Suppose there is an array of lights, initially all turned off, and during each step you randomly select a light and turn it on or off if it's in off or on state, respectively. On an average, how many ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2014-01-18T10:51:51+05:30">
+<meta property="article:tag" content="mathjax">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="../../stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Average Number Of Switch Flips Required To Turn On All The Lights</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Gopinath
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2014-01-18T10:51:51+05:30" itemprop="datePublished" title="2014-01-18 10:51">2014-01-18 10:51</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p><em>Suppose there is an array of lights, initially all turned off, and during each step you randomly select a light and turn it on or off if it's in off or on state, respectively. On an average, how many steps are required to take it to all turned on state?</em></p>
+<p>This can be solved using an absorbing Markov chain, or by using a probability tree diagram.</p>
+<p>In the method using the absorbing Markov chain, the starting state is for all turned off.
+It can move to the next state which is for one random light turned on. The probability of moving to that state is 1.</p>
+<p>From state 1, it can go back to state 0 with a probability of <span class="math">\(\dfrac{1}{n}\)</span>, or to state 2 with probability of <span class="math">\(1-\dfrac{1}{n}\)</span>.</p>
+<p>And so on, in the <span class="math">\((n-1)^{th}\)</span> state, it can go to the absorbing state n with a probability of frac{1}{n}.</p>
+<p>E.g. For <span class="math">\(n=6\)</span>, the matrix looks like this:</p>
+<div class="math">
+\begin{equation*}
+A=\left(\begin{array}{rrrrrrr}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+\dfrac{1}{6} &amp; 0 &amp; \dfrac{5}{6} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+0 &amp; \dfrac{1}{3} &amp; 0 &amp; \dfrac{2}{3} &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+0 &amp; 0 &amp; \dfrac{1}{2} &amp; 0 &amp; \dfrac{1}{2} &amp; 0 &amp; 0 \\[10pt]
+0 &amp; 0 &amp; 0 &amp; \dfrac{2}{3} &amp; 0 &amp; \dfrac{1}{3} &amp; 0 \\[10pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dfrac{5}{6} &amp; 0 &amp; \dfrac{1}{6} \\[10pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}\right)
+\end{equation*}
+</div>
+<p>Thus, the matrix Q is:</p>
+<div class="math">
+\begin{equation*}
+Q=\left(\begin{array}{rrrrrr}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+\dfrac{1}{6} &amp; 0 &amp; \dfrac{5}{6} &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+0 &amp; \dfrac{1}{3} &amp; 0 &amp; \dfrac{2}{3} &amp; 0 &amp; 0 \\[10pt]
+0 &amp; 0 &amp; \dfrac{1}{2} &amp; 0 &amp; \dfrac{1}{2} &amp; 0 \\[10pt]
+0 &amp; 0 &amp; 0 &amp; \dfrac{2}{3} &amp; 0 &amp; \dfrac{1}{3} \\[10pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dfrac{5}{6} &amp; 0
+\end{array}\right)
+\end{equation*}
+</div>
+<p>And the Expected number of steps is found from</p>
+<div class="math">
+\begin{equation*}
+(I-Q)^{-1} = \left(\begin{array}{rrrrrr}
+\dfrac{13}{5} &amp; \dfrac{48}{5} &amp; 21 &amp; 26 &amp; 18 &amp; 6 \\[10pt]
+\dfrac{8}{5} &amp; \dfrac{48}{5} &amp; 21 &amp; 26 &amp; 18 &amp; 6 \\[10pt]
+\dfrac{7}{5} &amp; \dfrac{42}{5} &amp; 21 &amp; 26 &amp; 18 &amp; 6 \\[10pt]
+\dfrac{13}{10} &amp; \dfrac{39}{5} &amp; \dfrac{39}{2} &amp; 26 &amp; 18
+&amp; 6 \\[10pt]
+\dfrac{6}{5} &amp; \dfrac{36}{5} &amp; 18 &amp; 24 &amp; 18 &amp; 6 \\[10pt]
+1 &amp; 6 &amp; 15 &amp; 20 &amp; 15 &amp; 6
+\end{array}\right)
+\end{equation*}
+</div>
+<p>The sum of first row gives the expected time it takes to move from the initial state to the absorbing state, which evaluates to <span class="math">\(\dfrac{416}{5} = 83.2\)</span> steps.</p>
+<p>This markov chain can be used also to calculate the probability of being in a certain state after 'k' steps.</p>
+<p>E.g. What is the probability of all 6 lights being turned on after random flipping of switches 8 times?</p>
+<div class="math">
+\begin{equation*}
+A^8=\left(\begin{array}{rrrrrrr}
+\dfrac{169}{4374} &amp; 0 &amp; \dfrac{1105}{2187} &amp; 0 &amp; \dfrac{815}{1944} &amp; 0 &amp; \dfrac{215}{5832} \\[10pt]
+0 &amp; \dfrac{2717}{13122} &amp; 0 &amp; \dfrac{16175}{26244} &amp; 0 &amp; \dfrac{815}{5832} &amp; \dfrac{215}{5832} \\[10pt]
+\dfrac{221}{6561} &amp; 0 &amp; \dfrac{12487}{26244} &amp; 0 &amp; \dfrac{931}{2187} &amp; 0 &amp; \dfrac{7}{108} \\[10pt]
+0 &amp; \dfrac{3235}{17496} &amp; 0 &amp; \dfrac{10381}{17496} &amp; 0 &amp; \dfrac{5003}{34992} &amp; \dfrac{919}{11664} \\[10pt]
+\dfrac{163}{5832} &amp; 0 &amp; \dfrac{931}{2187} &amp; 0 &amp; \dfrac{42613}{104976} &amp; 0 &amp; \dfrac{14741}{104976} \\[10pt]
+0 &amp; \dfrac{815}{5832} &amp; 0 &amp; \dfrac{25015}{52488} &amp; 0 &amp; \dfrac{12595}{104976} &amp; \dfrac{9227}{34992} \\[10pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}\right)
+\end{equation*}
+</div>
+<p>Answer is <span class="math">\(A^8[0,6] = \dfrac{215}{5832}\)</span></p>
+<p>We can construct the markov chain and calculate the expected value in Sagemath (a very promising free CAS) as follows:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-0">0</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-1">1</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-2">2</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-3">3</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-4">4</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-5">5</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-6">6</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-7">7</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-8">8</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_2c11ca9c30f2424daa74e4402517686f-0"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-1"></a><span class="n">mx</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-2"></a><span class="n">mx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-4"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-5"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-6"></a><span class="n">mx</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-7"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-8"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">am</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">inverse</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
+</pre></td>
+</tr></table>
+<p>If we want to know only the expected value, we can use the tree method:</p>
+<div class="figure">
+<img alt="../../images/flip1.png" src="../../images/flip1.png"><p class="caption">Probability tree to calculate expected value</p>
+</div>
+<div class="math">
+\begin{equation*}
+E_0=1\cdot(1+E_1)
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+E_1 = \dfrac{1}{n}\cdot(1+E_0)+\left(1-\dfrac{1}{n}\right)\cdot(1+E_2)
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+E_2=\dfrac{2}{n}\cdot(1+E_1)+\left(1-\dfrac{2}{n}\right)\cdot(1+E_3)
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+\vdots
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+E_{n-1}=\dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot(1)
+\end{equation*}
+</div>
+<p>From the above set of equations, we can derive the following algorithm to calculate the expected value in Sage:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-0">0</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-1">1</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-2">2</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-3">3</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-4">4</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-5">5</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-6">6</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-7">7</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-8">8</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_068ed99fb44043808abbe43ccfcc6997-0"></a><span class="n">ax</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-1"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-2"></a><span class="n">summ</span><span class="o">=</span><span class="mi">0</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-3"></a><span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-4"></a><span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-5"></a>    <span class="n">ax</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-6"></a>    <span class="n">summ</span> <span class="o">+=</span> <span class="n">ax</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-7"></a>    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-8"></a><span class="k">print</span> <span class="n">summ</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<p>As we see, the n is taken to be 6, and the answer returned is 416/5. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.</p>
+<p>For higher values of n, we get e.g.</p>
+<p><span class="math">\(n=32:\)</span></p>
+<div class="math">
+\begin{equation*}
+\dfrac{20053487665674803216384}{4512611027925}\approx 4443876846.81
+\end{equation*}
+</div>
+<p><span class="math">\(n=64:\)</span></p>
+<div class="math">
+\begin{equation*}
+\dfrac{346357890987659686224886668704722715345420288}{18472920064106597929865025} \approx 18749493300771803147.7216833338
+\end{equation*}
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../configuring-broadband-connection-using-pppoeconf/" rel="prev" title="Configuring Broadband Connection using pppoeconf">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../c-code-to-assembly-using-gcc-and-gdb/" rel="next" title="C code to assembly using gcc and gdb">Next post</a>
+            </li>
+        </ul></nav></aside><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

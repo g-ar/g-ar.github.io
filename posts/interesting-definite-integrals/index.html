@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interesting definite integrals | Gopinath A R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/posts/interesting-definite-integrals/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Gopinath">
+<link rel="prev" href="../differentiation-under-the-integral-sign-and-a-sum/" title="Differentiation under the integral sign and a sum" type="text/html">
+<link rel="next" href="../probability-of-a-sum-being-less-than-1-convolution-of-pdf/" title="Probability of a sum being less than 1 (convolution of pdf)" type="text/html">
+<meta property="og:site_name" content="Gopinath A R">
+<meta property="og:title" content="Interesting definite integrals">
+<meta property="og:url" content="https://g-ar.github.io/posts/interesting-definite-integrals/">
+<meta property="og:description" content="We will see a list of few integrals which yields to differentiation under the integral sign:
+
+
+
+
+\begin{align*}
+\displaystyle \int_0^\infty \, \frac{\arctan{(a\,(x^n))}}{x^{n}}\, dx = \frac{a^{1-\frac">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2014-05-04T15:16:30+05:30">
+<meta property="article:tag" content="mathjax">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="../../stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Interesting definite integrals</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Gopinath
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2014-05-04T15:16:30+05:30" itemprop="datePublished" title="2014-05-04 15:16">2014-05-04 15:16</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>We will see a list of few integrals which yields to differentiation under the integral sign:</p>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{align*}
+\displaystyle \int_0^\infty \, \frac{\arctan{(a\,(x^n))}}{x^{n}}\, dx = \frac{a^{1-\frac{1}{n}} {\rm B}\left(\frac{1}{2 \, n}, 1-\frac{1}{2 \, n}\right)}{2 \, {\left({n} - 1\right)}}\\ =\frac{\pi \, a^{1-\frac{1}{n}}}{2 \, {\left({n} - 1\right)} \, \sin\left(\frac{\pi}{2n}\right)}
+\end{align*}
+</div>
+<p>or a more general result, for <span class="math">\(k \ge n\)</span></p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^\infty \, \frac{\arctan{(a\,(x^k))}}{x^{n}}\, dx =\frac{\pi \, a^{\frac{n-1}{k}}}{2 \, {\left({n} - 1\right)} \, \sin\left(\frac{k-n+1}{2\, k}\, \pi\right)}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{\pi/2} \, \log{\left(1+a\, \sin(x)^{2}\right)}\, dx = \pi\, \log{\left(\frac{\sqrt{a+1}+1}{2}\right)}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{\infty} \, e^{-a\sqrt{x}}\, \frac{\sin{\sqrt{x}}}{x}\, dx = \pi - 2\, \arctan{a}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \displaystyle \int_0^{\infty} \, \frac{\log{\left(1+\frac{a}{x^{3}}\right)}}{1+x^{3}}\, dx = \frac{1}{3\, \sqrt{3}} \, {\left(2 \, \sqrt{3} \pi \arctan\left(\frac{1}{\sqrt{3}} \, {\left(2 \, a^{\frac{1}{3}} + 1\right)}\right) + 3 \, \pi \log\left(a^{\frac{2}{3}} + a^{\frac{1}{3}} + 1\right)\right)}-\frac{\pi^{2}}{9}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \displaystyle \int_0^{\infty} \, \frac{x\, \log{\left(1+\frac{a}{x^{3}}\right)}}{1+x^{3}}\, dx = \frac{\pi^{2}}{9}-\frac{1}{3\, \sqrt{3}} \, {\left(2 \, \sqrt{3} \pi \arctan\left(\frac{1}{\sqrt{3}} \, {\left(2 \, a^{\frac{1}{3}} + 1\right)}\right) - 3 \, \pi \log\left(a^{\frac{2}{3}} + a^{\frac{1}{3}} + 1\right)\right)}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{\infty} \, \log\left(\frac{a^{2} x^{2} + 1}{a^{2} + 1}\right)\, \frac{1}{1-x^{2} }\, dx = -\arctan(a)^2
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{1} \frac{\log\left(1+a x \right)}{x\, \sqrt{1-x^{2}} }\, dx = \frac{1}{2}\, \log{\left(\sqrt{a^2-1}+a\right)}^{2}+\frac{\pi^2}{8}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{\infty}\, \frac{\log\left(a x + b\right)}{{\left(x + 1\right)}^{2}}\, dx = \frac{a \log\left(a\right) - b \log\left(b\right)}{a - b}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{\infty}\, \frac{e^{-a x^{2}} \sin\left(b\, x\right)^{2}}{x^{2}}\, dx = \frac{1}{2} \, \sqrt{\pi} {\left(b\, \sqrt{\pi}\, \text{erf}\left(\frac{b}{\sqrt{a}}\right) + \sqrt{a} e^{-b^{2}/a}\right)} - \frac{1}{2} \, \sqrt{\pi\, a}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<p>This integral is different. The rule is applied twice, and integrated back twice, finding the constant of integration each time.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{\infty}\, \frac{e^{\left(-a x\right)} \sin\left(b x\right)^{5}}{x^{2}}\, dx = -\frac{3}{16} \, \pi a - \frac{5}{32} \, b {\left(\log\left(25\right) - 3 \, \log\left(9\right)\right)} + \frac{5}{8} \, a \arctan\left(\frac{a}{b}\right) - \frac{5}{16} \, a \arctan\left(\frac{a}{3 \, b}\right) + \frac{1}{16} \, a \arctan\left(\frac{a}{5 \, b}\right) - \frac{5}{32} \, b \log\left(\frac{a^{2} + 25 \, b^{2}}{25 \, b^{2}}\right) + \frac{15}{32} \, b \log\left(\frac{a^{2} + 9 \, b^{2}}{9 \, b^{2}}\right) - \frac{5}{16} \, b \log\left(\frac{a^{2} + b^{2}}{b^{2}}\right)
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<p>More complicated than the previous, the rule is to be applied 5 times:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{\infty}\, \frac{e^{\left(-a x\right)} \sin\left(b x\right)^{5}}{x^{5}}\, dx = \frac{1}{128} \, \pi a^{4} + \frac{5}{64} \, \pi a^{2} b^{2} + \frac{115}{384} \, \pi b^{4} - \frac{5}{192} \, a^{4} \arctan\left(\frac{a}{b}\right) + \frac{5}{32} \, a^{2} b^{2} \arctan\left(\frac{a}{b}\right) - \frac{5}{192} \, b^{4} \arctan\left(\frac{a}{b}\right) + \frac{5}{384} \, a^{4} \arctan\left(\frac{a}{3 \, b}\right) - \frac{45}{64} \, a^{2} b^{2} \arctan\left(\frac{a}{3 \, b}\right) + \frac{135}{128} \, b^{4} \arctan\left(\frac{a}{3 \, b}\right) - \frac{1}{384} \, a^{4} \arctan\left(\frac{a}{5 \, b}\right) + \frac{25}{64} \, a^{2} b^{2} \arctan\left(\frac{a}{5 \, b}\right) - \frac{625}{384} \, b^{4} \arctan\left(\frac{a}{5 \, b}\right) + \frac{5}{192} \, a^{3} b \log\left(25\right) - \frac{5}{64} \, a^{3} b \log\left(9\right) - \frac{125}{192} \, a b^{3} \log\left(a^{2} + 25 \, b^{2}\right) + \frac{45}{64} \, a b^{3} \log\left(a^{2} + 9 \, b^{2}\right) - \frac{5}{96} \, a b^{3} \log\left(a^{2} + b^{2}\right) + \frac{5}{96} \, a^{3} b \log\left(\frac{a^{2}}{b^{2}} + 1\right) - \frac{5}{64} \, a^{3} b \log\left(\frac{a^{2}}{9 \, b^{2}} + 1\right) + \frac{5}{192} \, a^{3} b \log\left(\frac{a^{2}}{25 \, b^{2}} + 1\right)
+\end{equation*}
+</div>
+<p>So, if <span class="math">\(a=0\)</span>, it reduces to a simpler form:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{\infty}\, \frac{\sin\left(b x\right)^{5}}{x^{5}}\, dx =\frac{115}{384} \, \pi b^{4}
+\end{equation*}
+</div>
+<p>In Sage, it can be applied as:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-0"> 0</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-1"> 1</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-2"> 2</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-3"> 3</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-4"> 4</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-5"> 5</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-6"> 6</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-7"> 7</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-8"> 8</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-9"> 9</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-10">10</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-11">11</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-12">12</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-13">13</a>
+<a href="#rest_code_f24136ac010d414887b9c4a7eb033a3f-14">14</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-0"></a><span class="c1"># Takes a few seconds</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-1"></a><span class="n">var</span><span class="p">(</span><span class="s1">'a b'</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-2"></a><span class="n">forget</span><span class="p">()</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-3"></a><span class="n">assume</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-4"></a><span class="n">intg</span><span class="o">=</span><span class="n">e</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">5</span><span class="o">/</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-5"></a><span class="n">tmp</span><span class="o">=</span><span class="n">integrate</span><span class="p">(</span><span class="n">integrate</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">intg</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">oo</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-6"></a><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">=</span><span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-7"></a><span class="n">tmp</span><span class="o">=</span><span class="n">integrate</span><span class="p">(</span><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-8"></a><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">=</span><span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-9"></a><span class="n">tmp</span><span class="o">=</span><span class="n">integrate</span><span class="p">(</span><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-10"></a><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">=</span><span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-11"></a><span class="n">tmp</span><span class="o">=</span><span class="n">integrate</span><span class="p">(</span><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-12"></a><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">=</span><span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-13"></a><span class="n">tmp</span><span class="o">=</span><span class="n">integrate</span><span class="p">(</span><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-14"></a><span class="n">h5</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">=</span><span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{align*}
+\displaystyle \int_{0}^{\pi/2}\, e^{-b\, \sec{(x)}^{2}} \, \sin{(a\, \tan{x})}^{2} \, dx \\ =\frac{\pi}{4}\left(1 - e^{-2 \, a}\right) -\frac{1}{8} \, \pi {\left({\rm erfc}\left(\frac{a}{\sqrt{b}} + \sqrt{b}\right) e^{\left(4 \, a\right)} + {\rm erfc}\left(-\frac{a}{\sqrt{b}} + \sqrt{b}\right) - 2\right)} e^{\left(-2 \, a\right)} - \frac{1}{4} \, \pi \text{erf}\left(\sqrt{b}\right)
+\end{align*}
+</div>
+<p>or in particular, when <span class="math">\(b \to 0\)</span>,</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{\pi/2}\, \sin{(a\, \tan{x})}^{2} \, dx =\frac{\pi}{4}\left(1 - e^{-2 \, a}\right)
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{\infty}\, \frac{\log{(1+a\, x^3)}}{(1-x+x^2)}\, dx = \frac{2}{\sqrt{3}} \, \pi \, \log\left(1+ a^{\frac{1}{3}} + a^{\frac{2}{3}} \right)
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{1}\, \frac{\arctan{a\, x}}{x\, \sqrt{1-x^2}}\, dx = \frac{\pi}{2} \, \sinh^{-1}{a}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{align*}
+\displaystyle \int_{0}^{1}\, \frac{\log{\left(1+a\, x\, (1-x)\right)}}{x}\, dx = \sum_{i=1}^{\infty}\frac{(-1)^{i-1} a^{i}}{i^{2}\, \binom{2i}{i}} = \frac{1}{2}\, \log\left( \frac{a+2 -\sqrt{a^{2} + 4 \, a}}{2}\right)^{2}\\ \implies \sum_{i=1}^{\infty}\frac{1}{i^{2}\, \binom{2i}{i}} =\frac{\pi^{2}}{18} \\ \phantom{\implies}\sum_{i=1}^{\infty}\frac{2^{i}}{i^{2}\, \binom{2i}{i}} =\frac{\pi^{2}}{8} \text{ etc.}
+\end{align*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{0}^{\pi}\, \log{\left(1-2\, a\, \cos{x} + a^{2}\right)}\, dx = 2\, \pi\, \log{|a|}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{\pi/4} \frac{\left(\log{\tan{\left(\frac{\pi}{4}+ x\right)}}\right)^n}{\tan{(2x)}}\, dx = \frac{n!}{2^n} \left(1-\frac{1}{2^{n + 1}}\right) \zeta(n + 1)
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^1 \log\frac{\big(x+a\, \sqrt{1-x^2}\big)^2}{\big(x-a\, \sqrt{1-x^2}\big)^2} \frac{x\, dx}{1-x^2} = 2\,\pi\arctan{a}
+\end{equation*}
+</div>
+<ol class="arabic simple"><li>
+</li></ol>
+<p>The functions in the answer are Beta and the Polygamma:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{\pi/2}\, \frac{\sin(x)^a\, \log{\sin{x}}}{\sqrt{1+\sin(x)^2}}\, dx = \frac{1}{16} \, {\left(\psi_0\left(\frac{a+1}{4} \right)-\psi_0\left(\frac{a+3}{4} \right) \right)} {\rm B}\left(\frac{a+1}{4},\frac{1}{2}\right)
+\end{equation*}
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../differentiation-under-the-integral-sign-and-a-sum/" rel="prev" title="Differentiation under the integral sign and a sum">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../probability-of-a-sum-being-less-than-1-convolution-of-pdf/" rel="next" title="Probability of a sum being less than 1 (convolution of pdf)">Next post</a>
+            </li>
+        </ul></nav></aside><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

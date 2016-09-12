@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multisets and multivariate generating functions | Gopinath A R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Gopinath">
+<link rel="prev" href="../getting-started-with-experimental-mathematics/" title="Getting started with experimental mathematics" type="text/html">
+<link rel="next" href="../deriving-explicit-formulas-from-markov-chains/" title="Deriving Explicit Formulas from Markov Chains" type="text/html">
+<meta property="og:site_name" content="Gopinath A R">
+<meta property="og:title" content="Multisets and multivariate generating functions">
+<meta property="og:url" content="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/">
+<meta property="og:description" content="Consider a multiset, :math:`S = {11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 15, 15, 15}`. How many combinations of 8 elements can be made from the set so that the sum ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-07-03T17:00:24+05:30">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="../../stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Multisets and multivariate generating functions</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Gopinath
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2015-07-03T17:00:24+05:30" itemprop="datePublished" title="2015-07-03 17:00">2015-07-03 17:00</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p><em>Consider a multiset, :math:`S = {11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 15, 15, 15}`. How many combinations of 8 elements can be made from the set so that the sum of those 8 elements is equal to 105, when the numbers are picked without replacement?</em></p>
+<p>Here, if the sum is not asked, the problem can be solved using an ordinary generating function as</p>
+<div class="math">
+\begin{equation*}
+G(x) = (1+x+x^2+x^3+x^4)^2\, (1+x+x^2+x^3+x^4+x^5)\, (1+x+x^2+x^3+x^4+x^5+x^6)\, (1+x+x^2+x^3)
+\end{equation*}
+</div>
+<p>and find <span class="math">\([x^8]G(x)\)</span></p>
+<p>But when the sum is also there as a constraint, we require one more variable to keep track of the sum. So, we may use x to know the number of elements chosen, and y for the sum of those numbers. Hence, the required bivariate generating function can be written as</p>
+<div class="math">
+\begin{align*}
+G(x,y) = {\left(x^{6} y^{84} + x^{5} y^{70} + x^{4} y^{56} + x^{3} y^{42} + x^{2} y^{28} + x y^{14} + 1\right)}\\ {\left(x^{5} y^{65} + x^{4} y^{52} + x^{3} y^{39} + x^{2} y^{26} + x y^{13} + 1\right)} {\left(x^{4} y^{48} + x^{3} y^{36} + x^{2} y^{24} + x y^{12} + 1\right)}\\ {\left(x^{4} y^{44} + x^{3} y^{33} + x^{2} y^{22} + x y^{11} + 1\right)} {\left(x^{3} y^{45} + x^{2} y^{30} + x y^{15} + 1\right)}
+\end{align*}
+</div>
+<p>Now, the answer to the question would be <span class="math">\([x^8 y^{105}] G(x,y)\)</span> in the expansion of the product.</p>
+<p>If the question was to find the number of combinations with replacement, the generating function can be represented as</p>
+<div class="math">
+\begin{equation*}
+G(x,y) = \dfrac{1}{\left(1-x\, y^{11}\right)\left(1-x\, y^{12}\right)\left(1-x\, y^{13}\right)\left(1-x\, y^{14}\right)\left(1-x\, y^{15}\right)}
+\end{equation*}
+</div>
+<p>Now, let us focus our attention to a related probability problem:</p>
+<p>From the multiset S, what is the probability of choosing 8 elements such that the sum of those 8 elements is equal to 105, when the numbers are picked without replacement?</p>
+<p>This looks simple and we may be tempted to say that the answer is <span class="math">\([x^8 y^{105}]G(x,y) / [x^8] G(x)\)</span>, but note that some combinations of numbers are more probable to be picked since the number of each element are not the same. E.g. If the set contains {11, 11, 12}, the probability of choosing {11, 11} will be more than the probability of choosing {11, 12}.</p>
+<p>Anyway, it can still be solved using a generating function:</p>
+<div class="math">
+\begin{align*}
+   P(x,y) = \left(1+\binom{4}{1}\, (x\, y^{11})^{1}+\binom{4}{2}\, (x\, y^{11})^{2}+\binom{4}{3}\, (x\, y^{11})^{3}+\binom{4}{4}\, (x\, y^{11})^{4}\right)\\ \left(1+\binom{4}{1}\, (x\, y^{12})^{1}+\binom{4}{2}\, (x\, y^{12})^{2}+\binom{4}{3}\, (x\, y^{12})^{3}+\binom{4}{4}\, (x\, y^{12})^{4}\right)\\ \left(1+\binom{5}{1}\, (x\, y^{13})^{1}+\binom{5}{2}\, (x\, y^{13})^{2}+\binom{5}{3}\, (x\, y^{13})^{3}+\binom{5}{4}\, (x\, y^{13})^{4}+\binom{5}{5}\, (x\, y^{13})^{5}\right)\\ \left(1+\binom{6}{1}\, (x\, y^{14})^{1}+\binom{6}{2}\, (x\, y^{14})^{2}+\binom{6}{3}\, (x\, y^{14})^{3}+\binom{6}{4}\, (x\, y^{14})^{4}+\binom{6}{5}\, (x\, y^{14})^{5}+\binom{6}{6}\, (x\, y^{14})^{6}\right)\\ \left(1+\binom{3}{1}\, (x\, y^{15})^{1}+\binom{3}{2}\, (x\, y^{15})^{2}+\binom{3}{3}\, (x\, y^{15})^{3}\right)
+\end{align*}
+</div>
+<div class="math">
+\begin{equation*}
+
+and the required probability is
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+\mathbb{P} = \dfrac{[x^8 y^{105}] P(x,y)}{\dbinom{22}{8}} = \dfrac{343}{2805} \approx 0.122281639928699
+\end{equation*}
+</div>
+<p>And what is the probability if we do it with replacement? In this case, the probability can be found by using an exponential generating function, which is written as:</p>
+<div class="math">
+\begin{equation*}
+   E(x,y) = e^{x\, \left(4\, y^{11}+4\, y^{12}+5\, y^{13}+6\, y^{14}+3\, y^{15} \right)}
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+and the probability is given by :math:`[x^8 y^{105}]E(x,y)\dfrac{8!}{22^8} = \dfrac{5621995920}{22^8} \approx 0.102449319851133` The above probabilities can also be verified by monte-carlo simulations in J, for the without replacement case:
+\end{equation*}
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ace02bf06f65402e80b39989e3193d2f-0">0</a>
+<a href="#rest_code_ace02bf06f65402e80b39989e3193d2f-1">1</a>
+<a href="#rest_code_ace02bf06f65402e80b39989e3193d2f-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_ace02bf06f65402e80b39989e3193d2f-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
+<a name="rest_code_ace02bf06f65402e80b39989e3193d2f-1"></a>sim=: 3 : '105=+/(8?#lst){lst'
+<a name="rest_code_ace02bf06f65402e80b39989e3193d2f-2"></a>(+/%#)(sim"0)1e5#0
+</pre></td>
+</tr></table>
+<p>and for the with replacement case:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c835378928ec465cb1c6c49dec47e710-0">0</a>
+<a href="#rest_code_c835378928ec465cb1c6c49dec47e710-1">1</a>
+<a href="#rest_code_c835378928ec465cb1c6c49dec47e710-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_c835378928ec465cb1c6c49dec47e710-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
+<a name="rest_code_c835378928ec465cb1c6c49dec47e710-1"></a>sim=: 3 : '105=+/(?8##lst){lst'
+<a name="rest_code_c835378928ec465cb1c6c49dec47e710-2"></a>(+/%#)(sim"0)1e5#0
+</pre></td>
+</tr></table>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../getting-started-with-experimental-mathematics/" rel="prev" title="Getting started with experimental mathematics">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../deriving-explicit-formulas-from-markov-chains/" rel="next" title="Deriving Explicit Formulas from Markov Chains">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with experimental mathematics | Gopinath A R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Gopinath">
+<link rel="prev" href="../jolla-and-sailfish-os/" title="Jolla and sailfish OS" type="text/html">
+<link rel="next" href="../multisets-and-multivariate-generating-functions/" title="Multisets and multivariate generating functions" type="text/html">
+<meta property="og:site_name" content="Gopinath A R">
+<meta property="og:title" content="Getting started with experimental mathematics">
+<meta property="og:url" content="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/">
+<meta property="og:description" content="Here is one nice problem to describe how arrive at a formula experimentally.
+To rephrase the problem:
+/There are \(m\) people with one ball each, and \(n\) boxes. In a round, each of them picks one bo">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2014-12-16T16:47:39+05:30">
+<meta property="article:tag" content="mathjax">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="../../stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Getting started with experimental mathematics</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Gopinath
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2014-12-16T16:47:39+05:30" itemprop="datePublished" title="2014-12-16 16:47">2014-12-16 16:47</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Here is one <a class="reference external" href="https://math.stackexchange.com/questions/1061083/average-time-to-fill-boxes-with-balls/">nice problem</a> to describe how arrive at a formula experimentally.</p>
+<p>To rephrase the problem:</p>
+<p>/There are <span class="math">\(m\)</span> people with one ball each, and <span class="math">\(n\)</span> boxes. In a round, each of them picks one box randomly (uniformly and independently) and
+drops the ball in it. Whichever box is not empty is removed, and the next round starts. How many rounds, on an average, will it take till no
+boxes are left?/</p>
+<p>Obtaining a formula directly by combinatorial arguments without computing any values and getting it right is quite difficult, and prone to errors.</p>
+<p>So, let us obtain it experimentally.</p>
+<p>What does experimental math involve?</p>
+<ul class="simple">
+<li>Brute force through the problem<ul>
+<li>Write a program which describes the problem</li>
+<li>obtain the first few values</li>
+<li>take it to either oeis or a sequence guessing routine</li>
+<li>Then we may be able to find a formula</li>
+</ul>
+</li>
+<li>If it's a problem on probability, do a simulation to cross verify with the formula</li>
+<li>Having a lot of fun, doing both math and programming at the same time!</li>
+</ul>
+<p>Back to our problem, how many rounds can we expect for the game to last? Let us do the simulation by computing answers for small values, in J:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-0"> 0</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-1"> 1</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-2"> 2</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-3"> 3</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-4"> 4</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-5"> 5</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-6"> 6</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-7"> 7</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-8"> 8</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-9"> 9</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-10">10</a>
+<a href="#rest_code_887a0258ac7c49f6b9cb37952547546d-11">11</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_887a0258ac7c49f6b9cb37952547546d-0"></a>   'm n'=:5 3
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-1"></a>   sim=: 3 : 0
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-2"></a>a=:m
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-3"></a>c=:0
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-4"></a>while. (a&gt;0) do.
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-5"></a>b=:+/~:?n#a
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-6"></a>a=:a-b
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-7"></a>c=:c+1
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-8"></a>end.
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-9"></a>c return.
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-10"></a>)
+<a name="rest_code_887a0258ac7c49f6b9cb37952547546d-11"></a>   (+/%#)(sim"0)1e5#0
+</pre></td>
+</tr></table>
+<p>Running the above gives a value of about <span class="math">\(2.554\)</span></p>
+<p>Next, we will try to compute some numbers:
+How many ways is it possible for 3 balls to be placed 5 boxes such that everybody chooses the same box?</p>
+<p>abc,0,0,0,0</p>
+<p>= 5 ways</p>
+<p>How many ways is it possible for 3 balls to be placed 5 boxes such that two boxes are selected?</p>
+<p>Do some casework:</p>
+<p>One box may contain two balls, one box with one ball and one empty box.</p>
+<p>ab,c,0,0,0</p>
+<p>ac,b,0,0,0</p>
+<p>bc,a,0,0,0</p>
+<p>= 3*5!/3! = 60 ways</p>
+<p>How many ways is it possible for 3 balls to be placed 5 boxes such that 3 boxes are selected?</p>
+<p>a,b,c,0,0</p>
+<p>= 5!/2! = 60 ways</p>
+<p>And we see that the total turns out to be <span class="math">\(5 + 60 + 60 = 125\)</span>, which is 53, the number of ways of arranging the balls in boxes without any restriction.</p>
+<p>To calculate the expected value, we have</p>
+<div class="math">
+\begin{equation*}
+E[n] = p_1 * E[n-1] + p_2 * E[n-2] + \cdots + p_m * E[n-m]
+\end{equation*}
+</div>
+<p>where <span class="math">\(p_m\)</span> means the probability of choosing <span class="math">\(m\)</span> different boxes from <span class="math">\(n\)</span> boxes.</p>
+<p>For <span class="math">\(m=3\)</span> and <span class="math">\(n=5\)</span>, <span class="math">\(E[5] = 5/125*E[4]+60/125*E[3]+60/125*E[2] + 1\)</span></p>
+<p>Then, calculate similarly for <span class="math">\(n=4\)</span> and <span class="math">\(m=3\)</span> to get <span class="math">\(E[4]\)</span> and so on.
+The boundary condition is <span class="math">\(E[1]=1\)</span>, since obviously the game would end in one round if there was a single box.</p>
+<p><span class="math">\(E[5]\)</span> would be <span class="math">\(18391/7200 = 2.5543\)</span> which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a
+formula.</p>
+<p>Let us calculate the number of ways to partition a number <span class="math">\(n\)</span> of length <span class="math">\(3\)</span> (number of people fixed at <span class="math">\(m=3\)</span>), using sage:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_615a9eab825240bda2604ffb78f565be-0"> 0</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-1"> 1</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-2"> 2</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-3"> 3</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-4"> 4</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-5"> 5</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-6"> 6</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-7"> 7</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-8"> 8</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-9"> 9</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-10">10</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-11">11</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-12">12</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-13">13</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-14">14</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-15">15</a>
+<a href="#rest_code_615a9eab825240bda2604ffb78f565be-16">16</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_615a9eab825240bda2604ffb78f565be-0"></a><span class="k">def</span> <span class="nf">afun</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span><span class="n">bb</span><span class="p">,</span><span class="n">cc</span><span class="p">):</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-1"></a>    <span class="n">nn</span> <span class="o">=</span> <span class="n">aa</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-2"></a>    <span class="n">nbac</span> <span class="o">=</span> <span class="n">nn</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-3"></a>    <span class="n">mm</span> <span class="o">=</span> <span class="n">bb</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-4"></a>    <span class="n">ll</span> <span class="o">=</span> <span class="n">cc</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-5"></a>    <span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-6"></a>    <span class="n">alst</span><span class="o">=</span><span class="n">Partitions</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="n">ll</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-7"></a>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alst</span><span class="p">:</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-8"></a>        <span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">mm</span><span class="o">-</span><span class="n">ll</span><span class="p">))</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-9"></a>        <span class="n">tot</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-10"></a>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-11"></a>            <span class="n">tot</span> <span class="o">*=</span> <span class="n">binomial</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-12"></a>            <span class="n">nn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">-</span><span class="n">c</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-13"></a>        <span class="n">summ</span> <span class="o">+=</span> <span class="n">Permutations</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">cardinality</span><span class="p">()</span><span class="o">*</span><span class="n">tot</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-14"></a>        <span class="n">nn</span> <span class="o">=</span> <span class="n">nbac</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-15"></a>    <span class="k">return</span> <span class="n">summ</span>
+<a name="rest_code_615a9eab825240bda2604ffb78f565be-16"></a><span class="k">print</span> <span class="p">[</span><span class="n">afun</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">16</span><span class="p">)]</span>
+</pre></td>
+</tr></table>
+<p>What this function afun does is that for <span class="math">\(n\)</span> and <span class="math">\(m\)</span>, it computes the number of partitions having length <span class="math">\(l (\le m)\)</span>, and we compute the list of values for <span class="math">\(l=m=3\)</span> and varying <span class="math">\(n\)</span>.</p>
+<p>Insert that list to oeis, and bingo! The second answer shown looks promising: <span class="math">\(A(k,3)\)</span> where <span class="math">\(A(k,n)= \sum_{m=1}^k (-1)^{m+1}\cdot \binom{n}{m} \cdot m^k\)</span>.</p>
+<p>It seems to be related to the stirling numbers of the second kind.</p>
+<p>After some trial and error, the equation turns out to be:</p>
+<div class="math">
+\begin{align*}
+\displaystyle E_{n,m} = \left(\sum_{j=1}^{n-1} \left\lbrace {m \atop j} \right\rbrace \dfrac{n!}{(n-j)!} \dfrac{E_{n-j,m}}{n^m}\right)+1
+\\
+E_{1,m} = 1
+\end{align*}
+</div>
+<p>In maxima (which will cache the values to speed up recurrence computation), it can be written as:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5bc32889f67d4a4882d68ae921b79798-0">0</a>
+<a href="#rest_code_5bc32889f67d4a4882d68ae921b79798-1">1</a>
+<a href="#rest_code_5bc32889f67d4a4882d68ae921b79798-2">2</a>
+<a href="#rest_code_5bc32889f67d4a4882d68ae921b79798-3">3</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_5bc32889f67d4a4882d68ae921b79798-0"></a>m:3$
+<a name="rest_code_5bc32889f67d4a4882d68ae921b79798-1"></a>E[1]:1$
+<a name="rest_code_5bc32889f67d4a4882d68ae921b79798-2"></a>E[n]:=sum(stirling2(m,j)*factorial(n)/factorial(n-j)*E[n-j]/n^m,j,1,n-1)+1$
+<a name="rest_code_5bc32889f67d4a4882d68ae921b79798-3"></a>float(E[5]);
+</pre></td>
+</tr></table>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../jolla-and-sailfish-os/" rel="prev" title="Jolla and sailfish OS">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../multisets-and-multivariate-generating-functions/" rel="next" title="Multisets and multivariate generating functions">Next post</a>
+            </li>
+        </ul></nav></aside><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
