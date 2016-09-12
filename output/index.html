@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Some random stuffs -- Programming and Mathematics">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gopinath A R</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/">
+<link rel="next" href="index-6.html" type="text/html">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/using-integer-relation-algorithms-to-guess-closed-forms/" type="text/html">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archive</a>
+                </li>
+<li>
+<a href="categories/">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/" class="u-url">Using integer relation algorithms to guess closed forms</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/" rel="bookmark"><time class="published dt-published" datetime="2016-07-02T19:51:29+05:30" title="2016-07-02 19:51">2016-07-02 19:51</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
+In particular, we'll use the excellent math toolkit by David Bailey aimed at experimental mathematics arprec, compile and run mathtool.</p>
+<p>The following problems are taken from brilliant.org</p>
+<p>Q1.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{\frac{\pi}{3}} x \left(\ln{\left(2 \sin{\frac{x}{2}}\right)}\right)^2 \, dx = \frac{c\, \pi^a}{b}
+\end{equation*}
+</div>
+<p>Find $a, b,$ and <span class="math">\(c\)</span>.</p>
+<p>Start mathtool, and enter the commands in sequence:
+(Only the relevent output is shown after command executions)</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-0"> 0</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-1"> 1</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-2"> 2</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-3"> 3</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-4"> 4</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-5"> 5</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-6"> 6</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-7"> 7</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-8"> 8</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-9"> 9</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-10">10</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-11">11</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-12">12</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-13">13</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-14">14</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-15">15</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_54909469799640468b530902cef02935-0"></a>integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
+<a name="rest_code_54909469799640468b530902cef02935-1"></a>-- snip --
+<a name="rest_code_54909469799640468b530902cef02935-2"></a>&gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
+<a name="rest_code_54909469799640468b530902cef02935-3"></a>epsilon=-50
+<a name="rest_code_54909469799640468b530902cef02935-4"></a>pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
+<a name="rest_code_54909469799640468b530902cef02935-5"></a>-- snip --
+<a name="rest_code_54909469799640468b530902cef02935-6"></a>&gt; Relation:  0 =
+<a name="rest_code_54909469799640468b530902cef02935-7"></a>&gt; +  6480.* pslq001
+<a name="rest_code_54909469799640468b530902cef02935-8"></a>&gt; +     0.* pslq002
+<a name="rest_code_54909469799640468b530902cef02935-9"></a>&gt; +     0.* pslq003
+<a name="rest_code_54909469799640468b530902cef02935-10"></a>&gt; +   -17.* pslq004
+<a name="rest_code_54909469799640468b530902cef02935-11"></a>&gt; Result[ 37] through Result[ 40] =
+<a name="rest_code_54909469799640468b530902cef02935-12"></a>&gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_54909469799640468b530902cef02935-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_54909469799640468b530902cef02935-14"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_54909469799640468b530902cef02935-15"></a>&gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
+</pre></td>
+</tr></table>
+<p>So, the above output means, <span class="math">\(0= 6480\times 0.255548541292907628552389761683331310377371752536366075420056165916 - 17\times \pi^4\)</span>, and hence <span class="math">\(c=17, a=4, b=6480\)</span></p>
+<p>When doing such computations, it's good to have more digits when computing integral or sums, and reduce the epsilon value when using pslq, so that it checks for fewer decimal places when trying for an integer relation. Otherwise, it is likely to miss the relation when the numerical accuracy is kept high. digits=100 and epsilon=-50 worked well for me in most cases.</p>
+<p>Q2:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^{2\log{\phi}} \log{\left(2\, \sinh{\frac{x}{2}}\right)} = -\frac{\pi^a}{b}
+\end{equation*}
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-0"> 0</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-1"> 1</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-2"> 2</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-3"> 3</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-4"> 4</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-5"> 5</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-6"> 6</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-7"> 7</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-8"> 8</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-9"> 9</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-10">10</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-11">11</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-12">12</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-13">13</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-14">14</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-15">15</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-16">16</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-0"></a>epsilon=-100
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-1"></a>integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-2"></a>&gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-3"></a>epsilon=-50
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-4"></a>pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-5"></a>&gt; Relation:  0 =
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-6"></a>&gt; +  10.* pslq001
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-7"></a>&gt; +   0.* pslq002
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-8"></a>&gt; +   1.* pslq003
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-9"></a>&gt; +   0.* pslq004
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-10"></a>&gt; +   0.* pslq005
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-11"></a>&gt; Result[ 29] through Result[ 33] =
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-12"></a>&gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-14"></a>&gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-15"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+</pre></td>
+</tr></table>
+<p>In this example, mathtool chokes when lower limit is 0 saying argument is too large, so keep it close to 0. Then using pslq, we see that a=2 and b=10.</p>
+<p>Q3.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_{-\infty}^{\infty} \dfrac{\log{\left(1 + e^{2x}\right)}}{1 + e^{3\, x}} = \frac{a \pi^b}{c}
+\end{equation*}
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_4139e71bd17c4bdeb566d24bbbcd4300-0">0</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_4139e71bd17c4bdeb566d24bbbcd4300-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_4139e71bd17c4bdeb566d24bbbcd4300-0"></a>epsilon=-100
+<a name="rest_code_4139e71bd17c4bdeb566d24bbbcd4300-1"></a>Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
+</pre></td>
+</tr></table>
+<p>If we try to execute it directly, it complains "argument too large". So, we transform it by substituting <span class="math">\(e^x=y\)</span></p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-0"> 0</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-1"> 1</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-2"> 2</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-3"> 3</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-4"> 4</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-5"> 5</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-6"> 6</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-7"> 7</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-8"> 8</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-9"> 9</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-10">10</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-11">11</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-12">12</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-13">13</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-14">14</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-15">15</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-16">16</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-17">17</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_d26c19908bf8409784c304f463332a6b-0"></a>Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-1"></a>&gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-2"></a>epsilon=-50
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-3"></a>pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-4"></a>&gt; Relation:  0 =
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-5"></a>&gt; +  216.* pslq001
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-6"></a>&gt; +    0.* pslq002
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-7"></a>&gt; +  -13.* pslq003
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-8"></a>&gt; +    0.* pslq004
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-9"></a>&gt; +    0.* pslq005
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-10"></a>&gt; +    0.* pslq006
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-11"></a>&gt; Result[  7] through Result[ 12] =
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-12"></a>&gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-14"></a>&gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-15"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_d26c19908bf8409784c304f463332a6b-17"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+</pre></td>
+</tr></table>
+<p>Hence, <span class="math">\(a=13, b=2, c=216\)</span></p>
+<p>Q4.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \int_0^1 \log{x}\log{\left(1-x\right)} dx = \frac{a}{b}-\frac{\pi^c}{d}
+\end{equation*}
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-0"> 0</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-1"> 1</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-2"> 2</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-3"> 3</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-4"> 4</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-5"> 5</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-6"> 6</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-7"> 7</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-8"> 8</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-9"> 9</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-10">10</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-11">11</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-12">12</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-13">13</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-14">14</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-15">15</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-16">16</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-17">17</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-18">18</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-19">19</a>
+<a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-20">20</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-0"></a>epsilon=-100
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-1"></a>integrate[log[x]*log[1-x],{x,0,1}]
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-2"></a>&gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-3"></a>epsilon=-50
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-4"></a>pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-5"></a>&gt; Relation:  0 =
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-6"></a>&gt; +  -6.* pslq001
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-7"></a>&gt; +  12.* pslq002
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-8"></a>&gt; +   0.* pslq003
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-9"></a>&gt; +  -1.* pslq004
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-10"></a>&gt; +   0.* pslq005
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-11"></a>&gt; +   0.* pslq006
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-12"></a>&gt; +   0.* pslq007
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-13"></a>&gt; Result[ 27] through Result[ 33] =
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-14"></a>&gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-15"></a>&gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-17"></a>&gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-18"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-19"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-20"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+</pre></td>
+</tr></table>
+<p>Therefore, <span class="math">\(a=2, b=1, c=2, d=6\)</span></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/compiling-softwares-that-require-later-versions-of-gcc/" class="u-url">Compiling softwares that require later versions of GCC</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/compiling-softwares-that-require-later-versions-of-gcc/" rel="bookmark"><time class="published dt-published" datetime="2015-12-20T19:40:01+05:30" title="2015-12-20 19:40">2015-12-20 19:40</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Suppose we require to install the latest version of a software, but the repository doesn't have it, we usually either get the latest source code and compile, or download the compiled binary if available, and run it. But if we are running some old distro, latest binary refuse to run complaining that it requires GLIBC 2.16 to run etc. When the binary file refuses to run, we can then try to compile the source, which usually works fine. But sometimes it happens that the source requires a language standard, which is unsupported by the GCC version installed. In such cases, we can download the latest GCC, compile it, and then compile the required software using the latest GCC. We'll see an example to compile "Context Free" -- a program which generates art from a context free grammar, and requires C++11 standard to compile. The steps mentioned below were done on debian wheezy, whose software repository contains version 2 of cfdg whereas the latest version is 3.</p>
+<ul class="simple">
+<li>Download the latest GCC</li>
+<li>Extract and configure with a prefix path, so that we can avoid installing it to a directory which requires root privilege</li>
+<li>./configure --prefix=$HOME/bin/custom<sub>gcc</sub>
+</li>
+<li>The compile and install to that path, the whole process takes much time anywhere between 10 mins to a couple of hours or more, depending on the speed of the machine and the number of cores used.
+To compile on a single core, use<ul>
+<li>make</li>
+<li>make install</li>
+</ul>
+</li>
+</ul>
+<p>After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install libpng12-dev and compile.</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7418e55894d4475e84f033351cad045a-0">0</a>
+<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7418e55894d4475e84f033351cad045a-1">1</a>
+<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7418e55894d4475e84f033351cad045a-2">2</a>
+<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7418e55894d4475e84f033351cad045a-3">3</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_7418e55894d4475e84f033351cad045a-0"></a><span class="nv">CC</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_7418e55894d4475e84f033351cad045a-1"></a><span class="nv">LD</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_7418e55894d4475e84f033351cad045a-2"></a><span class="nv">CPP</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
+<a name="rest_code_7418e55894d4475e84f033351cad045a-3"></a><span class="nv">CXX</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
+</pre></td>
+</tr></table>
+<p>The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in $HOME/bin named cfdg with following contents</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-0">0</a>
+<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-1">1</a>
+<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-2">2</a>
+<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-3">3</a>
+<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-4">4</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_3fc8be63edb649cca00e4d30990571fb-0"></a><span class="ch">#!/bin/bash</span>
+<a name="rest_code_3fc8be63edb649cca00e4d30990571fb-1"></a><span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_3fc8be63edb649cca00e4d30990571fb-2"></a><span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/g++
+<a name="rest_code_3fc8be63edb649cca00e4d30990571fb-3"></a><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/lib64
+<a name="rest_code_3fc8be63edb649cca00e4d30990571fb-4"></a><span class="nv">$HOME</span>/bin/context-free-3.0.9/cfdg <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</pre></td>
+</tr></table>
+<p>and <tt class="docutils literal">chmod +x cfdg</tt>, and execute the software happily ever after.</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/installing-and-running-tensorflow-in-debian-wheezy/" class="u-url">Installing and Running TensorFlow in Debian Wheezy</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/installing-and-running-tensorflow-in-debian-wheezy/" rel="bookmark"><time class="published dt-published" datetime="2015-11-11T17:16:08+05:30" title="2015-11-11 17:16">2015-11-11 17:16</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>A couple of days ago google released what they term it as the second generation deep learning neural network software system, called TensorFlow. Google has been taking much interest in deep learning since two or three years (perhaps having surplus computation power?), and they are using it for all sorts of softwares they develop -- maps, translation, spying on you for targeted ads etc. So, I thought of trying out their newly released tool.</p>
+<p>First, I tried to install it using their "easy way" using virtualenv and pip. Getting into the virtual environment is easy, and pip install command also worked, but when importing tensorflow, it spit an ugly ImportError -- /lib/x86<sub>64</sub>-linux-gnu/libc.so.6: version `GLIBC<sub>2.17</sub>' not found. Now, for the other option.</p>
+<p>Next, I thought installing from sources would definitely go well. Downloaded all the source codes and dependencies required by the project, and bazel was one of them. Downloaded bazel as well, but when the installation script was run, that method also went kaput with some error complaining about the kernel version or something. Running from a virtual machine or installing some latest distro was my only option, I thought. But no! There's another method using docker image, which I overlooked even though that was mentioned at the top of the installation page.</p>
+<p>Here are the steps:</p>
+<ul class="simple">
+<li>Docker runs only on 64-bit OS with kernel version 3.10 or higher. So, the first step must be to install the latest kernel available from wheezy backports. Follow the backport instructions</li>
+<li>Then reboot the machine selecting the latest kernel version</li>
+<li>Follow the docker installation steps</li>
+<li>Now, we are all set to install TensorFlow. Simply run<ul>
+<li>sudo docker run -it b.gcr.io/tensorflow/tensorflow</li>
+</ul>
+</li>
+<li>That will pull all the required dependencies and set the docker image (which was about 300MiB to download)</li>
+<li>Wouldn't it be convenient if we could add some data persistance, to save data so that the host could use it? There's an option for that as well<ul>
+<li>sudo docker run -it -v /host/dir:/docker/dir b.gcr.io/tensorflow/tensorflow</li>
+</ul>
+</li>
+<li>Now the /host/dir is mounted to the /docker/dir when the image is run</li>
+<li>And that's it, no need of a virtualbox, which wastes more time and space than to run a docker image</li>
+<li>Check an example program from the tutorial, like plotting mandelbrot set</li>
+</ul>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/deriving-explicit-formulas-from-markov-chains/" class="u-url">Deriving Explicit Formulas from Markov Chains</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/deriving-explicit-formulas-from-markov-chains/" rel="bookmark"><time class="published dt-published" datetime="2015-08-09T17:11:29+05:30" title="2015-08-09 17:11">2015-08-09 17:11</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Once we formulate the markov model correctly, we can obtain the generating function for each entry in the matrix, where there's a possibility of getting the explicit formula. Let's take a look at one such problem:</p>
+<p><em>A six faced unbiased die is rolled :math:`n` times. What is the probability that we get to see all the six numbers in the sequence?</em></p>
+<p>Setting up a markov chain is easy:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle A= \begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; \frac{1}{3} &amp; \frac{2}{3} &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{2}{3} &amp; \frac{1}{3} &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{5}{6} &amp; \frac{1}{6}\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}
+\end{equation*}
+</div>
+<p>The states indicate the number of faces shown up. E.g. the row above the last row indicates that when 5 faces are seen, there's a probability of 5/6 remaining in the same state and 1/6 moving to the final state.</p>
+<p>So, <span class="math">\(A^n[0,6]\)</span>, gives the required answer. But we can also find the generating function for that entry by computing <span class="math">\((I-x\, A)^{-1}\)</span>, which is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(x) = \frac{10 \, x^{6}}{{\left(5 \, x - 6\right)} {\left(2 \, x - 3\right)} {\left(x - 1\right)} {\left(x - 2\right)} {\left(x - 3\right)} {\left(x - 6\right)}}
+\end{equation*}
+</div>
+<p>and on partial fractions it's</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(x) = \frac{36}{5 \, x - 6} - \frac{45}{2 \, x - 3} - \frac{1}{x - 1} + \frac{40}{x - 2} - \frac{45}{x - 3} + \frac{36}{x - 6} + 1
+\end{equation*}
+</div>
+<p>and the probability can be written by extracting <span class="math">\([x^n]G(x)\)</span> as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \mathbb{P}(n) = 1-\frac{6}{6^n}+\frac{15}{3^n}-\frac{20}{2^n}+15\left(\frac{2}{3}\right)^n-6\left(\frac{5}{6}\right)^n
+\end{equation*}
+</div>
+<p>which can be verified by a simulation in J:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/deriving-explicit-formulas-from-markov-chains/#rest_code_19426d2b7bbf43638095034edd49a3dc-0">0</a>
+<a href="posts/deriving-explicit-formulas-from-markov-chains/#rest_code_19426d2b7bbf43638095034edd49a3dc-1">1</a>
+<a href="posts/deriving-explicit-formulas-from-markov-chains/#rest_code_19426d2b7bbf43638095034edd49a3dc-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_19426d2b7bbf43638095034edd49a3dc-0"></a>n=:10
+<a name="rest_code_19426d2b7bbf43638095034edd49a3dc-1"></a>sim=: 3 : '6=+/~:?n#6'
+<a name="rest_code_19426d2b7bbf43638095034edd49a3dc-2"></a>(+/%#)(sim"0)1e5#0 NB. about 0.27
+</pre></td>
+</tr></table>
+<p>and</p>
+<div class="math">
+\begin{equation*}
+\mathbb{P}(10) = \dfrac{38045}{139968} \approx 0.271812128486511
+\end{equation*}
+</div>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="next">
+                <a href="index-6.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

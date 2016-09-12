@@ -1,0 +1,4 @@
+Sitemap: https://g-ar.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: g-ar.github.io

@@ -1,0 +1,195 @@
+<p>Generating Function (g.f.) is one of the most important tools in combinatorics. Many problems which are difficult to do by combinatorial arguments and by cases are trivial when g.f. is applied. Below are some typical problems where g.f. are very useful.</p>
+<div class="section" id="solving-diophantine-equations-d-e">
+<h1>1 Solving diophantine equations (d.e.)</h1>
+<ol class="loweralpha simple">
+<li>What are the number of solutions for the linear d.e.</li>
+</ol>
+<div class="math">
+\begin{align*}
+\displaystyle x_1+x_2+x_3+x_4=35\\ 1\le x_1,x_2\le 20\\ 20\le x_3,x_4 \le 30
+\end{align*}
+</div>
+<p>Answer can be easily found by representing the variables as polynomials and multiplying them, i.e.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle [z^{35}](z+z^2+z^3+\cdots +z^{20})^2\, (z^{20}+z^{21}+z^{22}+\cdots +z^{30})^2 = 11
+\end{equation*}
+</div>
+<p>Hence, there are 11 solutions for the d.e under the constraints.</p>
+<p>In Sage, this can be found by the taylor expansion:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_0cf9198ad20b43d58816a56ef3a7ac73-0">0</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_0cf9198ad20b43d58816a56ef3a7ac73-0"></a><span class="n">taylor</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">21</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">20</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">31</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span>
+</pre></td></tr></table><p>We can even get a closed form if the problem is changed to</p>
+<div class="math">
+\begin{align*}
+\displaystyle x_1+x_2+x_3+x_4=n\\ 0\le x_1,x_2, x_3,x_4
+\end{align*}
+</div>
+<p>The g.f. for this is written as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle (1+z+z^2+z^3+\cdots)^4=\dfrac{1}{(1-z)^4}
+\end{equation*}
+</div>
+<p>and the nth coeffiecient is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle [z^n]\dfrac{1}{(1-z)^4}=\dbinom{n+3}{3}
+\end{equation*}
+</div>
+<p>b) Number of ways to make changes for n units using coins of denominations 1,2 and 5 units.
+The d.e. for this problem is written as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle x_1+2\, x_2+5\, x_3=n
+\end{equation*}
+</div>
+<p>and the g.f. is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(z)=\dfrac{1}{(1-z)(1-z^2)(1-z^5)}
+\end{equation*}
+</div>
+<p>The <span class="math">\(n^{th}\)</span> coefficient gets the exact answer, but having a g.f. allows us to do more, like having an asymptotic form.
+In this case, factor the denominator</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(z)=\dfrac{1}{(1-z)^3}\cdot \dfrac{1}{(1+z)(1+z+z^2+z^3+z^4)}
+\end{equation*}
+</div>
+<p>The first part of the two fractions contributes the most to the coefficients, and an approximation can be written as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle [z^n]G(z)\sim [z^n]\dfrac{1}{(1-z)^3}\cdot \lim_{z\to 1}\dfrac{1}{(1+z)(1+z+z^2+z^3+z^4)} =\dfrac{\dbinom{n+2}{2}}{10}
+\end{equation*}
+</div>
+<p>Comparing the precise and approximate answers:
+for <span class="math">\(n=1000\)</span>
+<span class="math">\(50401\)</span> and <span class="math">\(50150.1\)</span>,</p>
+<p>for <span class="math">\(n=2000\)</span>
+200801 and 200301.1,
+respectively.</p>
+</div>
+<div class="section" id="partial-and-infinite-sums">
+<h1>2 Partial and infinite sums</h1>
+<ol class="loweralpha simple">
+<li>Finding a closed form for</li>
+</ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{k=1}^n k
+\end{equation*}
+</div>
+<p>For problems like this, we can make use of the property of g.f:</p>
+<div class="math">
+\begin{align*}
+\displaystyle G(z)=\sum_{i\ge 0} a_i\, x^i\\ \implies \dfrac{1}{1-z}G(z)=\sum_{i\ge 0}\left(\sum_{j=0}^i a_j \right)z^i
+\end{align*}
+</div>
+<p>G.f. for <span class="math">\(&lt;0,1,2,3,\ldots&gt;\)</span> is given by</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(z)=\dfrac{z}{(1-z)^2}
+\end{equation*}
+</div>
+<p>Hence, to find the sum, it's simply</p>
+<div class="math">
+\begin{align*}
+\displaystyle \dfrac{1}{1-z}\, G(z)=\dfrac{z}{(1-z)^3}\\ \implies [z^n]\dfrac{1}{1-z}\, G(z)=\sum_{k=1}^n k = \dbinom{n+1}{2}
+\end{align*}
+</div>
+<p>We can then proceed to find more complicated sums like</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{k=1}^n k^2
+\end{equation*}
+</div>
+<p>which are usually done in high school by mathematical induction, but never shown how to derive in the first place.
+To derive it from g.f., we must first find the g.f. for , which can be easily obtained by differentation. i.e.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle z\, \dfrac{d}{dz}\left(\frac{z}{(1-z)^2}\right)=\dfrac{z+z^2}{(1-z)^3}
+\end{equation*}
+</div>
+<p>and the sum of the squares is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle [z^n]\dfrac{z+z^2}{(1-z)^4}=\dbinom{n+2}{3}+\dbinom{n+1}{3}=\dfrac{1}{6} \, {\left(2 \, n + 1\right)} {\left(n + 1\right)} n
+\end{equation*}
+</div>
+<p>which can be verified by Sage</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d9bc2026dac04c318c56aa669279dc6f-0">0</a>
+<a href="#rest_code_d9bc2026dac04c318c56aa669279dc6f-1">1</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_d9bc2026dac04c318c56aa669279dc6f-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">);</span>
+<a name="rest_code_d9bc2026dac04c318c56aa669279dc6f-1"></a><span class="n">show</span><span class="p">(</span><span class="n">factor</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)))</span>
+</pre></td></tr></table><ol class="loweralpha simple" start="2">
+<li>Summation of infinite series</li>
+</ol>
+<p>For this purpose, the dummy variable in the g.f. is replaced by a constant to obtain the closed form. E.g.
+i)</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{i\ge 0}\frac{1}{5^i}
+\end{equation*}
+</div>
+<p>We have the g.f. for <span class="math">\(&lt; 1,1,1,\ldots &gt;\)</span></p>
+<div class="math">
+\begin{align*}
+\displaystyle G(z)=\dfrac{1}{1-z}\\ \implies G(1/5)=\dfrac{5}{4}
+\end{align*}
+</div>
+<ol class="lowerroman simple" start="2">
+<li>We can also solve seemingly complicated sums like</li>
+</ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{i\ge 0} \dfrac{i^2\, F_i}{12^i}
+\end{equation*}
+</div>
+<p>where <span class="math">\(F_i\)</span> is the <span class="math">\(i^{th}\)</span> fibonacci term.</p>
+<p>The g.f. for <span class="math">\(F_i\)</span> can be shown to be (derived from the linear recurrence relation)</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(z)=\dfrac{z}{1-z-z^2}
+\end{equation*}
+</div>
+<p>Next, obtain the g.f. for <span class="math">\(i^2 F_i\)</span></p>
+<div class="math">
+\begin{equation*}
+\displaystyle G_1(z)= z\, D\left(z\, D\left( \dfrac{z}{1-z-z^2} \right) \right) = \dfrac{z^5 - z^4 + 6\, z^3 + z^2 + z}{(1-z-z^2)^3}
+\end{equation*}
+</div>
+<p>where <span class="math">\(D\)</span> is the differential operator <span class="math">\(d/dz\)</span> and</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{i\ge 0} \dfrac{i^2\, F_i}{12^i} = G_1(1/12) = \dfrac{279804}{2248091} \approx 0.124462933217561
+\end{equation*}
+</div>
+<p>In Sage, it's written as</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d03d7940232343c3b027dfa5e88e25ed-0">0</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_d03d7940232343c3b027dfa5e88e25ed-0"></a><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+</pre></td></tr></table></div>
+<div class="section" id="as-probability-g-f-and-obtain-expected-values">
+<h1>3 As probability g.f. and obtain expected values</h1>
+<p>In probability g.f., the coefficients are the probability of occurance of the value. The p.g.f. for a die with 6 faces numbered 1 to 6 is given by</p>
+<div class="math">
+\begin{equation*}
+\displaystyle P(x)=\dfrac{x+x^2+x^3+x^4+x^5+x^6}{6}
+\end{equation*}
+</div>
+<p>and the probability of the sums when two dice are thrown</p>
+<div class="math">
+\begin{equation*}
+\displaystyle P_2(x)=P(x)^2=\frac{1}{36} \, x^{12} + \frac{1}{18} \, x^{11} + \frac{1}{12} \, x^{10} + \frac{1}{9} \, x^{9} + \frac{5}{36} \, x^{8} + \frac{1}{6} \, x^{7} + \frac{5}{36} \, x^{6} + \frac{1}{9} \, x^{5} + \frac{1}{12} \, x^{4} + \frac{1}{18} \, x^{3} + \frac{1}{36} \, x^{2}
+\end{equation*}
+</div>
+<p>and the expected value shown when the die is thrown:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle E_1=P'(1)=\dfrac{7}{2}
+\end{equation*}
+</div>
+<p>and when two dice are thrown:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle E_2=P_2'(1)=\dfrac{7\cdot 2}{2}
+\end{equation*}
+</div>
+</div>

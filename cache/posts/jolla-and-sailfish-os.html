@@ -1,0 +1,29 @@
+<p>Last week, I bought a Jolla phone after looking at some of the amazing features it offers. What are those amazing features? We'll see..</p>
+<p>Most of the reviews scattered on the net miss the fact that it is a fully functional linux machine! We can install gcc, python etc. from the terminal (after the developer mode is activated). Let me list some of the things I did after getting my hands on the Jolla phone:</p>
+<p>I didn't have an access point for wifi, so used hostapd to create one.</p>
+<p>Create a Jolla account to download the required softwares. (Phone's very much usable even without a sim card)</p>
+<p>After creating the account, we'll be able to enable the developer mode.</p>
+<p>Now, the terminal will be displayed.</p>
+<p>Open the terminal, become a root by typing in devel-su and the password from the settings-&gt;system-&gt;developer-mode</p>
+<p>We can also login via ssh, which will make our typing a lot easier. I connected via WLAN's IP address (ssh <a class="reference external" href="mailto:nemo&#64;ip-addr">nemo&#64;ip-addr</a>, and type the password)</p>
+<p>gcc, g++, gdb, python and strace can be installed by issuing commands like pkcon install gcc</p>
+<p>Since we are also interested to do some math, what are our options?</p>
+<p>I downloaded sagemath for arm -- sage-5.13-armv7l-Linux, and tried to run it. Too bad, it crashed saying &quot;ImportError: libcblas.so.3: cannot open shared object file: No such file or directory&quot; (Update: The sage 6.0 binary available for RPi works for jolla too, woohoo! Only issue I found till now is that plotting did not work.)
+For FriCAS, Axiom, maxima etc., binaries are not available for ARM. To compile them, they require a lisp compiler, which isn't available in the repos yet (ecl is available in openrepos.net, did not try it though).
+But anyway, if we look into openrepos.net, we find sympy, numpy, IPython, and matplotlib, which are more than sufficient for a mobile phone!</p>
+<p>Why is IPython wonderful? Because, it provides us with a notebook interface which can be opened remotely.</p>
+<p>We can also install several useful softwares like emacs, system monitor, cpufrequtils etc. from openrepos.net. Hence, we can have the tools we need with us all the time! (Emacs calc mode itself can serve as a mini CAS!)</p>
+<p>The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_71c4fc59956342bebe914f3990a8fda7-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_71c4fc59956342bebe914f3990a8fda7-0"></a>sqlite3 .local/share/commhistory/commhistory.db
+</pre></td></tr></table><p>Then, to display all the sms messages, run commands like</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d2330eb523294a0c8f6a1885e0891ce6-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_d2330eb523294a0c8f6a1885e0891ce6-0"></a>select * from events where type=2;
+</pre></td></tr></table><p>If we want to know what each column is about, run</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_fe58cedd3e8d42c8a0350992835cff87-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_fe58cedd3e8d42c8a0350992835cff87-0"></a>.headers ON
+</pre></td></tr></table><p>And to top it all, though an ARM binary is not available, we can easily compile J to run it from the console! I think it's perfectly suitable language that can be used on a phone. (J download for RPi works too)</p>
+<p>To conclude, it's totally developer friendly. If anyone likes to program but hates all those manifest files seen in other mobile OSes, it feels like bliss! No need of bloated SDKs, no need of emulators (though it's there if a UI is required), just a simple ssh to connect to the phone and start coding!</p>
+<p>It's friendly towards &quot;end users&quot; too, don't believe the &quot;reviews&quot; that say it has a &quot;steep&quot; learning curve because of its gesture based controls. The tutorial it displays when the phone is started is more than enough to understand the Sailfish OS. I won't talk about its UI, since pretty much all the other reviews are about only that and apps, pfff.</p>
+<p>Nokia made a big mistake and died by dumping MeeGo and embracing m$.</p>
+<p>I wish Jolla team a big success, but I also wish that they remove the mandatory signing up of a Jolla account for enabling developer mode.</p>
+<p><a class="reference external" href="http://nims11.wordpress.com/2012/04/27/hostapd-the-linux-way-to-create-virtual-wifi-access-point/">1. Creating AP using hostapd</a></p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/24490278/run-ipython-notebook-from-a-remote-server">2. Run IPython remotely</a></p>
+<p><a class="reference external" href="https://github.com/ArchimedesPi/SageMathematics-raspi/">3. Sage 6.0 for RPi download</a></p>

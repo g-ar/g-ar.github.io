@@ -1,0 +1,144 @@
+<p><em>Suppose there is an array of lights, initially all turned off, and during each step you randomly select a light and turn it on or off if it's in off or on state, respectively. On an average, how many steps are required to take it to all turned on state?</em></p>
+<p>This can be solved using an absorbing Markov chain, or by using a probability tree diagram.</p>
+<p>In the method using the absorbing Markov chain, the starting state is for all turned off.
+It can move to the next state which is for one random light turned on. The probability of moving to that state is 1.</p>
+<p>From state 1, it can go back to state 0 with a probability of <span class="math">\(\dfrac{1}{n}\)</span>, or to state 2 with probability of <span class="math">\(1-\dfrac{1}{n}\)</span>.</p>
+<p>And so on, in the <span class="math">\((n-1)^{th}\)</span> state, it can go to the absorbing state n with a probability of frac{1}{n}.</p>
+<p>E.g. For <span class="math">\(n=6\)</span>, the matrix looks like this:</p>
+<div class="math">
+\begin{equation*}
+A=\left(\begin{array}{rrrrrrr}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+\dfrac{1}{6} &amp; 0 &amp; \dfrac{5}{6} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+0 &amp; \dfrac{1}{3} &amp; 0 &amp; \dfrac{2}{3} &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+0 &amp; 0 &amp; \dfrac{1}{2} &amp; 0 &amp; \dfrac{1}{2} &amp; 0 &amp; 0 \\[10pt]
+0 &amp; 0 &amp; 0 &amp; \dfrac{2}{3} &amp; 0 &amp; \dfrac{1}{3} &amp; 0 \\[10pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dfrac{5}{6} &amp; 0 &amp; \dfrac{1}{6} \\[10pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}\right)
+\end{equation*}
+</div>
+<p>Thus, the matrix Q is:</p>
+<div class="math">
+\begin{equation*}
+Q=\left(\begin{array}{rrrrrr}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+\dfrac{1}{6} &amp; 0 &amp; \dfrac{5}{6} &amp; 0 &amp; 0 &amp; 0 \\[10pt]
+0 &amp; \dfrac{1}{3} &amp; 0 &amp; \dfrac{2}{3} &amp; 0 &amp; 0 \\[10pt]
+0 &amp; 0 &amp; \dfrac{1}{2} &amp; 0 &amp; \dfrac{1}{2} &amp; 0 \\[10pt]
+0 &amp; 0 &amp; 0 &amp; \dfrac{2}{3} &amp; 0 &amp; \dfrac{1}{3} \\[10pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dfrac{5}{6} &amp; 0
+\end{array}\right)
+\end{equation*}
+</div>
+<p>And the Expected number of steps is found from</p>
+<div class="math">
+\begin{equation*}
+(I-Q)^{-1} = \left(\begin{array}{rrrrrr}
+\dfrac{13}{5} &amp; \dfrac{48}{5} &amp; 21 &amp; 26 &amp; 18 &amp; 6 \\[10pt]
+\dfrac{8}{5} &amp; \dfrac{48}{5} &amp; 21 &amp; 26 &amp; 18 &amp; 6 \\[10pt]
+\dfrac{7}{5} &amp; \dfrac{42}{5} &amp; 21 &amp; 26 &amp; 18 &amp; 6 \\[10pt]
+\dfrac{13}{10} &amp; \dfrac{39}{5} &amp; \dfrac{39}{2} &amp; 26 &amp; 18
+&amp; 6 \\[10pt]
+\dfrac{6}{5} &amp; \dfrac{36}{5} &amp; 18 &amp; 24 &amp; 18 &amp; 6 \\[10pt]
+1 &amp; 6 &amp; 15 &amp; 20 &amp; 15 &amp; 6
+\end{array}\right)
+\end{equation*}
+</div>
+<p>The sum of first row gives the expected time it takes to move from the initial state to the absorbing state, which evaluates to <span class="math">\(\dfrac{416}{5} = 83.2\)</span> steps.</p>
+<p>This markov chain can be used also to calculate the probability of being in a certain state after 'k' steps.</p>
+<p>E.g. What is the probability of all 6 lights being turned on after random flipping of switches 8 times?</p>
+<div class="math">
+\begin{equation*}
+A^8=\left(\begin{array}{rrrrrrr}
+\dfrac{169}{4374} &amp; 0 &amp; \dfrac{1105}{2187} &amp; 0 &amp; \dfrac{815}{1944} &amp; 0 &amp; \dfrac{215}{5832} \\[10pt]
+0 &amp; \dfrac{2717}{13122} &amp; 0 &amp; \dfrac{16175}{26244} &amp; 0 &amp; \dfrac{815}{5832} &amp; \dfrac{215}{5832} \\[10pt]
+\dfrac{221}{6561} &amp; 0 &amp; \dfrac{12487}{26244} &amp; 0 &amp; \dfrac{931}{2187} &amp; 0 &amp; \dfrac{7}{108} \\[10pt]
+0 &amp; \dfrac{3235}{17496} &amp; 0 &amp; \dfrac{10381}{17496} &amp; 0 &amp; \dfrac{5003}{34992} &amp; \dfrac{919}{11664} \\[10pt]
+\dfrac{163}{5832} &amp; 0 &amp; \dfrac{931}{2187} &amp; 0 &amp; \dfrac{42613}{104976} &amp; 0 &amp; \dfrac{14741}{104976} \\[10pt]
+0 &amp; \dfrac{815}{5832} &amp; 0 &amp; \dfrac{25015}{52488} &amp; 0 &amp; \dfrac{12595}{104976} &amp; \dfrac{9227}{34992} \\[10pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}\right)
+\end{equation*}
+</div>
+<p>Answer is <span class="math">\(A^8[0,6] = \dfrac{215}{5832}\)</span></p>
+<p>We can construct the markov chain and calculate the expected value in Sagemath (a very promising free CAS) as follows:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-0">0</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-1">1</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-2">2</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-3">3</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-4">4</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-5">5</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-6">6</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-7">7</a>
+<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-8">8</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_2c11ca9c30f2424daa74e4402517686f-0"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-1"></a><span class="n">mx</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-2"></a><span class="n">mx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-4"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-5"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-6"></a><span class="n">mx</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-7"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
+<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-8"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">am</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">inverse</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
+</pre></td></tr></table><p>If we want to know only the expected value, we can use the tree method:</p>
+<div class="figure">
+<img alt="../../images/flip1.png" src="../../images/flip1.png" />
+<p class="caption">Probability tree to calculate expected value</p>
+</div>
+<div class="math">
+\begin{equation*}
+E_0=1\cdot(1+E_1)
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+E_1 = \dfrac{1}{n}\cdot(1+E_0)+\left(1-\dfrac{1}{n}\right)\cdot(1+E_2)
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+E_2=\dfrac{2}{n}\cdot(1+E_1)+\left(1-\dfrac{2}{n}\right)\cdot(1+E_3)
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+\vdots
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+E_{n-1}=\dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot(1)
+\end{equation*}
+</div>
+<p>From the above set of equations, we can derive the following algorithm to calculate the expected value in Sage:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-0">0</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-1">1</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-2">2</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-3">3</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-4">4</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-5">5</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-6">6</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-7">7</a>
+<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-8">8</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_068ed99fb44043808abbe43ccfcc6997-0"></a><span class="n">ax</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-1"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-2"></a><span class="n">summ</span><span class="o">=</span><span class="mi">0</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-3"></a><span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-4"></a><span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-5"></a>    <span class="n">ax</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-6"></a>    <span class="n">summ</span> <span class="o">+=</span> <span class="n">ax</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-7"></a>    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-8"></a><span class="k">print</span> <span class="n">summ</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+</pre></td></tr></table><p>As we see, the n is taken to be 6, and the answer returned is 416/5. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.</p>
+<p>For higher values of n, we get e.g.</p>
+<p><span class="math">\(n=32:\)</span></p>
+<div class="math">
+\begin{equation*}
+\dfrac{20053487665674803216384}{4512611027925}\approx 4443876846.81
+\end{equation*}
+</div>
+<p><span class="math">\(n=64:\)</span></p>
+<div class="math">
+\begin{equation*}
+\dfrac{346357890987659686224886668704722715345420288}{18472920064106597929865025} \approx 18749493300771803147.7216833338
+\end{equation*}
+</div>

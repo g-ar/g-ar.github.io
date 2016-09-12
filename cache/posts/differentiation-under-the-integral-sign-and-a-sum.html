@@ -1,0 +1,57 @@
+<p>We will see how differentiation under the integral sign, which Mr. Feynman loved, can be applied to derive an otherwise difficult integral.
+The integral can also be expanded as a Taylor series, thus obtaining an infinite sum.</p>
+<p>So, this is the integral:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle I(a)=\int_0^1 \, \frac{\ln{(1+a\,(x-x^2))}}{x-x^2}\, dx
+\end{equation*}
+</div>
+<p>Applying the differentiation under the integral sign to this:</p>
+<div class="math">
+\begin{align*}
+\displaystyle \frac{\partial}{\partial a} I(a)=\int_0^1\, \frac{1}{1+a\,(x-x^2)}\, dx\\ =\frac{\log\left(\frac{1}{2} \, a + \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}} - \frac{\log\left(\frac{1}{2} \, a - \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}}
+\end{align*}
+</div>
+<p>Integrating w.r.t a gives us (answer by friCAS)</p>
+<div class="math">
+\begin{equation*}
+\displaystyle I(a)=\log\left( \frac{a+2 -\sqrt{a^{2} + 4 \, a}}{2}\right)^{2} + C
+\end{equation*}
+</div>
+<p>Putting <span class="math">\(a=0\)</span> in the above gives <span class="math">\(I(0)=0+C\)</span> and original integral is also 0. Hence, <span class="math">\(C=0\)</span> and the final answer to the integral is:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle I(a)=\log\left( \frac{a+2 -\sqrt{a^{2} + 4 \, a}}{2}\right)^{2}
+\end{equation*}
+</div>
+<p>Now, we may also expand the integral as a taylor series:</p>
+<div class="math">
+\begin{align*}
+\displaystyle I(a)=\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{n} (x-x^2)^n}{n\, (x-x^2)} \, dx\\
+\displaystyle =\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{i} (x-x^2)^{n-1}}{n} \, dx\\
+\displaystyle =\int_0^1 \, \sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} (x-x^2)^{n}}{n+1} \, dx\\
+\displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} B(n+1,n+1)}{n+1}\\
+\displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \Gamma\left(n+1\right)\Gamma\left(n+1\right)}{(n+1)\,\Gamma\left(2\, n+1\right)}\\
+\displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \, n!^2}{(n+1)\,(2\, n+1)\, (2n)!}\\
+\displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1}}{(n+1)\,(2\, n+1)\, \binom{2n}{n}}
+\end{align*}
+</div>
+<p>Therefore, we have the following sum!</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1}}{(n+1)\,(2\, n+1)\, \binom{2n}{n}}=\log\left( \frac{a+2 -\sqrt{a^{2} + 4 \, a}}{2}\right)^{2}
+\end{equation*}
+</div>
+<p>This has got real values for <span class="math">\(a&gt;-4\)</span></p>
+<p>E.g. when <span class="math">\(a=-2\)</span></p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{n\ge 0}\, \frac{2^{n+1}}{(n+1)\,(2\, n+1)\, \binom{2n}{n}}=\frac{\pi^2}{4}
+\end{equation*}
+</div>
+<p>and when <span class="math">\(a=1/2\)</span></p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{n\ge 0}\, \frac{(-1)^{n}}{(n+1)\,(2\, n+1)\, \binom{2n}{n}\, 2^{n+1}}=\log\left(2\right)^{2}
+\end{equation*}
+</div>

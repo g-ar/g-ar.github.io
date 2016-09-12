@@ -1,0 +1,47 @@
+<p>/There are items comprising of red cubes, blue cubes, and balls;
+how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so that:</p>
+<ul class="simple">
+<li>No three cubes are consecutive</li>
+<li>No three balls are consecutive</li>
+<li>No two red cubes are next to one another</li>
+<li>No two blue cubes are next to one another</li>
+</ul>
+<p>How do we go about finding a general formula for <span class="math">\(r\)</span> red cubes, <span class="math">\(b\)</span> blue cubes and <span class="math">\(c\)</span> balls ?/</p>
+<p>The answer lies in forming a directed graph / Finite Automaton, as we have seen it in one of the previous posts.</p>
+<p>Instead of filling in the number of ways, we use the variable names as weights for the valid transitions.</p>
+<p>Hence, we can directly solve for the general case by using the following adjacency matrix:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \begin{array}{|l|rrrrrr|}\hline &amp; \mathrm{I} &amp; \mathrm{R} &amp; \mathrm{B} &amp; \mathrm{C} &amp; \mathrm{BR} &amp; \mathrm{CC} \\ \hline \mathrm{I} &amp; 0 &amp; r &amp; b &amp; c &amp; 0 &amp; 0 \\ \mathrm{R} &amp; 0 &amp; 0 &amp; 0 &amp; c &amp; b &amp; 0 \\ \mathrm{B} &amp; 0 &amp; 0 &amp; 0 &amp; c &amp; r &amp; 0 \\ \mathrm{C} &amp; 0 &amp; r &amp; b &amp; 0 &amp; 0 &amp; c \\ \mathrm{BR} &amp; 0 &amp; 0 &amp; 0 &amp; c &amp; 0 &amp; 0 \\ \mathrm{CC} &amp; 0 &amp; r &amp; b &amp; 0 &amp; 0 &amp; 0 \\ \hline \end{array}
+\end{equation*}
+</div>
+<p>which is for the constraints that there's no <span class="math">\(RR, BB, RBR, BRB\)</span> or <span class="math">\(CCC\)</span>.</p>
+<p>Therefore, for 15 items, we compute</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \left(\begin{array}{rrrrrr} 0 &amp; r &amp; b &amp; c &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; c &amp; b &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; c &amp; r &amp; 0 \\ 0 &amp; r &amp; b &amp; 0 &amp; 0 &amp; c \\ 0 &amp; 0 &amp; 0 &amp; c &amp; 0 &amp; 0 \\ 0 &amp; r &amp; b &amp; 0 &amp; 0 &amp; 0 \end{array}\right)^{15}
+\end{equation*}
+</div>
+<p>and extract <span class="math">\([c^8 b^4 r^3]\)</span> from the sum of the first row, which is 11394.</p>
+<p>We may also compute the characteristic polynomial of the matrix to get the structure of its multivariate recurrence
+relation:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle x^6 - (bc + cr)x^4 - (bc^2 + 2bcr + c^2r)x^3 - 2bc^2rx^2 = 0
+\end{equation*}
+</div>
+<p>which is just like the characteristic equation of a recurrence relation, which is:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle f_{b,c,r} = f_{b-1,c-1,r}+f_{b,c-1,r-1}+f_{b-1,c-2,r}+f_{b,c-2,r-1}+2 \left(f_{b-1,c-1,r-1}+f_{b-1,c-2,r-1}\right)
+\end{equation*}
+</div>
+<p>and set the required boundary conditions.</p>
+<p>Computing the regular expression from the minimized DFA gives us the following multivariate generating function:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(r,b,c) = \frac{\left(1+c+c^2\right)\left(1+b+r+2br\right)}{1-c\left(1+c\right)\left(b+r+2br\right)}
+\end{equation*}
+</div>
+<p>Reference:</p>
+<p><a class="reference external" href="https://math.stackexchange.com/questions/866503/putting-objects-in-a-line">1</a></p>

@@ -1,0 +1,96 @@
+<p>If we choose 'n' numbers randomly and uniformly from <span class="math">\([0,1]\)</span> and raise each number to 'k' <span class="math">\((k&gt;0)\)</span>, what is the probability that the sum will be less than 1 ?</p>
+<p>i.e. what is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&lt;1\right)\;\;\; , x_i\in \mathcal{U}\left(0,1\right)
+\end{equation*}
+</div>
+<p>The answer can be derived by using convolution of probability density functions.
+For two pdfs, <span class="math">\(f(x)\)</span> and <span class="math">\(g(y)\)</span>, the convolution <span class="math">\(f*g\)</span> is defined as</p>
+<div class="math">
+\begin{align*}
+\displaystyle \left(f*g\right)(z) = \int_{-\infty}^{\infty} \, f(z-y)g(y)\, dy\\ = \int_{-\infty}^{\infty} \, g(z-x) f(x)\, dx
+\end{align*}
+</div>
+<p>Let <span class="math">\(X_1\)</span> and <span class="math">\(X_2\)</span> be two random variables which represent <span class="math">\(x_1^{1/k}\)</span>
+and <span class="math">\(x_2^{1/k}\)</span>. The pdf is then given by:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle f_{X_1}(x)=f_{X_2}(x)=\frac{d}{dx} (x^k)=k\, x^{k-1}
+\end{equation*}
+</div>
+<p>and the pdf of the sum of two numbers <span class="math">\(f_2(z)\)</span> (in the region <span class="math">\(0\le z \le 1\)</span>) is:</p>
+<div class="math">
+\begin{align*}
+\displaystyle f_2(z)= \int_{0}^{z} \, f_{X_1}(z-y) f_{X_2}(y) \, dy\\ = k^2\cdot z^{2\, k - 1}\cdot \mathrm{B}(k, k)
+\end{align*}
+</div>
+<p>After this, we can iteratively continue for more terms:</p>
+<div class="math">
+\begin{align*}
+\displaystyle f_3(z)= \int_{0}^{z} \, f_{X_1}(z-y) f_{2}(y) \, dy\\ = k^3\cdot z^{3\, k - 1}\cdot \mathrm{B}(2\, k, k)\cdot \mathrm{B}(k, k)
+\end{align*}
+</div>
+<p>Continuing in that manner, for sum of 'n' terms, we will end up with:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle f_n(z) = k^n\cdot z^{n\, k - 1}\cdot \prod_{i=1}^{n-1} \mathrm{B}(i\, k, k)
+\end{equation*}
+</div>
+<p>Since we require the probability of the sum to be less than one, we will evaluate that integral and
+write the beta functions in terms of gamma functions and simplify:</p>
+<div class="math">
+\begin{align*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&lt;1\right) = \int_{0}^{1} \, f_n(z)\, dz\\ = \frac{k^{n-1}}{n}\prod_{i=1}^{n-1} \mathrm{B}(i\, k, k) \\ = \frac{k^{n-1}\big(\Gamma(k)\big)^n}{n\, \Gamma(nk)} \\ = \frac{\big(\Gamma(k+1)\big)^n}{\Gamma(nk+1)}
+\end{align*}
+</div>
+<p>That's some formula!</p>
+<p>In Sage, it can be written as</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_95bcd2d494864751a90db5c681935d95-0">0</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-1">1</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-2">2</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-3">3</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-4">4</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-5">5</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-6">6</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-7">7</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-8">8</a>
+<a href="#rest_code_95bcd2d494864751a90db5c681935d95-9">9</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_95bcd2d494864751a90db5c681935d95-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">&#39;k y z&#39;</span><span class="p">)</span>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-1"></a><span class="n">assume</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-2"></a><span class="n">assume</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-3"></a><span class="n">f1</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">=</span><span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="n">k</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-4"></a><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-6"></a>    <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">=</span><span class="n">integrate</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">f1</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-7"></a>    <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-8"></a>
+<a name="rest_code_95bcd2d494864751a90db5c681935d95-9"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">=</span><span class="n">gamma</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="o">/</span><span class="n">gamma</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></td></tr></table><p>To verify our answer, we will perform a simulation:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_e5907bd89dd344dba7929739b55d674c-0">0</a>
+<a href="#rest_code_e5907bd89dd344dba7929739b55d674c-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_e5907bd89dd344dba7929739b55d674c-0"></a>sim=: 3 : &#39;1&gt;+/(?6#0)^6&#39;
+<a name="rest_code_e5907bd89dd344dba7929739b55d674c-1"></a>(+/%#)(sim&quot;0)100000#0 NB. = 0.63926
+</pre></td></tr></table><p>If we want to perform a simulation in a more verbose language, R is a good candidate.
+The code in R looks like:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_59aa33693b484a4da441bf406cfba766-0">0</a>
+<a href="#rest_code_59aa33693b484a4da441bf406cfba766-1">1</a>
+<a href="#rest_code_59aa33693b484a4da441bf406cfba766-2">2</a>
+<a href="#rest_code_59aa33693b484a4da441bf406cfba766-3">3</a></pre></div></td><td class="code"><pre class="code R"><a name="rest_code_59aa33693b484a4da441bf406cfba766-0"></a>n<span class="o">=</span><span class="m">6</span>
+<a name="rest_code_59aa33693b484a4da441bf406cfba766-1"></a>k<span class="o">=</span><span class="m">6</span>
+<a name="rest_code_59aa33693b484a4da441bf406cfba766-2"></a>b<span class="o">=</span><span class="kt">array</span><span class="p">(</span>runif<span class="p">(</span>n<span class="o">*</span><span class="m">1e6</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span>n<span class="p">,</span><span class="m">1e6</span><span class="p">))</span>
+<a name="rest_code_59aa33693b484a4da441bf406cfba766-3"></a><span class="kp">mean</span><span class="p">(</span><span class="kp">apply</span><span class="p">(</span>b<span class="o">^</span>k<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="kp">sum</span><span class="p">)</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
+</pre></td></tr></table><p>and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-0">0</a>
+<a href="#rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-1">1</a>
+<a href="#rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-0"></a>&#39;n k&#39;=: 6 6
+<a name="rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-1"></a>a=:(n, 1e6) $ ?(n*1e6)#0
+<a name="rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-2"></a>(+/%#)1&gt;+/a^k NB. = 0.637572
+</pre></td></tr></table><p>The corresponding probability derived analytically is:</p>
+<div class="math">
+\begin{align*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^6 x_i^6\Big)&lt;1\right) = f\left(6,\frac{1}{6}\right) \\ = \Gamma\left(\frac{7}{6}\right)^6 \approx 0.637528558759471
+\end{align*}
+</div>
+<p>References:</p>
+<p><a class="reference external" href="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf">1</a></p>
+<p><a class="reference external" href="http://arxiv.org/pdf/cs/0604056.pdf">2</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Volume_of_an_n-ball">3</a></p>

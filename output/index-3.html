@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Some random stuffs -- Programming and Mathematics">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gopinath A R (old posts, page 3) | Gopinath A R</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/index-3.html">
+<link rel="prev" href="index-4.html" type="text/html">
+<link rel="next" href="index-2.html" type="text/html">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archive</a>
+                </li>
+<li>
+<a href="categories/">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/josephus-problem-c-versus-j/" class="u-url">Josephus problem -- C versus J</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/josephus-problem-c-versus-j/" rel="bookmark"><time class="published dt-published" datetime="2014-03-26T12:00:59+05:30" title="2014-03-26 12:00">2014-03-26 12:00</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>In this post, we will see about implementation of a famous problem -- the Josephus Problem.</p>
+<p>As you can see, there's already an implementation in mathematica. But, not many of us are rich enough to buy MM. So, we need to make use of awesome and free programming languages like C and J! C for fast execution, J for quick coding.</p>
+<p>First, to implement in C, we need to write our own data structures. We will make use of a circular linked list, since that's how the josephus problem is stated.</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-0"> 0</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-1"> 1</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-2"> 2</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-3"> 3</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-4"> 4</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-5"> 5</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-6"> 6</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-7"> 7</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-8"> 8</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-9"> 9</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-10">10</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-11">11</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-12">12</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-13">13</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-14">14</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-15">15</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-16">16</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-17">17</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-18">18</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-19">19</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-20">20</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-21">21</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-22">22</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-23">23</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-24">24</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-25">25</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-26">26</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-27">27</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-28">28</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-29">29</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-30">30</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-31">31</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-32">32</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-33">33</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-34">34</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-35">35</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-36">36</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-37">37</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-38">38</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-39">39</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-40">40</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-41">41</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-42">42</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-43">43</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-44">44</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-45">45</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-46">46</a></pre></div></td>
+<td class="code"><pre class="code C"><a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-0"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-2"></a>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-3"></a><span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">cur</span><span class="p">,</span><span class="o">*</span><span class="n">tmp</span><span class="p">,</span><span class="o">*</span><span class="n">head</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-4"></a><span class="k">struct</span> <span class="n">node</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-5"></a><span class="p">{</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-6"></a>   <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-7"></a>   <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-8"></a><span class="p">};</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-9"></a>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-10"></a><span class="kt">void</span> <span class="nf">kill</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-11"></a><span class="p">{</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-12"></a>    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">prev</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-13"></a>    <span class="k">while</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">){</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-14"></a>        <span class="n">prev</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-15"></a>        <span class="n">head</span><span class="o">=</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-16"></a>        <span class="n">k</span><span class="o">--</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-17"></a>    <span class="p">}</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-18"></a>    <span class="n">tmp</span><span class="o">=</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-19"></a>    <span class="n">free</span><span class="p">(</span><span class="n">head</span><span class="p">);</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-20"></a>    <span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">tmp</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-21"></a>    <span class="n">head</span><span class="o">=</span><span class="n">tmp</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-22"></a><span class="p">}</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-23"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-24"></a><span class="p">{</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-25"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">i</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-26"></a>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-27"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-28"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">k</span><span class="p">);</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-29"></a>    <span class="n">head</span><span class="o">=</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="p">));</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-30"></a>    <span class="n">head</span><span class="o">-&gt;</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-31"></a>    <span class="n">tmp</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-32"></a>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-33"></a>    <span class="p">{</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-34"></a>        <span class="n">cur</span><span class="o">=</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="p">));</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-35"></a>        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">num</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-36"></a>        <span class="n">tmp</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">cur</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-37"></a>        <span class="n">tmp</span><span class="o">=</span><span class="n">cur</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-38"></a>    <span class="p">}</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-39"></a>    <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-40"></a>    <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">){</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-41"></a>        <span class="n">kill</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-42"></a>        <span class="n">n</span><span class="o">--</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-43"></a>    <span class="p">}</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-44"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">num</span><span class="p">);</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-45"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_2ebc60e9261b4caca2e23938b9aa9c7b-46"></a><span class="p">}</span>
+</pre></td>
+</tr></table>
+<p>For the original Josephus problem, <span class="math">\(n=41\)</span> and <span class="math">\(k=3\)</span>, and the program answers <span class="math">\(31\)</span> as expected.
+Next, we move on to J:</p>
+<p>J being an array programming language, there are verbs to operate on arrays. So, the josephus problem is a natural candidate for J. Here it goes:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/josephus-problem-c-versus-j/#rest_code_2c07f7a70a664dbba8a71dd3413320d8-0">0</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2c07f7a70a664dbba8a71dd3413320d8-1">1</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_2c07f7a70a664dbba8a71dd3413320d8-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_2c07f7a70a664dbba8a71dd3413320d8-0"></a>a=:1+i.41
+<a name="rest_code_2c07f7a70a664dbba8a71dd3413320d8-1"></a>jose=: 4 : 'a=:}.(x-1)|.y'  NB. rotate and delete the first item
+<a name="rest_code_2c07f7a70a664dbba8a71dd3413320d8-2"></a>3 jose^:(_1+#a) a
+</pre></td>
+</tr></table>
+<p>There, very much smaller than the C version. J code above uses nesting of function, i.e. the function jose is applied 40 times on array 'a', and a single element remains after that.</p>
+<p>A more explicit version can be written as:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/josephus-problem-c-versus-j/#rest_code_ac916acfeb1f4453b32120121811e7f7-0">0</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_ac916acfeb1f4453b32120121811e7f7-1">1</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_ac916acfeb1f4453b32120121811e7f7-2">2</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_ac916acfeb1f4453b32120121811e7f7-3">3</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_ac916acfeb1f4453b32120121811e7f7-4">4</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_ac916acfeb1f4453b32120121811e7f7-5">5</a>
+<a href="posts/josephus-problem-c-versus-j/#rest_code_ac916acfeb1f4453b32120121811e7f7-6">6</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_ac916acfeb1f4453b32120121811e7f7-0"></a>    jos =: 4 : 0
+<a name="rest_code_ac916acfeb1f4453b32120121811e7f7-1"></a>while. (#y)&gt;1 do.
+<a name="rest_code_ac916acfeb1f4453b32120121811e7f7-2"></a>y=.}.(x-1)|.y
+<a name="rest_code_ac916acfeb1f4453b32120121811e7f7-3"></a>end.
+<a name="rest_code_ac916acfeb1f4453b32120121811e7f7-4"></a>return. y
+<a name="rest_code_ac916acfeb1f4453b32120121811e7f7-5"></a>)
+<a name="rest_code_ac916acfeb1f4453b32120121811e7f7-6"></a>    3 jos 1+i.41
+</pre></td>
+</tr></table>
+<p>When n is small, the execution time does not make much difference either in J or C. But we can notice the difference clearly when n is large. E.g. for <span class="math">\(n=40000\)</span> and <span class="math">\(k=11\)</span>, the time taken in J is about 1.68s and in C, it's only about 0.018s in my machine. J can be sped up a bit by operating on multiple items at a time, and makes the program a little more complicated.</p>
+<p>You may wish to compare this with your favorite language's implementation in rosettacode, which has several clever solutions.</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/applications-of-generating-functions/" class="u-url">Applications of Generating Functions</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/applications-of-generating-functions/" rel="bookmark"><time class="published dt-published" datetime="2014-03-19T20:54:04+05:30" title="2014-03-19 20:54">2014-03-19 20:54</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Generating Function (g.f.) is one of the most important tools in combinatorics. Many problems which are difficult to do by combinatorial arguments and by cases are trivial when g.f. is applied. Below are some typical problems where g.f. are very useful.</p>
+<div class="section" id="solving-diophantine-equations-d-e">
+<h2>1 Solving diophantine equations (d.e.)</h2>
+<ol class="loweralpha simple">
+<li>What are the number of solutions for the linear d.e.</li>
+</ol>
+<div class="math">
+\begin{align*}
+\displaystyle x_1+x_2+x_3+x_4=35\\ 1\le x_1,x_2\le 20\\ 20\le x_3,x_4 \le 30
+\end{align*}
+</div>
+<p>Answer can be easily found by representing the variables as polynomials and multiplying them, i.e.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle [z^{35}](z+z^2+z^3+\cdots +z^{20})^2\, (z^{20}+z^{21}+z^{22}+\cdots +z^{30})^2 = 11
+\end{equation*}
+</div>
+<p>Hence, there are 11 solutions for the d.e under the constraints.</p>
+<p>In Sage, this can be found by the taylor expansion:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/applications-of-generating-functions/#rest_code_0cf9198ad20b43d58816a56ef3a7ac73-0">0</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_0cf9198ad20b43d58816a56ef3a7ac73-0"></a><span class="n">taylor</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">21</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">20</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">31</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<p>We can even get a closed form if the problem is changed to</p>
+<div class="math">
+\begin{align*}
+\displaystyle x_1+x_2+x_3+x_4=n\\ 0\le x_1,x_2, x_3,x_4
+\end{align*}
+</div>
+<p>The g.f. for this is written as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle (1+z+z^2+z^3+\cdots)^4=\dfrac{1}{(1-z)^4}
+\end{equation*}
+</div>
+<p>and the nth coeffiecient is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle [z^n]\dfrac{1}{(1-z)^4}=\dbinom{n+3}{3}
+\end{equation*}
+</div>
+<p>b) Number of ways to make changes for n units using coins of denominations 1,2 and 5 units.
+The d.e. for this problem is written as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle x_1+2\, x_2+5\, x_3=n
+\end{equation*}
+</div>
+<p>and the g.f. is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(z)=\dfrac{1}{(1-z)(1-z^2)(1-z^5)}
+\end{equation*}
+</div>
+<p>The <span class="math">\(n^{th}\)</span> coefficient gets the exact answer, but having a g.f. allows us to do more, like having an asymptotic form.
+In this case, factor the denominator</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(z)=\dfrac{1}{(1-z)^3}\cdot \dfrac{1}{(1+z)(1+z+z^2+z^3+z^4)}
+\end{equation*}
+</div>
+<p>The first part of the two fractions contributes the most to the coefficients, and an approximation can be written as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle [z^n]G(z)\sim [z^n]\dfrac{1}{(1-z)^3}\cdot \lim_{z\to 1}\dfrac{1}{(1+z)(1+z+z^2+z^3+z^4)} =\dfrac{\dbinom{n+2}{2}}{10}
+\end{equation*}
+</div>
+<p>Comparing the precise and approximate answers:
+for <span class="math">\(n=1000\)</span>
+<span class="math">\(50401\)</span> and <span class="math">\(50150.1\)</span>,</p>
+<p>for <span class="math">\(n=2000\)</span>
+200801 and 200301.1,
+respectively.</p>
+</div>
+<div class="section" id="partial-and-infinite-sums">
+<h2>2 Partial and infinite sums</h2>
+<ol class="loweralpha simple">
+<li>Finding a closed form for</li>
+</ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{k=1}^n k
+\end{equation*}
+</div>
+<p>For problems like this, we can make use of the property of g.f:</p>
+<div class="math">
+\begin{align*}
+\displaystyle G(z)=\sum_{i\ge 0} a_i\, x^i\\ \implies \dfrac{1}{1-z}G(z)=\sum_{i\ge 0}\left(\sum_{j=0}^i a_j \right)z^i
+\end{align*}
+</div>
+<p>G.f. for <span class="math">\(&lt;0,1,2,3,\ldots&gt;\)</span> is given by</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(z)=\dfrac{z}{(1-z)^2}
+\end{equation*}
+</div>
+<p>Hence, to find the sum, it's simply</p>
+<div class="math">
+\begin{align*}
+\displaystyle \dfrac{1}{1-z}\, G(z)=\dfrac{z}{(1-z)^3}\\ \implies [z^n]\dfrac{1}{1-z}\, G(z)=\sum_{k=1}^n k = \dbinom{n+1}{2}
+\end{align*}
+</div>
+<p>We can then proceed to find more complicated sums like</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{k=1}^n k^2
+\end{equation*}
+</div>
+<p>which are usually done in high school by mathematical induction, but never shown how to derive in the first place.
+To derive it from g.f., we must first find the g.f. for , which can be easily obtained by differentation. i.e.</p>
+<div class="math">
+\begin{equation*}
+\displaystyle z\, \dfrac{d}{dz}\left(\frac{z}{(1-z)^2}\right)=\dfrac{z+z^2}{(1-z)^3}
+\end{equation*}
+</div>
+<p>and the sum of the squares is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle [z^n]\dfrac{z+z^2}{(1-z)^4}=\dbinom{n+2}{3}+\dbinom{n+1}{3}=\dfrac{1}{6} \, {\left(2 \, n + 1\right)} {\left(n + 1\right)} n
+\end{equation*}
+</div>
+<p>which can be verified by Sage</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/applications-of-generating-functions/#rest_code_d9bc2026dac04c318c56aa669279dc6f-0">0</a>
+<a href="posts/applications-of-generating-functions/#rest_code_d9bc2026dac04c318c56aa669279dc6f-1">1</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_d9bc2026dac04c318c56aa669279dc6f-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">'n'</span><span class="p">);</span>
+<a name="rest_code_d9bc2026dac04c318c56aa669279dc6f-1"></a><span class="n">show</span><span class="p">(</span><span class="n">factor</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)))</span>
+</pre></td>
+</tr></table>
+<ol class="loweralpha simple" start="2">
+<li>Summation of infinite series</li>
+</ol>
+<p>For this purpose, the dummy variable in the g.f. is replaced by a constant to obtain the closed form. E.g.
+i)</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{i\ge 0}\frac{1}{5^i}
+\end{equation*}
+</div>
+<p>We have the g.f. for <span class="math">\(&lt; 1,1,1,\ldots &gt;\)</span></p>
+<div class="math">
+\begin{align*}
+\displaystyle G(z)=\dfrac{1}{1-z}\\ \implies G(1/5)=\dfrac{5}{4}
+\end{align*}
+</div>
+<ol class="lowerroman simple" start="2">
+<li>We can also solve seemingly complicated sums like</li>
+</ol>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{i\ge 0} \dfrac{i^2\, F_i}{12^i}
+\end{equation*}
+</div>
+<p>where <span class="math">\(F_i\)</span> is the <span class="math">\(i^{th}\)</span> fibonacci term.</p>
+<p>The g.f. for <span class="math">\(F_i\)</span> can be shown to be (derived from the linear recurrence relation)</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(z)=\dfrac{z}{1-z-z^2}
+\end{equation*}
+</div>
+<p>Next, obtain the g.f. for <span class="math">\(i^2 F_i\)</span></p>
+<div class="math">
+\begin{equation*}
+\displaystyle G_1(z)= z\, D\left(z\, D\left( \dfrac{z}{1-z-z^2} \right) \right) = \dfrac{z^5 - z^4 + 6\, z^3 + z^2 + z}{(1-z-z^2)^3}
+\end{equation*}
+</div>
+<p>where <span class="math">\(D\)</span> is the differential operator <span class="math">\(d/dz\)</span> and</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{i\ge 0} \dfrac{i^2\, F_i}{12^i} = G_1(1/12) = \dfrac{279804}{2248091} \approx 0.124462933217561
+\end{equation*}
+</div>
+<p>In Sage, it's written as</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/applications-of-generating-functions/#rest_code_d03d7940232343c3b027dfa5e88e25ed-0">0</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_d03d7940232343c3b027dfa5e88e25ed-0"></a><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+</div>
+<div class="section" id="as-probability-g-f-and-obtain-expected-values">
+<h2>3 As probability g.f. and obtain expected values</h2>
+<p>In probability g.f., the coefficients are the probability of occurance of the value. The p.g.f. for a die with 6 faces numbered 1 to 6 is given by</p>
+<div class="math">
+\begin{equation*}
+\displaystyle P(x)=\dfrac{x+x^2+x^3+x^4+x^5+x^6}{6}
+\end{equation*}
+</div>
+<p>and the probability of the sums when two dice are thrown</p>
+<div class="math">
+\begin{equation*}
+\displaystyle P_2(x)=P(x)^2=\frac{1}{36} \, x^{12} + \frac{1}{18} \, x^{11} + \frac{1}{12} \, x^{10} + \frac{1}{9} \, x^{9} + \frac{5}{36} \, x^{8} + \frac{1}{6} \, x^{7} + \frac{5}{36} \, x^{6} + \frac{1}{9} \, x^{5} + \frac{1}{12} \, x^{4} + \frac{1}{18} \, x^{3} + \frac{1}{36} \, x^{2}
+\end{equation*}
+</div>
+<p>and the expected value shown when the die is thrown:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle E_1=P'(1)=\dfrac{7}{2}
+\end{equation*}
+</div>
+<p>and when two dice are thrown:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle E_2=P_2'(1)=\dfrac{7\cdot 2}{2}
+\end{equation*}
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interesting-images-2/" class="u-url">Interesting images -- 2</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/interesting-images-2/" rel="bookmark"><time class="published dt-published" datetime="2014-02-16T11:43:36+05:30" title="2014-02-16 11:43">2014-02-16 11:43</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Let us command the computer to generate some more art!</p>
+<p>Below is a modification from previous post.</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-2/#rest_code_ee60eda6828b45adbe6cf54148e90529-0">0</a>
+<a href="posts/interesting-images-2/#rest_code_ee60eda6828b45adbe6cf54148e90529-1">1</a>
+<a href="posts/interesting-images-2/#rest_code_ee60eda6828b45adbe6cf54148e90529-2">2</a>
+<a href="posts/interesting-images-2/#rest_code_ee60eda6828b45adbe6cf54148e90529-3">3</a>
+<a href="posts/interesting-images-2/#rest_code_ee60eda6828b45adbe6cf54148e90529-4">4</a>
+<a href="posts/interesting-images-2/#rest_code_ee60eda6828b45adbe6cf54148e90529-5">5</a>
+<a href="posts/interesting-images-2/#rest_code_ee60eda6828b45adbe6cf54148e90529-6">6</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_ee60eda6828b45adbe6cf54148e90529-0"></a><span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_ee60eda6828b45adbe6cf54148e90529-1"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<a name="rest_code_ee60eda6828b45adbe6cf54148e90529-2"></a><span class="n">plt</span> <span class="o">+=</span> <span class="n">ellipse</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mf">5.05</span><span class="p">,</span><span class="mf">3.05</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+<a name="rest_code_ee60eda6828b45adbe6cf54148e90529-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_ee60eda6828b45adbe6cf54148e90529-4"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">ellipse</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="o">*</span><span class="mi">5</span><span class="p">,(</span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+<a name="rest_code_ee60eda6828b45adbe6cf54148e90529-5"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_ee60eda6828b45adbe6cf54148e90529-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/eyes2.png" src="images/eyes2.png"><p class="caption">Fractal eyes</p>
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-0">0</a>
+<a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-1">1</a>
+<a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-2">2</a>
+<a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-3">3</a>
+<a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-4">4</a>
+<a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-5">5</a>
+<a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-6">6</a>
+<a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-7">7</a>
+<a href="posts/interesting-images-2/#rest_code_1362ffc9d16145dab15eceee10cfbf15-8">8</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-0"></a><span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-1"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-3"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+<a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-4"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">circle</span><span class="p">((</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+<a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-5"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">circle</span><span class="p">((</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+<a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-6"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+<a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-7"></a><span class="n">plt</span> <span class="o">+=</span> <span class="n">disk</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mf">1.05</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<a name="rest_code_1362ffc9d16145dab15eceee10cfbf15-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/circles3.png" src="images/circles3.png"><p class="caption">Circles!</p>
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-2/#rest_code_aea72dda55d647cdbf110e0f7d94d545-0">0</a>
+<a href="posts/interesting-images-2/#rest_code_aea72dda55d647cdbf110e0f7d94d545-1">1</a>
+<a href="posts/interesting-images-2/#rest_code_aea72dda55d647cdbf110e0f7d94d545-2">2</a>
+<a href="posts/interesting-images-2/#rest_code_aea72dda55d647cdbf110e0f7d94d545-3">3</a>
+<a href="posts/interesting-images-2/#rest_code_aea72dda55d647cdbf110e0f7d94d545-4">4</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_aea72dda55d647cdbf110e0f7d94d545-0"></a><span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_aea72dda55d647cdbf110e0f7d94d545-1"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>
+<a name="rest_code_aea72dda55d647cdbf110e0f7d94d545-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_aea72dda55d647cdbf110e0f7d94d545-3"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">line2d</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">),((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="n">n</span><span class="o">*</span><span class="n">i</span><span class="p">),</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">)],</span><span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span><span class="n">thickness</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="o">/</span><span class="mi">50</span><span class="p">)</span>
+<a name="rest_code_aea72dda55d647cdbf110e0f7d94d545-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/hood.png" src="images/hood.png"><p class="caption">What?</p>
+</div>
+<p>Some more, parametric plot using lines. Smooth edges are okay, few rough edges are a pain, many rough edges are soothing!</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-2/#rest_code_ee1a81abf5024a21833fdadcc41c24ca-0">0</a>
+<a href="posts/interesting-images-2/#rest_code_ee1a81abf5024a21833fdadcc41c24ca-1">1</a>
+<a href="posts/interesting-images-2/#rest_code_ee1a81abf5024a21833fdadcc41c24ca-2">2</a>
+<a href="posts/interesting-images-2/#rest_code_ee1a81abf5024a21833fdadcc41c24ca-3">3</a>
+<a href="posts/interesting-images-2/#rest_code_ee1a81abf5024a21833fdadcc41c24ca-4">4</a>
+<a href="posts/interesting-images-2/#rest_code_ee1a81abf5024a21833fdadcc41c24ca-5">5</a>
+<a href="posts/interesting-images-2/#rest_code_ee1a81abf5024a21833fdadcc41c24ca-6">6</a>
+<a href="posts/interesting-images-2/#rest_code_ee1a81abf5024a21833fdadcc41c24ca-7">7</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_ee1a81abf5024a21833fdadcc41c24ca-0"></a><span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+<a name="rest_code_ee1a81abf5024a21833fdadcc41c24ca-1"></a>    <span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+<a name="rest_code_ee1a81abf5024a21833fdadcc41c24ca-2"></a>    <span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_ee1a81abf5024a21833fdadcc41c24ca-3"></a>    <span class="n">nn</span> <span class="o">=</span> <span class="mi">360</span>
+<a name="rest_code_ee1a81abf5024a21833fdadcc41c24ca-4"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_ee1a81abf5024a21833fdadcc41c24ca-5"></a>        <span class="n">plt</span> <span class="o">+=</span> <span class="n">line2d</span><span class="p">([(</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">),</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">)),(</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">),</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">))],</span><span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+<a name="rest_code_ee1a81abf5024a21833fdadcc41c24ca-6"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">aspect_ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_ee1a81abf5024a21833fdadcc41c24ca-7"></a><span class="n">draw</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/d37.png" src="images/d37.png"><p class="caption"><span class="math">\(d = 37\)</span></p>
+</div>
+<div class="figure">
+<img alt="../../images/d107.png" src="images/d107.png"><p class="caption"><span class="math">\(d = 107\)</span></p>
+</div>
+<p>Change d to any other prime, also try changing a and b, there are many possibilities!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interesting-images-using-recurrencesiterations/" class="u-url">Interesting images using recurrences/iterations</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/interesting-images-using-recurrencesiterations/" rel="bookmark"><time class="published dt-published" datetime="2014-02-14T10:54:56+05:30" title="2014-02-14 10:54">2014-02-14 10:54</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Think of a simple figure. Now, think how it may look like if you repeat the same figure by placing it close to the original figure but smaller in size (e.g. by halving in size), and keep repeating.</p>
+<p>Here are some snippets of code in Sage to use the idea using circles, experiment with it by changing the parameters/shape.</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-0"> 0</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-1"> 1</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-2"> 2</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-3"> 3</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-4"> 4</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-5"> 5</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-6"> 6</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-7"> 7</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-8"> 8</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-9"> 9</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-10">10</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-11">11</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-12">12</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-13">13</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_765bcdd9b6d948d09a9807c6398d029f-14">14</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-1"></a><span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-2"></a><span class="n">a</span><span class="o">=</span><span class="mi">22</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-3"></a><span class="n">b</span><span class="o">=</span><span class="mi">22</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-4"></a><span class="k">def</span> <span class="nf">doit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">ra</span><span class="p">,</span><span class="n">cnt</span><span class="p">):</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-5"></a>    <span class="k">global</span> <span class="n">plt</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-6"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">circle</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">ra</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">cnt</span><span class="p">),</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">cnt</span><span class="p">),</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">cnt</span><span class="p">)))</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-7"></a>    <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;</span><span class="mi">5</span><span class="p">:</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-8"></a>        <span class="k">return</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-9"></a>    <span class="n">doit</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-10"></a>    <span class="n">doit</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-11"></a>    <span class="n">doit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">-</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-12"></a>    <span class="n">doit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-13"></a><span class="n">doit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_765bcdd9b6d948d09a9807c6398d029f-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/circles1.png" src="images/circles1.png"><p class="caption">A saturn-like fractal</p>
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-0"> 0</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-1"> 1</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-2"> 2</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-3"> 3</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-4"> 4</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-5"> 5</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-6"> 6</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-7"> 7</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-8"> 8</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-9"> 9</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-10">10</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-11">11</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-12">12</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_4c5dd3f93a7b4a7390c99f377d083438-13">13</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-0"></a><span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-1"></a><span class="n">a</span><span class="o">=</span><span class="mi">22</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-2"></a><span class="n">b</span><span class="o">=</span><span class="mi">22</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-3"></a><span class="k">def</span> <span class="nf">doit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">ra</span><span class="p">,</span><span class="n">cnt</span><span class="p">):</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-4"></a>    <span class="k">global</span> <span class="n">plt</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-5"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">circle</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">ra</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">cnt</span><span class="p">),</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">cnt</span><span class="p">),</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">cnt</span><span class="p">)))</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-6"></a>    <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-7"></a>        <span class="k">return</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-8"></a>    <span class="n">doit</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-9"></a>    <span class="n">doit</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-10"></a>    <span class="n">doit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-11"></a>    <span class="n">doit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">+</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">ra</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-12"></a><span class="n">doit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_4c5dd3f93a7b4a7390c99f377d083438-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/circles2.png" src="images/circles2.png"><p class="caption">Another fractal using circles</p>
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-0">0</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-1">1</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-2">2</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-3">3</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-4">4</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-5">5</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-6">6</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-7">7</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-8">8</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_ede170df660247a8a20a2279aedff6c6-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_ede170df660247a8a20a2279aedff6c6-0"></a><span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-1"></a><span class="n">a</span><span class="o">=</span><span class="mi">16</span><span class="o">*</span><span class="n">golden_ratio</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-2"></a><span class="n">b</span><span class="o">=</span><span class="mi">16</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-3"></a><span class="n">k</span><span class="o">=</span><span class="n">a</span><span class="o">/</span><span class="n">b</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-4"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-5"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">implicit_plot</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-6"></a>    <span class="n">plt</span> <span class="o">+=</span> <span class="n">implicit_plot</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-7"></a>    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">k</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-8"></a>    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">/</span><span class="n">k</span>
+<a name="rest_code_ede170df660247a8a20a2279aedff6c6-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/eyes1.png" src="images/eyes1.png"><p class="caption">A fractal eye</p>
+</div>
+<p>The below two are from Knuth's TAOCP vol 2 -- a little bit of randomness is good!</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-using-recurrencesiterations/#rest_code_d56d5f0490084943b3a5d10104b2b8c1-0">0</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_d56d5f0490084943b3a5d10104b2b8c1-1">1</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_d56d5f0490084943b3a5d10104b2b8c1-2">2</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_d56d5f0490084943b3a5d10104b2b8c1-3">3</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_d56d5f0490084943b3a5d10104b2b8c1-4">4</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_d56d5f0490084943b3a5d10104b2b8c1-0"></a><span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_d56d5f0490084943b3a5d10104b2b8c1-1"></a><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_d56d5f0490084943b3a5d10104b2b8c1-2"></a>    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_d56d5f0490084943b3a5d10104b2b8c1-3"></a>        <span class="n">plt</span> <span class="o">+=</span> <span class="n">line</span><span class="p">([(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">),(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">),(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">),(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)])</span>
+<a name="rest_code_d56d5f0490084943b3a5d10104b2b8c1-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/tiles1.png" src="images/tiles1.png"><p class="caption">Regular tiles</p>
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-images-using-recurrencesiterations/#rest_code_72183a014f8748c8bbff267647cea636-0">0</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_72183a014f8748c8bbff267647cea636-1">1</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_72183a014f8748c8bbff267647cea636-2">2</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_72183a014f8748c8bbff267647cea636-3">3</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_72183a014f8748c8bbff267647cea636-4">4</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_72183a014f8748c8bbff267647cea636-5">5</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_72183a014f8748c8bbff267647cea636-6">6</a>
+<a href="posts/interesting-images-using-recurrencesiterations/#rest_code_72183a014f8748c8bbff267647cea636-7">7</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_72183a014f8748c8bbff267647cea636-0"></a><span class="n">plt</span><span class="o">=</span><span class="n">Graphics</span><span class="p">()</span>
+<a name="rest_code_72183a014f8748c8bbff267647cea636-1"></a><span class="k">def</span> <span class="nf">ran</span><span class="p">():</span> <span class="k">return</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">0.2</span><span class="o">-</span><span class="mf">0.1</span>
+<a name="rest_code_72183a014f8748c8bbff267647cea636-2"></a><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_72183a014f8748c8bbff267647cea636-3"></a>    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_72183a014f8748c8bbff267647cea636-4"></a>        <span class="n">x1</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">ran</span><span class="p">()</span>
+<a name="rest_code_72183a014f8748c8bbff267647cea636-5"></a>        <span class="n">y1</span><span class="o">=</span><span class="n">b</span><span class="o">+</span><span class="n">ran</span><span class="p">()</span>
+<a name="rest_code_72183a014f8748c8bbff267647cea636-6"></a>        <span class="n">plt</span> <span class="o">+=</span> <span class="n">line</span><span class="p">([(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">),(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">ran</span><span class="p">(),</span><span class="n">b</span><span class="o">+</span><span class="n">ran</span><span class="p">()),(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">ran</span><span class="p">(),</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">ran</span><span class="p">()),(</span><span class="n">a</span><span class="o">+</span><span class="n">ran</span><span class="p">(),</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">ran</span><span class="p">()),(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)],</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="n">ran</span><span class="p">()</span><span class="o">+</span><span class="mf">0.3</span><span class="p">,</span><span class="n">ran</span><span class="p">()</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="n">ran</span><span class="p">()</span><span class="o">+</span><span class="mf">0.3</span><span class="p">))</span>
+<a name="rest_code_72183a014f8748c8bbff267647cea636-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/tiles2.png" src="images/tiles2.png"><p class="caption">Slightly randomized tiles</p>
+</div>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="index-4.html" rel="prev">Newer posts</a>
+            </li>
+            <li class="next">
+                <a href="index-2.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

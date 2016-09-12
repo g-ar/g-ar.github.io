@@ -1,0 +1,48 @@
+<p><em>There is a bag having 3 red, 3 black, 5 white and 7 green marbles. A marble is randomly picked one after another without replacement till the colour of the picked marble matches with one of the marbles in hand. What is the expected number of marbles we need to pick?</em></p>
+<p>Before trying out the analytical solution, let us get an approximate answer from a simulation.
+It's just some tens of characters in J:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_b6e43d1897914aab8535564760f62029-0">0</a>
+<a href="#rest_code_b6e43d1897914aab8535564760f62029-1">1</a>
+<a href="#rest_code_b6e43d1897914aab8535564760f62029-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_b6e43d1897914aab8535564760f62029-0"></a>a=:(3#0 1),(5#2),(7#3)
+<a name="rest_code_b6e43d1897914aab8535564760f62029-1"></a>sim =: 3 : &#39;{.1+I.-.~:(5?#a){a&#39;
+<a name="rest_code_b6e43d1897914aab8535564760f62029-2"></a>(+/%#)(sim &quot;0) 100000#0 NB. about 3.25279
+</pre></td></tr></table><p>sample size of 5 is chosen by pigeonhole principle.
+~: returns 1 for items which are distinct till that position. -. flips the 1's and 0's.
+I. fetches the indices of non-zero items. 1 added since indexing starts from 0. {. gets the head of the array.</p>
+<p>For the analytical solution, it can be simply expressed as a recurrence relation:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle f_{a,b,c,d} = \begin{cases} A+B+C+D-(a+b+c+d) &amp; A-a = 2 \lor B-b = 2 \lor C-c = 2 \lor D-d = 2\\ &amp; \\ \dfrac{1}{a+b+c+d}\left(a\cdot f_{a-1,b,c,d} + b\cdot f_{a,b-1,c,d} + c\cdot f_{a,b,c-1,d} + d\cdot f_{a,b,c,d-1}\right) &amp; \text{otherwise} \end{cases}
+\end{equation*}
+</div>
+<p>where <span class="math">\(A,B,C,D\)</span> are the initial number of marbles of four colours.</p>
+<p>And it can be directly translated to code.
+In Sage:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-0">0</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-1">1</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-2">2</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-3">3</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-4">4</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-5">5</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-6">6</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-7">7</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-8">8</a>
+<a href="#rest_code_f041dcea5b944653a2e10498fa5c048b-9">9</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_f041dcea5b944653a2e10498fa5c048b-0"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">3</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-1"></a><span class="n">B</span> <span class="o">=</span> <span class="mi">3</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-2"></a><span class="n">C</span> <span class="o">=</span> <span class="mi">5</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-3"></a><span class="n">D</span> <span class="o">=</span> <span class="mi">7</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-4"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-5"></a>    <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="o">-</span><span class="n">a</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">B</span><span class="o">-</span><span class="n">b</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">C</span><span class="o">-</span><span class="n">c</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">D</span><span class="o">-</span><span class="n">d</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-6"></a>        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="o">+</span><span class="n">D</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">))</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-7"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">)</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-8"></a><span class="n">ans</span><span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-9"></a><span class="k">print</span> <span class="n">ans</span><span class="p">,</span> <span class="n">N</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span> <span class="c1"># = 3979/1224 and N() for the numerical approximation = 3.25081699346405</span>
+</pre></td></tr></table><p>Here's an exercise for you to try:</p>
+<p>Repeat the same problem, this time with the replacement of the marbles. What's the expected number of number of picks till you see the same coloured marble again?</p>
+<p>Simulation is easy:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2bb2d908d40442d79779fd2c576cfc21-0">0</a>
+<a href="#rest_code_2bb2d908d40442d79779fd2c576cfc21-1">1</a>
+<a href="#rest_code_2bb2d908d40442d79779fd2c576cfc21-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_2bb2d908d40442d79779fd2c576cfc21-0"></a>a=:(3#0 1),(5#2),(7#3)
+<a name="rest_code_2bb2d908d40442d79779fd2c576cfc21-1"></a>sim =: 3 : &#39;{.1+I.-.~:(?5##a){a&#39;
+<a name="rest_code_2bb2d908d40442d79779fd2c576cfc21-2"></a>(+/%#)(sim &quot;0) 100000#0
+</pre></td></tr></table><p>In a similar fashion, the recurrence can be modified. (Ans: <span class="math">\(757/243\)</span>)</p>

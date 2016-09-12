@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monte-Carlo simulation for an expected value of cards | Gopinath A R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/posts/monte-carlo-simulation-for-an-expected-value-of-cards/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Gopinath">
+<link rel="prev" href="../generating-image-patterns/" title="Generating image patterns" type="text/html">
+<link rel="next" href="../simulating-buffons-needle-problem/" title="Simulating Buffon's needle problem" type="text/html">
+<meta property="og:site_name" content="Gopinath A R">
+<meta property="og:title" content="Monte-Carlo simulation for an expected value of cards">
+<meta property="og:url" content="https://g-ar.github.io/posts/monte-carlo-simulation-for-an-expected-value-of-cards/">
+<meta property="og:description" content="Suppose we have a standard deck of 52 cards, and we pick 13 cards randomly and arrange them in a row, what is the expected number of adjacent pairs that are of same suit?
+E.g. in ♠♥♥♣♦♣♣♦♦♣♠♠♣ , there">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2014-02-09T20:17:59+05:30">
+<meta property="article:tag" content="mathjax">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="../../stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Monte-Carlo simulation for an expected value of cards</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Gopinath
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2014-02-09T20:17:59+05:30" itemprop="datePublished" title="2014-02-09 20:17">2014-02-09 20:17</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p><em>Suppose we have a standard deck of 52 cards, and we pick 13 cards randomly and arrange them in a row, what is the expected number of adjacent pairs that are of same suit?</em></p>
+<p>E.g. in ♠♥♥♣♦♣♣♦♦♣♠♠♣ , there are 4 adjacent pairs that are of same suit. On an average, what would be the expected number of such pairs?</p>
+<p>Newcomers to probability theory would find such a question a bit tricky. In such a situation, using a computer for simulation/enumeration would ease the job. For this problem, enumeration can yield the exact answer, but getting all the combinations is awkward.</p>
+<p>In such cases, simulation is there for our rescue! Even an approximate answer would be sufficient to conjecture a formula.</p>
+<p>For the simulation, we will be using a language called <a class="reference external" href="https://jsoftware.com">J</a>. The programs written in J can be very short compared to other well known languages. So, we can focus on the problem at hand instead of the program.</p>
+<p>Let's see how it can be used for our simulation (there can be other ways, here’s my shot):</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-0">0</a>
+<a href="#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-1">1</a>
+<a href="#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-0"></a>a=:13#(i.4)
+<a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-1"></a>sim=: 3 : '+/2=/\(13?52){a'
+<a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-2"></a>(+/%#)(sim "0) 1000000#0
+</pre></td>
+</tr></table>
+<p>That's it, less than 70 characters! It output 2.82489 for me. When we are proceeding with an analytical method, if we get an answer around 2.82, then we can be pretty sure that it's right.</p>
+<p>Some explanation about the program:
+In J, every operation is performed right to left, if no parentheses are provided.
+So, if we write <span class="math">\(2*5+3\)</span>, answer would be 16 and not 13. No operator precedence here.</p>
+<p>In J terminology, the operators are called verbs. They can be monadic or dyadic. Check the help files for more info.</p>
+<p>Line 1: <tt class="docutils literal">i.4</tt> is array of integers <tt class="docutils literal">0 1 2 3</tt>, representing 4 suits. <tt class="docutils literal">13#</tt> repeats each element 13 times.</p>
+<p>Line 2: is the function for our simulation. Read it right to left. <tt class="docutils literal">{</tt> is the verb for indexing.
+<tt class="docutils literal"><span class="pre">(13?52)</span></tt> gets 13 random integers in <tt class="docutils literal"><span class="pre">0..51</span></tt> without replacement, to simulate 13 card draws.
+<tt class="docutils literal"><span class="pre">2=/\</span></tt> compares two adjacent values from the selected list, and returns 1 or 0 for true or false, respectively.
+<tt class="docutils literal">+/</tt> gives us the sum of the array, which is the total number of pairs with same adjacent suit.</p>
+<p>Line 3: " is a verb for rank. ~"0~ gets atomic values in the rhs, i.e. a million zeros, the rhs is not used in our simulation, it's just for performing the experiment a million times. The outcome of each experiment is then averaged, by using the tacit definition <tt class="docutils literal"><span class="pre">(+/%#)</span></tt>. This last line almost always remains the same for any similar kind of simulation.</p>
+<p>Lastly, experiment with different number of picks and observe how answer is changing according to that.</p>
+<p>Now, for the analytical result, the linearity of expectation is used.</p>
+<p>The probability that the card in positions i and i+1 are of the same suit is given by</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \mathbb{P}[c_i=c_{i+1} | c_i \text{ is spade}] = \frac{13}{52}\cdot \frac{12}{51}
+\end{equation*}
+</div>
+<p>and similarly for three other suits. The total probability is then</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \mathbb{P}[c_i=c_{i+1}] = \frac{13}{52}\cdot \frac{12}{51} \times 4 = \frac{4}{17}
+\end{equation*}
+</div>
+<p>This is also the expected number of pairs of the same suit when two cards are picked. We write the expected value as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \mathbb{E}[c_i=c_{i+1}] = \frac{4}{17}
+\end{equation*}
+</div>
+<p>Hence, by linearity of expectation, when ‘n’ cards are picked, we can expect</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \sum_{i=1}^{n}\mathbb{E}[c_i=c_{i+1}] = \frac{4\, (n-1)}{17}
+\end{equation*}
+</div>
+<p>adjacent pairs to be of the same suit.</p>
+<p>For <span class="math">\(n=13\)</span>, it would be <span class="math">\(48/17\)</span>, or <span class="math">\(2.82352941176471\)</span> cards, which agrees with the simulation.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../generating-image-patterns/" rel="prev" title="Generating image patterns">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../simulating-buffons-needle-problem/" rel="next" title="Simulating Buffon's needle problem">Next post</a>
+            </li>
+        </ul></nav></aside><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

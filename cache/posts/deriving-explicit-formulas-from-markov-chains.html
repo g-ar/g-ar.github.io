@@ -1,0 +1,39 @@
+<p>Once we formulate the markov model correctly, we can obtain the generating function for each entry in the matrix, where there's a possibility of getting the explicit formula. Let's take a look at one such problem:</p>
+<p><em>A six faced unbiased die is rolled :math:`n` times. What is the probability that we get to see all the six numbers in the sequence?</em></p>
+<p>Setting up a markov chain is easy:</p>
+<div class="math">
+\begin{equation*}
+\displaystyle A= \begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; \frac{1}{3} &amp; \frac{2}{3} &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{2}{3} &amp; \frac{1}{3} &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{5}{6} &amp; \frac{1}{6}\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}
+\end{equation*}
+</div>
+<p>The states indicate the number of faces shown up. E.g. the row above the last row indicates that when 5 faces are seen, there's a probability of 5/6 remaining in the same state and 1/6 moving to the final state.</p>
+<p>So, <span class="math">\(A^n[0,6]\)</span>, gives the required answer. But we can also find the generating function for that entry by computing <span class="math">\((I-x\, A)^{-1}\)</span>, which is</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(x) = \frac{10 \, x^{6}}{{\left(5 \, x - 6\right)} {\left(2 \, x - 3\right)} {\left(x - 1\right)} {\left(x - 2\right)} {\left(x - 3\right)} {\left(x - 6\right)}}
+\end{equation*}
+</div>
+<p>and on partial fractions it's</p>
+<div class="math">
+\begin{equation*}
+\displaystyle G(x) = \frac{36}{5 \, x - 6} - \frac{45}{2 \, x - 3} - \frac{1}{x - 1} + \frac{40}{x - 2} - \frac{45}{x - 3} + \frac{36}{x - 6} + 1
+\end{equation*}
+</div>
+<p>and the probability can be written by extracting <span class="math">\([x^n]G(x)\)</span> as</p>
+<div class="math">
+\begin{equation*}
+\displaystyle \mathbb{P}(n) = 1-\frac{6}{6^n}+\frac{15}{3^n}-\frac{20}{2^n}+15\left(\frac{2}{3}\right)^n-6\left(\frac{5}{6}\right)^n
+\end{equation*}
+</div>
+<p>which can be verified by a simulation in J:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_19426d2b7bbf43638095034edd49a3dc-0">0</a>
+<a href="#rest_code_19426d2b7bbf43638095034edd49a3dc-1">1</a>
+<a href="#rest_code_19426d2b7bbf43638095034edd49a3dc-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_19426d2b7bbf43638095034edd49a3dc-0"></a>n=:10
+<a name="rest_code_19426d2b7bbf43638095034edd49a3dc-1"></a>sim=: 3 : &#39;6=+/~:?n#6&#39;
+<a name="rest_code_19426d2b7bbf43638095034edd49a3dc-2"></a>(+/%#)(sim&quot;0)1e5#0 NB. about 0.27
+</pre></td></tr></table><p>and</p>
+<div class="math">
+\begin{equation*}
+\mathbb{P}(10) = \dfrac{38045}{139968} \approx 0.271812128486511
+\end{equation*}
+</div>

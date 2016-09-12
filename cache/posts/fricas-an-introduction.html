@@ -1,0 +1,159 @@
+<p>There are quite a few different free computer algebra systems around -- Sage, maxima, sympy, FriCAS/Axiom etc. -- each having its strengths and lack of something. Having choices and access to source code are good, since we are not at mercy of vendors like those big M developers for bug fixes and feature additions (along with outrageous licence costs).</p>
+<p>I have been using FriCAS for a while mainly for its number sequence guessing routines, an indispensable part when working on enumeration problems. But recently, when I tried other operations which I mostly do in Sage or maxima, like integration and solving equations, I was surprised to see it could give simpler and more complete answers than Sage/maxima.</p>
+<p>One more good thing is that it comes with a fricas mode for emacs, which has many more features compared to running from a terminal. E.g. it gives features like auto-completion, matched-parenthesis highlighting, shortcut keys for navigating through the input, yanking text etc., and of course, we can define our own shortcuts since it's emacs! Let us see how to set FriCAS up and run from emacs in linux. The latest version at the time is 1.2.3, and I have only tried amd64 binary version.</p>
+<p>Make a directory <tt class="docutils literal">$HOME/bin/</tt> if not already there, and add to the <tt class="docutils literal">$PATH</tt> environment variable. Extract the components to <tt class="docutils literal">$HOME/bin/</tt>. To run it, we need to modify a few paths in its files. Go to <tt class="docutils literal">$HOME/bin/usr/local/bin</tt>, in fricas file, update the variable <tt class="docutils literal">exec_prefix</tt> to</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_980c64ba7df9477d9e022ecf0eca23fa-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_980c64ba7df9477d9e022ecf0eca23fa-0"></a>exec_prefix=&quot;${FRICAS_PREFIX:-/home/bin/usr/local}&quot;
+</pre></td></tr></table><p>In file efricas, update FRICASCMD to</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7af9eb84738d4a6fb1d359c3b840db20-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_7af9eb84738d4a6fb1d359c3b840db20-0"></a>FRICASCMD=&#39;/home/bin/fricas&#39;
+</pre></td></tr></table><p>and also update the line which calls emacs.</p>
+<p>Update the function fricas-run in <tt class="docutils literal">$HOME/bin/usr/local/lib/fricas/emacs/fricas.el</tt> to</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-0">0</a>
+<a href="#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-1">1</a>
+<a href="#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-2">2</a>
+<a href="#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-3">3</a>
+<a href="#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-4">4</a>
+<a href="#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-5">5</a></pre></div></td><td class="code"><pre class="code scheme"><a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-0"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">fricas-run</span> <span class="p">()</span>
+<a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-1"></a>  <span class="s">&quot;Run FriCAS in the current BUFFER.&quot;</span>
+<a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-2"></a>  <span class="p">(</span><span class="nf">message</span> <span class="s">&quot;Starting FriCAS...&quot;</span><span class="p">)</span>
+<a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-3"></a>  <span class="p">(</span><span class="nf">start-process-shell-command</span> <span class="s">&quot;fricas&quot;</span> <span class="p">(</span><span class="nf">current-buffer</span><span class="p">)</span>
+<a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-4"></a>                               <span class="nv">fricas-run-command</span>
+<a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-5"></a>                               <span class="s">&quot;-noclef&quot;</span> <span class="s">&quot;2&gt;/dev/null&quot;</span><span class="p">))</span>
+</pre></td></tr></table><p>Otherwise, FriCAS won't start within emacs.</p>
+<p>Next, create two bash scripts within <tt class="docutils literal">$HOME/bin/</tt> with filenames &quot;fricas&quot; -- which is to execute <tt class="docutils literal">$HOME/bin/usr/local/bin/fricas</tt>, and &quot;efricas&quot; to execute <tt class="docutils literal">$HOME/bin/usr/local/bin/efricas</tt>. Make those two newly created files as executable. There, we are all set now. Simply open the terminal, and enter &quot;efricas&quot; to run fricas within emacs. If everything goes well, we will have fricas running within emacs.</p>
+<p>Now, let us have a brief overview of its commands (some are examples taken from the axiom book),
+and its advantages to other free CAS, and probably even the paid ones.
+Integration</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_585f8aa27d2344109cb77561cf75a827-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_585f8aa27d2344109cb77561cf75a827-0"></a>integrate(tan(atan(x)/3),x)
+</pre></td></tr></table><p>This integral is an example mentioned in their document, which is instantly solved by fricas, but Sage/maxima fails after trying for a long time.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_06c5e9e75cb64313ba6f0cf91c55360b-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_06c5e9e75cb64313ba6f0cf91c55360b-0"></a>integrate((x+a)^(1/2)/x,x)
+</pre></td></tr></table><p>This gives two results, for negative and non-negative a.</p>
+<p>Hence, besides having a good capability, another advantage over Sage and maxima is that we need not declare the symbols which will be used in operations. It also computes the results for all possible cases, and doesn't nag us to make assumptions like in the case of Sage/maxima. (sometimes it keeps asking for the same assumption even if we have already done so!)
+Solving equations</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-0">0</a>
+<a href="#rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-1">1</a>
+<a href="#rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-2">2</a>
+<a href="#rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-3">3</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-0"></a>solve(x^3+x+1,1/1000)
+<a name="rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-1"></a>solve(x^3+x+1,1/1000.0)
+<a name="rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-2"></a>radicalSolve(x^3+x+1)
+<a name="rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-3"></a>complexSolve(x^3+x+1,1/1000.0)
+</pre></td></tr></table><p>etc. All of the above call the same algorithm to compute the roots, but the result is returned depending on the data type.</p>
+<p>It can also solve non-linear simultaneous equations.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_55dc0171bd8244899303a0a43daee573-0">0</a>
+<a href="#rest_code_55dc0171bd8244899303a0a43daee573-1">1</a>
+<a href="#rest_code_55dc0171bd8244899303a0a43daee573-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_55dc0171bd8244899303a0a43daee573-0"></a>solve([x+y^2-4,x^2+y-2],1.E-10)
+<a name="rest_code_55dc0171bd8244899303a0a43daee573-1"></a>solve([x+y^2-4,x^2+y-2],1/10^10)
+<a name="rest_code_55dc0171bd8244899303a0a43daee573-2"></a>radicalSolve([x+y^2-4,x^2+y-2])
+</pre></td></tr></table><p>We can see that it can give all the exact results also effortlessly. In Sage/maxima, there is currently no way of making itto output all results in form of radicals.
+Recurrence relations</p>
+<p>The recursions are transformed into iterated code and compiled! And since it can also symbolically compute, this proves very useful to examine sequences.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8b350ae947614a91aa50b463d06d3f01-0">0</a>
+<a href="#rest_code_8b350ae947614a91aa50b463d06d3f01-1">1</a>
+<a href="#rest_code_8b350ae947614a91aa50b463d06d3f01-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_8b350ae947614a91aa50b463d06d3f01-0"></a>fib(0)==0
+<a name="rest_code_8b350ae947614a91aa50b463d06d3f01-1"></a>fib(1)==1
+<a name="rest_code_8b350ae947614a91aa50b463d06d3f01-2"></a>fib(n)==fib(n-1)+fib(n-2)
+</pre></td></tr></table><p>This automatically compiles and computes the fibonacci numbers as an iterated code.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_dececd628f0e4621bf193e44ae4b99cd-0">0</a>
+<a href="#rest_code_dececd628f0e4621bf193e44ae4b99cd-1">1</a>
+<a href="#rest_code_dececd628f0e4621bf193e44ae4b99cd-2">2</a>
+<a href="#rest_code_dececd628f0e4621bf193e44ae4b99cd-3">3</a>
+<a href="#rest_code_dececd628f0e4621bf193e44ae4b99cd-4">4</a>
+<a href="#rest_code_dececd628f0e4621bf193e44ae4b99cd-5">5</a>
+<a href="#rest_code_dececd628f0e4621bf193e44ae4b99cd-6">6</a>
+<a href="#rest_code_dececd628f0e4621bf193e44ae4b99cd-7">7</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-0"></a>a(0)==1
+<a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-1"></a>a(1)==1
+<a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-2"></a>a(2)==1
+<a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-3"></a>b(0)==0
+<a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-4"></a>b(1)==0
+<a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-5"></a>b(2)==0
+<a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-6"></a>a(n)==a(n-1)+b(n-1)
+<a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-7"></a>b(n)==a(n-3)+b(n-3)
+</pre></td></tr></table><p>This simultaneous recurrence is actually narayana's cows sequence, and this kind of recurrence is compiled as well!
+Using this, we will make use of the guessing routines.
+GUESS</p>
+<p>The guessing routine in FriCAS can give us the likely generating function, recurrence relation, functional equation etc.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<p>Using the above simultaneous recurrence, the generating function can be obtained as:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a1c7c57e81fe49dbabdce92159dce058-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_a1c7c57e81fe49dbabdce92159dce058-0"></a>guessAlg [a(i)+b(i) for i in 0..20]
+</pre></td></tr></table><ol class="arabic simple">
+<li></li>
+</ol>
+<p>Try for the recurrence relation.</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1ed61d393a754f51a5d1e91812c732b2-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_1ed61d393a754f51a5d1e91812c732b2-0"></a>guessPRec [a(i)+b(i) for i in 0..20]
+</pre></td></tr></table><p>This command gives a single recurrence relation! Hence, we may solve a problem our way and use the guessing routines for simplification.
+Series expansion</p>
+<p>Working with series is also in a way different and easy.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_4a50bd1504eb4facb78eccf649f07958-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_4a50bd1504eb4facb78eccf649f07958-0"></a>series(x/(1-x-x^2),x=0)
+</pre></td></tr></table><p>or like this</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f9fcd43517a0448b99df5941b0140d36-0">0</a>
+<a href="#rest_code_f9fcd43517a0448b99df5941b0140d36-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_f9fcd43517a0448b99df5941b0140d36-0"></a>x:=series &#39;x
+<a name="rest_code_f9fcd43517a0448b99df5941b0140d36-1"></a>x/(1-x-x^2)
+</pre></td></tr></table><ol class="arabic simple">
+<li></li>
+</ol>
+<p>If we require only the list of coefficients of the series</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_301253fd54d147c6852315c785cd19ff-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_301253fd54d147c6852315c785cd19ff-0"></a>cf:=coefficients x/(1-x-x^2)
+</pre></td></tr></table><p>If we want the <span class="math">\([x^{100}]\)</span></p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_50b06037c00a43bb9bf0ae16f231133f-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_50b06037c00a43bb9bf0ae16f231133f-0"></a>coefficient(x/(1-x-x^2),100)
+</pre></td></tr></table><p>or</p>
+<p>cf.200</p>
+<p>Some miscellaneous info</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<p>Since the output is always pretty-printed and does not provide a way to turn it off (though there are options to output different formats like TeX, fortran, html etc.), we can obtain an unparsed output the following way:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_9d4baacc3b7b455dad6bf693f9029716-0">0</a>
+<a href="#rest_code_9d4baacc3b7b455dad6bf693f9029716-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_9d4baacc3b7b455dad6bf693f9029716-0"></a>k:=(-b)^(1/3)/(1+b)
+<a name="rest_code_9d4baacc3b7b455dad6bf693f9029716-1"></a>unparse(k :: InputForm)
+</pre></td></tr></table><ol class="arabic simple">
+<li></li>
+</ol>
+<p>Shell commands can be executed within it:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_e1f8a1e4c67540baad9b182c8f54939d-0">0</a>
+<a href="#rest_code_e1f8a1e4c67540baad9b182c8f54939d-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_e1f8a1e4c67540baad9b182c8f54939d-0"></a>)system pwd
+<a name="rest_code_e1f8a1e4c67540baad9b182c8f54939d-1"></a>)system date
+</pre></td></tr></table><p>etc.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<p>Change output format:</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2401c4dd31044d3d9086f8cca0bff877-0">0</a>
+<a href="#rest_code_2401c4dd31044d3d9086f8cca0bff877-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_2401c4dd31044d3d9086f8cca0bff877-0"></a>)set output tex on
+<a name="rest_code_2401c4dd31044d3d9086f8cca0bff877-1"></a>)set output tex abc.tex
+</pre></td></tr></table><ol class="arabic simple">
+<li></li>
+</ol>
+<p>Show time for execution:</p>
+<p>)set messages time on</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<p>Sage provides an interface to FriCAS, so we may even run it within Sage.</p>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_56bc0194ac2b4fc0888548efd894c41e-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_56bc0194ac2b4fc0888548efd894c41e-0"></a>fricas(&#39;series(1/sqrt(1-x),x=0)&#39;)
+</pre></td></tr></table><p>and there are many more. It even has its own language -- SPAD.</p>
+<p>For more details, see</p>
+<p><a class="reference external" href="http://fricas.sourceforge.net/doc/book.pdf">1</a></p>
+<p><a class="reference external" href="http://axiom-wiki.newsynthesis.org/SandBoxFriCAS">2</a></p>
+<p>and of course, the source code is available to know &quot;everything&quot; about it!</p>
