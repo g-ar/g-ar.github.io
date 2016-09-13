@@ -26,11 +26,11 @@ MathJax.Hub.Config({
 <meta property="og:site_name" content="Gopinath A R">
 <meta property="og:title" content="Using Directed Graphs to form multivariate recurrence relations">
 <meta property="og:url" content="https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/">
-<meta property="og:description" content="/There are items comprising of red cubes, blue cubes, and balls;
+<meta property="og:description" content="There are items comprising of red cubes, blue cubes, and balls;
 how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so that:
 
 No three cubes are consecutive
-No three balls a">
+No three balls ar">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2014-07-26T16:26:48+05:30">
 <meta property="article:tag" content="mathjax">
@@ -104,7 +104,7 @@ No three balls a">
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>/There are items comprising of red cubes, blue cubes, and balls;
+<p>There are items comprising of red cubes, blue cubes, and balls;
 how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so that:</p>
 <ul class="simple">
 <li>No three cubes are consecutive</li>
@@ -112,7 +112,7 @@ how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so
 <li>No two red cubes are next to one another</li>
 <li>No two blue cubes are next to one another</li>
 </ul>
-<p>How do we go about finding a general formula for <span class="math">\(r\)</span> red cubes, <span class="math">\(b\)</span> blue cubes and <span class="math">\(c\)</span> balls ?/</p>
+<p>How do we go about finding a general formula for <span class="math">\(r\)</span> red cubes, <span class="math">\(b\)</span> blue cubes and <span class="math">\(c\)</span> balls ?</p>
 <p>The answer lies in forming a directed graph / Finite Automaton, as we have seen it in one of the previous posts.</p>
 <p>Instead of filling in the number of ways, we use the variable names as weights for the valid transitions.</p>
 <p>Hence, we can directly solve for the general case by using the following adjacency matrix:</p>
@@ -128,7 +128,7 @@ how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so
 \displaystyle \left(\begin{array}{rrrrrr} 0 &amp; r &amp; b &amp; c &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; c &amp; b &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; c &amp; r &amp; 0 \\ 0 &amp; r &amp; b &amp; 0 &amp; 0 &amp; c \\ 0 &amp; 0 &amp; 0 &amp; c &amp; 0 &amp; 0 \\ 0 &amp; r &amp; b &amp; 0 &amp; 0 &amp; 0 \end{array}\right)^{15}
 \end{equation*}
 </div>
-<p>and extract <span class="math">\([c^8 b^4 r^3]\)</span> from the sum of the first row, which is 11394.</p>
+<p>and extract <span class="math">\([c^8 b^4 r^3]\)</span> from the sum of the first row, which is <span class="math">\(11394\)</span>.</p>
 <p>We may also compute the characteristic polynomial of the matrix to get the structure of its multivariate recurrence
 relation:</p>
 <div class="math">
@@ -150,7 +150,7 @@ relation:</p>
 \end{equation*}
 </div>
 <p>Reference:</p>
-<p><a class="reference external" href="https://math.stackexchange.com/questions/866503/putting-objects-in-a-line">1</a></p>
+<p><a class="reference external" href="https://math.stackexchange.com/questions/866503/putting-objects-in-a-line">Putting objects in a line</a></p>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
