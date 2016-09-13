@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" rel="self" href="https://g-ar.github.io/categories/mathjax.xml"></atom:link><language>en</language><lastBuildDate>Tue, 13 Sep 2016 16:05:10 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link rel="self" type="application/rss+xml" href="https://g-ar.github.io/categories/mathjax.xml"></atom:link><language>en</language><lastBuildDate>Tue, 13 Sep 2016 16:58:37 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
 In particular, we'll use the excellent math toolkit by David Bailey et. al. aimed at experimental mathematics -- &lt;a class="reference external" href="http://crd.lbl.gov/~dhbailey/mpdist/arprec-2.2.18.tar.gz"&gt;arprec&lt;/a&gt;.
 Compile and run mathtool.&lt;/p&gt;
 &lt;p&gt;The following problems are taken from &lt;a class="reference external" href="https://brilliant.org"&gt;Brilliant&lt;/a&gt;&lt;/p&gt;
@@ -437,7 +437,7 @@ E_{1,m} &amp;amp;= 1
 &lt;p&gt;I wish Jolla team a big success, but I also wish that they remove the mandatory signing up of a Jolla account for enabling developer mode.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://nims11.wordpress.com/2012/04/27/hostapd-the-linux-way-to-create-virtual-wifi-access-point/"&gt;1. Creating AP using hostapd&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://stackoverflow.com/questions/24490278/run-ipython-notebook-from-a-remote-server"&gt;2. Run IPython remotely&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/ArchimedesPi/SageMathematics-raspi/"&gt;3. Sage 6.0 for RPi download&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/jolla-and-sailfish-os/</guid><pubDate>Sun, 09 Nov 2014 11:04:48 GMT</pubDate></item><item><title>Using Directed Graphs to form multivariate recurrence relations</title><link>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;/There are items comprising of red cubes, blue cubes, and balls;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/ArchimedesPi/SageMathematics-raspi/"&gt;3. Sage 6.0 for RPi download&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/jolla-and-sailfish-os/</guid><pubDate>Sun, 09 Nov 2014 11:04:48 GMT</pubDate></item><item><title>Using Directed Graphs to form multivariate recurrence relations</title><link>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;There are items comprising of red cubes, blue cubes, and balls;
 how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so that:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;No three cubes are consecutive&lt;/li&gt;
@@ -445,7 +445,7 @@ how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so
 &lt;li&gt;No two red cubes are next to one another&lt;/li&gt;
 &lt;li&gt;No two blue cubes are next to one another&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;How do we go about finding a general formula for &lt;span class="math"&gt;\(r\)&lt;/span&gt; red cubes, &lt;span class="math"&gt;\(b\)&lt;/span&gt; blue cubes and &lt;span class="math"&gt;\(c\)&lt;/span&gt; balls ?/&lt;/p&gt;
+&lt;p&gt;How do we go about finding a general formula for &lt;span class="math"&gt;\(r\)&lt;/span&gt; red cubes, &lt;span class="math"&gt;\(b\)&lt;/span&gt; blue cubes and &lt;span class="math"&gt;\(c\)&lt;/span&gt; balls ?&lt;/p&gt;
 &lt;p&gt;The answer lies in forming a directed graph / Finite Automaton, as we have seen it in one of the previous posts.&lt;/p&gt;
 &lt;p&gt;Instead of filling in the number of ways, we use the variable names as weights for the valid transitions.&lt;/p&gt;
 &lt;p&gt;Hence, we can directly solve for the general case by using the following adjacency matrix:&lt;/p&gt;
@@ -461,7 +461,7 @@ how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so
 \displaystyle \left(\begin{array}{rrrrrr} 0 &amp;amp; r &amp;amp; b &amp;amp; c &amp;amp; 0 &amp;amp; 0 \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; b &amp;amp; 0 \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; r &amp;amp; 0 \\ 0 &amp;amp; r &amp;amp; b &amp;amp; 0 &amp;amp; 0 &amp;amp; c \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; 0 &amp;amp; 0 \\ 0 &amp;amp; r &amp;amp; b &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \end{array}\right)^{15}
 \end{equation*}
 &lt;/div&gt;
-&lt;p&gt;and extract &lt;span class="math"&gt;\([c^8 b^4 r^3]\)&lt;/span&gt; from the sum of the first row, which is 11394.&lt;/p&gt;
+&lt;p&gt;and extract &lt;span class="math"&gt;\([c^8 b^4 r^3]\)&lt;/span&gt; from the sum of the first row, which is &lt;span class="math"&gt;\(11394\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;We may also compute the characteristic polynomial of the matrix to get the structure of its multivariate recurrence
 relation:&lt;/p&gt;
 &lt;div class="math"&gt;
@@ -483,180 +483,153 @@ relation:&lt;/p&gt;
 \end{equation*}
 &lt;/div&gt;
 &lt;p&gt;Reference:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://math.stackexchange.com/questions/866503/putting-objects-in-a-line"&gt;1&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</guid><pubDate>Sat, 26 Jul 2014 10:56:48 GMT</pubDate></item><item><title>FriCAS -- an introduction</title><link>https://g-ar.github.io/posts/fricas-an-introduction/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;There are quite a few different free computer algebra systems around -- Sage, maxima, sympy, FriCAS/Axiom etc. -- each having its strengths and lack of something. Having choices and access to source code are good, since we are not at mercy of vendors like those big M developers for bug fixes and feature additions (along with outrageous licence costs).&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://math.stackexchange.com/questions/866503/putting-objects-in-a-line"&gt;Putting objects in a line&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</guid><pubDate>Sat, 26 Jul 2014 10:56:48 GMT</pubDate></item><item><title>FriCAS -- an introduction</title><link>https://g-ar.github.io/posts/fricas-an-introduction/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;There are quite a few different free computer algebra systems around &lt;span class="math"&gt;\(-\)&lt;/span&gt; Sage, maxima, sympy, FriCAS/Axiom etc. &lt;span class="math"&gt;\(-\)&lt;/span&gt; each having its strengths and lack of something. Having choices and access to source code are good, since we are not at mercy of vendors like those big M developers for bug fixes and feature additions (along with outrageous licence costs).&lt;/p&gt;
 &lt;p&gt;I have been using FriCAS for a while mainly for its number sequence guessing routines, an indispensable part when working on enumeration problems. But recently, when I tried other operations which I mostly do in Sage or maxima, like integration and solving equations, I was surprised to see it could give simpler and more complete answers than Sage/maxima.&lt;/p&gt;
 &lt;p&gt;One more good thing is that it comes with a fricas mode for emacs, which has many more features compared to running from a terminal. E.g. it gives features like auto-completion, matched-parenthesis highlighting, shortcut keys for navigating through the input, yanking text etc., and of course, we can define our own shortcuts since it's emacs! Let us see how to set FriCAS up and run from emacs in linux. The latest version at the time is 1.2.3, and I have only tried amd64 binary version.&lt;/p&gt;
 &lt;p&gt;Make a directory &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; if not already there, and add to the &lt;tt class="docutils literal"&gt;$PATH&lt;/tt&gt; environment variable. Extract the components to &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt;. To run it, we need to modify a few paths in its files. Go to &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin&lt;/tt&gt;, in fricas file, update the variable &lt;tt class="docutils literal"&gt;exec_prefix&lt;/tt&gt; to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_980c64ba7df9477d9e022ecf0eca23fa-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_980c64ba7df9477d9e022ecf0eca23fa-0"&gt;&lt;/a&gt;exec_prefix="${FRICAS_PREFIX:-/home/bin/usr/local}"
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_c4b4f07f44d6471a8983b2389a14467c-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_c4b4f07f44d6471a8983b2389a14467c-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;exec_prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;FRICAS_PREFIX&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="p"&gt;/home/bin/usr/local&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;In file efricas, update FRICASCMD to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7af9eb84738d4a6fb1d359c3b840db20-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_7af9eb84738d4a6fb1d359c3b840db20-0"&gt;&lt;/a&gt;FRICASCMD='/home/bin/fricas'
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_204f422c59da496cbc718676cc92eec0-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_204f422c59da496cbc718676cc92eec0-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FRICASCMD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'/home/bin/fricas'&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and also update the line which calls emacs.&lt;/p&gt;
-&lt;p&gt;Update the function fricas-run in &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/lib/fricas/emacs/fricas.el&lt;/tt&gt; to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-5"&gt;5&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-0"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;fricas-run&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
-&lt;a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-1"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Run FriCAS in the current BUFFER."&lt;/span&gt;
-&lt;a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-2"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Starting FriCAS..."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;start-process-shell-command&lt;/span&gt; &lt;span class="s"&gt;"fricas"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;current-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-4"&gt;&lt;/a&gt;                               &lt;span class="nv"&gt;fricas-run-command&lt;/span&gt;
-&lt;a name="rest_code_ae7ef2fe545740ab9dc7edd3bbbc5785-5"&gt;&lt;/a&gt;                               &lt;span class="s"&gt;"-noclef"&lt;/span&gt; &lt;span class="s"&gt;"2&amp;gt;/dev/null"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;p&gt;Update the function fricas &lt;span class="math"&gt;\(-\)&lt;/span&gt; run in &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/lib/fricas/emacs/fricas.el&lt;/tt&gt; to&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ff23bace9a3341d7ba2aa673631fdc99-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ff23bace9a3341d7ba2aa673631fdc99-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ff23bace9a3341d7ba2aa673631fdc99-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ff23bace9a3341d7ba2aa673631fdc99-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ff23bace9a3341d7ba2aa673631fdc99-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ff23bace9a3341d7ba2aa673631fdc99-5"&gt;5&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-0"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;fricas-run&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-1"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Run FriCAS in the current BUFFER."&lt;/span&gt;
+&lt;a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-2"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Starting FriCAS..."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;start-process-shell-command&lt;/span&gt; &lt;span class="s"&gt;"fricas"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;current-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-4"&gt;&lt;/a&gt;                               &lt;span class="nv"&gt;fricas-run-command&lt;/span&gt;
+&lt;a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-5"&gt;&lt;/a&gt;                               &lt;span class="s"&gt;"-noclef"&lt;/span&gt; &lt;span class="s"&gt;"2&amp;gt;/dev/null"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Otherwise, FriCAS won't start within emacs.&lt;/p&gt;
-&lt;p&gt;Next, create two bash scripts within &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; with filenames "fricas" -- which is to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/fricas&lt;/tt&gt;, and "efricas" to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/efricas&lt;/tt&gt;. Make those two newly created files as executable. There, we are all set now. Simply open the terminal, and enter "efricas" to run fricas within emacs. If everything goes well, we will have fricas running within emacs.&lt;/p&gt;
+&lt;p&gt;Next, create two bash scripts within &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; with filenames "fricas" &lt;span class="math"&gt;\(-\)&lt;/span&gt; which is to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/fricas&lt;/tt&gt;, and "efricas" to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/efricas&lt;/tt&gt;. Make those two newly created files as executable. There, we are all set now. Simply open the terminal, and enter "efricas" to run fricas within emacs. If everything goes well, we will have fricas running within emacs.&lt;/p&gt;
 &lt;p&gt;Now, let us have a brief overview of its commands (some are examples taken from the axiom book),
-and its advantages to other free CAS, and probably even the paid ones.
-Integration&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_585f8aa27d2344109cb77561cf75a827-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_585f8aa27d2344109cb77561cf75a827-0"&gt;&lt;/a&gt;integrate(tan(atan(x)/3),x)
+and its advantages to other free CAS, and probably even the paid ones.&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;INTEGRATION&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_14bb9215666c45438a72e64520145f1a-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_14bb9215666c45438a72e64520145f1a-0"&gt;&lt;/a&gt;integrate(tan(atan(x)/3),x)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This integral is an example mentioned in their document, which is instantly solved by fricas, but Sage/maxima fails after trying for a long time.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_06c5e9e75cb64313ba6f0cf91c55360b-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_06c5e9e75cb64313ba6f0cf91c55360b-0"&gt;&lt;/a&gt;integrate((x+a)^(1/2)/x,x)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This gives two results, for negative and non-negative a.&lt;/p&gt;
-&lt;p&gt;Hence, besides having a good capability, another advantage over Sage and maxima is that we need not declare the symbols which will be used in operations. It also computes the results for all possible cases, and doesn't nag us to make assumptions like in the case of Sage/maxima. (sometimes it keeps asking for the same assumption even if we have already done so!)
-Solving equations&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-0"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000)
-&lt;a name="rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-1"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000.0)
-&lt;a name="rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-2"&gt;&lt;/a&gt;radicalSolve(x^3+x+1)
-&lt;a name="rest_code_f55941fbaf524d5c8c0dc9e0f4e8fc24-3"&gt;&lt;/a&gt;complexSolve(x^3+x+1,1/1000.0)
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_e5d6f88e88ff47b9a9a333451181b048-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_e5d6f88e88ff47b9a9a333451181b048-0"&gt;&lt;/a&gt;integrate((x+a)^(1/2)/x,x)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This gives two results, for negative and non-negative a.&lt;/p&gt;
+&lt;p&gt;Hence, besides having a good capability, another advantage over Sage and maxima is that we need not declare the symbols which will be used in operations. It also computes the results for all possible cases, and doesn't nag us to make assumptions like in the case of Sage/maxima. (sometimes it keeps asking for the same assumption even if we have already done so!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SOLVING EQUATIONS&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7e382514dd3c4963aef3d58d8c941e5b-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7e382514dd3c4963aef3d58d8c941e5b-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7e382514dd3c4963aef3d58d8c941e5b-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7e382514dd3c4963aef3d58d8c941e5b-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_7e382514dd3c4963aef3d58d8c941e5b-0"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000)
+&lt;a name="rest_code_7e382514dd3c4963aef3d58d8c941e5b-1"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000.0)
+&lt;a name="rest_code_7e382514dd3c4963aef3d58d8c941e5b-2"&gt;&lt;/a&gt;radicalSolve(x^3+x+1)
+&lt;a name="rest_code_7e382514dd3c4963aef3d58d8c941e5b-3"&gt;&lt;/a&gt;complexSolve(x^3+x+1,1/1000.0)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;etc. All of the above call the same algorithm to compute the roots, but the result is returned depending on the data type.&lt;/p&gt;
 &lt;p&gt;It can also solve non-linear simultaneous equations.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_55dc0171bd8244899303a0a43daee573-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_55dc0171bd8244899303a0a43daee573-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_55dc0171bd8244899303a0a43daee573-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_55dc0171bd8244899303a0a43daee573-0"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1.E-10)
-&lt;a name="rest_code_55dc0171bd8244899303a0a43daee573-1"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1/10^10)
-&lt;a name="rest_code_55dc0171bd8244899303a0a43daee573-2"&gt;&lt;/a&gt;radicalSolve([x+y^2-4,x^2+y-2])
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;We can see that it can give all the exact results also effortlessly. In Sage/maxima, there is currently no way of making itto output all results in form of radicals.
-Recurrence relations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef874ff7aa7e4001ae26c578a66b400e-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef874ff7aa7e4001ae26c578a66b400e-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef874ff7aa7e4001ae26c578a66b400e-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ef874ff7aa7e4001ae26c578a66b400e-0"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1.E-10)
+&lt;a name="rest_code_ef874ff7aa7e4001ae26c578a66b400e-1"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1/10^10)
+&lt;a name="rest_code_ef874ff7aa7e4001ae26c578a66b400e-2"&gt;&lt;/a&gt;radicalSolve([x+y^2-4,x^2+y-2])
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;We can see that it can give all the exact results also effortlessly. In Sage/maxima, there is currently no way of making itto output all results in form of radicals.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;RECURRENCE RELATIONS&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The recursions are transformed into iterated code and compiled! And since it can also symbolically compute, this proves very useful to examine sequences.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_8b350ae947614a91aa50b463d06d3f01-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_8b350ae947614a91aa50b463d06d3f01-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_8b350ae947614a91aa50b463d06d3f01-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_8b350ae947614a91aa50b463d06d3f01-0"&gt;&lt;/a&gt;fib(0)==0
-&lt;a name="rest_code_8b350ae947614a91aa50b463d06d3f01-1"&gt;&lt;/a&gt;fib(1)==1
-&lt;a name="rest_code_8b350ae947614a91aa50b463d06d3f01-2"&gt;&lt;/a&gt;fib(n)==fib(n-1)+fib(n-2)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-0"&gt;&lt;/a&gt;fib(0)==0
+&lt;a name="rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-1"&gt;&lt;/a&gt;fib(1)==1
+&lt;a name="rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-2"&gt;&lt;/a&gt;fib(n)==fib(n-1)+fib(n-2)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This automatically compiles and computes the fibonacci numbers as an iterated code.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dececd628f0e4621bf193e44ae4b99cd-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dececd628f0e4621bf193e44ae4b99cd-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dececd628f0e4621bf193e44ae4b99cd-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dececd628f0e4621bf193e44ae4b99cd-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dececd628f0e4621bf193e44ae4b99cd-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dececd628f0e4621bf193e44ae4b99cd-5"&gt;5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dececd628f0e4621bf193e44ae4b99cd-6"&gt;6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dececd628f0e4621bf193e44ae4b99cd-7"&gt;7&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-0"&gt;&lt;/a&gt;a(0)==1
-&lt;a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-1"&gt;&lt;/a&gt;a(1)==1
-&lt;a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-2"&gt;&lt;/a&gt;a(2)==1
-&lt;a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-3"&gt;&lt;/a&gt;b(0)==0
-&lt;a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-4"&gt;&lt;/a&gt;b(1)==0
-&lt;a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-5"&gt;&lt;/a&gt;b(2)==0
-&lt;a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-6"&gt;&lt;/a&gt;a(n)==a(n-1)+b(n-1)
-&lt;a name="rest_code_dececd628f0e4621bf193e44ae4b99cd-7"&gt;&lt;/a&gt;b(n)==a(n-3)+b(n-3)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This simultaneous recurrence is actually narayana's cows sequence, and this kind of recurrence is compiled as well!
-Using this, we will make use of the guessing routines.
-GUESS&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_151f469c37714d9e96ebfed473677d79-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_151f469c37714d9e96ebfed473677d79-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_151f469c37714d9e96ebfed473677d79-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_151f469c37714d9e96ebfed473677d79-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_151f469c37714d9e96ebfed473677d79-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_151f469c37714d9e96ebfed473677d79-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_151f469c37714d9e96ebfed473677d79-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_151f469c37714d9e96ebfed473677d79-7"&gt;7&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_151f469c37714d9e96ebfed473677d79-0"&gt;&lt;/a&gt;a(0)==1
+&lt;a name="rest_code_151f469c37714d9e96ebfed473677d79-1"&gt;&lt;/a&gt;a(1)==1
+&lt;a name="rest_code_151f469c37714d9e96ebfed473677d79-2"&gt;&lt;/a&gt;a(2)==1
+&lt;a name="rest_code_151f469c37714d9e96ebfed473677d79-3"&gt;&lt;/a&gt;b(0)==0
+&lt;a name="rest_code_151f469c37714d9e96ebfed473677d79-4"&gt;&lt;/a&gt;b(1)==0
+&lt;a name="rest_code_151f469c37714d9e96ebfed473677d79-5"&gt;&lt;/a&gt;b(2)==0
+&lt;a name="rest_code_151f469c37714d9e96ebfed473677d79-6"&gt;&lt;/a&gt;a(n)==a(n-1)+b(n-1)
+&lt;a name="rest_code_151f469c37714d9e96ebfed473677d79-7"&gt;&lt;/a&gt;b(n)==a(n-3)+b(n-3)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This simultaneous recurrence is actually narayana's cows sequence, and this kind of recurrence is compiled as well!
+Using this, we will make use of the guessing routines.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;GUESS&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The guessing routine in FriCAS can give us the likely generating function, recurrence relation, functional equation etc.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
 &lt;p&gt;Using the above simultaneous recurrence, the generating function can be obtained as:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_a1c7c57e81fe49dbabdce92159dce058-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_a1c7c57e81fe49dbabdce92159dce058-0"&gt;&lt;/a&gt;guessAlg [a(i)+b(i) for i in 0..20]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;Try for the recurrence relation.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_1ed61d393a754f51a5d1e91812c732b2-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_1ed61d393a754f51a5d1e91812c732b2-0"&gt;&lt;/a&gt;guessPRec [a(i)+b(i) for i in 0..20]
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_d0cf818036754bf188aacca43f6b953d-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_d0cf818036754bf188aacca43f6b953d-0"&gt;&lt;/a&gt;guessAlg [a(i)+b(i) for i in 0..20]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Try for the recurrence relation.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_c38aa33ef0d441c385251a95f069178b-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_c38aa33ef0d441c385251a95f069178b-0"&gt;&lt;/a&gt;guessPRec [a(i)+b(i) for i in 0..20]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This command gives a single recurrence relation! Hence, we may solve a problem our way and use the guessing routines for simplification.
 Series expansion&lt;/p&gt;
 &lt;p&gt;Working with series is also in a way different and easy.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_4a50bd1504eb4facb78eccf649f07958-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_4a50bd1504eb4facb78eccf649f07958-0"&gt;&lt;/a&gt;series(x/(1-x-x^2),x=0)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;or like this&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f9fcd43517a0448b99df5941b0140d36-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f9fcd43517a0448b99df5941b0140d36-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_f9fcd43517a0448b99df5941b0140d36-0"&gt;&lt;/a&gt;x:=series 'x
-&lt;a name="rest_code_f9fcd43517a0448b99df5941b0140d36-1"&gt;&lt;/a&gt;x/(1-x-x^2)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;If we require only the list of coefficients of the series&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_301253fd54d147c6852315c785cd19ff-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_301253fd54d147c6852315c785cd19ff-0"&gt;&lt;/a&gt;cf:=coefficients x/(1-x-x^2)
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_245de75c166e4a9b94c3463754dcbde2-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_245de75c166e4a9b94c3463754dcbde2-0"&gt;&lt;/a&gt;series(x/(1-x-x^2),x=0)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;or like this&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_eac79ed2f93f440faa8116b255c8e9b9-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_eac79ed2f93f440faa8116b255c8e9b9-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_eac79ed2f93f440faa8116b255c8e9b9-0"&gt;&lt;/a&gt;x:=series 'x
+&lt;a name="rest_code_eac79ed2f93f440faa8116b255c8e9b9-1"&gt;&lt;/a&gt;x/(1-x-x^2)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;If we require only the list of coefficients of the series&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_5d9e360d1d42442a8e537fe895ed474d-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_5d9e360d1d42442a8e537fe895ed474d-0"&gt;&lt;/a&gt;cf:=coefficients x/(1-x-x^2)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want the &lt;span class="math"&gt;\([x^{100}]\)&lt;/span&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_50b06037c00a43bb9bf0ae16f231133f-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_50b06037c00a43bb9bf0ae16f231133f-0"&gt;&lt;/a&gt;coefficient(x/(1-x-x^2),100)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_24c94201a6224a13adc96829bf29f05a-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_24c94201a6224a13adc96829bf29f05a-0"&gt;&lt;/a&gt;coefficient(x/(1-x-x^2),100)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;or&lt;/p&gt;
-&lt;p&gt;cf.200&lt;/p&gt;
-&lt;p&gt;Some miscellaneous info&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;cf.200&lt;/tt&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SOME MISCELLANEOUS INFO&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Since the output is always pretty-printed and does not provide a way to turn it off (though there are options to output different formats like TeX, fortran, html etc.), we can obtain an unparsed output the following way:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_9d4baacc3b7b455dad6bf693f9029716-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_9d4baacc3b7b455dad6bf693f9029716-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_9d4baacc3b7b455dad6bf693f9029716-0"&gt;&lt;/a&gt;k:=(-b)^(1/3)/(1+b)
-&lt;a name="rest_code_9d4baacc3b7b455dad6bf693f9029716-1"&gt;&lt;/a&gt;unparse(k :: InputForm)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;Shell commands can be executed within it:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_e1f8a1e4c67540baad9b182c8f54939d-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_e1f8a1e4c67540baad9b182c8f54939d-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_e1f8a1e4c67540baad9b182c8f54939d-0"&gt;&lt;/a&gt;)system pwd
-&lt;a name="rest_code_e1f8a1e4c67540baad9b182c8f54939d-1"&gt;&lt;/a&gt;)system date
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_421aca4d15824745b8c866a8e8df372b-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_421aca4d15824745b8c866a8e8df372b-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_421aca4d15824745b8c866a8e8df372b-0"&gt;&lt;/a&gt;k:=(-b)^(1/3)/(1+b)
+&lt;a name="rest_code_421aca4d15824745b8c866a8e8df372b-1"&gt;&lt;/a&gt;unparse(k :: InputForm)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Shell commands can be executed within it:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_36d23df155ed4a4398c1c2d5f6c1e68d-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_36d23df155ed4a4398c1c2d5f6c1e68d-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_36d23df155ed4a4398c1c2d5f6c1e68d-0"&gt;&lt;/a&gt;)system pwd
+&lt;a name="rest_code_36d23df155ed4a4398c1c2d5f6c1e68d-1"&gt;&lt;/a&gt;)system date
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;etc.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;Change output format:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_2401c4dd31044d3d9086f8cca0bff877-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_2401c4dd31044d3d9086f8cca0bff877-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_2401c4dd31044d3d9086f8cca0bff877-0"&gt;&lt;/a&gt;)set output tex on
-&lt;a name="rest_code_2401c4dd31044d3d9086f8cca0bff877-1"&gt;&lt;/a&gt;)set output tex abc.tex
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;Show time for execution:&lt;/p&gt;
-&lt;p&gt;)set messages time on&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;Sage provides an interface to FriCAS, so we may even run it within Sage.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_56bc0194ac2b4fc0888548efd894c41e-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_56bc0194ac2b4fc0888548efd894c41e-0"&gt;&lt;/a&gt;fricas('series(1/sqrt(1-x),x=0)')
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and there are many more. It even has its own language -- SPAD.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;CHANGE OUTPUT FORMAT&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_654f884c188145838e277445d67751d5-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_654f884c188145838e277445d67751d5-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_654f884c188145838e277445d67751d5-0"&gt;&lt;/a&gt;)set output tex on
+&lt;a name="rest_code_654f884c188145838e277445d67751d5-1"&gt;&lt;/a&gt;)set output tex abc.tex
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SHOW TIME FOR EXECUTION&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7b088164492f4a0fb1742d57d7c55a7d-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_7b088164492f4a0fb1742d57d7c55a7d-0"&gt;&lt;/a&gt;)set messages time on
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Sage provides an interface to FriCAS, so we may even run it within Sage.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7782be7763094f7d9e4486cb06207bbc-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_7782be7763094f7d9e4486cb06207bbc-0"&gt;&lt;/a&gt;fricas('series(1/sqrt(1-x),x=0)')
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;and there are many more. It even has its own language &lt;span class="math"&gt;\(-\)&lt;/span&gt; SPAD.&lt;/p&gt;
 &lt;p&gt;For more details, see&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://fricas.sourceforge.net/doc/book.pdf"&gt;1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://axiom-wiki.newsynthesis.org/SandBoxFriCAS"&gt;2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;and of course, the source code is available to know "everything" about it!&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/fricas-an-introduction/</guid><pubDate>Wed, 18 Jun 2014 10:05:29 GMT</pubDate></item><item><title>Probability of a sum being less than 1 (convolution of pdf)</title><link>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;If we choose 'n' numbers randomly and uniformly from &lt;span class="math"&gt;\([0,1]\)&lt;/span&gt; and raise each number to 'k' &lt;span class="math"&gt;\((k&amp;gt;0)\)&lt;/span&gt;, what is the probability that the sum will be less than 1 ?&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://fricas.sourceforge.net/doc/book.pdf"&gt;1. Axiom book&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://axiom-wiki.newsynthesis.org/SandBoxFriCAS"&gt;2. FriCAS sandbox&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;and of course, the source code is available to know "everything" about it!&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/fricas-an-introduction/</guid><pubDate>Wed, 18 Jun 2014 10:05:29 GMT</pubDate></item><item><title>Probability of a sum being less than 1 (convolution of pdf)</title><link>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;If we choose &lt;span class="math"&gt;\(n\)&lt;/span&gt; numbers randomly and uniformly from &lt;span class="math"&gt;\([0,1]\)&lt;/span&gt; and raise each number to &lt;span class="math"&gt;\(k\)&lt;/span&gt; &lt;span class="math"&gt;\((k&amp;gt;0)\)&lt;/span&gt;, what is the probability that the sum will be less than 1?&lt;/p&gt;
 &lt;p&gt;i.e. what is&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
 \displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&amp;lt;1\right)\;\;\; , x_i\in \mathcal{U}\left(0,1\right)
 \end{equation*}
 &lt;/div&gt;
-&lt;p&gt;The answer can be derived by using convolution of probability density functions.
-For two pdfs, &lt;span class="math"&gt;\(f(x)\)&lt;/span&gt; and &lt;span class="math"&gt;\(g(y)\)&lt;/span&gt;, the convolution &lt;span class="math"&gt;\(f*g\)&lt;/span&gt; is defined as&lt;/p&gt;
+&lt;p&gt;The answer can be derived by using convolution of probability density functions.&lt;/p&gt;
+&lt;p&gt;For two pdfs, &lt;span class="math"&gt;\(f(x)\)&lt;/span&gt; and &lt;span class="math"&gt;\(g(y)\)&lt;/span&gt;, the convolution &lt;span class="math"&gt;\(f*g\)&lt;/span&gt; is defined as&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{align*}
-\displaystyle \left(f*g\right)(z) = \int_{-\infty}^{\infty} \, f(z-y)g(y)\, dy\\ = \int_{-\infty}^{\infty} \, g(z-x) f(x)\, dx
+\displaystyle \left(f*g\right)(z) &amp;amp;= \int_{-\infty}^{\infty} \, f(z-y)g(y)\, dy\\
+&amp;amp;= \int_{-\infty}^{\infty} \, g(z-x) f(x)\, dx
 \end{align*}
 &lt;/div&gt;
-&lt;p&gt;Let &lt;span class="math"&gt;\(X_1\)&lt;/span&gt; and &lt;span class="math"&gt;\(X_2\)&lt;/span&gt; be two random variables which represent &lt;span class="math"&gt;\(x_1^{1/k}\)&lt;/span&gt;
-and &lt;span class="math"&gt;\(x_2^{1/k}\)&lt;/span&gt;. The pdf is then given by:&lt;/p&gt;
+&lt;p&gt;Let &lt;span class="math"&gt;\(X_1\)&lt;/span&gt; and &lt;span class="math"&gt;\(X_2\)&lt;/span&gt; be two random variables which represent &lt;span class="math"&gt;\(x_1^{1/k}\)&lt;/span&gt; and &lt;span class="math"&gt;\(x_2^{1/k}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The pdf is then given by:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
 \displaystyle f_{X_1}(x)=f_{X_2}(x)=\frac{d}{dx} (x^k)=k\, x^{k-1}
@@ -665,68 +638,72 @@ and &lt;span class="math"&gt;\(x_2^{1/k}\)&lt;/span&gt;. The pdf is then given b
 &lt;p&gt;and the pdf of the sum of two numbers &lt;span class="math"&gt;\(f_2(z)\)&lt;/span&gt; (in the region &lt;span class="math"&gt;\(0\le z \le 1\)&lt;/span&gt;) is:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{align*}
-\displaystyle f_2(z)= \int_{0}^{z} \, f_{X_1}(z-y) f_{X_2}(y) \, dy\\ = k^2\cdot z^{2\, k - 1}\cdot \mathrm{B}(k, k)
+\displaystyle f_2(z)&amp;amp;= \int_{0}^{z} \, f_{X_1}(z-y) f_{X_2}(y) \, dy\\
+&amp;amp;= k^2\cdot z^{2\, k - 1}\cdot \mathrm{B}(k, k)
 \end{align*}
 &lt;/div&gt;
 &lt;p&gt;After this, we can iteratively continue for more terms:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{align*}
-\displaystyle f_3(z)= \int_{0}^{z} \, f_{X_1}(z-y) f_{2}(y) \, dy\\ = k^3\cdot z^{3\, k - 1}\cdot \mathrm{B}(2\, k, k)\cdot \mathrm{B}(k, k)
+\displaystyle f_3(z)&amp;amp;= \int_{0}^{z} \, f_{X_1}(z-y) f_{2}(y) \, dy\\
+&amp;amp;= k^3\cdot z^{3\, k - 1}\cdot \mathrm{B}(2\, k, k)\cdot \mathrm{B}(k, k)
 \end{align*}
 &lt;/div&gt;
-&lt;p&gt;Continuing in that manner, for sum of 'n' terms, we will end up with:&lt;/p&gt;
+&lt;p&gt;Continuing in that manner, for sum of &lt;span class="math"&gt;\(n\)&lt;/span&gt; terms, we will end up with:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
 \displaystyle f_n(z) = k^n\cdot z^{n\, k - 1}\cdot \prod_{i=1}^{n-1} \mathrm{B}(i\, k, k)
 \end{equation*}
 &lt;/div&gt;
-&lt;p&gt;Since we require the probability of the sum to be less than one, we will evaluate that integral and
-write the beta functions in terms of gamma functions and simplify:&lt;/p&gt;
+&lt;p&gt;Since we require the probability of the sum to be less than one, we will evaluate that integral and write the beta functions in terms of gamma functions and simplify:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{align*}
-\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&amp;lt;1\right) = \int_{0}^{1} \, f_n(z)\, dz\\ = \frac{k^{n-1}}{n}\prod_{i=1}^{n-1} \mathrm{B}(i\, k, k) \\ = \frac{k^{n-1}\big(\Gamma(k)\big)^n}{n\, \Gamma(nk)} \\ = \frac{\big(\Gamma(k+1)\big)^n}{\Gamma(nk+1)}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&amp;lt;1\right) &amp;amp;= \int_{0}^{1} \, f_n(z)\, dz\\
+&amp;amp;= \frac{k^{n-1}}{n}\prod_{i=1}^{n-1} \mathrm{B}(i\, k, k) \\
+&amp;amp;= \frac{k^{n-1}\big(\Gamma(k)\big)^n}{n\, \Gamma(n\, k)} \\
+&amp;amp;= \frac{\big(\Gamma(k+1)\big)^n}{\Gamma(n\, k+1)}
 \end{align*}
 &lt;/div&gt;
 &lt;p&gt;That's some formula!&lt;/p&gt;
 &lt;p&gt;In Sage, it can be written as&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-5"&gt;5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-6"&gt;6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-7"&gt;7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-8"&gt;8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_95bcd2d494864751a90db5c681935d95-9"&gt;9&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-0"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'k y z'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-5"&gt;&lt;/a&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_95bcd2d494864751a90db5c681935d95-9"&gt;&lt;/a&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To verify our answer, we will perform a simulation:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_e5907bd89dd344dba7929739b55d674c-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_e5907bd89dd344dba7929739b55d674c-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_e5907bd89dd344dba7929739b55d674c-0"&gt;&lt;/a&gt;sim=: 3 : '1&amp;gt;+/(?6#0)^6'
-&lt;a name="rest_code_e5907bd89dd344dba7929739b55d674c-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0 NB. = 0.63926
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want to perform a simulation in a more verbose language, R is a good candidate.
-The code in R looks like:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_59aa33693b484a4da441bf406cfba766-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_59aa33693b484a4da441bf406cfba766-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_59aa33693b484a4da441bf406cfba766-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_59aa33693b484a4da441bf406cfba766-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code R"&gt;&lt;a name="rest_code_59aa33693b484a4da441bf406cfba766-0"&gt;&lt;/a&gt;n&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;
-&lt;a name="rest_code_59aa33693b484a4da441bf406cfba766-1"&gt;&lt;/a&gt;k&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;
-&lt;a name="rest_code_59aa33693b484a4da441bf406cfba766-2"&gt;&lt;/a&gt;b&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;runif&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;dim&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_59aa33693b484a4da441bf406cfba766-3"&gt;&lt;/a&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;b&lt;span class="o"&gt;^&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-7"&gt;7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-8"&gt;8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_2f14190baf2c419487943f0506eb9e1b-9"&gt;9&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-0"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'k y z'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-5"&gt;&lt;/a&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2f14190baf2c419487943f0506eb9e1b-9"&gt;&lt;/a&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To verify our answer, we can perform a simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_a701d053e7f349f1ac9a568bccb20561-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_a701d053e7f349f1ac9a568bccb20561-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_a701d053e7f349f1ac9a568bccb20561-0"&gt;&lt;/a&gt;sim=: 3 : '1&amp;gt;+/(?6#0)^6'
+&lt;a name="rest_code_a701d053e7f349f1ac9a568bccb20561-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0 NB. = 0.63926
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want to perform a simulation in a more verbose language, R is a good candidate.&lt;/p&gt;
+&lt;p&gt;The code in R looks like:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_ef70c6310dd94a719a7474f40ffd6836-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_ef70c6310dd94a719a7474f40ffd6836-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_ef70c6310dd94a719a7474f40ffd6836-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_ef70c6310dd94a719a7474f40ffd6836-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code R"&gt;&lt;a name="rest_code_ef70c6310dd94a719a7474f40ffd6836-0"&gt;&lt;/a&gt;n &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+&lt;a name="rest_code_ef70c6310dd94a719a7474f40ffd6836-1"&gt;&lt;/a&gt;k &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+&lt;a name="rest_code_ef70c6310dd94a719a7474f40ffd6836-2"&gt;&lt;/a&gt;b &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;runif&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;dim&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ef70c6310dd94a719a7474f40ffd6836-3"&gt;&lt;/a&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;b&lt;span class="o"&gt;^&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-0"&gt;&lt;/a&gt;'n k'=: 6 6
-&lt;a name="rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-1"&gt;&lt;/a&gt;a=:(n, 1e6) $ ?(n*1e6)#0
-&lt;a name="rest_code_9f460aa5d7ea4c91a289282e0e25b7d7-2"&gt;&lt;/a&gt;(+/%#)1&amp;gt;+/a^k NB. = 0.637572
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1515644cde6b42d388d8aa2e036be086-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1515644cde6b42d388d8aa2e036be086-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1515644cde6b42d388d8aa2e036be086-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_1515644cde6b42d388d8aa2e036be086-0"&gt;&lt;/a&gt;'n k'=: 6 6
+&lt;a name="rest_code_1515644cde6b42d388d8aa2e036be086-1"&gt;&lt;/a&gt;a=:(n, 1e6) $ ?(n*1e6)#0
+&lt;a name="rest_code_1515644cde6b42d388d8aa2e036be086-2"&gt;&lt;/a&gt;(+/%#)1&amp;gt;+/a^k NB. = 0.637572
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The corresponding probability derived analytically is:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{align*}
@@ -734,13 +711,11 @@ The code in R looks like:&lt;/p&gt;
 \end{align*}
 &lt;/div&gt;
 &lt;p&gt;References:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf"&gt;1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://arxiv.org/pdf/cs/0604056.pdf"&gt;2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Volume_of_an_n-ball"&gt;3&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</guid><pubDate>Sun, 01 Jun 2014 09:53:45 GMT</pubDate></item><item><title>Interesting definite integrals</title><link>https://g-ar.github.io/posts/interesting-definite-integrals/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;We will see a list of few integrals which yields to differentiation under the integral sign:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf"&gt;1. Dartmouth Probability Book&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://arxiv.org/pdf/cs/0604056.pdf"&gt;2. An arxiv article&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Volume_of_an_n-ball"&gt;3. Volume of a n-ball&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</guid><pubDate>Sun, 01 Jun 2014 09:53:45 GMT</pubDate></item><item><title>Interesting definite integrals</title><link>https://g-ar.github.io/posts/interesting-definite-integrals/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;We will see a list of few integrals which yields to differentiation under the integral sign:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{align*}
 \displaystyle \int_0^\infty \, \frac{\arctan{(a\,(x^n))}}{x^{n}}\, dx = \frac{a^{1-\frac{1}{n}} {\rm B}\left(\frac{1}{2 \, n}, 1-\frac{1}{2 \, n}\right)}{2 \, {\left({n} - 1\right)}}\\ =\frac{\pi \, a^{1-\frac{1}{n}}}{2 \, {\left({n} - 1\right)} \, \sin\left(\frac{\pi}{2n}\right)}
 \end{align*}
@@ -751,83 +726,63 @@ The code in R looks like:&lt;/p&gt;
 \displaystyle \int_0^\infty \, \frac{\arctan{(a\,(x^k))}}{x^{n}}\, dx =\frac{\pi \, a^{\frac{n-1}{k}}}{2 \, {\left({n} - 1\right)} \, \sin\left(\frac{k-n+1}{2\, k}\, \pi\right)}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^{\pi/2} \, \log{\left(1+a\, \sin(x)^{2}\right)}\, dx = \pi\, \log{\left(\frac{\sqrt{a+1}+1}{2}\right)}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^{\infty} \, e^{-a\sqrt{x}}\, \frac{\sin{\sqrt{x}}}{x}\, dx = \pi - 2\, \arctan{a}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \displaystyle \int_0^{\infty} \, \frac{\log{\left(1+\frac{a}{x^{3}}\right)}}{1+x^{3}}\, dx = \frac{1}{3\, \sqrt{3}} \, {\left(2 \, \sqrt{3} \pi \arctan\left(\frac{1}{\sqrt{3}} \, {\left(2 \, a^{\frac{1}{3}} + 1\right)}\right) + 3 \, \pi \log\left(a^{\frac{2}{3}} + a^{\frac{1}{3}} + 1\right)\right)}-\frac{\pi^{2}}{9}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \displaystyle \int_0^{\infty} \, \frac{x\, \log{\left(1+\frac{a}{x^{3}}\right)}}{1+x^{3}}\, dx = \frac{\pi^{2}}{9}-\frac{1}{3\, \sqrt{3}} \, {\left(2 \, \sqrt{3} \pi \arctan\left(\frac{1}{\sqrt{3}} \, {\left(2 \, a^{\frac{1}{3}} + 1\right)}\right) - 3 \, \pi \log\left(a^{\frac{2}{3}} + a^{\frac{1}{3}} + 1\right)\right)}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^{\infty} \, \log\left(\frac{a^{2} x^{2} + 1}{a^{2} + 1}\right)\, \frac{1}{1-x^{2} }\, dx = -\arctan(a)^2
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^{1} \frac{\log\left(1+a x \right)}{x\, \sqrt{1-x^{2}} }\, dx = \frac{1}{2}\, \log{\left(\sqrt{a^2-1}+a\right)}^{2}+\frac{\pi^2}{8}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_{0}^{\infty}\, \frac{\log\left(a x + b\right)}{{\left(x + 1\right)}^{2}}\, dx = \frac{a \log\left(a\right) - b \log\left(b\right)}{a - b}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_{0}^{\infty}\, \frac{e^{-a x^{2}} \sin\left(b\, x\right)^{2}}{x^{2}}\, dx = \frac{1}{2} \, \sqrt{\pi} {\left(b\, \sqrt{\pi}\, \text{erf}\left(\frac{b}{\sqrt{a}}\right) + \sqrt{a} e^{-b^{2}/a}\right)} - \frac{1}{2} \, \sqrt{\pi\, a}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;This integral is different. The rule is applied twice, and integrated back twice, finding the constant of integration each time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;This integral is different. The rule is applied twice, and integrated back twice, finding the constant of integration each time.&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
 \displaystyle \int_{0}^{\infty}\, \frac{e^{\left(-a x\right)} \sin\left(b x\right)^{5}}{x^{2}}\, dx = -\frac{3}{16} \, \pi a - \frac{5}{32} \, b {\left(\log\left(25\right) - 3 \, \log\left(9\right)\right)} + \frac{5}{8} \, a \arctan\left(\frac{a}{b}\right) - \frac{5}{16} \, a \arctan\left(\frac{a}{3 \, b}\right) + \frac{1}{16} \, a \arctan\left(\frac{a}{5 \, b}\right) - \frac{5}{32} \, b \log\left(\frac{a^{2} + 25 \, b^{2}}{25 \, b^{2}}\right) + \frac{15}{32} \, b \log\left(\frac{a^{2} + 9 \, b^{2}}{9 \, b^{2}}\right) - \frac{5}{16} \, b \log\left(\frac{a^{2} + b^{2}}{b^{2}}\right)
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;More complicated than the previous, the rule is to be applied 5 times:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;More complicated than the previous, the rule is to be applied 5 times:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
 \displaystyle \int_{0}^{\infty}\, \frac{e^{\left(-a x\right)} \sin\left(b x\right)^{5}}{x^{5}}\, dx = \frac{1}{128} \, \pi a^{4} + \frac{5}{64} \, \pi a^{2} b^{2} + \frac{115}{384} \, \pi b^{4} - \frac{5}{192} \, a^{4} \arctan\left(\frac{a}{b}\right) + \frac{5}{32} \, a^{2} b^{2} \arctan\left(\frac{a}{b}\right) - \frac{5}{192} \, b^{4} \arctan\left(\frac{a}{b}\right) + \frac{5}{384} \, a^{4} \arctan\left(\frac{a}{3 \, b}\right) - \frac{45}{64} \, a^{2} b^{2} \arctan\left(\frac{a}{3 \, b}\right) + \frac{135}{128} \, b^{4} \arctan\left(\frac{a}{3 \, b}\right) - \frac{1}{384} \, a^{4} \arctan\left(\frac{a}{5 \, b}\right) + \frac{25}{64} \, a^{2} b^{2} \arctan\left(\frac{a}{5 \, b}\right) - \frac{625}{384} \, b^{4} \arctan\left(\frac{a}{5 \, b}\right) + \frac{5}{192} \, a^{3} b \log\left(25\right) - \frac{5}{64} \, a^{3} b \log\left(9\right) - \frac{125}{192} \, a b^{3} \log\left(a^{2} + 25 \, b^{2}\right) + \frac{45}{64} \, a b^{3} \log\left(a^{2} + 9 \, b^{2}\right) - \frac{5}{96} \, a b^{3} \log\left(a^{2} + b^{2}\right) + \frac{5}{96} \, a^{3} b \log\left(\frac{a^{2}}{b^{2}} + 1\right) - \frac{5}{64} \, a^{3} b \log\left(\frac{a^{2}}{9 \, b^{2}} + 1\right) + \frac{5}{192} \, a^{3} b \log\left(\frac{a^{2}}{25 \, b^{2}} + 1\right)
@@ -840,39 +795,37 @@ The code in R looks like:&lt;/p&gt;
 \end{equation*}
 &lt;/div&gt;
 &lt;p&gt;In Sage, it can be applied as:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_f24136ac010d414887b9c4a7eb033a3f-14"&gt;14&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-0"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Takes a few seconds&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'a b'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;forget&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;intg&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-5"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;intg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-6"&gt;&lt;/a&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-7"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-8"&gt;&lt;/a&gt;&lt;span class="n"&gt;h2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-9"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-10"&gt;&lt;/a&gt;&lt;span class="n"&gt;h3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-11"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-12"&gt;&lt;/a&gt;&lt;span class="n"&gt;h4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-13"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_f24136ac010d414887b9c4a7eb033a3f-14"&gt;&lt;/a&gt;&lt;span class="n"&gt;h5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/interesting-definite-integrals/#rest_code_927d6a3b97404572b45c7b34fe76707e-14"&gt;14&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-0"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Takes a few seconds&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'a b'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;forget&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;intg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-5"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;intg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-6"&gt;&lt;/a&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-7"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-8"&gt;&lt;/a&gt;&lt;span class="n"&gt;h2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-9"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-10"&gt;&lt;/a&gt;&lt;span class="n"&gt;h3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-11"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-12"&gt;&lt;/a&gt;&lt;span class="n"&gt;h4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-13"&gt;&lt;/a&gt;&lt;span class="n"&gt;tmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_927d6a3b97404572b45c7b34fe76707e-14"&gt;&lt;/a&gt;&lt;span class="n"&gt;h5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{align*}
 \displaystyle \int_{0}^{\pi/2}\, e^{-b\, \sec{(x)}^{2}} \, \sin{(a\, \tan{x})}^{2} \, dx \\ =\frac{\pi}{4}\left(1 - e^{-2 \, a}\right) -\frac{1}{8} \, \pi {\left({\rm erfc}\left(\frac{a}{\sqrt{b}} + \sqrt{b}\right) e^{\left(4 \, a\right)} + {\rm erfc}\left(-\frac{a}{\sqrt{b}} + \sqrt{b}\right) - 2\right)} e^{\left(-2 \, a\right)} - \frac{1}{4} \, \pi \text{erf}\left(\sqrt{b}\right)
 \end{align*}
@@ -883,60 +836,48 @@ The code in R looks like:&lt;/p&gt;
 \displaystyle \int_{0}^{\pi/2}\, \sin{(a\, \tan{x})}^{2} \, dx =\frac{\pi}{4}\left(1 - e^{-2 \, a}\right)
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_{0}^{\infty}\, \frac{\log{(1+a\, x^3)}}{(1-x+x^2)}\, dx = \frac{2}{\sqrt{3}} \, \pi \, \log\left(1+ a^{\frac{1}{3}} + a^{\frac{2}{3}} \right)
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_{0}^{1}\, \frac{\arctan{a\, x}}{x\, \sqrt{1-x^2}}\, dx = \frac{\pi}{2} \, \sinh^{-1}{a}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{align*}
 \displaystyle \int_{0}^{1}\, \frac{\log{\left(1+a\, x\, (1-x)\right)}}{x}\, dx = \sum_{i=1}^{\infty}\frac{(-1)^{i-1} a^{i}}{i^{2}\, \binom{2i}{i}} = \frac{1}{2}\, \log\left( \frac{a+2 -\sqrt{a^{2} + 4 \, a}}{2}\right)^{2}\\ \implies \sum_{i=1}^{\infty}\frac{1}{i^{2}\, \binom{2i}{i}} =\frac{\pi^{2}}{18} \\ \phantom{\implies}\sum_{i=1}^{\infty}\frac{2^{i}}{i^{2}\, \binom{2i}{i}} =\frac{\pi^{2}}{8} \text{ etc.}
 \end{align*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_{0}^{\pi}\, \log{\left(1-2\, a\, \cos{x} + a^{2}\right)}\, dx = 2\, \pi\, \log{|a|}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^{\pi/4} \frac{\left(\log{\tan{\left(\frac{\pi}{4}+ x\right)}}\right)^n}{\tan{(2x)}}\, dx = \frac{n!}{2^n} \left(1-\frac{1}{2^{n + 1}}\right) \zeta(n + 1)
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^1 \log\frac{\big(x+a\, \sqrt{1-x^2}\big)^2}{\big(x-a\, \sqrt{1-x^2}\big)^2} \frac{x\, dx}{1-x^2} = 2\,\pi\arctan{a}
 \end{equation*}
 &lt;/div&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;The functions in the answer are Beta and the Polygamma:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;The functions in the answer are Beta and the Polygamma:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
 \displaystyle \int_0^{\pi/2}\, \frac{\sin(x)^a\, \log{\sin{x}}}{\sqrt{1+\sin(x)^2}}\, dx = \frac{1}{16} \, {\left(\psi_0\left(\frac{a+1}{4} \right)-\psi_0\left(\frac{a+3}{4} \right) \right)} {\rm B}\left(\frac{a+1}{4},\frac{1}{2}\right)
 \end{equation*}
-&lt;/div&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/interesting-definite-integrals/</guid><pubDate>Sun, 04 May 2014 09:46:30 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/interesting-definite-integrals/</guid><pubDate>Sun, 04 May 2014 09:46:30 GMT</pubDate></item></channel></rss>
