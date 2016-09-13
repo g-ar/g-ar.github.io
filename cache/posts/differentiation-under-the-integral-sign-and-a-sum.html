@@ -9,10 +9,12 @@ The integral can also be expanded as a Taylor series, thus obtaining an infinite
 <p>Applying the differentiation under the integral sign to this:</p>
 <div class="math">
 \begin{align*}
-\displaystyle \frac{\partial}{\partial a} I(a)=\int_0^1\, \frac{1}{1+a\,(x-x^2)}\, dx\\ =\frac{\log\left(\frac{1}{2} \, a + \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}} - \frac{\log\left(\frac{1}{2} \, a - \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}}
+\displaystyle
+\frac{\partial}{\partial a} I(a) &amp;= \int_0^1\, \frac{1}{1+a\,(x-x^2)}\, dx\\
+&amp;=\frac{\log\left(\frac{1}{2} \, a + \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}} - \frac{\log\left(\frac{1}{2} \, a - \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}}
 \end{align*}
 </div>
-<p>Integrating w.r.t a gives us (answer by friCAS)</p>
+<p>Integrating w.r.t <span class="math">\(a\)</span> gives us (answer by friCAS)</p>
 <div class="math">
 \begin{equation*}
 \displaystyle I(a)=\log\left( \frac{a+2 -\sqrt{a^{2} + 4 \, a}}{2}\right)^{2} + C
@@ -27,13 +29,14 @@ The integral can also be expanded as a Taylor series, thus obtaining an infinite
 <p>Now, we may also expand the integral as a taylor series:</p>
 <div class="math">
 \begin{align*}
-\displaystyle I(a)=\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{n} (x-x^2)^n}{n\, (x-x^2)} \, dx\\
-\displaystyle =\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{i} (x-x^2)^{n-1}}{n} \, dx\\
-\displaystyle =\int_0^1 \, \sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} (x-x^2)^{n}}{n+1} \, dx\\
-\displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} B(n+1,n+1)}{n+1}\\
-\displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \Gamma\left(n+1\right)\Gamma\left(n+1\right)}{(n+1)\,\Gamma\left(2\, n+1\right)}\\
-\displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \, n!^2}{(n+1)\,(2\, n+1)\, (2n)!}\\
-\displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1}}{(n+1)\,(2\, n+1)\, \binom{2n}{n}}
+\displaystyle
+I(a)&amp;=\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{n} (x-x^2)^n}{n\, (x-x^2)} \, dx\\
+&amp;=\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{i} (x-x^2)^{n-1}}{n} \, dx\\
+&amp;=\int_0^1 \, \sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} (x-x^2)^{n}}{n+1} \, dx\\
+&amp;=\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} B(n+1,n+1)}{n+1}\\
+&amp;=\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \Gamma\left(n+1\right)\Gamma\left(n+1\right)}{(n+1)\,\Gamma\left(2\, n+1\right)}\\
+&amp;=\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \, n!^2}{(n+1)\,(2\, n+1)\, (2n)!}\\
+&amp;=\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1}}{(n+1)\,(2\, n+1)\, \binom{2n}{n}}
 \end{align*}
 </div>
 <p>Therefore, we have the following sum!</p>

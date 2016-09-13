@@ -109,16 +109,16 @@ There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls
 <p><em>There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls are put into the boxes (one in each) randomly, what's the probability that none of the balls are put in the boxes with matching number?</em></p>
 <p>By simulation:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_512d3345b33e46bcaf380db0e0d5cc6a-0">0</a>
-<a href="#rest_code_512d3345b33e46bcaf380db0e0d5cc6a-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_512d3345b33e46bcaf380db0e0d5cc6a-0"></a>sim=: 3 : '0=+/(i.30)=30?30'
-<a name="rest_code_512d3345b33e46bcaf380db0e0d5cc6a-1"></a>(+/%#)(sim"0)100000#0
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_b5041f06a7f34ac0bdac4ab18d9b8101-0">0</a>
+<a href="#rest_code_b5041f06a7f34ac0bdac4ab18d9b8101-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_b5041f06a7f34ac0bdac4ab18d9b8101-0"></a>sim=: 3 : '0=+/(i.30)=30?30'
+<a name="rest_code_b5041f06a7f34ac0bdac4ab18d9b8101-1"></a>(+/%#)(sim"0)100000#0
 </pre></td>
 </tr></table>
 <p>The analytical answer:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_42bcbd4e5b984512b827188ed94c4fc8-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_42bcbd4e5b984512b827188ed94c4fc8-0"></a>+/((30$(1 _1))*(%!i.30))
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1c5a6ff9baf54a84a79421eae25a40c5-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_1c5a6ff9baf54a84a79421eae25a40c5-0"></a>+/((30$(1 _1))*(%!i.30))
 </pre></td>
 </tr></table>
 </div>
@@ -126,38 +126,34 @@ There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls
 <h2>2 Urns, balls and a gamble.</h2>
 <p>A game is played with the following rules: There is an urn with 20 balls, 10 red and 10 white. You need pick 10 balls out of these 20.</p>
 <ol class="arabic simple">
-<li>If 10 balls are of the same color, you get ~$~300</li>
-<li>If 9 balls are of the same color, you get ~$~30</li>
-<li>If 8 balls are of the same color, you get ~$~3</li>
-<li>If 7 balls are of the same color, you get ~$~2</li>
-<li>If 6 balls are of the same color, you get ~$~1</li>
-<li>If 5 balls are of the same color, you lose ~$~5</li>
+<li>If 10 balls are of the same color, you get $300</li>
+<li>If 9 balls are of the same color, you get $30</li>
+<li>If 8 balls are of the same color, you get $3</li>
+<li>If 7 balls are of the same color, you get $2</li>
+<li>If 6 balls are of the same color, you get $1</li>
+<li>If 5 balls are of the same color, you lose $5</li>
 </ol>
 <p>What's your expected amount?</p>
 <p>Simulation answer:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c397246abfd74e89b69a081b0847339d-0">0</a>
-<a href="#rest_code_c397246abfd74e89b69a081b0847339d-1">1</a>
-<a href="#rest_code_c397246abfd74e89b69a081b0847339d-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_c397246abfd74e89b69a081b0847339d-0"></a>a=: 10#0 1
-<a name="rest_code_c397246abfd74e89b69a081b0847339d-1"></a>sim=: 3 : '((_5 * 5 = ]) + ([: +/ 4 6 =/ ]) + (2 * [: +/ 3 7 =/ ]) + (3 * [: +/ 2 8 =/ ]) + (30 * [: +/ 1 9 =/ ]) + 300 * [: +/ 10 0 =/ ])+/(10?20){a'
-<a name="rest_code_c397246abfd74e89b69a081b0847339d-2"></a>(+/%#)(sim"0)1000000#0  NB. = _0.826702
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_88f4c708e2c24f369a2df24ff85636a4-0">0</a>
+<a href="#rest_code_88f4c708e2c24f369a2df24ff85636a4-1">1</a>
+<a href="#rest_code_88f4c708e2c24f369a2df24ff85636a4-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_88f4c708e2c24f369a2df24ff85636a4-0"></a>a=: 10#0 1
+<a name="rest_code_88f4c708e2c24f369a2df24ff85636a4-1"></a>sim=: 3 : '((_5 * 5 = ]) + ([: +/ 4 6 =/ ]) + (2 * [: +/ 3 7 =/ ]) + (3 * [: +/ 2 8 =/ ]) + (30 * [: +/ 1 9 =/ ]) + 300 * [: +/ 10 0 =/ ])+/(10?20){a'
+<a name="rest_code_88f4c708e2c24f369a2df24ff85636a4-2"></a>(+/%#)(sim"0)1000000#0  NB. = _0.826702
 </pre></td>
 </tr></table>
 <p>Analytical answer (hypergeometric distribution):</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_9eed9140b6f74121a782c893e75e22af-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_9eed9140b6f74121a782c893e75e22af-0"></a>A={1, 2, 3, 30, 300, -5}
-</pre></td>
-</tr></table>
+<p><span class="math">\(A=\{1, 2, 3, 30, 300, -5\}\)</span></p>
 <div class="math">
 \begin{equation*}
 \displaystyle \sum_{i=0}^{4}\dfrac{A_i\cdot 2\, \dbinom{10}{i}\dbinom{10}{10-i}}{\dbinom{20}{10}}+\dfrac{A_5\cdot \dbinom{10}{5}^2}{\dbinom{20}{10}} =-\dfrac{76485}{92378}=-0.827956872848514
 \end{equation*}
 </div>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a92513334fb9455b94a6156b3e8a11a1-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_a92513334fb9455b94a6156b3e8a11a1-0"></a>_5 1 2 3 30 300)*(((5!10)^2), (2 * (10 !~ ]) * 10 !~ 10 - ]) 6+i.5)%10!20
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_fc57463b0719447a968a8dde9221d447-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_fc57463b0719447a968a8dde9221d447-0"></a>_5 1 2 3 30 300)*(((5!10)^2), (2 * (10 !~ ]) * 10 !~ 10 - ]) 6+i.5)%10!20
 </pre></td>
 </tr></table>
 </div>
@@ -166,24 +162,24 @@ There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls
 <p>How many people should be in a room such that the probability of at least two of them sharing the same birthday is more than 0.5? (Assume 365 days in an year)</p>
 <p>By Simulation:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ed31b870a5174c36a9f15e8d69486e20-0">0</a>
-<a href="#rest_code_ed31b870a5174c36a9f15e8d69486e20-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_ed31b870a5174c36a9f15e8d69486e20-0"></a>sim=: 3 : '23&gt;+/~:?23#365'
-<a name="rest_code_ed31b870a5174c36a9f15e8d69486e20-1"></a>(+/%#)(sim"0)100000#0
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_86e1891980bf46c391a68dce212bfd17-0">0</a>
+<a href="#rest_code_86e1891980bf46c391a68dce212bfd17-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_86e1891980bf46c391a68dce212bfd17-0"></a>sim=: 3 : '23&gt;+/~:?23#365'
+<a name="rest_code_86e1891980bf46c391a68dce212bfd17-1"></a>(+/%#)(sim"0)100000#0
 </pre></td>
 </tr></table>
 <p>Analytically:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8303f0c41a274f8d9126d24d5bae7a55-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_8303f0c41a274f8d9126d24d5bae7a55-0"></a>1-*/((365-i.23)%(365)) NB. = 0.507297234323985
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_12d1370d54844ed8ac72016509c21b98-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_12d1370d54844ed8ac72016509c21b98-0"></a>1-*/((365-i.23)%(365)) NB. = 0.507297234323985
 </pre></td>
 </tr></table>
 <p>To see a plot of the probabilities, up to 100 people in a room:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8e98fac376544ca18381512ef81d0a1d-0">0</a>
-<a href="#rest_code_8e98fac376544ca18381512ef81d0a1d-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_8e98fac376544ca18381512ef81d0a1d-0"></a>load'plot'
-<a name="rest_code_8e98fac376544ca18381512ef81d0a1d-1"></a>'marker' plot (1+i.100);((1 - [: */ 365 %~ 365 - i.)"0) 1+i.100
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_374f44673e0147f98f584cdfb20004cc-0">0</a>
+<a href="#rest_code_374f44673e0147f98f584cdfb20004cc-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_374f44673e0147f98f584cdfb20004cc-0"></a>load'plot'
+<a name="rest_code_374f44673e0147f98f584cdfb20004cc-1"></a>'marker' plot (1+i.100);((1 - [: */ 365 %~ 365 - i.)"0) 1+i.100
 </pre></td>
 </tr></table>
 </div>
@@ -192,8 +188,8 @@ There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls
 <p>Four dice are rolled, what's the probability that no two faces are repeated? (E.g. 6 4 2 5 is okay, but 3 6 5 6 is forbidden)</p>
 <p>By simulation:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_30f3b1e5a28140109fea925e5261017e-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_30f3b1e5a28140109fea925e5261017e-0"></a>sim=: 3 : '(4 = [: +/ [: +/ =/~)?4#6'
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_b9b022780f674ddba110219c122a4724-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_b9b022780f674ddba110219c122a4724-0"></a>sim=: 3 : '(4 = [: +/ [: +/ =/~)?4#6'
 </pre></td>
 </tr></table>
 <p>By permutation:</p>
@@ -204,14 +200,14 @@ There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls
 </div>
 <p>Putting that in J console:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d7e1b6cc8bf74da79a70760fae4d2d39-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_d7e1b6cc8bf74da79a70760fae4d2d39-0"></a>((4!6)*!4)%6^4
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_785cc64953d24ea6b2bec267f6752474-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_785cc64953d24ea6b2bec267f6752474-0"></a>((4!6)*!4)%6^4
 </pre></td>
 </tr></table>
 <p>By counting:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8af6ec082440489c8b0537ff28ad0fe3-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_8af6ec082440489c8b0537ff28ad0fe3-0"></a>(+/4=+/"1~:"1(6 6 6 6#:i.1296))%6^4 NB. this uses base-6 representation till 6^4
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_27461e2ed6544a44907f73c9e62bf6d9-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_27461e2ed6544a44907f73c9e62bf6d9-0"></a>(+/4=+/"1~:"1(6 6 6 6#:i.1296))%6^4 NB. this uses base-6 representation till 6^4
 </pre></td>
 </tr></table>
 </div>
@@ -220,16 +216,16 @@ There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls
 <p>In an election, candidate A receives n votes, and candidate B receives m votes where <span class="math">\(n &gt; m\)</span>. Assuming that all orderings are equally likely, show that the probability that A is always ahead in the count of votes is <span class="math">\(\dfrac{n - m}{n + m}\)</span>.</p>
 <p>Here's a simulation to see that it may be true:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_31204b2aadbe4bf0a894830f08789a03-0">0</a>
-<a href="#rest_code_31204b2aadbe4bf0a894830f08789a03-1">1</a>
-<a href="#rest_code_31204b2aadbe4bf0a894830f08789a03-2">2</a>
-<a href="#rest_code_31204b2aadbe4bf0a894830f08789a03-3">3</a>
-<a href="#rest_code_31204b2aadbe4bf0a894830f08789a03-4">4</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_31204b2aadbe4bf0a894830f08789a03-0"></a>n=:55
-<a name="rest_code_31204b2aadbe4bf0a894830f08789a03-1"></a>m=:45
-<a name="rest_code_31204b2aadbe4bf0a894830f08789a03-2"></a>a=:(m#_1),n#1
-<a name="rest_code_31204b2aadbe4bf0a894830f08789a03-3"></a>sim=: 3 : '100=+/0&lt;+/\(100?100){a'
-<a name="rest_code_31204b2aadbe4bf0a894830f08789a03-4"></a>(+/%#)(sim"0)100000#0 NB. = 0.0993
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_543ea413cb7547f5840dbcc29721c83c-0">0</a>
+<a href="#rest_code_543ea413cb7547f5840dbcc29721c83c-1">1</a>
+<a href="#rest_code_543ea413cb7547f5840dbcc29721c83c-2">2</a>
+<a href="#rest_code_543ea413cb7547f5840dbcc29721c83c-3">3</a>
+<a href="#rest_code_543ea413cb7547f5840dbcc29721c83c-4">4</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_543ea413cb7547f5840dbcc29721c83c-0"></a>n=:55
+<a name="rest_code_543ea413cb7547f5840dbcc29721c83c-1"></a>m=:45
+<a name="rest_code_543ea413cb7547f5840dbcc29721c83c-2"></a>a=:(m#_1),n#1
+<a name="rest_code_543ea413cb7547f5840dbcc29721c83c-3"></a>sim=: 3 : '100=+/0&lt;+/\(100?100){a'
+<a name="rest_code_543ea413cb7547f5840dbcc29721c83c-4"></a>(+/%#)(sim"0)100000#0 NB. = 0.0993
 </pre></td>
 </tr></table>
 <p>which is close to 0.1 computed from the formula.</p>
@@ -245,20 +241,20 @@ There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls
 </div>
 <p>and a simulation can back up our claim, e.g. for <span class="math">\(k=5\)</span>:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_72f93dc6a3304566bec1b09ddebee234-0">0</a>
-<a href="#rest_code_72f93dc6a3304566bec1b09ddebee234-1">1</a>
-<a href="#rest_code_72f93dc6a3304566bec1b09ddebee234-2">2</a>
-<a href="#rest_code_72f93dc6a3304566bec1b09ddebee234-3">3</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_72f93dc6a3304566bec1b09ddebee234-0"></a>pos=: 5
-<a name="rest_code_72f93dc6a3304566bec1b09ddebee234-1"></a>a=:(4#1),48#0
-<a name="rest_code_72f93dc6a3304566bec1b09ddebee234-2"></a>sim=: 3 : 'pos=1+{.I.(52?52){a'
-<a name="rest_code_72f93dc6a3304566bec1b09ddebee234-3"></a>(+/%#)(sim"0)100000#0
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a1495b6631c444979d0ee63cfc28101b-0">0</a>
+<a href="#rest_code_a1495b6631c444979d0ee63cfc28101b-1">1</a>
+<a href="#rest_code_a1495b6631c444979d0ee63cfc28101b-2">2</a>
+<a href="#rest_code_a1495b6631c444979d0ee63cfc28101b-3">3</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_a1495b6631c444979d0ee63cfc28101b-0"></a>pos=: 5
+<a name="rest_code_a1495b6631c444979d0ee63cfc28101b-1"></a>a=:(4#1),48#0
+<a name="rest_code_a1495b6631c444979d0ee63cfc28101b-2"></a>sim=: 3 : 'pos=1+{.I.(52?52){a'
+<a name="rest_code_a1495b6631c444979d0ee63cfc28101b-3"></a>(+/%#)(sim"0)100000#0
 </pre></td>
 </tr></table>
 <p>and the probabilities for first five positions:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_0e7a7222d7504dd393c3662f8e1060d8-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_0e7a7222d7504dd393c3662f8e1060d8-0"></a>(((48 !~ 1 -~ ]) % 52 !~ 1 -~ ]) * 4 % 52 - 1 -~ ]) 1+i.5
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a098d09c205e4bcd8eb39b764af2f775-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_a098d09c205e4bcd8eb39b764af2f775-0"></a>(((48 !~ 1 -~ ]) % 52 !~ 1 -~ ]) * 4 % 52 - 1 -~ ]) 1+i.5
 </pre></td>
 </tr></table>
 </div>
