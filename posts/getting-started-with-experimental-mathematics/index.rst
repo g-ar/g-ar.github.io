@@ -11,9 +11,9 @@ Here is one `nice problem <https://math.stackexchange.com/questions/1061083/aver
 
 To rephrase the problem:
 
-/There are :math:`m` people with one ball each, and :math:`n` boxes. In a round, each of them picks one box randomly (uniformly and independently) and
+There are :math:`m` people with one ball each, and :math:`n` boxes. In a round, each of them picks one box randomly (uniformly and independently) and
 drops the ball in it. Whichever box is not empty is removed, and the next round starts. How many rounds, on an average, will it take till no
-boxes are left?/
+boxes are left?
 
 Obtaining a formula directly by combinatorial arguments without computing any values and getting it right is quite difficult, and prone to errors.
 
@@ -58,9 +58,9 @@ Running the above gives a value of about :math:`2.554`
 Next, we will try to compute some numbers:
 How many ways is it possible for 3 balls to be placed 5 boxes such that everybody chooses the same box?
 
-abc,0,0,0,0
+:math:`abc,0,0,0,0`
 
-= 5 ways
+:math:`= 5` ways
 
 How many ways is it possible for 3 balls to be placed 5 boxes such that two boxes are selected?
 
@@ -68,19 +68,19 @@ Do some casework:
 
 One box may contain two balls, one box with one ball and one empty box.
 
-ab,c,0,0,0
+:math:`ab,c,0,0,0`
 
-ac,b,0,0,0
+:math:`ac,b,0,0,0`
 
-bc,a,0,0,0
+:math:`bc,a,0,0,0`
 
-= 3\*5!/3! = 60 ways
+:math:`= 3\cdot 5!/3! = 60` ways
 
 How many ways is it possible for 3 balls to be placed 5 boxes such that 3 boxes are selected?
 
-a,b,c,0,0
+:math:`a,b,c,0,0`
 
-= 5!/2! = 60 ways
+:math:`= 5!/2! = 60` ways
 
 And we see that the total turns out to be :math:`5 + 60 + 60 = 125`, which is 53, the number of ways of arranging the balls in boxes without any restriction.
 
@@ -99,8 +99,7 @@ For :math:`m=3` and :math:`n=5`, :math:`E[5] = 5/125*E[4]+60/125*E[3]+60/125*E[2
 Then, calculate similarly for :math:`n=4` and :math:`m=3` to get :math:`E[4]` and so on.
 The boundary condition is :math:`E[1]=1`, since obviously the game would end in one round if there was a single box.
 
-:math:`E[5]` would be :math:`18391/7200 = 2.5543` which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a
-formula.
+:math:`E[5]` would be :math:`\dfrac{18391}{7200} = 2.5543` which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a formula.
 
 Let us calculate the number of ways to partition a number :math:`n` of length :math:`3` (number of people fixed at :math:`m=3`), using sage:
 
@@ -113,9 +112,9 @@ Let us calculate the number of ways to partition a number :math:`n` of length :m
         mm = bb
         ll = cc
         summ = 0
-        alst=Partitions(nn,length=ll).list()
+        alst = Partitions(nn,length=ll).list()
         for a in alst:
-            b=a+([0]*(mm-ll))
+            b = a+([0]*(mm-ll))
             tot = 1
             for c in a:
                 tot *= binomial(nn,c)
@@ -136,14 +135,12 @@ After some trial and error, the equation turns out to be:
 
 .. math::
 
-    \displaystyle E_{n,m} = \left(\sum_{j=1}^{n-1} \left\lbrace {m \atop j} \right\rbrace \dfrac{n!}{(n-j)!} \dfrac{E_{n-j,m}}{n^m}\right)+1
-    \\
-    E_{1,m} = 1
-
+    \displaystyle E_{n,m} &= \left(\sum_{j=1}^{n-1} \left\lbrace {m \atop j} \right\rbrace \dfrac{n!}{(n-j)!} \dfrac{E_{n-j,m}}{n^m}\right)+1\\
+    E_{1,m} &= 1
 
 In maxima (which will cache the values to speed up recurrence computation), it can be written as:
 
-.. code-block:: text
+.. code-block:: scheme
     :number-lines: 0
 
     m:3$
