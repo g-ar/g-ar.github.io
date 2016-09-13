@@ -19,7 +19,7 @@ Setting up a markov chain is easy:
     \displaystyle A= \begin{pmatrix} 0 & 1 & 0 & 0 & 0 & 0 & 0\\ 0 & \frac{1}{6} & \frac{5}{6} & 0 & 0 & 0 & 0\\ 0 & 0 & \frac{1}{3} & \frac{2}{3} & 0 & 0 & 0\\ 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0\\ 0 & 0 & 0 & 0 & \frac{2}{3} & \frac{1}{3} & 0\\ 0 & 0 & 0 & 0 & 0 & \frac{5}{6} & \frac{1}{6}\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 \end{pmatrix}
 
 
-The states indicate the number of faces shown up. E.g. the row above the last row indicates that when 5 faces are seen, there's a probability of 5/6 remaining in the same state and 1/6 moving to the final state.
+The states indicate the number of faces shown up. E.g. the row above the last row indicates that when 5 faces are seen, there's a probability of :math:`5/6` remaining in the same state and :math:`1/6` moving to the final state.
 
 So, :math:`A^n[0,6]`, gives the required answer. But we can also find the generating function for that entry by computing :math:`(I-x\, A)^{-1}`, which is
 

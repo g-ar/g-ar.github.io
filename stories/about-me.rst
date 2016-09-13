@@ -21,6 +21,7 @@ These are the tools used for my math problems:
 
 - `FriCAS <http://fricas.sourceforge.net/>`_, another CAS, which has some very good sequence guessing routines missing in Sage.
 
+`https://math.stackexchange.com/users/flair/138850.png?theme=clean <https://math.stackexchange.com/users/flair/138850.png?theme=clean>`_
 
 `github profile <https://github.com/g-ar>`_
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/mathjax.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 11 Sep 2016 16:48:05 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
-In particular, we'll use the excellent math toolkit by David Bailey aimed at experimental mathematics arprec, compile and run mathtool.&lt;/p&gt;
-&lt;p&gt;The following problems are taken from brilliant.org&lt;/p&gt;
-&lt;p&gt;Q1.&lt;/p&gt;
-&lt;div class="math"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/mathjax.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Tue, 13 Sep 2016 13:33:53 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
+In particular, we'll use the excellent math toolkit by David Bailey et. al. aimed at experimental mathematics -- &lt;a class="reference external" href="http://crd.lbl.gov/~dhbailey/mpdist/arprec-2.2.18.tar.gz"&gt;arprec&lt;/a&gt;.
+Compile and run mathtool.&lt;/p&gt;
+&lt;p&gt;The following problems are taken from &lt;a class="reference external" href="https://brilliant.org"&gt;Brilliant&lt;/a&gt;&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^{\frac{\pi}{3}} x \left(\ln{\left(2 \sin{\frac{x}{2}}\right)}\right)^2 \, dx = \frac{c\, \pi^a}{b}
 \end{equation*}
@@ -11,204 +12,207 @@ In particular, we'll use the excellent math toolkit by David Bailey aimed at exp
 &lt;p&gt;Find $a, b,$ and &lt;span class="math"&gt;\(c\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Start mathtool, and enter the commands in sequence:
 (Only the relevent output is shown after command executions)&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_54909469799640468b530902cef02935-15"&gt;15&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_54909469799640468b530902cef02935-0"&gt;&lt;/a&gt;integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
-&lt;a name="rest_code_54909469799640468b530902cef02935-1"&gt;&lt;/a&gt;-- snip --
-&lt;a name="rest_code_54909469799640468b530902cef02935-2"&gt;&lt;/a&gt;&amp;gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
-&lt;a name="rest_code_54909469799640468b530902cef02935-3"&gt;&lt;/a&gt;epsilon=-50
-&lt;a name="rest_code_54909469799640468b530902cef02935-4"&gt;&lt;/a&gt;pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
-&lt;a name="rest_code_54909469799640468b530902cef02935-5"&gt;&lt;/a&gt;-- snip --
-&lt;a name="rest_code_54909469799640468b530902cef02935-6"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
-&lt;a name="rest_code_54909469799640468b530902cef02935-7"&gt;&lt;/a&gt;&amp;gt; +  6480.* pslq001
-&lt;a name="rest_code_54909469799640468b530902cef02935-8"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq002
-&lt;a name="rest_code_54909469799640468b530902cef02935-9"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq003
-&lt;a name="rest_code_54909469799640468b530902cef02935-10"&gt;&lt;/a&gt;&amp;gt; +   -17.* pslq004
-&lt;a name="rest_code_54909469799640468b530902cef02935-11"&gt;&lt;/a&gt;&amp;gt; Result[ 37] through Result[ 40] =
-&lt;a name="rest_code_54909469799640468b530902cef02935-12"&gt;&lt;/a&gt;&amp;gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_54909469799640468b530902cef02935-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_54909469799640468b530902cef02935-14"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_54909469799640468b530902cef02935-15"&gt;&lt;/a&gt;&amp;gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-15"&gt;15&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-0"&gt;&lt;/a&gt;integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-1"&gt;&lt;/a&gt;-- snip --
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-2"&gt;&lt;/a&gt;&amp;gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-3"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-4"&gt;&lt;/a&gt;pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-5"&gt;&lt;/a&gt;-- snip --
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-6"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-7"&gt;&lt;/a&gt;&amp;gt; +  6480.* pslq001
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-8"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq002
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-9"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq003
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-10"&gt;&lt;/a&gt;&amp;gt; +   -17.* pslq004
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-11"&gt;&lt;/a&gt;&amp;gt; Result[ 37] through Result[ 40] =
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-12"&gt;&lt;/a&gt;&amp;gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-14"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_5ca0c099a69d4838a8382bfe5fb3b3ba-15"&gt;&lt;/a&gt;&amp;gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;So, the above output means, &lt;span class="math"&gt;\(0= 6480\times 0.255548541292907628552389761683331310377371752536366075420056165916 - 17\times \pi^4\)&lt;/span&gt;, and hence &lt;span class="math"&gt;\(c=17, a=4, b=6480\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;When doing such computations, it's good to have more digits when computing integral or sums, and reduce the epsilon value when using pslq, so that it checks for fewer decimal places when trying for an integer relation. Otherwise, it is likely to miss the relation when the numerical accuracy is kept high. digits=100 and epsilon=-50 worked well for me in most cases.&lt;/p&gt;
-&lt;p&gt;Q2:&lt;/p&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^{2\log{\phi}} \log{\left(2\, \sinh{\frac{x}{2}}\right)} = -\frac{\pi^a}{b}
 \end{equation*}
 &lt;/div&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-15"&gt;15&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_245e78cdccae4dbeb1d64565cac34e73-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-0"&gt;&lt;/a&gt;epsilon=-100
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-1"&gt;&lt;/a&gt;integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-2"&gt;&lt;/a&gt;&amp;gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-3"&gt;&lt;/a&gt;epsilon=-50
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-4"&gt;&lt;/a&gt;pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-6"&gt;&lt;/a&gt;&amp;gt; +  10.* pslq001
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-7"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq002
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-8"&gt;&lt;/a&gt;&amp;gt; +   1.* pslq003
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-9"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq004
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-11"&gt;&lt;/a&gt;&amp;gt; Result[ 29] through Result[ 33] =
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-12"&gt;&lt;/a&gt;&amp;gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-14"&gt;&lt;/a&gt;&amp;gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_245e78cdccae4dbeb1d64565cac34e73-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93b71678925c46f081bae501c11499ab-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-0"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-1"&gt;&lt;/a&gt;integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-2"&gt;&lt;/a&gt;&amp;gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-3"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-4"&gt;&lt;/a&gt;pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-6"&gt;&lt;/a&gt;&amp;gt; +  10.* pslq001
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-7"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq002
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-8"&gt;&lt;/a&gt;&amp;gt; +   1.* pslq003
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-9"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq004
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-11"&gt;&lt;/a&gt;&amp;gt; Result[ 29] through Result[ 33] =
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-12"&gt;&lt;/a&gt;&amp;gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-14"&gt;&lt;/a&gt;&amp;gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_93b71678925c46f081bae501c11499ab-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;In this example, mathtool chokes when lower limit is 0 saying argument is too large, so keep it close to 0. Then using pslq, we see that a=2 and b=10.&lt;/p&gt;
-&lt;p&gt;Q3.&lt;/p&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_{-\infty}^{\infty} \dfrac{\log{\left(1 + e^{2x}\right)}}{1 + e^{3\, x}} = \frac{a \pi^b}{c}
 \end{equation*}
 &lt;/div&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_4139e71bd17c4bdeb566d24bbbcd4300-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_4139e71bd17c4bdeb566d24bbbcd4300-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_4139e71bd17c4bdeb566d24bbbcd4300-0"&gt;&lt;/a&gt;epsilon=-100
-&lt;a name="rest_code_4139e71bd17c4bdeb566d24bbbcd4300-1"&gt;&lt;/a&gt;Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d389fb1505e444e1b225b4feaba529ef-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d389fb1505e444e1b225b4feaba529ef-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_d389fb1505e444e1b225b4feaba529ef-0"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_d389fb1505e444e1b225b4feaba529ef-1"&gt;&lt;/a&gt;Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we try to execute it directly, it complains "argument too large". So, we transform it by substituting &lt;span class="math"&gt;\(e^x=y\)&lt;/span&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-15"&gt;15&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-16"&gt;16&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_d26c19908bf8409784c304f463332a6b-17"&gt;17&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-0"&gt;&lt;/a&gt;Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-1"&gt;&lt;/a&gt;&amp;gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-2"&gt;&lt;/a&gt;epsilon=-50
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-3"&gt;&lt;/a&gt;pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-4"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-5"&gt;&lt;/a&gt;&amp;gt; +  216.* pslq001
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-6"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq002
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-7"&gt;&lt;/a&gt;&amp;gt; +  -13.* pslq003
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-8"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq004
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-9"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq005
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-10"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq006
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-11"&gt;&lt;/a&gt;&amp;gt; Result[  7] through Result[ 12] =
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-12"&gt;&lt;/a&gt;&amp;gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-14"&gt;&lt;/a&gt;&amp;gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_d26c19908bf8409784c304f463332a6b-17"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_6b5f5b32ff094e16839a0148410a8d27-17"&gt;17&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-0"&gt;&lt;/a&gt;Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-1"&gt;&lt;/a&gt;&amp;gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-2"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-3"&gt;&lt;/a&gt;pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-4"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-5"&gt;&lt;/a&gt;&amp;gt; +  216.* pslq001
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-6"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq002
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-7"&gt;&lt;/a&gt;&amp;gt; +  -13.* pslq003
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-8"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq004
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-9"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq005
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-10"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq006
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-11"&gt;&lt;/a&gt;&amp;gt; Result[  7] through Result[ 12] =
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-12"&gt;&lt;/a&gt;&amp;gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-14"&gt;&lt;/a&gt;&amp;gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_6b5f5b32ff094e16839a0148410a8d27-17"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Hence, &lt;span class="math"&gt;\(a=13, b=2, c=216\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Q4.&lt;/p&gt;
-&lt;div class="math"&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
 \begin{equation*}
 \displaystyle \int_0^1 \log{x}\log{\left(1-x\right)} dx = \frac{a}{b}-\frac{\pi^c}{d}
 \end{equation*}
 &lt;/div&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-15"&gt;15&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-16"&gt;16&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-17"&gt;17&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-18"&gt;18&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-19"&gt;19&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_93083e6c2982479c845ab337c8c8d7f8-20"&gt;20&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-0"&gt;&lt;/a&gt;epsilon=-100
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-1"&gt;&lt;/a&gt;integrate[log[x]*log[1-x],{x,0,1}]
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-2"&gt;&lt;/a&gt;&amp;gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-3"&gt;&lt;/a&gt;epsilon=-50
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-4"&gt;&lt;/a&gt;pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-6"&gt;&lt;/a&gt;&amp;gt; +  -6.* pslq001
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-7"&gt;&lt;/a&gt;&amp;gt; +  12.* pslq002
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-8"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq003
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-9"&gt;&lt;/a&gt;&amp;gt; +  -1.* pslq004
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-11"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq006
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-12"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq007
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-13"&gt;&lt;/a&gt;&amp;gt; Result[ 27] through Result[ 33] =
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-14"&gt;&lt;/a&gt;&amp;gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-15"&gt;&lt;/a&gt;&amp;gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-17"&gt;&lt;/a&gt;&amp;gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-18"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-19"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_93083e6c2982479c845ab337c8c8d7f8-20"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Therefore, &lt;span class="math"&gt;\(a=2, b=1, c=2, d=6\)&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</guid><pubDate>Sat, 02 Jul 2016 14:21:29 GMT</pubDate></item><item><title>Compiling softwares that require later versions of GCC</title><link>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Suppose we require to install the latest version of a software, but the repository doesn't have it, we usually either get the latest source code and compile, or download the compiled binary if available, and run it. But if we are running some old distro, latest binary refuse to run complaining that it requires GLIBC 2.16 to run etc. When the binary file refuses to run, we can then try to compile the source, which usually works fine. But sometimes it happens that the source requires a language standard, which is unsupported by the GCC version installed. In such cases, we can download the latest GCC, compile it, and then compile the required software using the latest GCC. We'll see an example to compile "Context Free" -- a program which generates art from a context free grammar, and requires C++11 standard to compile. The steps mentioned below were done on debian wheezy, whose software repository contains version 2 of cfdg whereas the latest version is 3.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-17"&gt;17&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-18"&gt;18&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-19"&gt;19&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_566aee1ad1b24a9a90992ffe6737a498-20"&gt;20&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-0"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-1"&gt;&lt;/a&gt;integrate[log[x]*log[1-x],{x,0,1}]
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-2"&gt;&lt;/a&gt;&amp;gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-3"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-4"&gt;&lt;/a&gt;pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-6"&gt;&lt;/a&gt;&amp;gt; +  -6.* pslq001
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-7"&gt;&lt;/a&gt;&amp;gt; +  12.* pslq002
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-8"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq003
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-9"&gt;&lt;/a&gt;&amp;gt; +  -1.* pslq004
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-11"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq006
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-12"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq007
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-13"&gt;&lt;/a&gt;&amp;gt; Result[ 27] through Result[ 33] =
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-14"&gt;&lt;/a&gt;&amp;gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-15"&gt;&lt;/a&gt;&amp;gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-17"&gt;&lt;/a&gt;&amp;gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-18"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-19"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_566aee1ad1b24a9a90992ffe6737a498-20"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Therefore, &lt;span class="math"&gt;\(a=2, b=1, c=2, d=6\)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</guid><pubDate>Sat, 02 Jul 2016 14:21:29 GMT</pubDate></item><item><title>Compiling softwares that require later versions of GCC</title><link>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Suppose we require to install the latest version of a software, but the repository doesn't have it, we usually either get the latest source code and compile, or download the compiled binary if available, and run it. But if we are running some old distro, latest binary refuse to run complaining that it requires GLIBC 2.16 to run etc. When the binary file refuses to run, we can then try to compile the source, which usually works fine. But sometimes it happens that the source requires a language standard, which is unsupported by the GCC version installed. In such cases, we can download the latest GCC, compile it, and then compile the required software using the latest GCC. We'll see an example to compile "Context Free" -- a program which generates art from a context free grammar, and requires C++11 standard to compile. The steps mentioned below were done on debian wheezy, whose software repository contains version 2 of cfdg whereas the latest version is 3.&lt;/p&gt;
+&lt;p&gt;In order to compile the latest version of contextfree in debian wheezy:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Download the latest GCC&lt;/li&gt;
 &lt;li&gt;Extract and configure with a prefix path, so that we can avoid installing it to a directory which requires root privilege&lt;/li&gt;
-&lt;li&gt;./configure --prefix=$HOME/bin/custom&lt;sub&gt;gcc&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;./configure &lt;span class="pre"&gt;--prefix=$HOME/bin/custom_gcc&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
 &lt;li&gt;The compile and install to that path, the whole process takes much time anywhere between 10 mins to a couple of hours or more, depending on the speed of the machine and the number of cores used.
 To compile on a single core, use&lt;ul&gt;
-&lt;li&gt;make&lt;/li&gt;
-&lt;li&gt;make install&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;make&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;make install&lt;/tt&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install libpng12-dev and compile.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7418e55894d4475e84f033351cad045a-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7418e55894d4475e84f033351cad045a-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7418e55894d4475e84f033351cad045a-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7418e55894d4475e84f033351cad045a-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_7418e55894d4475e84f033351cad045a-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_7418e55894d4475e84f033351cad045a-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;LD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_7418e55894d4475e84f033351cad045a-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CPP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
-&lt;a name="rest_code_7418e55894d4475e84f033351cad045a-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CXX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in $HOME/bin named cfdg with following contents&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_3fc8be63edb649cca00e4d30990571fb-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_3fc8be63edb649cca00e4d30990571fb-0"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-&lt;a name="rest_code_3fc8be63edb649cca00e4d30990571fb-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_3fc8be63edb649cca00e4d30990571fb-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CXX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/g++
-&lt;a name="rest_code_3fc8be63edb649cca00e4d30990571fb-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/lib64
-&lt;a name="rest_code_3fc8be63edb649cca00e4d30990571fb-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/context-free-3.0.9/cfdg &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and &lt;tt class="docutils literal"&gt;chmod +x cfdg&lt;/tt&gt;, and execute the software happily ever after.&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</guid><pubDate>Sun, 20 Dec 2015 14:10:01 GMT</pubDate></item><item><title>Installing and Running TensorFlow in Debian Wheezy</title><link>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;A couple of days ago google released what they term it as the second generation deep learning neural network software system, called TensorFlow. Google has been taking much interest in deep learning since two or three years (perhaps having surplus computation power?), and they are using it for all sorts of softwares they develop -- maps, translation, spying on you for targeted ads etc. So, I thought of trying out their newly released tool.&lt;/p&gt;
-&lt;p&gt;First, I tried to install it using their "easy way" using virtualenv and pip. Getting into the virtual environment is easy, and pip install command also worked, but when importing tensorflow, it spit an ugly ImportError -- /lib/x86&lt;sub&gt;64&lt;/sub&gt;-linux-gnu/libc.so.6: version `GLIBC&lt;sub&gt;2.17&lt;/sub&gt;' not found. Now, for the other option.&lt;/p&gt;
+&lt;p&gt;After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;libpng12-dev&lt;/span&gt;&lt;/tt&gt; and compile.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_5d8faec04ee04dd4962c49d430c98fe1-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_5d8faec04ee04dd4962c49d430c98fe1-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_5d8faec04ee04dd4962c49d430c98fe1-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_5d8faec04ee04dd4962c49d430c98fe1-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_5d8faec04ee04dd4962c49d430c98fe1-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_5d8faec04ee04dd4962c49d430c98fe1-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;LD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_5d8faec04ee04dd4962c49d430c98fe1-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CPP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;a name="rest_code_5d8faec04ee04dd4962c49d430c98fe1-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CXX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in &lt;tt class="docutils literal"&gt;$HOME/bin&lt;/tt&gt; named cfdg with following contents&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_87badf9bc96b47458faca2a7cae9032c-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_87badf9bc96b47458faca2a7cae9032c-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_87badf9bc96b47458faca2a7cae9032c-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_87badf9bc96b47458faca2a7cae9032c-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_87badf9bc96b47458faca2a7cae9032c-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_87badf9bc96b47458faca2a7cae9032c-0"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;a name="rest_code_87badf9bc96b47458faca2a7cae9032c-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_87badf9bc96b47458faca2a7cae9032c-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CXX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;a name="rest_code_87badf9bc96b47458faca2a7cae9032c-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/lib64
+&lt;a name="rest_code_87badf9bc96b47458faca2a7cae9032c-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/context-free-3.0.9/cfdg &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and &lt;tt class="docutils literal"&gt;chmod +x cfdg&lt;/tt&gt;, and have fun with the software!&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</guid><pubDate>Sun, 20 Dec 2015 14:10:01 GMT</pubDate></item><item><title>Installing and Running TensorFlow in Debian Wheezy</title><link>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;A couple of days ago google released what they term it as the second generation deep learning neural network software system, called TensorFlow. Google has been taking much interest in deep learning since two or three years (perhaps having surplus computation power?), and they are using it for all sorts of softwares they develop &lt;span class="math"&gt;\(-\)&lt;/span&gt; maps, translation, spying on you for targeted ads etc. So, I thought of trying out their newly released tool.&lt;/p&gt;
+&lt;p&gt;First, I tried to install it using their "easy way" using &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt;. Getting into the virtual environment is easy, and pip install command also worked, but when importing tensorflow, it spit an ugly ImportError &lt;span class="math"&gt;\(-\)&lt;/span&gt; &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/lib/x86_64-linux-gnu/libc.so.6:&lt;/span&gt; version `GLIBC_2.17' not found&lt;/tt&gt;. Now, for the other option.&lt;/p&gt;
 &lt;p&gt;Next, I thought installing from sources would definitely go well. Downloaded all the source codes and dependencies required by the project, and bazel was one of them. Downloaded bazel as well, but when the installation script was run, that method also went kaput with some error complaining about the kernel version or something. Running from a virtual machine or installing some latest distro was my only option, I thought. But no! There's another method using docker image, which I overlooked even though that was mentioned at the top of the installation page.&lt;/p&gt;
 &lt;p&gt;Here are the steps:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -216,15 +220,15 @@ To compile on a single core, use&lt;ul&gt;
 &lt;li&gt;Then reboot the machine selecting the latest kernel version&lt;/li&gt;
 &lt;li&gt;Follow the docker installation steps&lt;/li&gt;
 &lt;li&gt;Now, we are all set to install TensorFlow. Simply run&lt;ul&gt;
-&lt;li&gt;sudo docker run -it b.gcr.io/tensorflow/tensorflow&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;sudo docker run &lt;span class="pre"&gt;-it&lt;/span&gt; b.gcr.io/tensorflow/tensorflow&lt;/tt&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;That will pull all the required dependencies and set the docker image (which was about 300MiB to download)&lt;/li&gt;
 &lt;li&gt;Wouldn't it be convenient if we could add some data persistance, to save data so that the host could use it? There's an option for that as well&lt;ul&gt;
-&lt;li&gt;sudo docker run -it -v /host/dir:/docker/dir b.gcr.io/tensorflow/tensorflow&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;sudo docker run &lt;span class="pre"&gt;-it&lt;/span&gt; &lt;span class="pre"&gt;-v&lt;/span&gt; &lt;span class="pre"&gt;/host/dir:/docker/dir&lt;/span&gt; b.gcr.io/tensorflow/tensorflow&lt;/tt&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Now the /host/dir is mounted to the /docker/dir when the image is run&lt;/li&gt;
+&lt;li&gt;Now the &lt;tt class="docutils literal"&gt;/host/dir&lt;/tt&gt; is mounted to the &lt;tt class="docutils literal"&gt;/docker/dir&lt;/tt&gt; when the image is run&lt;/li&gt;
 &lt;li&gt;And that's it, no need of a virtualbox, which wastes more time and space than to run a docker image&lt;/li&gt;
 &lt;li&gt;Check an example program from the tutorial, like plotting mandelbrot set&lt;/li&gt;
 &lt;/ul&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</guid><pubDate>Wed, 11 Nov 2015 11:46:08 GMT</pubDate></item><item><title>Deriving Explicit Formulas from Markov Chains</title><link>https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Once we formulate the markov model correctly, we can obtain the generating function for each entry in the matrix, where there's a possibility of getting the explicit formula. Let's take a look at one such problem:&lt;/p&gt;
@@ -235,7 +239,7 @@ To compile on a single core, use&lt;ul&gt;
 \displaystyle A= \begin{pmatrix} 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; \frac{1}{6} &amp;amp; \frac{5}{6} &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; \frac{1}{3} &amp;amp; \frac{2}{3} &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \frac{1}{2} &amp;amp; \frac{1}{2} &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \frac{2}{3} &amp;amp; \frac{1}{3} &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \frac{5}{6} &amp;amp; \frac{1}{6}\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{pmatrix}
 \end{equation*}
 &lt;/div&gt;
-&lt;p&gt;The states indicate the number of faces shown up. E.g. the row above the last row indicates that when 5 faces are seen, there's a probability of 5/6 remaining in the same state and 1/6 moving to the final state.&lt;/p&gt;
+&lt;p&gt;The states indicate the number of faces shown up. E.g. the row above the last row indicates that when 5 faces are seen, there's a probability of &lt;span class="math"&gt;\(5/6\)&lt;/span&gt; remaining in the same state and &lt;span class="math"&gt;\(1/6\)&lt;/span&gt; moving to the final state.&lt;/p&gt;
 &lt;p&gt;So, &lt;span class="math"&gt;\(A^n[0,6]\)&lt;/span&gt;, gives the required answer. But we can also find the generating function for that entry by computing &lt;span class="math"&gt;\((I-x\, A)^{-1}\)&lt;/span&gt;, which is&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
@@ -255,11 +259,11 @@ To compile on a single core, use&lt;ul&gt;
 \end{equation*}
 &lt;/div&gt;
 &lt;p&gt;which can be verified by a simulation in J:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_19426d2b7bbf43638095034edd49a3dc-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_19426d2b7bbf43638095034edd49a3dc-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_19426d2b7bbf43638095034edd49a3dc-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_19426d2b7bbf43638095034edd49a3dc-0"&gt;&lt;/a&gt;n=:10
-&lt;a name="rest_code_19426d2b7bbf43638095034edd49a3dc-1"&gt;&lt;/a&gt;sim=: 3 : '6=+/~:?n#6'
-&lt;a name="rest_code_19426d2b7bbf43638095034edd49a3dc-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0 NB. about 0.27
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-0"&gt;&lt;/a&gt;n=:10
+&lt;a name="rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-1"&gt;&lt;/a&gt;sim=: 3 : '6=+/~:?n#6'
+&lt;a name="rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0 NB. about 0.27
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
