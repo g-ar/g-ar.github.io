@@ -24,9 +24,11 @@ Applying the differentiation under the integral sign to this:
 
 .. math::
 
-    \displaystyle \frac{\partial}{\partial a} I(a)=\int_0^1\, \frac{1}{1+a\,(x-x^2)}\, dx\\ =\frac{\log\left(\frac{1}{2} \, a + \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}} - \frac{\log\left(\frac{1}{2} \, a - \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}}
+    \displaystyle 
+    \frac{\partial}{\partial a} I(a) &= \int_0^1\, \frac{1}{1+a\,(x-x^2)}\, dx\\ 
+    &=\frac{\log\left(\frac{1}{2} \, a + \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}} - \frac{\log\left(\frac{1}{2} \, a - \frac{1}{2} \, \sqrt{a^{2} + 4 \, a} + 1\right)}{\sqrt{a^{2} + 4 \, a}}
 
-Integrating w.r.t a gives us (answer by friCAS)
+Integrating w.r.t :math:`a` gives us (answer by friCAS)
 
 
 
@@ -47,13 +49,14 @@ Now, we may also expand the integral as a taylor series:
 
 .. math::
 
-    \displaystyle I(a)=\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{n} (x-x^2)^n}{n\, (x-x^2)} \, dx\\
-    \displaystyle =\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{i} (x-x^2)^{n-1}}{n} \, dx\\
-    \displaystyle =\int_0^1 \, \sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} (x-x^2)^{n}}{n+1} \, dx\\
-    \displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} B(n+1,n+1)}{n+1}\\
-    \displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \Gamma\left(n+1\right)\Gamma\left(n+1\right)}{(n+1)\,\Gamma\left(2\, n+1\right)}\\
-    \displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \, n!^2}{(n+1)\,(2\, n+1)\, (2n)!}\\
-    \displaystyle =\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1}}{(n+1)\,(2\, n+1)\, \binom{2n}{n}}
+    \displaystyle 
+    I(a)&=\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{n} (x-x^2)^n}{n\, (x-x^2)} \, dx\\
+    &=\int_0^1 \, \sum_{n\ge 1}\, \frac{(-1)^{n-1}\, a^{i} (x-x^2)^{n-1}}{n} \, dx\\
+    &=\int_0^1 \, \sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} (x-x^2)^{n}}{n+1} \, dx\\
+    &=\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} B(n+1,n+1)}{n+1}\\
+    &=\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \Gamma\left(n+1\right)\Gamma\left(n+1\right)}{(n+1)\,\Gamma\left(2\, n+1\right)}\\
+    &=\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1} \, n!^2}{(n+1)\,(2\, n+1)\, (2n)!}\\
+    &=\sum_{n\ge 0}\, \frac{(-1)^{n}\, a^{n+1}}{(n+1)\,(2\, n+1)\, \binom{2n}{n}}
 
 
 Therefore, we have the following sum!

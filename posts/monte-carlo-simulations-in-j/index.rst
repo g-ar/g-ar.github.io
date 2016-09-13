@@ -34,17 +34,17 @@ The analytical answer:
 
 A game is played with the following rules: There is an urn with 20 balls, 10 red and 10 white. You need pick 10 balls out of these 20.
 
-1. If 10 balls are of the same color, you get ~$~300
+1. If 10 balls are of the same color, you get $300
 
-2. If 9 balls are of the same color, you get ~$~30
+2. If 9 balls are of the same color, you get $30
 
-3. If 8 balls are of the same color, you get ~$~3
+3. If 8 balls are of the same color, you get $3
 
-4. If 7 balls are of the same color, you get ~$~2
+4. If 7 balls are of the same color, you get $2
 
-5. If 6 balls are of the same color, you get ~$~1
+5. If 6 balls are of the same color, you get $1
 
-6. If 5 balls are of the same color, you lose ~$~5
+6. If 5 balls are of the same color, you lose $5
 
 What's your expected amount?
 
@@ -59,10 +59,7 @@ Simulation answer:
 
 Analytical answer (hypergeometric distribution):
 
-.. code-block:: text
-    :number-lines: 0
-
-    A={1, 2, 3, 30, 300, -5}
+:math:`A=\{1, 2, 3, 30, 300, -5\}`
 
 
 
