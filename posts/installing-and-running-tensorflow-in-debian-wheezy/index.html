@@ -15,7 +15,7 @@ MathJax.Hub.Config({
         displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
         processEscapes: true
     },
-    displayAlign: 'left', // Change this to 'center' to center equations.
+    displayAlign: 'center', // Change this to 'center' to center equations.
     "HTML-CSS": {
         styles: {'.MathJax_Display': {"margin": 0}}
     }
@@ -100,8 +100,8 @@ MathJax.Hub.Config({
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>A couple of days ago google released what they term it as the second generation deep learning neural network software system, called TensorFlow. Google has been taking much interest in deep learning since two or three years (perhaps having surplus computation power?), and they are using it for all sorts of softwares they develop -- maps, translation, spying on you for targeted ads etc. So, I thought of trying out their newly released tool.</p>
-<p>First, I tried to install it using their "easy way" using virtualenv and pip. Getting into the virtual environment is easy, and pip install command also worked, but when importing tensorflow, it spit an ugly ImportError -- /lib/x86<sub>64</sub>-linux-gnu/libc.so.6: version `GLIBC<sub>2.17</sub>' not found. Now, for the other option.</p>
+<p>A couple of days ago google released what they term it as the second generation deep learning neural network software system, called TensorFlow. Google has been taking much interest in deep learning since two or three years (perhaps having surplus computation power?), and they are using it for all sorts of softwares they develop <span class="math">\(-\)</span> maps, translation, spying on you for targeted ads etc. So, I thought of trying out their newly released tool.</p>
+<p>First, I tried to install it using their "easy way" using <tt class="docutils literal">virtualenv</tt> and <tt class="docutils literal">pip</tt>. Getting into the virtual environment is easy, and pip install command also worked, but when importing tensorflow, it spit an ugly ImportError <span class="math">\(-\)</span> <tt class="docutils literal"><span class="pre">/lib/x86_64-linux-gnu/libc.so.6:</span> version `GLIBC_2.17' not found</tt>. Now, for the other option.</p>
 <p>Next, I thought installing from sources would definitely go well. Downloaded all the source codes and dependencies required by the project, and bazel was one of them. Downloaded bazel as well, but when the installation script was run, that method also went kaput with some error complaining about the kernel version or something. Running from a virtual machine or installing some latest distro was my only option, I thought. But no! There's another method using docker image, which I overlooked even though that was mentioned at the top of the installation page.</p>
 <p>Here are the steps:</p>
 <ul class="simple">
@@ -109,15 +109,15 @@ MathJax.Hub.Config({
 <li>Then reboot the machine selecting the latest kernel version</li>
 <li>Follow the docker installation steps</li>
 <li>Now, we are all set to install TensorFlow. Simply run<ul>
-<li>sudo docker run -it b.gcr.io/tensorflow/tensorflow</li>
+<li><tt class="docutils literal">sudo docker run <span class="pre">-it</span> b.gcr.io/tensorflow/tensorflow</tt></li>
 </ul>
 </li>
 <li>That will pull all the required dependencies and set the docker image (which was about 300MiB to download)</li>
 <li>Wouldn't it be convenient if we could add some data persistance, to save data so that the host could use it? There's an option for that as well<ul>
-<li>sudo docker run -it -v /host/dir:/docker/dir b.gcr.io/tensorflow/tensorflow</li>
+<li><tt class="docutils literal">sudo docker run <span class="pre">-it</span> <span class="pre">-v</span> <span class="pre">/host/dir:/docker/dir</span> b.gcr.io/tensorflow/tensorflow</tt></li>
 </ul>
 </li>
-<li>Now the /host/dir is mounted to the /docker/dir when the image is run</li>
+<li>Now the <tt class="docutils literal">/host/dir</tt> is mounted to the <tt class="docutils literal">/docker/dir</tt> when the image is run</li>
 <li>And that's it, no need of a virtualbox, which wastes more time and space than to run a docker image</li>
 <li>Check an example program from the tutorial, like plotting mandelbrot set</li>
 </ul>
@@ -138,7 +138,7 @@ MathJax.Hub.Config({
         displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
         processEscapes: true
     },
-    displayAlign: 'left', // Change this to 'center' to center equations.
+    displayAlign: 'center', // Change this to 'center' to center equations.
     "HTML-CSS": {
         styles: {'.MathJax_Display': {"margin": 0}}
     }
