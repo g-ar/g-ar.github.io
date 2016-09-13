@@ -12,52 +12,54 @@ Last week, I bought a Jolla phone after looking at some of the amazing features 
 
 Most of the reviews scattered on the net miss the fact that it is a fully functional linux machine! We can install gcc, python etc. from the terminal (after the developer mode is activated). Let me list some of the things I did after getting my hands on the Jolla phone:
 
-I didn't have an access point for wifi, so used hostapd to create one.
+- I didn't have an access point for wifi, so used hostapd to create one.
 
-Create a Jolla account to download the required softwares. (Phone's very much usable even without a sim card)
+- Create a Jolla account to download the required softwares. (Phone's very much usable even without a sim card)
 
-After creating the account, we'll be able to enable the developer mode.
+- After creating the account, we'll be able to enable the developer mode.
 
-Now, the terminal will be displayed.
+- Now, the terminal will be displayed.
 
-Open the terminal, become a root by typing in devel-su and the password from the settings->system->developer-mode
+- Open the terminal, become a root by typing in ``devel-su`` and the password from the settings->system->developer-mode
 
-We can also login via ssh, which will make our typing a lot easier. I connected via WLAN's IP address (ssh nemo@ip-addr, and type the password)
+- We can also login via ssh, which will make our typing a lot easier. I connected via WLAN's IP address (``ssh nemo@ip-addr``, and type the password)
 
-gcc, g++, gdb, python and strace can be installed by issuing commands like pkcon install gcc
+- gcc, g++, gdb, python and strace can be installed by issuing commands like ``pkcon install gcc``
 
-Since we are also interested to do some math, what are our options?
+- Since we are also interested to do some math, what are our options?
 
-I downloaded sagemath for arm -- sage-5.13-armv7l-Linux, and tried to run it. Too bad, it crashed saying "ImportError: libcblas.so.3: cannot open shared object file: No such file or directory" (Update: The sage 6.0 binary available for RPi works for jolla too, woohoo! Only issue I found till now is that plotting did not work.)
-For FriCAS, Axiom, maxima etc., binaries are not available for ARM. To compile them, they require a lisp compiler, which isn't available in the repos yet (ecl is available in openrepos.net, did not try it though).
-But anyway, if we look into openrepos.net, we find sympy, numpy, IPython, and matplotlib, which are more than sufficient for a mobile phone!
+  - I downloaded sagemath for arm :math:`-` ``sage-5.13-armv7l-Linux``, and tried to run it. Too bad, it crashed saying ``ImportError: libcblas.so.3: cannot open shared object file: No such file or directory`` (Update: The sage 6.0 binary available for RPi works for jolla too, woohoo! Only issue I found till now is that plotting did not work.)
 
-Why is IPython wonderful? Because, it provides us with a notebook interface which can be opened remotely.
+  - For FriCAS, Axiom, maxima etc., binaries are not available for ARM. To compile them, they require a lisp compiler, which isn't available in the repos yet (ecl is available in openrepos.net, did not try it though).
 
-We can also install several useful softwares like emacs, system monitor, cpufrequtils etc. from openrepos.net. Hence, we can have the tools we need with us all the time! (Emacs calc mode itself can serve as a mini CAS!)
+  - But anyway, if we look into `openrepos <https://openrepos.net>`_, we find sympy, numpy, IPython, and matplotlib, which are more than sufficient for a mobile phone!
 
-The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.
+- Why use IPython? Because, it provides us with a notebook interface which can be opened remotely, and also tab completion feature
 
-.. code-block:: text
-    :number-lines: 0
+- We can also install several useful softwares like emacs, system monitor, cpufrequtils etc. from openrepos.net. Hence, we can have the tools we need with us all the time! (Emacs calc mode itself can serve as a mini CAS!)
 
-    sqlite3 .local/share/commhistory/commhistory.db 
+- The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.
 
-Then, to display all the sms messages, run commands like
+  .. code-block:: sh
+      :number-lines: 0
 
-.. code-block:: text
-    :number-lines: 0
+      sqlite3 .local/share/commhistory/commhistory.db
 
-    select * from events where type=2;
+- Then, to display all the sms messages, run commands like
 
-If we want to know what each column is about, run
+  .. code-block:: sql
+      :number-lines: 0
 
-.. code-block:: text
-    :number-lines: 0
+      select * from events where type=2;
 
-    .headers ON
+- If we want to know what each column is about, run
 
-And to top it all, though an ARM binary is not available, we can easily compile J to run it from the console! I think it's perfectly suitable language that can be used on a phone. (J download for RPi works too)
+  .. code-block:: sql
+      :number-lines: 0
+
+      .headers ON
+
+- And to top it all, though an ARM binary is not available, we can easily compile J to run it from the console! I think it's perfectly suitable language that can be used on a phone. (J download for RPi works too)
 
 To conclude, it's totally developer friendly. If anyone likes to program but hates all those manifest files seen in other mobile OSes, it feels like bliss! No need of bloated SDKs, no need of emulators (though it's there if a UI is required), just a simple ssh to connect to the phone and start coding!
 

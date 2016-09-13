@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/mathjax.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Tue, 13 Sep 2016 13:33:53 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" rel="self" href="https://g-ar.github.io/categories/mathjax.xml"></atom:link><language>en</language><lastBuildDate>Tue, 13 Sep 2016 16:05:10 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
 In particular, we'll use the excellent math toolkit by David Bailey et. al. aimed at experimental mathematics -- &lt;a class="reference external" href="http://crd.lbl.gov/~dhbailey/mpdist/arprec-2.2.18.tar.gz"&gt;arprec&lt;/a&gt;.
 Compile and run mathtool.&lt;/p&gt;
 &lt;p&gt;The following problems are taken from &lt;a class="reference external" href="https://brilliant.org"&gt;Brilliant&lt;/a&gt;&lt;/p&gt;
@@ -271,9 +271,9 @@ To compile on a single core, use&lt;ul&gt;
 \end{equation*}
 &lt;/div&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/</guid><pubDate>Sun, 09 Aug 2015 11:41:29 GMT</pubDate></item><item><title>Getting started with experimental mathematics</title><link>https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Here is one &lt;a class="reference external" href="https://math.stackexchange.com/questions/1061083/average-time-to-fill-boxes-with-balls/"&gt;nice problem&lt;/a&gt; to describe how arrive at a formula experimentally.&lt;/p&gt;
 &lt;p&gt;To rephrase the problem:&lt;/p&gt;
-&lt;p&gt;/There are &lt;span class="math"&gt;\(m\)&lt;/span&gt; people with one ball each, and &lt;span class="math"&gt;\(n\)&lt;/span&gt; boxes. In a round, each of them picks one box randomly (uniformly and independently) and
+&lt;p&gt;There are &lt;span class="math"&gt;\(m\)&lt;/span&gt; people with one ball each, and &lt;span class="math"&gt;\(n\)&lt;/span&gt; boxes. In a round, each of them picks one box randomly (uniformly and independently) and
 drops the ball in it. Whichever box is not empty is removed, and the next round starts. How many rounds, on an average, will it take till no
-boxes are left?/&lt;/p&gt;
+boxes are left?&lt;/p&gt;
 &lt;p&gt;Obtaining a formula directly by combinatorial arguments without computing any values and getting it right is quite difficult, and prone to errors.&lt;/p&gt;
 &lt;p&gt;So, let us obtain it experimentally.&lt;/p&gt;
 &lt;p&gt;What does experimental math involve?&lt;/p&gt;
@@ -289,44 +289,44 @@ boxes are left?/&lt;/p&gt;
 &lt;li&gt;Having a lot of fun, doing both math and programming at the same time!&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Back to our problem, how many rounds can we expect for the game to last? Let us do the simulation by computing answers for small values, in J:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_887a0258ac7c49f6b9cb37952547546d-11"&gt;11&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-0"&gt;&lt;/a&gt;   'm n'=:5 3
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-1"&gt;&lt;/a&gt;   sim=: 3 : 0
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-2"&gt;&lt;/a&gt;a=:m
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-3"&gt;&lt;/a&gt;c=:0
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-4"&gt;&lt;/a&gt;while. (a&amp;gt;0) do.
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-5"&gt;&lt;/a&gt;b=:+/~:?n#a
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-6"&gt;&lt;/a&gt;a=:a-b
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-7"&gt;&lt;/a&gt;c=:c+1
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-8"&gt;&lt;/a&gt;end.
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-9"&gt;&lt;/a&gt;c return.
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-10"&gt;&lt;/a&gt;)
-&lt;a name="rest_code_887a0258ac7c49f6b9cb37952547546d-11"&gt;&lt;/a&gt;   (+/%#)(sim"0)1e5#0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-11"&gt;11&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-0"&gt;&lt;/a&gt;   'm n'=:5 3
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-1"&gt;&lt;/a&gt;   sim=: 3 : 0
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-2"&gt;&lt;/a&gt;a=:m
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-3"&gt;&lt;/a&gt;c=:0
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-4"&gt;&lt;/a&gt;while. (a&amp;gt;0) do.
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-5"&gt;&lt;/a&gt;b=:+/~:?n#a
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-6"&gt;&lt;/a&gt;a=:a-b
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-7"&gt;&lt;/a&gt;c=:c+1
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-8"&gt;&lt;/a&gt;end.
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-9"&gt;&lt;/a&gt;c return.
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-10"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-11"&gt;&lt;/a&gt;   (+/%#)(sim"0)1e5#0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Running the above gives a value of about &lt;span class="math"&gt;\(2.554\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Next, we will try to compute some numbers:
 How many ways is it possible for 3 balls to be placed 5 boxes such that everybody chooses the same box?&lt;/p&gt;
-&lt;p&gt;abc,0,0,0,0&lt;/p&gt;
-&lt;p&gt;= 5 ways&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(abc,0,0,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(= 5\)&lt;/span&gt; ways&lt;/p&gt;
 &lt;p&gt;How many ways is it possible for 3 balls to be placed 5 boxes such that two boxes are selected?&lt;/p&gt;
 &lt;p&gt;Do some casework:&lt;/p&gt;
 &lt;p&gt;One box may contain two balls, one box with one ball and one empty box.&lt;/p&gt;
-&lt;p&gt;ab,c,0,0,0&lt;/p&gt;
-&lt;p&gt;ac,b,0,0,0&lt;/p&gt;
-&lt;p&gt;bc,a,0,0,0&lt;/p&gt;
-&lt;p&gt;= 3*5!/3! = 60 ways&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(ab,c,0,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(ac,b,0,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(bc,a,0,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(= 3\cdot 5!/3! = 60\)&lt;/span&gt; ways&lt;/p&gt;
 &lt;p&gt;How many ways is it possible for 3 balls to be placed 5 boxes such that 3 boxes are selected?&lt;/p&gt;
-&lt;p&gt;a,b,c,0,0&lt;/p&gt;
-&lt;p&gt;= 5!/2! = 60 ways&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(a,b,c,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(= 5!/2! = 60\)&lt;/span&gt; ways&lt;/p&gt;
 &lt;p&gt;And we see that the total turns out to be &lt;span class="math"&gt;\(5 + 60 + 60 = 125\)&lt;/span&gt;, which is 53, the number of ways of arranging the balls in boxes without any restriction.&lt;/p&gt;
 &lt;p&gt;To calculate the expected value, we have&lt;/p&gt;
 &lt;div class="math"&gt;
@@ -338,83 +338,99 @@ E[n] = p_1 * E[n-1] + p_2 * E[n-2] + \cdots + p_m * E[n-m]
 &lt;p&gt;For &lt;span class="math"&gt;\(m=3\)&lt;/span&gt; and &lt;span class="math"&gt;\(n=5\)&lt;/span&gt;, &lt;span class="math"&gt;\(E[5] = 5/125*E[4]+60/125*E[3]+60/125*E[2] + 1\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Then, calculate similarly for &lt;span class="math"&gt;\(n=4\)&lt;/span&gt; and &lt;span class="math"&gt;\(m=3\)&lt;/span&gt; to get &lt;span class="math"&gt;\(E[4]\)&lt;/span&gt; and so on.
 The boundary condition is &lt;span class="math"&gt;\(E[1]=1\)&lt;/span&gt;, since obviously the game would end in one round if there was a single box.&lt;/p&gt;
-&lt;p&gt;&lt;span class="math"&gt;\(E[5]\)&lt;/span&gt; would be &lt;span class="math"&gt;\(18391/7200 = 2.5543\)&lt;/span&gt; which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a
-formula.&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(E[5]\)&lt;/span&gt; would be &lt;span class="math"&gt;\(\dfrac{18391}{7200} = 2.5543\)&lt;/span&gt; which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a formula.&lt;/p&gt;
 &lt;p&gt;Let us calculate the number of ways to partition a number &lt;span class="math"&gt;\(n\)&lt;/span&gt; of length &lt;span class="math"&gt;\(3\)&lt;/span&gt; (number of people fixed at &lt;span class="math"&gt;\(m=3\)&lt;/span&gt;), using sage:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-15"&gt;15&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_615a9eab825240bda2604ffb78f565be-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-0"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;aa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;bb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-1"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aa&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-2"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nbac&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-3"&gt;&lt;/a&gt;    &lt;span class="n"&gt;mm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bb&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-4"&gt;&lt;/a&gt;    &lt;span class="n"&gt;ll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cc&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;alst&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Partitions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alst&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-8"&gt;&lt;/a&gt;        &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-9"&gt;&lt;/a&gt;        &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-10"&gt;&lt;/a&gt;        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-11"&gt;&lt;/a&gt;            &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;*=&lt;/span&gt; &lt;span class="n"&gt;binomial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-12"&gt;&lt;/a&gt;            &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-13"&gt;&lt;/a&gt;        &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;Permutations&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cardinality&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;tot&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-14"&gt;&lt;/a&gt;        &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nbac&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-15"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;summ&lt;/span&gt;
-&lt;a name="rest_code_615a9eab825240bda2604ffb78f565be-16"&gt;&lt;/a&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-0"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;aa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;bb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-1"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aa&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-2"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nbac&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-3"&gt;&lt;/a&gt;    &lt;span class="n"&gt;mm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bb&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-4"&gt;&lt;/a&gt;    &lt;span class="n"&gt;ll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cc&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;alst&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Partitions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alst&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-8"&gt;&lt;/a&gt;        &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-9"&gt;&lt;/a&gt;        &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-10"&gt;&lt;/a&gt;        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-11"&gt;&lt;/a&gt;            &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;*=&lt;/span&gt; &lt;span class="n"&gt;binomial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-12"&gt;&lt;/a&gt;            &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-13"&gt;&lt;/a&gt;        &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;Permutations&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cardinality&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;tot&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-14"&gt;&lt;/a&gt;        &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nbac&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-15"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;summ&lt;/span&gt;
+&lt;a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-16"&gt;&lt;/a&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;What this function afun does is that for &lt;span class="math"&gt;\(n\)&lt;/span&gt; and &lt;span class="math"&gt;\(m\)&lt;/span&gt;, it computes the number of partitions having length &lt;span class="math"&gt;\(l (\le m)\)&lt;/span&gt;, and we compute the list of values for &lt;span class="math"&gt;\(l=m=3\)&lt;/span&gt; and varying &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Insert that list to oeis, and bingo! The second answer shown looks promising: &lt;span class="math"&gt;\(A(k,3)\)&lt;/span&gt; where &lt;span class="math"&gt;\(A(k,n)= \sum_{m=1}^k (-1)^{m+1}\cdot \binom{n}{m} \cdot m^k\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It seems to be related to the stirling numbers of the second kind.&lt;/p&gt;
 &lt;p&gt;After some trial and error, the equation turns out to be:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{align*}
-\displaystyle E_{n,m} = \left(\sum_{j=1}^{n-1} \left\lbrace {m \atop j} \right\rbrace \dfrac{n!}{(n-j)!} \dfrac{E_{n-j,m}}{n^m}\right)+1
-\\
-E_{1,m} = 1
+\displaystyle E_{n,m} &amp;amp;= \left(\sum_{j=1}^{n-1} \left\lbrace {m \atop j} \right\rbrace \dfrac{n!}{(n-j)!} \dfrac{E_{n-j,m}}{n^m}\right)+1\\
+E_{1,m} &amp;amp;= 1
 \end{align*}
 &lt;/div&gt;
 &lt;p&gt;In maxima (which will cache the values to speed up recurrence computation), it can be written as:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_5bc32889f67d4a4882d68ae921b79798-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_5bc32889f67d4a4882d68ae921b79798-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_5bc32889f67d4a4882d68ae921b79798-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_5bc32889f67d4a4882d68ae921b79798-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_5bc32889f67d4a4882d68ae921b79798-0"&gt;&lt;/a&gt;m:3$
-&lt;a name="rest_code_5bc32889f67d4a4882d68ae921b79798-1"&gt;&lt;/a&gt;E[1]:1$
-&lt;a name="rest_code_5bc32889f67d4a4882d68ae921b79798-2"&gt;&lt;/a&gt;E[n]:=sum(stirling2(m,j)*factorial(n)/factorial(n-j)*E[n-j]/n^m,j,1,n-1)+1$
-&lt;a name="rest_code_5bc32889f67d4a4882d68ae921b79798-3"&gt;&lt;/a&gt;float(E[5]);
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_927cab07876f401788c996e6d59b30e4-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_927cab07876f401788c996e6d59b30e4-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_927cab07876f401788c996e6d59b30e4-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_927cab07876f401788c996e6d59b30e4-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_927cab07876f401788c996e6d59b30e4-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;m:3$&lt;/span&gt;
+&lt;a name="rest_code_927cab07876f401788c996e6d59b30e4-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;:1$&lt;/span&gt;
+&lt;a name="rest_code_927cab07876f401788c996e6d59b30e4-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;:=sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;stirling2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;m,j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;*factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;/factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;n-j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;*E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;n-j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;/n^m,j,1,n-1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;+1$&lt;/span&gt;
+&lt;a name="rest_code_927cab07876f401788c996e6d59b30e4-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</description><category>mathjax</category><guid>https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/</guid><pubDate>Tue, 16 Dec 2014 11:17:39 GMT</pubDate></item><item><title>Jolla and sailfish OS</title><link>https://g-ar.github.io/posts/jolla-and-sailfish-os/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Last week, I bought a Jolla phone after looking at some of the amazing features it offers. What are those amazing features? We'll see..&lt;/p&gt;
 &lt;p&gt;Most of the reviews scattered on the net miss the fact that it is a fully functional linux machine! We can install gcc, python etc. from the terminal (after the developer mode is activated). Let me list some of the things I did after getting my hands on the Jolla phone:&lt;/p&gt;
-&lt;p&gt;I didn't have an access point for wifi, so used hostapd to create one.&lt;/p&gt;
-&lt;p&gt;Create a Jolla account to download the required softwares. (Phone's very much usable even without a sim card)&lt;/p&gt;
-&lt;p&gt;After creating the account, we'll be able to enable the developer mode.&lt;/p&gt;
-&lt;p&gt;Now, the terminal will be displayed.&lt;/p&gt;
-&lt;p&gt;Open the terminal, become a root by typing in devel-su and the password from the settings-&amp;gt;system-&amp;gt;developer-mode&lt;/p&gt;
-&lt;p&gt;We can also login via ssh, which will make our typing a lot easier. I connected via WLAN's IP address (ssh &lt;a class="reference external" href="mailto:nemo@ip-addr"&gt;nemo@ip-addr&lt;/a&gt;, and type the password)&lt;/p&gt;
-&lt;p&gt;gcc, g++, gdb, python and strace can be installed by issuing commands like pkcon install gcc&lt;/p&gt;
-&lt;p&gt;Since we are also interested to do some math, what are our options?&lt;/p&gt;
-&lt;p&gt;I downloaded sagemath for arm -- sage-5.13-armv7l-Linux, and tried to run it. Too bad, it crashed saying "ImportError: libcblas.so.3: cannot open shared object file: No such file or directory" (Update: The sage 6.0 binary available for RPi works for jolla too, woohoo! Only issue I found till now is that plotting did not work.)
-For FriCAS, Axiom, maxima etc., binaries are not available for ARM. To compile them, they require a lisp compiler, which isn't available in the repos yet (ecl is available in openrepos.net, did not try it though).
-But anyway, if we look into openrepos.net, we find sympy, numpy, IPython, and matplotlib, which are more than sufficient for a mobile phone!&lt;/p&gt;
-&lt;p&gt;Why is IPython wonderful? Because, it provides us with a notebook interface which can be opened remotely.&lt;/p&gt;
-&lt;p&gt;We can also install several useful softwares like emacs, system monitor, cpufrequtils etc. from openrepos.net. Hence, we can have the tools we need with us all the time! (Emacs calc mode itself can serve as a mini CAS!)&lt;/p&gt;
-&lt;p&gt;The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_71c4fc59956342bebe914f3990a8fda7-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_71c4fc59956342bebe914f3990a8fda7-0"&gt;&lt;/a&gt;sqlite3 .local/share/commhistory/commhistory.db
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Then, to display all the sms messages, run commands like&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_d2330eb523294a0c8f6a1885e0891ce6-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_d2330eb523294a0c8f6a1885e0891ce6-0"&gt;&lt;/a&gt;select * from events where type=2;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want to know what each column is about, run&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_fe58cedd3e8d42c8a0350992835cff87-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_fe58cedd3e8d42c8a0350992835cff87-0"&gt;&lt;/a&gt;.headers ON
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;And to top it all, though an ARM binary is not available, we can easily compile J to run it from the console! I think it's perfectly suitable language that can be used on a phone. (J download for RPi works too)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;I didn't have an access point for wifi, so used hostapd to create one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Create a Jolla account to download the required softwares. (Phone's very much usable even without a sim card)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;After creating the account, we'll be able to enable the developer mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Now, the terminal will be displayed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Open the terminal, become a root by typing in &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;devel-su&lt;/span&gt;&lt;/tt&gt; and the password from the settings-&amp;gt;system-&amp;gt;developer-mode&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;We can also login via ssh, which will make our typing a lot easier. I connected via WLAN's IP address (&lt;tt class="docutils literal"&gt;ssh &lt;span class="pre"&gt;nemo@ip-addr&lt;/span&gt;&lt;/tt&gt;, and type the password)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;gcc, g++, gdb, python and strace can be installed by issuing commands like &lt;tt class="docutils literal"&gt;pkcon install gcc&lt;/tt&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Since we are also interested to do some math, what are our options?&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;I downloaded sagemath for arm &lt;span class="math"&gt;\(-\)&lt;/span&gt; &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;sage-5.13-armv7l-Linux&lt;/span&gt;&lt;/tt&gt;, and tried to run it. Too bad, it crashed saying &lt;tt class="docutils literal"&gt;ImportError: libcblas.so.3: cannot open shared object file: No such file or directory&lt;/tt&gt; (Update: The sage 6.0 binary available for RPi works for jolla too, woohoo! Only issue I found till now is that plotting did not work.)&lt;/li&gt;
+&lt;li&gt;For FriCAS, Axiom, maxima etc., binaries are not available for ARM. To compile them, they require a lisp compiler, which isn't available in the repos yet (ecl is available in openrepos.net, did not try it though).&lt;/li&gt;
+&lt;li&gt;But anyway, if we look into &lt;a class="reference external" href="https://openrepos.net"&gt;openrepos&lt;/a&gt;, we find sympy, numpy, IPython, and matplotlib, which are more than sufficient for a mobile phone!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Why use IPython? Because, it provides us with a notebook interface which can be opened remotely, and also tab completion feature&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;We can also install several useful softwares like emacs, system monitor, cpufrequtils etc. from openrepos.net. Hence, we can have the tools we need with us all the time! (Emacs calc mode itself can serve as a mini CAS!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_1df74b6d53d049f08b6c300935232331-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_1df74b6d53d049f08b6c300935232331-0"&gt;&lt;/a&gt;sqlite3 .local/share/commhistory/commhistory.db
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Then, to display all the sms messages, run commands like&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_4d4c67d1715a447f882ed6d74637fe7b-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sql"&gt;&lt;a name="rest_code_4d4c67d1715a447f882ed6d74637fe7b-0"&gt;&lt;/a&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;If we want to know what each column is about, run&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_03ce22bf71d54952aaaa17f867f2ffc4-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sql"&gt;&lt;a name="rest_code_03ce22bf71d54952aaaa17f867f2ffc4-0"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;headers&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;And to top it all, though an ARM binary is not available, we can easily compile J to run it from the console! I think it's perfectly suitable language that can be used on a phone. (J download for RPi works too)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;To conclude, it's totally developer friendly. If anyone likes to program but hates all those manifest files seen in other mobile OSes, it feels like bliss! No need of bloated SDKs, no need of emulators (though it's there if a UI is required), just a simple ssh to connect to the phone and start coding!&lt;/p&gt;
 &lt;p&gt;It's friendly towards "end users" too, don't believe the "reviews" that say it has a "steep" learning curve because of its gesture based controls. The tutorial it displays when the phone is started is more than enough to understand the Sailfish OS. I won't talk about its UI, since pretty much all the other reviews are about only that and apps, pfff.&lt;/p&gt;
 &lt;p&gt;Nokia made a big mistake and died by dumping MeeGo and embracing m$.&lt;/p&gt;

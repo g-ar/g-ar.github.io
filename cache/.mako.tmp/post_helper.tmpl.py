@@ -5,12 +5,12 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1473773633.1509104
+_modified_time = 1473782859.26873
 _enable_loop = True
 _template_filename = '/home/gar/githubs/nikola/lib/python3.5/site-packages/nikola/data/themes/base/templates/post_helper.tmpl'
 _template_uri = 'post_helper.tmpl'
 _source_encoding = 'utf-8'
-_exports = ['meta_translations', 'mathjax_script', 'twitter_card_information', 'open_graph_metadata', 'html_pager', 'html_tags']
+_exports = ['meta_translations', 'mathjax_script', 'html_tags', 'html_pager', 'open_graph_metadata', 'twitter_card_information']
 
 
 def render_body(context,**pageargs):
@@ -33,10 +33,10 @@ def render_body(context,**pageargs):
 def render_meta_translations(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
-        len = context.get('len', UNDEFINED)
         lang = context.get('lang', UNDEFINED)
-        translations = context.get('translations', UNDEFINED)
         sorted = context.get('sorted', UNDEFINED)
+        len = context.get('len', UNDEFINED)
+        translations = context.get('translations', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if len(translations) > 1:
@@ -75,32 +75,53 @@ def render_mathjax_script(context,post):
         context.caller_stack._pop_frame()
 
 
-def render_twitter_card_information(context,post):
+def render_html_tags(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
-        twitter_card = context.get('twitter_card', UNDEFINED)
+        hidden_tags = context.get('hidden_tags', UNDEFINED)
+        _link = context.get('_link', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
-        if twitter_card and twitter_card['use_twitter_cards']:
-            __M_writer('    <meta name="twitter:card" content="')
-            __M_writer(filters.html_escape(str(twitter_card.get('card', 'summary'))))
-            __M_writer('">\n')
-            if 'site:id' in twitter_card:
-                __M_writer('    <meta name="twitter:site:id" content="')
-                __M_writer(str(twitter_card['site:id']))
-                __M_writer('">\n')
-            elif 'site' in twitter_card:
-                __M_writer('    <meta name="twitter:site" content="')
-                __M_writer(str(twitter_card['site']))
-                __M_writer('">\n')
-            if 'creator:id' in twitter_card:
-                __M_writer('    <meta name="twitter:creator:id" content="')
-                __M_writer(str(twitter_card['creator:id']))
-                __M_writer('">\n')
-            elif 'creator' in twitter_card:
-                __M_writer('    <meta name="twitter:creator" content="')
-                __M_writer(str(twitter_card['creator']))
-                __M_writer('">\n')
+        if post.tags:
+            __M_writer('        <ul itemprop="keywords" class="tags">\n')
+            for tag in post.tags:
+                if tag not in hidden_tags:
+                    __M_writer('            <li><a class="tag p-category" href="')
+                    __M_writer(str(_link('tag', tag)))
+                    __M_writer('" rel="tag">')
+                    __M_writer(filters.html_escape(str(tag)))
+                    __M_writer('</a></li>\n')
+            __M_writer('        </ul>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_html_pager(context,post):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        messages = context.get('messages', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        if post.prev_post or post.next_post:
+            __M_writer('        <ul class="pager hidden-print">\n')
+            if post.prev_post:
+                __M_writer('            <li class="previous">\n                <a href="')
+                __M_writer(str(post.prev_post.permalink()))
+                __M_writer('" rel="prev" title="')
+                __M_writer(filters.html_escape(str(post.prev_post.title())))
+                __M_writer('">')
+                __M_writer(str(messages("Previous post")))
+                __M_writer('</a>\n            </li>\n')
+            if post.next_post:
+                __M_writer('            <li class="next">\n                <a href="')
+                __M_writer(str(post.next_post.permalink()))
+                __M_writer('" rel="next" title="')
+                __M_writer(filters.html_escape(str(post.next_post.title())))
+                __M_writer('">')
+                __M_writer(str(messages("Next post")))
+                __M_writer('</a>\n            </li>\n')
+            __M_writer('        </ul>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -110,11 +131,11 @@ def render_open_graph_metadata(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
         permalink = context.get('permalink', UNDEFINED)
-        blog_title = context.get('blog_title', UNDEFINED)
-        lang = context.get('lang', UNDEFINED)
         use_open_graph = context.get('use_open_graph', UNDEFINED)
         abs_link = context.get('abs_link', UNDEFINED)
+        lang = context.get('lang', UNDEFINED)
         url_replacer = context.get('url_replacer', UNDEFINED)
+        blog_title = context.get('blog_title', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if use_open_graph:
@@ -152,53 +173,32 @@ def render_open_graph_metadata(context,post):
         context.caller_stack._pop_frame()
 
 
-def render_html_pager(context,post):
+def render_twitter_card_information(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
-        messages = context.get('messages', UNDEFINED)
+        twitter_card = context.get('twitter_card', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
-        if post.prev_post or post.next_post:
-            __M_writer('        <ul class="pager hidden-print">\n')
-            if post.prev_post:
-                __M_writer('            <li class="previous">\n                <a href="')
-                __M_writer(str(post.prev_post.permalink()))
-                __M_writer('" rel="prev" title="')
-                __M_writer(filters.html_escape(str(post.prev_post.title())))
-                __M_writer('">')
-                __M_writer(str(messages("Previous post")))
-                __M_writer('</a>\n            </li>\n')
-            if post.next_post:
-                __M_writer('            <li class="next">\n                <a href="')
-                __M_writer(str(post.next_post.permalink()))
-                __M_writer('" rel="next" title="')
-                __M_writer(filters.html_escape(str(post.next_post.title())))
-                __M_writer('">')
-                __M_writer(str(messages("Next post")))
-                __M_writer('</a>\n            </li>\n')
-            __M_writer('        </ul>\n')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_html_tags(context,post):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        _link = context.get('_link', UNDEFINED)
-        hidden_tags = context.get('hidden_tags', UNDEFINED)
-        __M_writer = context.writer()
-        __M_writer('\n')
-        if post.tags:
-            __M_writer('        <ul itemprop="keywords" class="tags">\n')
-            for tag in post.tags:
-                if tag not in hidden_tags:
-                    __M_writer('            <li><a class="tag p-category" href="')
-                    __M_writer(str(_link('tag', tag)))
-                    __M_writer('" rel="tag">')
-                    __M_writer(filters.html_escape(str(tag)))
-                    __M_writer('</a></li>\n')
-            __M_writer('        </ul>\n')
+        if twitter_card and twitter_card['use_twitter_cards']:
+            __M_writer('    <meta name="twitter:card" content="')
+            __M_writer(filters.html_escape(str(twitter_card.get('card', 'summary'))))
+            __M_writer('">\n')
+            if 'site:id' in twitter_card:
+                __M_writer('    <meta name="twitter:site:id" content="')
+                __M_writer(str(twitter_card['site:id']))
+                __M_writer('">\n')
+            elif 'site' in twitter_card:
+                __M_writer('    <meta name="twitter:site" content="')
+                __M_writer(str(twitter_card['site']))
+                __M_writer('">\n')
+            if 'creator:id' in twitter_card:
+                __M_writer('    <meta name="twitter:creator:id" content="')
+                __M_writer(str(twitter_card['creator:id']))
+                __M_writer('">\n')
+            elif 'creator' in twitter_card:
+                __M_writer('    <meta name="twitter:creator" content="')
+                __M_writer(str(twitter_card['creator']))
+                __M_writer('">\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -206,6 +206,6 @@ def render_html_tags(context,post):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/home/gar/githubs/nikola/lib/python3.5/site-packages/nikola/data/themes/base/templates/post_helper.tmpl", "uri": "post_helper.tmpl", "line_map": {"16": 0, "21": 2, "22": 11, "23": 23, "24": 40, "25": 69, "26": 85, "27": 106, "33": 3, "41": 3, "42": 4, "43": 5, "44": 6, "45": 7, "46": 7, "47": 7, "48": 7, "49": 7, "55": 87, "61": 87, "62": 88, "63": 89, "64": 90, "65": 95, "66": 96, "67": 97, "68": 98, "69": 98, "70": 98, "71": 99, "72": 100, "78": 71, "83": 71, "84": 72, "85": 73, "86": 73, "87": 73, "88": 74, "89": 75, "90": 75, "91": 75, "92": 76, "93": 77, "94": 77, "95": 77, "96": 79, "97": 80, "98": 80, "99": 80, "100": 81, "101": 82, "102": 82, "103": 82, "109": 42, "119": 42, "120": 43, "121": 44, "122": 44, "123": 44, "124": 45, "125": 45, "126": 46, "127": 46, "128": 47, "129": 48, "130": 48, "131": 48, "132": 49, "133": 50, "134": 50, "135": 50, "136": 52, "137": 53, "138": 53, "139": 53, "140": 55, "141": 60, "142": 61, "143": 61, "144": 61, "145": 63, "146": 64, "147": 65, "148": 65, "149": 65, "155": 25, "160": 25, "161": 26, "162": 27, "163": 28, "164": 29, "165": 30, "166": 30, "167": 30, "168": 30, "169": 30, "170": 30, "171": 33, "172": 34, "173": 35, "174": 35, "175": 35, "176": 35, "177": 35, "178": 35, "179": 38, "185": 13, "191": 13, "192": 14, "193": 15, "194": 16, "195": 17, "196": 18, "197": 18, "198": 18, "199": 18, "200": 18, "201": 21, "207": 201}, "source_encoding": "utf-8"}
+{"uri": "post_helper.tmpl", "filename": "/home/gar/githubs/nikola/lib/python3.5/site-packages/nikola/data/themes/base/templates/post_helper.tmpl", "line_map": {"16": 0, "21": 2, "22": 11, "23": 23, "24": 40, "25": 69, "26": 85, "27": 106, "33": 3, "41": 3, "42": 4, "43": 5, "44": 6, "45": 7, "46": 7, "47": 7, "48": 7, "49": 7, "55": 87, "61": 87, "62": 88, "63": 89, "64": 90, "65": 95, "66": 96, "67": 97, "68": 98, "69": 98, "70": 98, "71": 99, "72": 100, "78": 13, "84": 13, "85": 14, "86": 15, "87": 16, "88": 17, "89": 18, "90": 18, "91": 18, "92": 18, "93": 18, "94": 21, "100": 25, "105": 25, "106": 26, "107": 27, "108": 28, "109": 29, "110": 30, "111": 30, "112": 30, "113": 30, "114": 30, "115": 30, "116": 33, "117": 34, "118": 35, "119": 35, "120": 35, "121": 35, "122": 35, "123": 35, "124": 38, "130": 42, "140": 42, "141": 43, "142": 44, "143": 44, "144": 44, "145": 45, "146": 45, "147": 46, "148": 46, "149": 47, "150": 48, "151": 48, "152": 48, "153": 49, "154": 50, "155": 50, "156": 50, "157": 52, "158": 53, "159": 53, "160": 53, "161": 55, "162": 60, "163": 61, "164": 61, "165": 61, "166": 63, "167": 64, "168": 65, "169": 65, "170": 65, "176": 71, "181": 71, "182": 72, "183": 73, "184": 73, "185": 73, "186": 74, "187": 75, "188": 75, "189": 75, "190": 76, "191": 77, "192": 77, "193": 77, "194": 79, "195": 80, "196": 80, "197": 80, "198": 81, "199": 82, "200": 82, "201": 82, "207": 201}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """
