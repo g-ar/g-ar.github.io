@@ -200,140 +200,140 @@ We use tga format, which is simple but uncompressed. For compression, we may use
 <p>In this post, we will see how to translate a small C program to assembly (using flat assembler).</p>
 <p>Consider the following, where the code for gcd is taken from rosetta code:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-0"> 0</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-1"> 1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-2"> 2</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-3"> 3</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-4"> 4</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-5"> 5</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-6"> 6</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-7"> 7</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-8"> 8</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-9"> 9</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-10">10</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-11">11</a></pre></div></td>
-<td class="code"><pre class="code C"><a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-0"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-1"></a>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-2"></a><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-3"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="n">gcd</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="o">%</span><span class="n">v</span><span class="p">)</span><span class="o">:</span><span class="n">u</span><span class="p">;</span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-4"></a><span class="p">}</span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-5"></a>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-6"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-7"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">;</span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-8"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-9"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">gcd</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">));</span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-10"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_531fbefbc3e7438eba41f0d8eaf9b1fc-11"></a><span class="p">}</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-0"> 0</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-1"> 1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-2"> 2</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-3"> 3</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-4"> 4</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-5"> 5</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-6"> 6</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-7"> 7</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-8"> 8</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-9"> 9</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-10">10</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_36c977c3a3de4a878612542d7636f117-11">11</a></pre></div></td>
+<td class="code"><pre class="code C"><a name="rest_code_36c977c3a3de4a878612542d7636f117-0"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-1"></a>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-2"></a><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-3"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="n">gcd</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="o">%</span><span class="n">v</span><span class="p">)</span><span class="o">:</span><span class="n">u</span><span class="p">;</span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-4"></a><span class="p">}</span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-5"></a>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-6"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-7"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">;</span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-8"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-9"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">gcd</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">));</span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-10"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_36c977c3a3de4a878612542d7636f117-11"></a><span class="p">}</span>
 </pre></td>
 </tr></table>
 <p>Compile to 32 bit code as</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_8bb1f197c7574726b9befb8776281ce0-0">0</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_8bb1f197c7574726b9befb8776281ce0-0"></a>gcc -o gcd gcd.c -m32
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_6114c7daca69426ca393fc3835807529-0">0</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_6114c7daca69426ca393fc3835807529-0"></a>gcc -o gcd gcd.c -m32
 </pre></td>
 </tr></table>
 <p>and disassemble:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_7a20ab610c4146328833363d3083464b-0">0</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_7a20ab610c4146328833363d3083464b-1">1</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_7a20ab610c4146328833363d3083464b-0"></a>gdb ./gcd
-<a name="rest_code_7a20ab610c4146328833363d3083464b-1"></a><span class="o">(</span>gdb<span class="o">)</span> disas gcd
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_e5b46594d1914dddbd38b47846c0c921-0">0</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_e5b46594d1914dddbd38b47846c0c921-1">1</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_e5b46594d1914dddbd38b47846c0c921-0"></a>gdb ./gcd
+<a name="rest_code_e5b46594d1914dddbd38b47846c0c921-1"></a><span class="o">(</span>gdb<span class="o">)</span> disas gcd
 </pre></td>
 </tr></table>
 <p>We will see something like this:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-0"> 0</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-1"> 1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-2"> 2</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-3"> 3</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-4"> 4</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-5"> 5</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-6"> 6</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-7"> 7</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-8"> 8</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-9"> 9</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-10">10</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-11">11</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-12">12</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-13">13</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-14">14</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-15">15</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-16">16</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-17">17</a></pre></div></td>
-<td class="code"><pre class="code asm"><a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-0"></a><span class="err">0</span><span class="nf">x08048454</span> <span class="err">&lt;+</span><span class="mi">0</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">push</span>   <span class="no">ebp</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-1"></a><span class="err">0</span><span class="nf">x08048455</span> <span class="err">&lt;+</span><span class="mi">1</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">mov</span>    <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-2"></a><span class="err">0</span><span class="nf">x08048457</span> <span class="err">&lt;+</span><span class="mi">3</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">sub</span>    <span class="no">esp</span><span class="p">,</span><span class="mi">0x18</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-3"></a><span class="err">0</span><span class="nf">x0804845a</span> <span class="err">&lt;+</span><span class="mi">6</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">cmp</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0xc</span><span class="p">],</span><span class="mi">0x0</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-4"></a><span class="err">0</span><span class="nf">x0804845e</span> <span class="err">&lt;+</span><span class="mi">10</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">je</span>     <span class="mh">0x804847e</span> <span class="p">&lt;</span><span class="no">gcd</span><span class="p">+</span><span class="mi">42</span><span class="p">&gt;</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-5"></a><span class="err">0</span><span class="nf">x08048460</span> <span class="err">&lt;+</span><span class="mi">12</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0x8</span><span class="p">]</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-6"></a><span class="err">0</span><span class="nf">x08048463</span> <span class="err">&lt;+</span><span class="mi">15</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">edx</span><span class="p">,</span><span class="no">eax</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-7"></a><span class="err">0</span><span class="nf">x08048465</span> <span class="err">&lt;+</span><span class="mi">17</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">sar</span>    <span class="no">edx</span><span class="p">,</span><span class="mi">0x1f</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-8"></a><span class="err">0</span><span class="nf">x08048468</span> <span class="err">&lt;+</span><span class="mi">20</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">idiv</span>   <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0xc</span><span class="p">]</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-9"></a><span class="err">0</span><span class="nf">x0804846b</span> <span class="err">&lt;+</span><span class="mi">23</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">edx</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-10"></a><span class="err">0</span><span class="nf">x0804846d</span> <span class="err">&lt;+</span><span class="mi">25</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">],</span><span class="no">eax</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-11"></a><span class="err">0</span><span class="nf">x08048471</span> <span class="err">&lt;+</span><span class="mi">29</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0xc</span><span class="p">]</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-12"></a><span class="err">0</span><span class="nf">x08048474</span> <span class="err">&lt;+</span><span class="mi">32</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="p">],</span><span class="no">eax</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-13"></a><span class="err">0</span><span class="nf">x08048477</span> <span class="err">&lt;+</span><span class="mi">35</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">call</span>   <span class="mh">0x8048454</span> <span class="p">&lt;</span><span class="no">gcd</span><span class="p">&gt;</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-14"></a><span class="err">0</span><span class="nf">x0804847c</span> <span class="err">&lt;+</span><span class="mi">40</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">jmp</span>    <span class="mh">0x8048481</span> <span class="p">&lt;</span><span class="no">gcd</span><span class="p">+</span><span class="mi">45</span><span class="p">&gt;</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-15"></a><span class="err">0</span><span class="nf">x0804847e</span> <span class="err">&lt;+</span><span class="mi">42</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0x8</span><span class="p">]</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-16"></a><span class="err">0</span><span class="nf">x08048481</span> <span class="err">&lt;+</span><span class="mi">45</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">leave</span>
-<a name="rest_code_60c7b0e6d2a143b4a83a7e2f133c0404-17"></a><span class="err">0</span><span class="nf">x08048482</span> <span class="err">&lt;+</span><span class="mi">46</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">ret</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-0"> 0</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-1"> 1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-2"> 2</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-3"> 3</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-4"> 4</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-5"> 5</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-6"> 6</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-7"> 7</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-8"> 8</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-9"> 9</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-10">10</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-11">11</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-12">12</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-13">13</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-14">14</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-15">15</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-16">16</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_101d6c16bc5e487a841660e34505fcc0-17">17</a></pre></div></td>
+<td class="code"><pre class="code S"><a name="rest_code_101d6c16bc5e487a841660e34505fcc0-0"></a><span class="mh">0x08048454</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-1"></a><span class="mh">0x08048455</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-2"></a><span class="mh">0x08048457</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-3"></a><span class="mh">0x0804845a</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    cmp    DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-4"></a><span class="mh">0x0804845e</span> <span class="o">&lt;</span><span class="m">+10</span><span class="o">&gt;</span> <span class="o">:</span>    je     <span class="mh">0x804847e</span> <span class="o">&lt;</span>gcd<span class="m">+42</span><span class="o">&gt;</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-5"></a><span class="mh">0x08048460</span> <span class="o">&lt;</span><span class="m">+12</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-6"></a><span class="mh">0x08048463</span> <span class="o">&lt;</span><span class="m">+15</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>eax
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-7"></a><span class="mh">0x08048465</span> <span class="o">&lt;</span><span class="m">+17</span><span class="o">&gt;</span> <span class="o">:</span>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-8"></a><span class="mh">0x08048468</span> <span class="o">&lt;</span><span class="m">+20</span><span class="o">&gt;</span> <span class="o">:</span>    idiv   DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-9"></a><span class="mh">0x0804846b</span> <span class="o">&lt;</span><span class="m">+23</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>edx
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-10"></a><span class="mh">0x0804846d</span> <span class="o">&lt;</span><span class="m">+25</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-11"></a><span class="mh">0x08048471</span> <span class="o">&lt;</span><span class="m">+29</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-12"></a><span class="mh">0x08048474</span> <span class="o">&lt;</span><span class="m">+32</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-13"></a><span class="mh">0x08048477</span> <span class="o">&lt;</span><span class="m">+35</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-14"></a><span class="mh">0x0804847c</span> <span class="o">&lt;</span><span class="m">+40</span><span class="o">&gt;</span> <span class="o">:</span>    jmp    <span class="mh">0x8048481</span> <span class="o">&lt;</span>gcd<span class="m">+45</span><span class="o">&gt;</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-15"></a><span class="mh">0x0804847e</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-16"></a><span class="mh">0x08048481</span> <span class="o">&lt;</span><span class="m">+45</span><span class="o">&gt;</span> <span class="o">:</span>    leave
+<a name="rest_code_101d6c16bc5e487a841660e34505fcc0-17"></a><span class="mh">0x08048482</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    ret
 </pre></td>
 </tr></table>
 <p>and</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_cd0407e08c9c4056ae2bf5defe206873-0">0</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_cd0407e08c9c4056ae2bf5defe206873-0"></a><span class="o">(</span>gdb<span class="o">)</span> disas main
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_54454650869a448690abaa8e39d24b3f-0">0</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_54454650869a448690abaa8e39d24b3f-0"></a><span class="o">(</span>gdb<span class="o">)</span> disas main
 </pre></td>
 </tr></table>
 <p>shows like this:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-0"> 0</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-1"> 1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-2"> 2</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-3"> 3</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-4"> 4</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-5"> 5</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-6"> 6</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-7"> 7</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-8"> 8</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-9"> 9</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-10">10</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-11">11</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-12">12</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-13">13</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-14">14</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-15">15</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-16">16</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-17">17</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-18">18</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-19">19</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-20">20</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-21">21</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_d7c75249db5d452087cea68422a67cb4-22">22</a></pre></div></td>
-<td class="code"><pre class="code asm"><a name="rest_code_d7c75249db5d452087cea68422a67cb4-0"></a><span class="err">0</span><span class="nf">x08048483</span> <span class="err">&lt;+</span><span class="mi">0</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">push</span>   <span class="no">ebp</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-1"></a><span class="err">0</span><span class="nf">x08048484</span> <span class="err">&lt;+</span><span class="mi">1</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">mov</span>    <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-2"></a><span class="err">0</span><span class="nf">x08048486</span> <span class="err">&lt;+</span><span class="mi">3</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">and</span>    <span class="no">esp</span><span class="p">,</span><span class="mi">0xfffffff0</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-3"></a><span class="err">0</span><span class="nf">x08048489</span> <span class="err">&lt;+</span><span class="mi">6</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">sub</span>    <span class="no">esp</span><span class="p">,</span><span class="mi">0x20</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-4"></a><span class="err">0</span><span class="nf">x0804848c</span> <span class="err">&lt;+</span><span class="mi">9</span><span class="err">&gt;</span>  <span class="p">:</span>    <span class="no">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="mi">0x80485b0</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-5"></a><span class="err">0</span><span class="nf">x08048491</span> <span class="err">&lt;+</span><span class="mi">14</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">lea</span>    <span class="no">edx</span><span class="p">,[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x1c</span><span class="p">]</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-6"></a><span class="err">0</span><span class="nf">x08048495</span> <span class="err">&lt;+</span><span class="mi">18</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x8</span><span class="p">],</span><span class="no">edx</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-7"></a><span class="err">0</span><span class="nf">x08048499</span> <span class="err">&lt;+</span><span class="mi">22</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">lea</span>    <span class="no">edx</span><span class="p">,[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x18</span><span class="p">]</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-8"></a><span class="err">0</span><span class="nf">x0804849d</span> <span class="err">&lt;+</span><span class="mi">26</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">],</span><span class="no">edx</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-9"></a><span class="err">0</span><span class="nf">x080484a1</span> <span class="err">&lt;+</span><span class="mi">30</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="p">],</span><span class="no">eax</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-10"></a><span class="err">0</span><span class="nf">x080484a4</span> <span class="err">&lt;+</span><span class="mi">33</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">call</span>   <span class="mh">0x8048380</span> <span class="p">&lt;</span><span class="no">__isoc99_scanf@plt</span><span class="p">&gt;</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-11"></a><span class="err">0</span><span class="nf">x080484a9</span> <span class="err">&lt;+</span><span class="mi">38</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">edx</span><span class="p">,</span><span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x1c</span><span class="p">]</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-12"></a><span class="err">0</span><span class="nf">x080484ad</span> <span class="err">&lt;+</span><span class="mi">42</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x18</span><span class="p">]</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-13"></a><span class="err">0</span><span class="nf">x080484b1</span> <span class="err">&lt;+</span><span class="mi">46</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">],</span><span class="no">edx</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-14"></a><span class="err">0</span><span class="nf">x080484b5</span> <span class="err">&lt;+</span><span class="mi">50</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="p">],</span><span class="no">eax</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-15"></a><span class="err">0</span><span class="nf">x080484b8</span> <span class="err">&lt;+</span><span class="mi">53</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">call</span>   <span class="mh">0x8048454</span> <span class="p">&lt;</span><span class="no">gcd</span><span class="p">&gt;</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-16"></a><span class="err">0</span><span class="nf">x080484bd</span> <span class="err">&lt;+</span><span class="mi">58</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">edx</span><span class="p">,</span><span class="mi">0x80485b5</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-17"></a><span class="err">0</span><span class="nf">x080484c2</span> <span class="err">&lt;+</span><span class="mi">63</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">],</span><span class="no">eax</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-18"></a><span class="err">0</span><span class="nf">x080484c6</span> <span class="err">&lt;+</span><span class="mi">67</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="p">],</span><span class="no">edx</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-19"></a><span class="err">0</span><span class="nf">x080484c9</span> <span class="err">&lt;+</span><span class="mi">70</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">call</span>   <span class="mh">0x8048390</span> <span class="p">&lt;</span><span class="no">printf@plt</span><span class="p">&gt;</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-20"></a><span class="err">0</span><span class="nf">x080484ce</span> <span class="err">&lt;+</span><span class="mi">75</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="mi">0x0</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-21"></a><span class="err">0</span><span class="nf">x080484d3</span> <span class="err">&lt;+</span><span class="mi">80</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">leave</span>
-<a name="rest_code_d7c75249db5d452087cea68422a67cb4-22"></a><span class="err">0</span><span class="nf">x080484d4</span> <span class="err">&lt;+</span><span class="mi">81</span><span class="err">&gt;</span> <span class="p">:</span>    <span class="no">ret</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-0"> 0</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-1"> 1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-2"> 2</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-3"> 3</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-4"> 4</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-5"> 5</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-6"> 6</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-7"> 7</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-8"> 8</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-9"> 9</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-10">10</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-11">11</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-12">12</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-13">13</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-14">14</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-15">15</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-16">16</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-17">17</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-18">18</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-19">19</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-20">20</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-21">21</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-22">22</a></pre></div></td>
+<td class="code"><pre class="code S"><a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-0"></a><span class="mh">0x08048483</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-1"></a><span class="mh">0x08048484</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-2"></a><span class="mh">0x08048486</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    and    esp<span class="p">,</span><span class="mh">0xfffffff0</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-3"></a><span class="mh">0x08048489</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x20</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-4"></a><span class="mh">0x0804848c</span> <span class="o">&lt;</span><span class="m">+9</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x80485b0</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-5"></a><span class="mh">0x08048491</span> <span class="o">&lt;</span><span class="m">+14</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-6"></a><span class="mh">0x08048495</span> <span class="o">&lt;</span><span class="m">+18</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x8<span class="p">],</span>edx
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-7"></a><span class="mh">0x08048499</span> <span class="o">&lt;</span><span class="m">+22</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-8"></a><span class="mh">0x0804849d</span> <span class="o">&lt;</span><span class="m">+26</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-9"></a><span class="mh">0x080484a1</span> <span class="o">&lt;</span><span class="m">+30</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-10"></a><span class="mh">0x080484a4</span> <span class="o">&lt;</span><span class="m">+33</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048380</span> <span class="o">&lt;</span>__isoc99_scanf<span class="o">@</span>plt<span class="o">&gt;</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-11"></a><span class="mh">0x080484a9</span> <span class="o">&lt;</span><span class="m">+38</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-12"></a><span class="mh">0x080484ad</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-13"></a><span class="mh">0x080484b1</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-14"></a><span class="mh">0x080484b5</span> <span class="o">&lt;</span><span class="m">+50</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-15"></a><span class="mh">0x080484b8</span> <span class="o">&lt;</span><span class="m">+53</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-16"></a><span class="mh">0x080484bd</span> <span class="o">&lt;</span><span class="m">+58</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span><span class="mh">0x80485b5</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-17"></a><span class="mh">0x080484c2</span> <span class="o">&lt;</span><span class="m">+63</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-18"></a><span class="mh">0x080484c6</span> <span class="o">&lt;</span><span class="m">+67</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>edx
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-19"></a><span class="mh">0x080484c9</span> <span class="o">&lt;</span><span class="m">+70</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048390</span> <span class="o">&lt;</span>printf<span class="o">@</span>plt<span class="o">&gt;</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-20"></a><span class="mh">0x080484ce</span> <span class="o">&lt;</span><span class="m">+75</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x0</span>
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-21"></a><span class="mh">0x080484d3</span> <span class="o">&lt;</span><span class="m">+80</span><span class="o">&gt;</span> <span class="o">:</span>    leave
+<a name="rest_code_339bc1e6b9264ba98715f9e3cf9d48d5-22"></a><span class="mh">0x080484d4</span> <span class="o">&lt;</span><span class="m">+81</span><span class="o">&gt;</span> <span class="o">:</span>    ret
 </pre></td>
 </tr></table>
 <p>From the disassembly, we can see that the function arguments are pushed from right to left.
@@ -341,124 +341,130 @@ We can also see that the local variables are allocated space in the stack.</p>
 <p>We need to replace all the relative references by labels, memory references by names and remove all "PTR" keywords.
 Using the example to produce dynamically linked executable from fasm for linux (doing it in 1.70.03), we may write it as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-0"> 0</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-1"> 1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-2"> 2</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-3"> 3</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-4"> 4</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-5"> 5</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-6"> 6</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-7"> 7</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-8"> 8</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-9"> 9</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-10">10</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-11">11</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-12">12</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-13">13</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-14">14</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-15">15</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-16">16</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-17">17</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-18">18</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-19">19</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-20">20</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-21">21</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-22">22</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-23">23</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-24">24</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-25">25</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-26">26</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-27">27</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-28">28</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-29">29</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-30">30</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-31">31</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-32">32</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-33">33</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-34">34</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-35">35</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-36">36</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-37">37</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-38">38</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-39">39</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-40">40</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-41">41</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-42">42</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-43">43</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-44">44</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-45">45</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-46">46</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-47">47</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-48">48</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-49">49</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-50">50</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-51">51</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-52">52</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4928b01331944a5ba27e0a21c8938c40-53">53</a></pre></div></td>
-<td class="code"><pre class="code asm"><a name="rest_code_4928b01331944a5ba27e0a21c8938c40-0"></a><span class="nf">format</span> <span class="no">ELF</span> <span class="no">executable</span> <span class="mi">3</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-1"></a><span class="nf">entry</span> <span class="no">start</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-2"></a>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-3"></a><span class="nf">include</span>      <span class="err">'</span><span class="no">import32.inc</span><span class="err">'</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-4"></a><span class="nf">include</span>      <span class="err">'</span><span class="no">proc32.inc</span><span class="err">'</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-5"></a>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-6"></a><span class="nf">interpreter</span>  <span class="err">'/</span><span class="no">lib</span><span class="err">/</span><span class="no">ld-linux.so.2</span><span class="err">'</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-7"></a><span class="nf">needed</span>       <span class="err">'</span><span class="no">libc.so.6</span><span class="err">'</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-8"></a><span class="nf">import</span>       <span class="no">printf</span><span class="p">,</span><span class="no">scanf</span><span class="p">,</span><span class="no">exit</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-9"></a>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-10"></a><span class="nf">segment</span> <span class="no">readable</span> <span class="no">executable</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-11"></a>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-12"></a><span class="nl">gcd:</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-13"></a><span class="nf">push</span>   <span class="no">ebp</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-14"></a><span class="nf">mov</span>    <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-15"></a><span class="nf">sub</span>    <span class="no">esp</span><span class="p">,</span><span class="mi">0x18</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-16"></a><span class="nf">cmp</span>    <span class="no">DWORD</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0xc</span><span class="p">],</span><span class="mi">0x0</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-17"></a><span class="nf">je</span>     <span class="no">l1</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-18"></a><span class="nf">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">DWORD</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0x8</span><span class="p">]</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-19"></a><span class="nf">mov</span>    <span class="no">edx</span><span class="p">,</span><span class="no">eax</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-20"></a><span class="nf">sar</span>    <span class="no">edx</span><span class="p">,</span><span class="mi">0x1f</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-21"></a><span class="nf">idiv</span>   <span class="no">DWORD</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0xc</span><span class="p">]</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-22"></a><span class="nf">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">edx</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-23"></a><span class="nf">mov</span>    <span class="no">DWORD</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">],</span><span class="no">eax</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-24"></a><span class="nf">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">DWORD</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0xc</span><span class="p">]</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-25"></a><span class="nf">mov</span>    <span class="no">DWORD</span> <span class="p">[</span><span class="no">esp</span><span class="p">],</span><span class="no">eax</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-26"></a><span class="nf">call</span>   <span class="no">gcd</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-27"></a><span class="nf">jmp</span>    <span class="no">l2</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-28"></a><span class="nl">l1:</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-29"></a><span class="nf">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="no">DWORD</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0x8</span><span class="p">]</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-30"></a><span class="nl">l2:</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-31"></a><span class="nf">leave</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-32"></a><span class="nf">ret</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-33"></a>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-34"></a><span class="nl">start:</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-35"></a><span class="nf">push</span>     <span class="no">ebp</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-36"></a><span class="nf">mov</span>      <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-37"></a><span class="nf">and</span>      <span class="no">esp</span><span class="p">,</span><span class="mi">0xfffffff0</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-38"></a><span class="nf">sub</span>      <span class="no">esp</span><span class="p">,</span><span class="mi">0x20</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-39"></a><span class="nf">cinvoke</span>  <span class="no">scanf</span><span class="p">,</span><span class="no">pars</span><span class="p">,</span><span class="no">n</span><span class="p">,</span><span class="no">m</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-40"></a><span class="nf">mov</span>      <span class="no">edx</span><span class="p">,[</span><span class="no">n</span><span class="p">]</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-41"></a><span class="nf">mov</span>      <span class="no">eax</span><span class="p">,[</span><span class="no">m</span><span class="p">]</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-42"></a><span class="nf">mov</span>      <span class="no">DWORD</span>  <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">],</span><span class="no">edx</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-43"></a><span class="nf">mov</span>      <span class="no">DWORD</span>  <span class="p">[</span><span class="no">esp</span><span class="p">],</span><span class="no">eax</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-44"></a><span class="nf">call</span>     <span class="no">gcd</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-45"></a><span class="nf">cinvoke</span>  <span class="no">printf</span><span class="p">,</span><span class="no">parspf</span><span class="p">,</span><span class="no">eax</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-46"></a><span class="nf">mov</span>      <span class="no">eax</span><span class="p">,</span><span class="mi">0x0</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-47"></a><span class="nf">cinvoke</span>  <span class="no">exit</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-48"></a>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-49"></a><span class="nf">segment</span> <span class="no">readable</span> <span class="no">writeable</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-50"></a><span class="nf">pars</span>    <span class="no">db</span> <span class="err">'</span><span class="nv">%d%d</span><span class="err">'</span><span class="p">,</span><span class="mi">0</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-51"></a><span class="nf">parspf</span>  <span class="no">db</span> <span class="err">'</span><span class="nv">%d</span><span class="err">'</span><span class="p">,</span><span class="mi">0xa</span><span class="p">,</span><span class="mi">0</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-52"></a><span class="nf">n</span>       <span class="no">dd</span> <span class="mi">0</span>
-<a name="rest_code_4928b01331944a5ba27e0a21c8938c40-53"></a><span class="nf">m</span>       <span class="no">dd</span> <span class="mi">0</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-0"> 0</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-1"> 1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-2"> 2</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-3"> 3</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-4"> 4</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-5"> 5</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-6"> 6</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-7"> 7</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-8"> 8</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-9"> 9</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-10">10</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-11">11</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-12">12</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-13">13</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-14">14</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-15">15</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-16">16</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-17">17</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-18">18</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-19">19</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-20">20</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-21">21</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-22">22</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-23">23</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-24">24</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-25">25</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-26">26</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-27">27</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-28">28</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-29">29</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-30">30</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-31">31</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-32">32</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-33">33</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-34">34</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-35">35</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-36">36</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-37">37</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-38">38</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-39">39</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-40">40</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-41">41</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-42">42</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-43">43</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-44">44</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-45">45</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-46">46</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-47">47</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-48">48</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-49">49</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-50">50</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-51">51</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-52">52</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_18083bf13cc545fe95d4193b3f1a7a0b-53">53</a></pre></div></td>
+<td class="code"><pre class="code S"><a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-0"></a>format ELF executable <span class="m">3</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-1"></a>entry start
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-2"></a>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-3"></a>include      <span class="s">'examples/elfexe/dynamic/import32.inc'</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-4"></a>include      <span class="s">'examples/elfexe/dynamic/proc32.inc'</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-5"></a>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-6"></a>interpreter  <span class="s">'/lib/ld-linux.so.2'</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-7"></a>needed       <span class="s">'libc.so.6'</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-8"></a>import       printf<span class="p">,</span>scanf<span class="p">,</span>exit
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-9"></a>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-10"></a>segment readable executable
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-11"></a>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-12"></a>gcd<span class="o">:</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-13"></a>    push   ebp
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-14"></a>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-15"></a>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-16"></a>    cmp    DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-17"></a>    je     l1
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-18"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-19"></a>    mov    edx<span class="p">,</span>eax
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-20"></a>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-21"></a>    idiv   DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-22"></a>    mov    eax<span class="p">,</span>edx
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-23"></a>    mov    DWORD <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-24"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-25"></a>    mov    DWORD <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-26"></a>    call   gcd
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-27"></a>    jmp    l2
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-28"></a>l1<span class="o">:</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-29"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-30"></a>l2<span class="o">:</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-31"></a>    leave
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-32"></a>    ret
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-33"></a>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-34"></a>start<span class="o">:</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-35"></a>    push     ebp
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-36"></a>    mov      ebp<span class="p">,</span>esp
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-37"></a>    and      esp<span class="p">,</span><span class="mh">0xfffffff0</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-38"></a>    sub      esp<span class="p">,</span><span class="mh">0x20</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-39"></a>    cinvoke  scanf<span class="p">,</span>pars<span class="p">,</span>n<span class="p">,</span>m
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-40"></a>    mov      edx<span class="p">,[</span>n<span class="p">]</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-41"></a>    mov      eax<span class="p">,[</span>m<span class="p">]</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-42"></a>    mov      DWORD  <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-43"></a>    mov      DWORD  <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-44"></a>    call     gcd
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-45"></a>    cinvoke  printf<span class="p">,</span>parspf<span class="p">,</span>eax
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-46"></a>    mov      eax<span class="p">,</span><span class="mh">0x0</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-47"></a>    cinvoke  exit
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-48"></a>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-49"></a>segment readable writeable
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-50"></a>    pars    db <span class="s">'%d%d'</span><span class="p">,</span><span class="m">0</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-51"></a>    parspf  db <span class="s">'%d'</span><span class="p">,</span><span class="mh">0xa</span><span class="p">,</span><span class="m">0</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-52"></a>    n       dd <span class="m">0</span>
+<a name="rest_code_18083bf13cc545fe95d4193b3f1a7a0b-53"></a>    m       dd <span class="m">0</span>
 </pre></td>
 </tr></table>
-<p>The assembled code will perform the same way, but the executable produced is about 10 times smaller! With the assembly code, we will have more liberty to use architecture specific instructions. And, if we see that there are unnecessary register spills happening, we may modify the code to avoid it. (using "register" keyword and -O3 option in gcc makes good use of registers)</p>
+<p>and assemble:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_feadc64dc83343709a087c43fb20af1e-0">0</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_feadc64dc83343709a087c43fb20af1e-0"></a>./fasm gcd.asm
+</pre></td>
+</tr></table>
+<p>The assembled code will perform the same way, but the executable produced is about 10 times smaller! With the assembly code, we will have more liberty to use architecture specific instructions. And, if we see that there are unnecessary register spills happening, we may modify the code to avoid it. (using "register" keyword and <tt class="docutils literal"><span class="pre">-O3</span></tt> option in gcc makes good use of registers)</p>
 <p>p.s.</p>
 <ul>
 <li>
 <p class="first">By default, disassembly syntax is not intel. To change it, use</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_f92673bf65894718bd85f0916b9c100e-0">0</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_f92673bf65894718bd85f0916b9c100e-0"></a><span class="nb">set</span> disassembly-flavor intel
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_503c8ed0908e41359a0d3012ebc9d2bd-0">0</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_503c8ed0908e41359a0d3012ebc9d2bd-0"></a><span class="nb">set</span> disassembly-flavor intel
 </pre></td>
 </tr></table>
 <p>You may consider placing it in <tt class="docutils literal"><span class="pre">$HOME/.gdbinit</span></tt> to use intel syntax everytime.</p>
@@ -486,7 +492,7 @@ Using the example to produce dynamically linked executable from fasm for linux (
 <p>In the method using the absorbing Markov chain, the starting state is for all turned off.
 It can move to the next state which is for one random light turned on. The probability of moving to that state is 1.</p>
 <p>From state 1, it can go back to state 0 with a probability of <span class="math">\(\dfrac{1}{n}\)</span>, or to state 2 with probability of <span class="math">\(1-\dfrac{1}{n}\)</span>.</p>
-<p>And so on, in the <span class="math">\((n-1)^{th}\)</span> state, it can go to the absorbing state n with a probability of frac{1}{n}.</p>
+<p>And so on, in the <span class="math">\((n-1)^{th}\)</span> state, it can go to the absorbing state n with a probability of <span class="math">\(\dfrac{1}{n}\)</span>.</p>
 <p>E.g. For <span class="math">\(n=6\)</span>, the matrix looks like this:</p>
 <div class="math">
 \begin{equation*}
@@ -547,24 +553,24 @@ A^8=\left(\begin{array}{rrrrrrr}
 <p>Answer is <span class="math">\(A^8[0,6] = \dfrac{215}{5832}\)</span></p>
 <p>We can construct the markov chain and calculate the expected value in Sagemath (a very promising free CAS) as follows:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-0">0</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-1">1</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-2">2</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-3">3</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-4">4</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-5">5</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-6">6</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-7">7</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_2c11ca9c30f2424daa74e4402517686f-8">8</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_2c11ca9c30f2424daa74e4402517686f-0"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-1"></a><span class="n">mx</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-2"></a><span class="n">mx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-4"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-5"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-6"></a><span class="n">mx</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-7"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-8"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">am</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">inverse</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-0">0</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-1">1</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-2">2</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-3">3</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-4">4</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-5">5</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-6">6</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-7">7</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_44a11bcf69d844bb95849ed6e769ff90-8">8</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-0"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-1"></a><span class="n">mx</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-2"></a><span class="n">mx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-4"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-5"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-6"></a><span class="n">mx</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-7"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-8"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">am</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">inverse</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
 </pre></td>
 </tr></table>
 <p>If we want to know only the expected value, we can use the tree method:</p>
@@ -572,53 +578,37 @@ A^8=\left(\begin{array}{rrrrrrr}
 <img alt="../../images/flip1.png" src="images/flip1.png"><p class="caption">Probability tree to calculate expected value</p>
 </div>
 <div class="math">
-\begin{equation*}
-E_0=1\cdot(1+E_1)
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-E_1 = \dfrac{1}{n}\cdot(1+E_0)+\left(1-\dfrac{1}{n}\right)\cdot(1+E_2)
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-E_2=\dfrac{2}{n}\cdot(1+E_1)+\left(1-\dfrac{2}{n}\right)\cdot(1+E_3)
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-\vdots
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-E_{n-1}=\dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot(1)
-\end{equation*}
+\begin{align*}
+\displaystyle E_0&amp;=1\cdot(1+E_1) \\
+E_1 &amp;= \dfrac{1}{n}\cdot(1+E_0)+\left(1-\dfrac{1}{n}\right)\cdot(1+E_2)\\
+E_2 &amp;= \dfrac{2}{n}\cdot(1+E_1)+\left(1-\dfrac{2}{n}\right)\cdot(1+E_3)\\
+\vdots \\
+E_{n-1} &amp;= \dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot(1)\\
+\end{align*}
 </div>
 <p>From the above set of equations, we can derive the following algorithm to calculate the expected value in Sage:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-0">0</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-1">1</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-2">2</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-3">3</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-4">4</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-5">5</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-6">6</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-7">7</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_068ed99fb44043808abbe43ccfcc6997-8">8</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_068ed99fb44043808abbe43ccfcc6997-0"></a><span class="n">ax</span><span class="o">=</span><span class="mi">1</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-1"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-2"></a><span class="n">summ</span><span class="o">=</span><span class="mi">0</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-3"></a><span class="n">i</span><span class="o">=</span><span class="mi">0</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-4"></a><span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-5"></a>    <span class="n">ax</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-6"></a>    <span class="n">summ</span> <span class="o">+=</span> <span class="n">ax</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-7"></a>    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-8"></a><span class="k">print</span> <span class="n">summ</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-0">0</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-1">1</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-2">2</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-3">3</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-4">4</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-5">5</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-6">6</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-7">7</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_c29fc5d304f1424f967016a729d52b1a-8">8</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_c29fc5d304f1424f967016a729d52b1a-0"></a><span class="n">ax</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-1"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-2"></a><span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-3"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-4"></a><span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-5"></a>    <span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">ax</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-6"></a>    <span class="n">summ</span> <span class="o">+=</span> <span class="n">ax</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-7"></a>    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-8"></a><span class="k">print</span> <span class="n">summ</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
 </pre></td>
 </tr></table>
-<p>As we see, the n is taken to be 6, and the answer returned is 416/5. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.</p>
+<p>As we see, the n is taken to be <span class="math">\(6\)</span>, and the answer returned is <span class="math">\(416/5\)</span>. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.</p>
 <p>For higher values of n, we get e.g.</p>
 <p><span class="math">\(n=32:\)</span></p>
 <div class="math">
@@ -678,10 +668,7 @@ MathJax.Hub.Config({
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
-            
-        </footer>
+        <footer id="footer"></footer>
 </div>
 </div>
 

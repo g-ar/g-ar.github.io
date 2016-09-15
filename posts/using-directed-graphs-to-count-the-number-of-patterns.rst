@@ -51,8 +51,12 @@ So, the recurrence would be:
 
 .. math::
 
-    \displaystyle a_{i+5}=10\, a_{i+4}-2\, a_{i+2}+a_{i} \\ a_{0}=1 ,\; a_{1}= 9 ,\; a_{2}= 90,\; a_{3}= 898, a_{4}= 8962
-
+    \displaystyle a_{i+5}&=10\, a_{i+4}-2\, a_{i+2}+a_{i} \\ 
+    a_{0}&=1\\ 
+    a_{1}&= 9\\
+    a_{2}&= 90\\
+    a_{3}&= 898\\
+    a_{4}&= 8962\\
 
 Wonder if anyone can come up with a combinatorial argument for that equation?!
 
@@ -93,7 +97,6 @@ which gives the g.f.
 
     \displaystyle G(x)=\frac{x - 1}{x^{5} - 2 \, x^{3} + 10 \, x - 1}
 
-
 There are tremendous uses of generating functions, one of which is to obtain an asymptotic formula. (See William Feller's book on probability for a brief explanation on the topic)
 
 If we have a generating function of the form :math:`G(x)=U(x)/V(x)`, then the asymptotic form is given by
@@ -104,7 +107,6 @@ If we have a generating function of the form :math:`G(x)=U(x)/V(x)`, then the as
     \displaystyle a_n \sim \dfrac{\rho_1}{s_1^{n+1}}
     \displaystyle \textrm{where }\rho_1=\dfrac{-U(s_1)}{V^{'}(s_1)}
     \displaystyle \textrm{and }s_1 \textrm{ is the root of }V(x)\textrm{ nearest to origin}
-
 
 We will visually inspect where the roots lie, to get an idea about the closest root to the origin
 

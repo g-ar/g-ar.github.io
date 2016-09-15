@@ -7,15 +7,15 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://g-ar.github.io/categories/mathjax.xml</loc>
-  <lastmod>2016-09-13T17:29:00Z</lastmod>
+  <lastmod>2016-09-15T17:07:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/galleries/img/rss.xml</loc>
-  <lastmod>2016-09-13T08:51:00Z</lastmod>
+  <lastmod>2016-09-14T06:26:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/galleries/rss.xml</loc>
-  <lastmod>2016-09-13T08:51:00Z</lastmod>
+  <lastmod>2016-09-14T06:26:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/rss.xml</loc>
@@ -23,6 +23,6 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/sitemap.xml</loc>
-  <lastmod>2016-09-13T17:29:00Z</lastmod>
+  <lastmod>2016-09-15T17:07:00Z</lastmod>
  </sitemap>
 </sitemapindex>

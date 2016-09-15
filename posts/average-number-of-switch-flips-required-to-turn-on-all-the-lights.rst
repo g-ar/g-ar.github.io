@@ -16,7 +16,7 @@ It can move to the next state which is for one random light turned on. The proba
 
 From state 1, it can go back to state 0 with a probability of :math:`\dfrac{1}{n}`, or to state 2 with probability of :math:`1-\dfrac{1}{n}`.
 
-And so on, in the :math:`(n-1)^{th}` state, it can go to the absorbing state n with a probability of \frac{1}{n}.
+And so on, in the :math:`(n-1)^{th}` state, it can go to the absorbing state n with a probability of :math:`\dfrac{1}{n}`.
 
 E.g. For :math:`n=6`, the matrix looks like this:
 
@@ -115,51 +115,28 @@ If we want to know only the expected value, we can use the tree method:
 
 .. math::
 
-    E_0=1\cdot(1+E_1)
-
-
-
-.. math::
-
-    E_1 = \dfrac{1}{n}\cdot(1+E_0)+\left(1-\dfrac{1}{n}\right)\cdot(1+E_2)
-
-
-
-.. math::
-
-    E_2=\dfrac{2}{n}\cdot(1+E_1)+\left(1-\dfrac{2}{n}\right)\cdot(1+E_3)
-
-
-
-.. math::
-
-    \vdots
-
-
-
-.. math::
-
-    E_{n-1}=\dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot(1)
+    \displaystyle E_0&=1\cdot(1+E_1) \\
+    E_1 &= \dfrac{1}{n}\cdot(1+E_0)+\left(1-\dfrac{1}{n}\right)\cdot(1+E_2)\\
+    E_2 &= \dfrac{2}{n}\cdot(1+E_1)+\left(1-\dfrac{2}{n}\right)\cdot(1+E_3)\\
+    \vdots \\
+    E_{n-1} &= \dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot(1)\\
 
 From the above set of equations, we can derive the following algorithm to calculate the expected value in Sage:
-
 
 .. code-block:: python
     :number-lines: 0
 
-    ax=1
-    n=6
-    summ=0
-    i=0
+    ax = 1
+    n = 6
+    summ = 0
+    i = 0
     while i<n:
-        ax=(ax*i+x)/(x-i)
+        ax = (ax*i+x)/(x-i)
         summ += ax
         i+=1
     print summ.subs(x=n)
 
-
-
-As we see, the n is taken to be 6, and the answer returned is 416/5. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.
+As we see, the n is taken to be :math:`6`, and the answer returned is :math:`416/5`. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.
 
 For higher values of n, we get e.g.
 
