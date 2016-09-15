@@ -29,7 +29,12 @@ MathJax.Hub.Config({
 <meta property="og:description" content="Once we formulate the markov model correctly, we can obtain the generating function for each entry in the matrix, where there's a possibility of getting the explicit formula. Let's take a look at one ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2015-08-09T17:11:29+05:30">
+<meta property="article:tag" content="generating function">
+<meta property="article:tag" content="J">
+<meta property="article:tag" content="markov chain">
 <meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="sage">
+<meta property="article:tag" content="simulation">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -129,12 +134,12 @@ MathJax.Hub.Config({
 </div>
 <p>which can be verified by a simulation in J:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-0">0</a>
-<a href="#rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-1">1</a>
-<a href="#rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-0"></a>n=:10
-<a name="rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-1"></a>sim=: 3 : '6=+/~:?n#6'
-<a name="rest_code_b0ca546c7e6c43ad8f5b93d0a92c89ec-2"></a>(+/%#)(sim"0)1e5#0 NB. about 0.27
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_574b07518cfe4817ab00db3b4a14a758-0">0</a>
+<a href="#rest_code_574b07518cfe4817ab00db3b4a14a758-1">1</a>
+<a href="#rest_code_574b07518cfe4817ab00db3b4a14a758-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_574b07518cfe4817ab00db3b4a14a758-0"></a>n=:10
+<a name="rest_code_574b07518cfe4817ab00db3b4a14a758-1"></a>sim=: 3 : '6=+/~:?n#6'
+<a name="rest_code_574b07518cfe4817ab00db3b4a14a758-2"></a>(+/%#)(sim"0)1e5#0 NB. about 0.27
 </pre></td>
 </tr></table>
 <p>and</p>
@@ -145,7 +150,13 @@ MathJax.Hub.Config({
 </div>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/generating-function/" rel="tag">generating function</a></li>
+            <li><a class="tag p-category" href="../../categories/j/" rel="tag">J</a></li>
+            <li><a class="tag p-category" href="../../categories/markov-chain/" rel="tag">markov chain</a></li>
+            <li><a class="tag p-category" href="../../categories/sage/" rel="tag">sage</a></li>
+            <li><a class="tag p-category" href="../../categories/simulation/" rel="tag">simulation</a></li>
+        </ul>
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../multisets-and-multivariate-generating-functions/" rel="prev" title="Multisets and multivariate generating functions">Previous post</a>

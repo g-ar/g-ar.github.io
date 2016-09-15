@@ -2,126 +2,126 @@
 <p>I have been using FriCAS for a while mainly for its number sequence guessing routines, an indispensable part when working on enumeration problems. But recently, when I tried other operations which I mostly do in Sage or maxima, like integration and solving equations, I was surprised to see it could give simpler and more complete answers than Sage/maxima.</p>
 <p>One more good thing is that it comes with a fricas mode for emacs, which has many more features compared to running from a terminal. E.g. it gives features like auto-completion, matched-parenthesis highlighting, shortcut keys for navigating through the input, yanking text etc., and of course, we can define our own shortcuts since it's emacs! Let us see how to set FriCAS up and run from emacs in linux. The latest version at the time is 1.2.3, and I have only tried amd64 binary version.</p>
 <p>Make a directory <tt class="docutils literal">$HOME/bin/</tt> if not already there, and add to the <tt class="docutils literal">$PATH</tt> environment variable. Extract the components to <tt class="docutils literal">$HOME/bin/</tt>. To run it, we need to modify a few paths in its files. Go to <tt class="docutils literal">$HOME/bin/usr/local/bin</tt>, in fricas file, update the variable <tt class="docutils literal">exec_prefix</tt> to</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c4b4f07f44d6471a8983b2389a14467c-0">0</a></pre></div></td><td class="code"><pre class="code sh"><a name="rest_code_c4b4f07f44d6471a8983b2389a14467c-0"></a><span class="nv">exec_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FRICAS_PREFIX</span><span class="k">:-</span><span class="p">/home/bin/usr/local</span><span class="si">}</span><span class="s2">&quot;</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_53beb0d6da5e4abe9afa30660e3192c0-0">0</a></pre></div></td><td class="code"><pre class="code sh"><a name="rest_code_53beb0d6da5e4abe9afa30660e3192c0-0"></a><span class="nv">exec_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FRICAS_PREFIX</span><span class="k">:-</span><span class="p">/home/bin/usr/local</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></td></tr></table><p>In file efricas, update FRICASCMD to</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_204f422c59da496cbc718676cc92eec0-0">0</a></pre></div></td><td class="code"><pre class="code sh"><a name="rest_code_204f422c59da496cbc718676cc92eec0-0"></a><span class="nv">FRICASCMD</span><span class="o">=</span><span class="s1">&#39;/home/bin/fricas&#39;</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f7ba6f4bcfee4c70a68f0e93f83835c3-0">0</a></pre></div></td><td class="code"><pre class="code sh"><a name="rest_code_f7ba6f4bcfee4c70a68f0e93f83835c3-0"></a><span class="nv">FRICASCMD</span><span class="o">=</span><span class="s1">&#39;/home/bin/fricas&#39;</span>
 </pre></td></tr></table><p>and also update the line which calls emacs.</p>
 <p>Update the function fricas <span class="math">\(-\)</span> run in <tt class="docutils literal">$HOME/bin/usr/local/lib/fricas/emacs/fricas.el</tt> to</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ff23bace9a3341d7ba2aa673631fdc99-0">0</a>
-<a href="#rest_code_ff23bace9a3341d7ba2aa673631fdc99-1">1</a>
-<a href="#rest_code_ff23bace9a3341d7ba2aa673631fdc99-2">2</a>
-<a href="#rest_code_ff23bace9a3341d7ba2aa673631fdc99-3">3</a>
-<a href="#rest_code_ff23bace9a3341d7ba2aa673631fdc99-4">4</a>
-<a href="#rest_code_ff23bace9a3341d7ba2aa673631fdc99-5">5</a></pre></div></td><td class="code"><pre class="code scheme"><a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-0"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">fricas-run</span> <span class="p">()</span>
-<a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-1"></a>  <span class="s">&quot;Run FriCAS in the current BUFFER.&quot;</span>
-<a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-2"></a>  <span class="p">(</span><span class="nf">message</span> <span class="s">&quot;Starting FriCAS...&quot;</span><span class="p">)</span>
-<a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-3"></a>  <span class="p">(</span><span class="nf">start-process-shell-command</span> <span class="s">&quot;fricas&quot;</span> <span class="p">(</span><span class="nf">current-buffer</span><span class="p">)</span>
-<a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-4"></a>                               <span class="nv">fricas-run-command</span>
-<a name="rest_code_ff23bace9a3341d7ba2aa673631fdc99-5"></a>                               <span class="s">&quot;-noclef&quot;</span> <span class="s">&quot;2&gt;/dev/null&quot;</span><span class="p">))</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_10b545138a314c12a0ba36de23341f39-0">0</a>
+<a href="#rest_code_10b545138a314c12a0ba36de23341f39-1">1</a>
+<a href="#rest_code_10b545138a314c12a0ba36de23341f39-2">2</a>
+<a href="#rest_code_10b545138a314c12a0ba36de23341f39-3">3</a>
+<a href="#rest_code_10b545138a314c12a0ba36de23341f39-4">4</a>
+<a href="#rest_code_10b545138a314c12a0ba36de23341f39-5">5</a></pre></div></td><td class="code"><pre class="code scheme"><a name="rest_code_10b545138a314c12a0ba36de23341f39-0"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">fricas-run</span> <span class="p">()</span>
+<a name="rest_code_10b545138a314c12a0ba36de23341f39-1"></a>  <span class="s">&quot;Run FriCAS in the current BUFFER.&quot;</span>
+<a name="rest_code_10b545138a314c12a0ba36de23341f39-2"></a>  <span class="p">(</span><span class="nf">message</span> <span class="s">&quot;Starting FriCAS...&quot;</span><span class="p">)</span>
+<a name="rest_code_10b545138a314c12a0ba36de23341f39-3"></a>  <span class="p">(</span><span class="nf">start-process-shell-command</span> <span class="s">&quot;fricas&quot;</span> <span class="p">(</span><span class="nf">current-buffer</span><span class="p">)</span>
+<a name="rest_code_10b545138a314c12a0ba36de23341f39-4"></a>                               <span class="nv">fricas-run-command</span>
+<a name="rest_code_10b545138a314c12a0ba36de23341f39-5"></a>                               <span class="s">&quot;-noclef&quot;</span> <span class="s">&quot;2&gt;/dev/null&quot;</span><span class="p">))</span>
 </pre></td></tr></table><p>Otherwise, FriCAS won't start within emacs.</p>
 <p>Next, create two bash scripts within <tt class="docutils literal">$HOME/bin/</tt> with filenames &quot;fricas&quot; <span class="math">\(-\)</span> which is to execute <tt class="docutils literal">$HOME/bin/usr/local/bin/fricas</tt>, and &quot;efricas&quot; to execute <tt class="docutils literal">$HOME/bin/usr/local/bin/efricas</tt>. Make those two newly created files as executable. There, we are all set now. Simply open the terminal, and enter &quot;efricas&quot; to run fricas within emacs. If everything goes well, we will have fricas running within emacs.</p>
 <p>Now, let us have a brief overview of its commands (some are examples taken from the axiom book),
 and its advantages to other free CAS, and probably even the paid ones.</p>
 <ol class="arabic">
 <li><p class="first"><strong>INTEGRATION</strong></p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_14bb9215666c45438a72e64520145f1a-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_14bb9215666c45438a72e64520145f1a-0"></a>integrate(tan(atan(x)/3),x)
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_b198b359985c4f538de95baf465803ad-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_b198b359985c4f538de95baf465803ad-0"></a>integrate(tan(atan(x)/3),x)
 </pre></td></tr></table><p>This integral is an example mentioned in their document, which is instantly solved by fricas, but Sage/maxima fails after trying for a long time.</p>
 </li>
-<li><div class="first"><table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_e5d6f88e88ff47b9a9a333451181b048-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_e5d6f88e88ff47b9a9a333451181b048-0"></a>integrate((x+a)^(1/2)/x,x)
+<li><div class="first"><table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7730bec8495c4f118e20b75e1d526bdf-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_7730bec8495c4f118e20b75e1d526bdf-0"></a>integrate((x+a)^(1/2)/x,x)
 </pre></td></tr></table></div><p>This gives two results, for negative and non-negative a.</p>
 <p>Hence, besides having a good capability, another advantage over Sage and maxima is that we need not declare the symbols which will be used in operations. It also computes the results for all possible cases, and doesn't nag us to make assumptions like in the case of Sage/maxima. (sometimes it keeps asking for the same assumption even if we have already done so!)</p>
 </li>
 <li><p class="first"><strong>SOLVING EQUATIONS</strong></p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7e382514dd3c4963aef3d58d8c941e5b-0">0</a>
-<a href="#rest_code_7e382514dd3c4963aef3d58d8c941e5b-1">1</a>
-<a href="#rest_code_7e382514dd3c4963aef3d58d8c941e5b-2">2</a>
-<a href="#rest_code_7e382514dd3c4963aef3d58d8c941e5b-3">3</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_7e382514dd3c4963aef3d58d8c941e5b-0"></a>solve(x^3+x+1,1/1000)
-<a name="rest_code_7e382514dd3c4963aef3d58d8c941e5b-1"></a>solve(x^3+x+1,1/1000.0)
-<a name="rest_code_7e382514dd3c4963aef3d58d8c941e5b-2"></a>radicalSolve(x^3+x+1)
-<a name="rest_code_7e382514dd3c4963aef3d58d8c941e5b-3"></a>complexSolve(x^3+x+1,1/1000.0)
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_6dab55959e664f75802edfd434cea315-0">0</a>
+<a href="#rest_code_6dab55959e664f75802edfd434cea315-1">1</a>
+<a href="#rest_code_6dab55959e664f75802edfd434cea315-2">2</a>
+<a href="#rest_code_6dab55959e664f75802edfd434cea315-3">3</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_6dab55959e664f75802edfd434cea315-0"></a>solve(x^3+x+1,1/1000)
+<a name="rest_code_6dab55959e664f75802edfd434cea315-1"></a>solve(x^3+x+1,1/1000.0)
+<a name="rest_code_6dab55959e664f75802edfd434cea315-2"></a>radicalSolve(x^3+x+1)
+<a name="rest_code_6dab55959e664f75802edfd434cea315-3"></a>complexSolve(x^3+x+1,1/1000.0)
 </pre></td></tr></table><p>etc. All of the above call the same algorithm to compute the roots, but the result is returned depending on the data type.</p>
 <p>It can also solve non-linear simultaneous equations.</p>
 </li>
-<li><div class="first"><table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ef874ff7aa7e4001ae26c578a66b400e-0">0</a>
-<a href="#rest_code_ef874ff7aa7e4001ae26c578a66b400e-1">1</a>
-<a href="#rest_code_ef874ff7aa7e4001ae26c578a66b400e-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_ef874ff7aa7e4001ae26c578a66b400e-0"></a>solve([x+y^2-4,x^2+y-2],1.E-10)
-<a name="rest_code_ef874ff7aa7e4001ae26c578a66b400e-1"></a>solve([x+y^2-4,x^2+y-2],1/10^10)
-<a name="rest_code_ef874ff7aa7e4001ae26c578a66b400e-2"></a>radicalSolve([x+y^2-4,x^2+y-2])
+<li><div class="first"><table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-0">0</a>
+<a href="#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-1">1</a>
+<a href="#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-0"></a>solve([x+y^2-4,x^2+y-2],1.E-10)
+<a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-1"></a>solve([x+y^2-4,x^2+y-2],1/10^10)
+<a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-2"></a>radicalSolve([x+y^2-4,x^2+y-2])
 </pre></td></tr></table></div><p>We can see that it can give all the exact results also effortlessly. In Sage/maxima, there is currently no way of making itto output all results in form of radicals.</p>
 </li>
 <li><p class="first"><strong>RECURRENCE RELATIONS</strong></p>
 <p>The recursions are transformed into iterated code and compiled! And since it can also symbolically compute, this proves very useful to examine sequences.</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-0">0</a>
-<a href="#rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-1">1</a>
-<a href="#rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-0"></a>fib(0)==0
-<a name="rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-1"></a>fib(1)==1
-<a name="rest_code_11c7bdd2d0dd49298a60b7ea8d0d4a7b-2"></a>fib(n)==fib(n-1)+fib(n-2)
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ef28145e6e27406297250cd9268f7fdb-0">0</a>
+<a href="#rest_code_ef28145e6e27406297250cd9268f7fdb-1">1</a>
+<a href="#rest_code_ef28145e6e27406297250cd9268f7fdb-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_ef28145e6e27406297250cd9268f7fdb-0"></a>fib(0)==0
+<a name="rest_code_ef28145e6e27406297250cd9268f7fdb-1"></a>fib(1)==1
+<a name="rest_code_ef28145e6e27406297250cd9268f7fdb-2"></a>fib(n)==fib(n-1)+fib(n-2)
 </pre></td></tr></table><p>This automatically compiles and computes the fibonacci numbers as an iterated code.</p>
 </li>
-<li><div class="first"><table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_151f469c37714d9e96ebfed473677d79-0">0</a>
-<a href="#rest_code_151f469c37714d9e96ebfed473677d79-1">1</a>
-<a href="#rest_code_151f469c37714d9e96ebfed473677d79-2">2</a>
-<a href="#rest_code_151f469c37714d9e96ebfed473677d79-3">3</a>
-<a href="#rest_code_151f469c37714d9e96ebfed473677d79-4">4</a>
-<a href="#rest_code_151f469c37714d9e96ebfed473677d79-5">5</a>
-<a href="#rest_code_151f469c37714d9e96ebfed473677d79-6">6</a>
-<a href="#rest_code_151f469c37714d9e96ebfed473677d79-7">7</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_151f469c37714d9e96ebfed473677d79-0"></a>a(0)==1
-<a name="rest_code_151f469c37714d9e96ebfed473677d79-1"></a>a(1)==1
-<a name="rest_code_151f469c37714d9e96ebfed473677d79-2"></a>a(2)==1
-<a name="rest_code_151f469c37714d9e96ebfed473677d79-3"></a>b(0)==0
-<a name="rest_code_151f469c37714d9e96ebfed473677d79-4"></a>b(1)==0
-<a name="rest_code_151f469c37714d9e96ebfed473677d79-5"></a>b(2)==0
-<a name="rest_code_151f469c37714d9e96ebfed473677d79-6"></a>a(n)==a(n-1)+b(n-1)
-<a name="rest_code_151f469c37714d9e96ebfed473677d79-7"></a>b(n)==a(n-3)+b(n-3)
+<li><div class="first"><table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f1ed69f805d24adfb99a04bac863f4d8-0">0</a>
+<a href="#rest_code_f1ed69f805d24adfb99a04bac863f4d8-1">1</a>
+<a href="#rest_code_f1ed69f805d24adfb99a04bac863f4d8-2">2</a>
+<a href="#rest_code_f1ed69f805d24adfb99a04bac863f4d8-3">3</a>
+<a href="#rest_code_f1ed69f805d24adfb99a04bac863f4d8-4">4</a>
+<a href="#rest_code_f1ed69f805d24adfb99a04bac863f4d8-5">5</a>
+<a href="#rest_code_f1ed69f805d24adfb99a04bac863f4d8-6">6</a>
+<a href="#rest_code_f1ed69f805d24adfb99a04bac863f4d8-7">7</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-0"></a>a(0)==1
+<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-1"></a>a(1)==1
+<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-2"></a>a(2)==1
+<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-3"></a>b(0)==0
+<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-4"></a>b(1)==0
+<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-5"></a>b(2)==0
+<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-6"></a>a(n)==a(n-1)+b(n-1)
+<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-7"></a>b(n)==a(n-3)+b(n-3)
 </pre></td></tr></table></div><p>This simultaneous recurrence is actually narayana's cows sequence, and this kind of recurrence is compiled as well!
 Using this, we will make use of the guessing routines.</p>
 </li>
 <li><p class="first"><strong>GUESS</strong></p>
 <p>The guessing routine in FriCAS can give us the likely generating function, recurrence relation, functional equation etc.</p>
 <p>Using the above simultaneous recurrence, the generating function can be obtained as:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d0cf818036754bf188aacca43f6b953d-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_d0cf818036754bf188aacca43f6b953d-0"></a>guessAlg [a(i)+b(i) for i in 0..20]
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_cff9a618d09447a7aebb045e54dc1569-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_cff9a618d09447a7aebb045e54dc1569-0"></a>guessAlg [a(i)+b(i) for i in 0..20]
 </pre></td></tr></table></li>
 <li><p class="first">Try for the recurrence relation.</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c38aa33ef0d441c385251a95f069178b-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_c38aa33ef0d441c385251a95f069178b-0"></a>guessPRec [a(i)+b(i) for i in 0..20]
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f873ff5b3580487facfaf3e3cafe791b-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_f873ff5b3580487facfaf3e3cafe791b-0"></a>guessPRec [a(i)+b(i) for i in 0..20]
 </pre></td></tr></table><p>This command gives a single recurrence relation! Hence, we may solve a problem our way and use the guessing routines for simplification.
 Series expansion</p>
 <p>Working with series is also in a way different and easy.</p>
 </li>
-<li><div class="first"><table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_245de75c166e4a9b94c3463754dcbde2-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_245de75c166e4a9b94c3463754dcbde2-0"></a>series(x/(1-x-x^2),x=0)
+<li><div class="first"><table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_cdde01bcdd4a4a178d28866bde983f78-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_cdde01bcdd4a4a178d28866bde983f78-0"></a>series(x/(1-x-x^2),x=0)
 </pre></td></tr></table></div><p>or like this</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_eac79ed2f93f440faa8116b255c8e9b9-0">0</a>
-<a href="#rest_code_eac79ed2f93f440faa8116b255c8e9b9-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_eac79ed2f93f440faa8116b255c8e9b9-0"></a>x:=series &#39;x
-<a name="rest_code_eac79ed2f93f440faa8116b255c8e9b9-1"></a>x/(1-x-x^2)
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_b52d5143ea2040d28744d96500a4e19b-0">0</a>
+<a href="#rest_code_b52d5143ea2040d28744d96500a4e19b-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_b52d5143ea2040d28744d96500a4e19b-0"></a>x:=series &#39;x
+<a name="rest_code_b52d5143ea2040d28744d96500a4e19b-1"></a>x/(1-x-x^2)
 </pre></td></tr></table></li>
 <li><p class="first">If we require only the list of coefficients of the series</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5d9e360d1d42442a8e537fe895ed474d-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_5d9e360d1d42442a8e537fe895ed474d-0"></a>cf:=coefficients x/(1-x-x^2)
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_3e65717917c9495da72e614b918411c5-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_3e65717917c9495da72e614b918411c5-0"></a>cf:=coefficients x/(1-x-x^2)
 </pre></td></tr></table><p>If we want the <span class="math">\([x^{100}]\)</span></p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_24c94201a6224a13adc96829bf29f05a-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_24c94201a6224a13adc96829bf29f05a-0"></a>coefficient(x/(1-x-x^2),100)
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_e4ef0f0e98634daca208d8b25d5f4b33-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_e4ef0f0e98634daca208d8b25d5f4b33-0"></a>coefficient(x/(1-x-x^2),100)
 </pre></td></tr></table><p>or</p>
 <p><tt class="docutils literal">cf.200</tt></p>
 </li>
 <li><p class="first"><strong>SOME MISCELLANEOUS INFO</strong></p>
 <p>Since the output is always pretty-printed and does not provide a way to turn it off (though there are options to output different formats like TeX, fortran, html etc.), we can obtain an unparsed output the following way:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_421aca4d15824745b8c866a8e8df372b-0">0</a>
-<a href="#rest_code_421aca4d15824745b8c866a8e8df372b-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_421aca4d15824745b8c866a8e8df372b-0"></a>k:=(-b)^(1/3)/(1+b)
-<a name="rest_code_421aca4d15824745b8c866a8e8df372b-1"></a>unparse(k :: InputForm)
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_fc1accb33e9c4594a27cdb384acc4f27-0">0</a>
+<a href="#rest_code_fc1accb33e9c4594a27cdb384acc4f27-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_fc1accb33e9c4594a27cdb384acc4f27-0"></a>k:=(-b)^(1/3)/(1+b)
+<a name="rest_code_fc1accb33e9c4594a27cdb384acc4f27-1"></a>unparse(k :: InputForm)
 </pre></td></tr></table></li>
 <li><p class="first">Shell commands can be executed within it:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_36d23df155ed4a4398c1c2d5f6c1e68d-0">0</a>
-<a href="#rest_code_36d23df155ed4a4398c1c2d5f6c1e68d-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_36d23df155ed4a4398c1c2d5f6c1e68d-0"></a>)system pwd
-<a name="rest_code_36d23df155ed4a4398c1c2d5f6c1e68d-1"></a>)system date
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ba0756426ea94673b17b392819a04f90-0">0</a>
+<a href="#rest_code_ba0756426ea94673b17b392819a04f90-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_ba0756426ea94673b17b392819a04f90-0"></a>)system pwd
+<a name="rest_code_ba0756426ea94673b17b392819a04f90-1"></a>)system date
 </pre></td></tr></table><p>etc.</p>
 </li>
 <li><p class="first"><strong>CHANGE OUTPUT FORMAT</strong></p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_654f884c188145838e277445d67751d5-0">0</a>
-<a href="#rest_code_654f884c188145838e277445d67751d5-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_654f884c188145838e277445d67751d5-0"></a>)set output tex on
-<a name="rest_code_654f884c188145838e277445d67751d5-1"></a>)set output tex abc.tex
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7763a5ebde74442a99b7f0314a2d503b-0">0</a>
+<a href="#rest_code_7763a5ebde74442a99b7f0314a2d503b-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_7763a5ebde74442a99b7f0314a2d503b-0"></a>)set output tex on
+<a name="rest_code_7763a5ebde74442a99b7f0314a2d503b-1"></a>)set output tex abc.tex
 </pre></td></tr></table></li>
 <li><p class="first"><strong>SHOW TIME FOR EXECUTION</strong></p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7b088164492f4a0fb1742d57d7c55a7d-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_7b088164492f4a0fb1742d57d7c55a7d-0"></a>)set messages time on
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_991dc78c7dd144d6839007454ce54b5c-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_991dc78c7dd144d6839007454ce54b5c-0"></a>)set messages time on
 </pre></td></tr></table></li>
 <li><p class="first">Sage provides an interface to FriCAS, so we may even run it within Sage.</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7782be7763094f7d9e4486cb06207bbc-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_7782be7763094f7d9e4486cb06207bbc-0"></a>fricas(&#39;series(1/sqrt(1-x),x=0)&#39;)
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_0b68dcfa3c7240de8d6c213c783ffa19-0">0</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_0b68dcfa3c7240de8d6c213c783ffa19-0"></a>fricas(&#39;series(1/sqrt(1-x),x=0)&#39;)
 </pre></td></tr></table></li>
 </ol>
 <p>and there are many more. It even has its own language <span class="math">\(-\)</span> SPAD.</p>

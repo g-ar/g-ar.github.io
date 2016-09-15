@@ -1,7 +1,7 @@
 .. title: Interesting images using recurrences/iterations
 .. slug: interesting-images-using-recurrencesiterations
 .. date: 2014-02-14 10:54:56 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, computer art, recurrence, sage
 .. category: 
 .. link: 
 .. description: 

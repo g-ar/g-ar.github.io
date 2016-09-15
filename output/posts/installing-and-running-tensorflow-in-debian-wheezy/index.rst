@@ -1,7 +1,7 @@
 .. title: Installing and Running TensorFlow in Debian Wheezy
 .. slug: installing-and-running-tensorflow-in-debian-wheezy
 .. date: 2015-11-11 17:16:08 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, docker, tensorflow, linux, debian
 .. category: 
 .. link: 
 .. description: 

@@ -1,7 +1,7 @@
 .. title: A restricted arrangement of letters in a word
 .. slug: a-restricted-arrangement-of-letters-in-a-word
 .. date: 2014-04-05 13:25:01 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, sage, generating function, recurrence, integration, summation
 .. category: 
 .. link: 
 .. description: 

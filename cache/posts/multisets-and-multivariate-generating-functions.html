@@ -43,15 +43,15 @@ E(x,y) = e^{x\, \left(4\, y^{11}+4\, y^{12}+5\, y^{13}+6\, y^{14}+3\, y^{15} \ri
 </div>
 <p>and the probability is given by <span class="math">\([x^8 y^{105}]E(x,y)\dfrac{8!}{22^8} = \dfrac{5621995920}{22^8} \approx 0.102449319851133\)</span>.</p>
 <p>The above probabilities can also be verified by monte-carlo simulations in J, for the without replacement case:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1abb9109c06c4076b4d857676500ede1-0">0</a>
-<a href="#rest_code_1abb9109c06c4076b4d857676500ede1-1">1</a>
-<a href="#rest_code_1abb9109c06c4076b4d857676500ede1-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_1abb9109c06c4076b4d857676500ede1-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
-<a name="rest_code_1abb9109c06c4076b4d857676500ede1-1"></a>sim=: 3 : &#39;105=+/(8?#lst){lst&#39;
-<a name="rest_code_1abb9109c06c4076b4d857676500ede1-2"></a>(+/%#)(sim&quot;0)1e5#0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c69166cbe0be4c67bccb2738bc440464-0">0</a>
+<a href="#rest_code_c69166cbe0be4c67bccb2738bc440464-1">1</a>
+<a href="#rest_code_c69166cbe0be4c67bccb2738bc440464-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_c69166cbe0be4c67bccb2738bc440464-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
+<a name="rest_code_c69166cbe0be4c67bccb2738bc440464-1"></a>sim=: 3 : &#39;105=+/(8?#lst){lst&#39;
+<a name="rest_code_c69166cbe0be4c67bccb2738bc440464-2"></a>(+/%#)(sim&quot;0)1e5#0
 </pre></td></tr></table><p>and for the with replacement case:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-0">0</a>
-<a href="#rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-1">1</a>
-<a href="#rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
-<a name="rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-1"></a>sim=: 3 : &#39;105=+/(?8##lst){lst&#39;
-<a name="rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-2"></a>(+/%#)(sim&quot;0)1e5#0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1a1dfa352fe04278970ff04c42a3553c-0">0</a>
+<a href="#rest_code_1a1dfa352fe04278970ff04c42a3553c-1">1</a>
+<a href="#rest_code_1a1dfa352fe04278970ff04c42a3553c-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
+<a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-1"></a>sim=: 3 : &#39;105=+/(?8##lst){lst&#39;
+<a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-2"></a>(+/%#)(sim&quot;0)1e5#0
 </pre></td></tr></table>

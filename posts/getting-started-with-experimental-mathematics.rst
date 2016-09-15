@@ -1,7 +1,7 @@
 .. title: Getting started with experimental mathematics
 .. slug: getting-started-with-experimental-mathematics
 .. date: 2014-12-16 16:47:39 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, expected value, sage, experimental mathematics, simulation, J, recurrence
 .. category: 
 .. link: 
 .. description: 

@@ -1,7 +1,7 @@
 .. title: Differentiation under the integral sign and a sum
 .. slug: differentiation-under-the-integral-sign-and-a-sum
 .. date: 2014-04-22 15:10:49 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, integration
 .. category: 
 .. link: 
 .. description: 

@@ -31,7 +31,13 @@ To rephrase the problem:
 There are \(m\) people with one ball each, and \(n\) boxes. In a round, each of them picks one box">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2014-12-16T16:47:39+05:30">
+<meta property="article:tag" content="expected value">
+<meta property="article:tag" content="experimental mathematics">
+<meta property="article:tag" content="J">
 <meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="recurrence">
+<meta property="article:tag" content="sage">
+<meta property="article:tag" content="simulation">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -123,30 +129,30 @@ boxes are left?</p>
 </ul>
 <p>Back to our problem, how many rounds can we expect for the game to last? Let us do the simulation by computing answers for small values, in J:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-0"> 0</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-1"> 1</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-2"> 2</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-3"> 3</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-4"> 4</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-5"> 5</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-6"> 6</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-7"> 7</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-8"> 8</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-9"> 9</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-10">10</a>
-<a href="#rest_code_31afeef5aa5a491482bcb92b0ff6030e-11">11</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-0"></a>   'm n'=:5 3
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-1"></a>   sim=: 3 : 0
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-2"></a>a=:m
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-3"></a>c=:0
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-4"></a>while. (a&gt;0) do.
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-5"></a>b=:+/~:?n#a
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-6"></a>a=:a-b
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-7"></a>c=:c+1
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-8"></a>end.
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-9"></a>c return.
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-10"></a>)
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-11"></a>   (+/%#)(sim"0)1e5#0
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-0"> 0</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-1"> 1</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-2"> 2</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-3"> 3</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-4"> 4</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-5"> 5</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-6"> 6</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-7"> 7</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-8"> 8</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-9"> 9</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-10">10</a>
+<a href="#rest_code_4844f12d9e184486a50f3adbaeca4d6a-11">11</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-0"></a>   'm n'=:5 3
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-1"></a>   sim=: 3 : 0
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-2"></a>a=:m
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-3"></a>c=:0
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-4"></a>while. (a&gt;0) do.
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-5"></a>b=:+/~:?n#a
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-6"></a>a=:a-b
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-7"></a>c=:c+1
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-8"></a>end.
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-9"></a>c return.
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-10"></a>)
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-11"></a>   (+/%#)(sim"0)1e5#0
 </pre></td>
 </tr></table>
 <p>Running the above gives a value of about <span class="math">\(2.554\)</span></p>
@@ -178,40 +184,40 @@ The boundary condition is <span class="math">\(E[1]=1\)</span>, since obviously 
 <p><span class="math">\(E[5]\)</span> would be <span class="math">\(\dfrac{18391}{7200} = 2.5543\)</span> which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a formula.</p>
 <p>Let us calculate the number of ways to partition a number <span class="math">\(n\)</span> of length <span class="math">\(3\)</span> (number of people fixed at <span class="math">\(m=3\)</span>), using sage:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-0"> 0</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-1"> 1</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-2"> 2</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-3"> 3</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-4"> 4</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-5"> 5</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-6"> 6</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-7"> 7</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-8"> 8</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-9"> 9</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-10">10</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-11">11</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-12">12</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-13">13</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-14">14</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-15">15</a>
-<a href="#rest_code_69ab91ba5fa34831be583f3ce46836bf-16">16</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-0"></a><span class="k">def</span> <span class="nf">afun</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span><span class="n">bb</span><span class="p">,</span><span class="n">cc</span><span class="p">):</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-1"></a>    <span class="n">nn</span> <span class="o">=</span> <span class="n">aa</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-2"></a>    <span class="n">nbac</span> <span class="o">=</span> <span class="n">nn</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-3"></a>    <span class="n">mm</span> <span class="o">=</span> <span class="n">bb</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-4"></a>    <span class="n">ll</span> <span class="o">=</span> <span class="n">cc</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-5"></a>    <span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-6"></a>    <span class="n">alst</span> <span class="o">=</span> <span class="n">Partitions</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="n">ll</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-7"></a>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alst</span><span class="p">:</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-8"></a>        <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">mm</span><span class="o">-</span><span class="n">ll</span><span class="p">))</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-9"></a>        <span class="n">tot</span> <span class="o">=</span> <span class="mi">1</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-10"></a>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-11"></a>            <span class="n">tot</span> <span class="o">*=</span> <span class="n">binomial</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-12"></a>            <span class="n">nn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">-</span><span class="n">c</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-13"></a>        <span class="n">summ</span> <span class="o">+=</span> <span class="n">Permutations</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">cardinality</span><span class="p">()</span><span class="o">*</span><span class="n">tot</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-14"></a>        <span class="n">nn</span> <span class="o">=</span> <span class="n">nbac</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-15"></a>    <span class="k">return</span> <span class="n">summ</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-16"></a><span class="k">print</span> <span class="p">[</span><span class="n">afun</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">16</span><span class="p">)]</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-0"> 0</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-1"> 1</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-2"> 2</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-3"> 3</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-4"> 4</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-5"> 5</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-6"> 6</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-7"> 7</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-8"> 8</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-9"> 9</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-10">10</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-11">11</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-12">12</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-13">13</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-14">14</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-15">15</a>
+<a href="#rest_code_97f2766c26934bafa82819f4bb1f2ad1-16">16</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-0"></a><span class="k">def</span> <span class="nf">afun</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span><span class="n">bb</span><span class="p">,</span><span class="n">cc</span><span class="p">):</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-1"></a>    <span class="n">nn</span> <span class="o">=</span> <span class="n">aa</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-2"></a>    <span class="n">nbac</span> <span class="o">=</span> <span class="n">nn</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-3"></a>    <span class="n">mm</span> <span class="o">=</span> <span class="n">bb</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-4"></a>    <span class="n">ll</span> <span class="o">=</span> <span class="n">cc</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-5"></a>    <span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-6"></a>    <span class="n">alst</span> <span class="o">=</span> <span class="n">Partitions</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="n">ll</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-7"></a>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alst</span><span class="p">:</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-8"></a>        <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">mm</span><span class="o">-</span><span class="n">ll</span><span class="p">))</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-9"></a>        <span class="n">tot</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-10"></a>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-11"></a>            <span class="n">tot</span> <span class="o">*=</span> <span class="n">binomial</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-12"></a>            <span class="n">nn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">-</span><span class="n">c</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-13"></a>        <span class="n">summ</span> <span class="o">+=</span> <span class="n">Permutations</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">cardinality</span><span class="p">()</span><span class="o">*</span><span class="n">tot</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-14"></a>        <span class="n">nn</span> <span class="o">=</span> <span class="n">nbac</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-15"></a>    <span class="k">return</span> <span class="n">summ</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-16"></a><span class="k">print</span> <span class="p">[</span><span class="n">afun</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">16</span><span class="p">)]</span>
 </pre></td>
 </tr></table>
 <p>What this function afun does is that for <span class="math">\(n\)</span> and <span class="math">\(m\)</span>, it computes the number of partitions having length <span class="math">\(l (\le m)\)</span>, and we compute the list of values for <span class="math">\(l=m=3\)</span> and varying <span class="math">\(n\)</span>.</p>
@@ -226,19 +232,26 @@ E_{1,m} &amp;= 1
 </div>
 <p>In maxima (which will cache the values to speed up recurrence computation), it can be written as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_927cab07876f401788c996e6d59b30e4-0">0</a>
-<a href="#rest_code_927cab07876f401788c996e6d59b30e4-1">1</a>
-<a href="#rest_code_927cab07876f401788c996e6d59b30e4-2">2</a>
-<a href="#rest_code_927cab07876f401788c996e6d59b30e4-3">3</a></pre></div></td>
-<td class="code"><pre class="code scheme"><a name="rest_code_927cab07876f401788c996e6d59b30e4-0"></a><span class="nv">m:3$</span>
-<a name="rest_code_927cab07876f401788c996e6d59b30e4-1"></a><span class="nv">E</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="nv">:1$</span>
-<a name="rest_code_927cab07876f401788c996e6d59b30e4-2"></a><span class="nv">E</span><span class="p">[</span><span class="nv">n</span><span class="p">]</span><span class="nv">:=sum</span><span class="p">(</span><span class="nf">stirling2</span><span class="p">(</span><span class="nf">m,j</span><span class="p">)</span><span class="nv">*factorial</span><span class="p">(</span><span class="nf">n</span><span class="p">)</span><span class="nv">/factorial</span><span class="p">(</span><span class="nf">n-j</span><span class="p">)</span><span class="nv">*E</span><span class="p">[</span><span class="nv">n-j</span><span class="p">]</span><span class="nv">/n^m,j,1,n-1</span><span class="p">)</span><span class="nv">+1$</span>
-<a name="rest_code_927cab07876f401788c996e6d59b30e4-3"></a><span class="nv">float</span><span class="p">(</span><span class="nf">E</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="c1">;</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d874665e4db94b2aac69710c4949528f-0">0</a>
+<a href="#rest_code_d874665e4db94b2aac69710c4949528f-1">1</a>
+<a href="#rest_code_d874665e4db94b2aac69710c4949528f-2">2</a>
+<a href="#rest_code_d874665e4db94b2aac69710c4949528f-3">3</a></pre></div></td>
+<td class="code"><pre class="code scheme"><a name="rest_code_d874665e4db94b2aac69710c4949528f-0"></a><span class="nv">m:3$</span>
+<a name="rest_code_d874665e4db94b2aac69710c4949528f-1"></a><span class="nv">E</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="nv">:1$</span>
+<a name="rest_code_d874665e4db94b2aac69710c4949528f-2"></a><span class="nv">E</span><span class="p">[</span><span class="nv">n</span><span class="p">]</span><span class="nv">:=sum</span><span class="p">(</span><span class="nf">stirling2</span><span class="p">(</span><span class="nf">m,j</span><span class="p">)</span><span class="nv">*factorial</span><span class="p">(</span><span class="nf">n</span><span class="p">)</span><span class="nv">/factorial</span><span class="p">(</span><span class="nf">n-j</span><span class="p">)</span><span class="nv">*E</span><span class="p">[</span><span class="nv">n-j</span><span class="p">]</span><span class="nv">/n^m,j,1,n-1</span><span class="p">)</span><span class="nv">+1$</span>
+<a name="rest_code_d874665e4db94b2aac69710c4949528f-3"></a><span class="nv">float</span><span class="p">(</span><span class="nf">E</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="c1">;</span>
 </pre></td>
 </tr></table>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/expected-value/" rel="tag">expected value</a></li>
+            <li><a class="tag p-category" href="../../categories/experimental-mathematics/" rel="tag">experimental mathematics</a></li>
+            <li><a class="tag p-category" href="../../categories/j/" rel="tag">J</a></li>
+            <li><a class="tag p-category" href="../../categories/recurrence/" rel="tag">recurrence</a></li>
+            <li><a class="tag p-category" href="../../categories/sage/" rel="tag">sage</a></li>
+            <li><a class="tag p-category" href="../../categories/simulation/" rel="tag">simulation</a></li>
+        </ul>
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../jolla-and-sailfish-os/" rel="prev" title="Jolla and sailfish OS">Previous post</a>

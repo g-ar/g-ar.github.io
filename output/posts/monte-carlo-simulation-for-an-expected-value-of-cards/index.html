@@ -30,7 +30,10 @@ MathJax.Hub.Config({
 E.g. in ♠♥♥♣♦♣♣♦♦♣♠♠♣ , there">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2014-02-09T20:17:59+05:30">
+<meta property="article:tag" content="expected value">
+<meta property="article:tag" content="J">
 <meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="simulation">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -108,12 +111,12 @@ E.g. in ♠♥♥♣♦♣♣♦♦♣♠♠♣ , there">
 <p>For the simulation, we will be using a language called <a class="reference external" href="https://jsoftware.com">J</a>. The programs written in J can be very short compared to other well known languages. So, we can focus on the problem at hand instead of the program.</p>
 <p>Let's see how it can be used for our simulation (there can be other ways, here’s my shot):</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_23e45e94782f4818ac2ff1a564116a1c-0">0</a>
-<a href="#rest_code_23e45e94782f4818ac2ff1a564116a1c-1">1</a>
-<a href="#rest_code_23e45e94782f4818ac2ff1a564116a1c-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-0"></a>a=:13#(i.4)
-<a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-1"></a>sim=: 3 : '+/2=/\(13?52){a'
-<a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-2"></a>(+/%#)(sim "0) 1000000#0
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8f81718b69f149a0bbb7f26074d34b7b-0">0</a>
+<a href="#rest_code_8f81718b69f149a0bbb7f26074d34b7b-1">1</a>
+<a href="#rest_code_8f81718b69f149a0bbb7f26074d34b7b-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-0"></a>a=:13#(i.4)
+<a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-1"></a>sim=: 3 : '+/2=/\(13?52){a'
+<a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-2"></a>(+/%#)(sim "0) 1000000#0
 </pre></td>
 </tr></table>
 <p>That's it, less than 70 characters! It output <span class="math">\(2.82489\)</span> for me. When we are proceeding with an analytical method, if we get an answer around <span class="math">\(2.82\)</span>, then we can be pretty sure that it's right.</p>
@@ -166,7 +169,11 @@ So, if we write <tt class="docutils literal">2*5+3</tt>, answer would be <tt cla
 <p>For <span class="math">\(n=13\)</span>, it would be <span class="math">\(48/17\)</span>, or <span class="math">\(2.82352941176471\)</span> cards, which agrees with the simulation.</p>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/expected-value/" rel="tag">expected value</a></li>
+            <li><a class="tag p-category" href="../../categories/j/" rel="tag">J</a></li>
+            <li><a class="tag p-category" href="../../categories/simulation/" rel="tag">simulation</a></li>
+        </ul>
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../generating-image-patterns/" rel="prev" title="Generating image patterns">Previous post</a>

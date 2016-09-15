@@ -1,7 +1,7 @@
 .. title: Applications of Generating Functions
 .. slug: applications-of-generating-functions
 .. date: 2014-03-19 20:54:04 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, generating function, sage, diophantine equations, summation, expected value, probability, infinite series
 .. category: 
 .. link: 
 .. description: 

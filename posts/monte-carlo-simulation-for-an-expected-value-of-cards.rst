@@ -1,7 +1,7 @@
 .. title: Monte-Carlo simulation for an expected value of cards
 .. slug: monte-carlo-simulation-for-an-expected-value-of-cards
 .. date: 2014-02-09 20:17:59 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, simulation, J, expected value
 .. category: 
 .. link: 
 .. description: 

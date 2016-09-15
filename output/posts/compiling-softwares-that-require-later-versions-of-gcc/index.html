@@ -29,6 +29,11 @@ MathJax.Hub.Config({
 <meta property="og:description" content="Suppose we require to install the latest version of a software, but the repository doesn't have it, we usually either get the latest source code and compile, or download the compiled binary if availab">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2015-12-20T19:40:01+05:30">
+<meta property="article:tag" content="computer art">
+<meta property="article:tag" content="context free art">
+<meta property="article:tag" content="debian">
+<meta property="article:tag" content="GCC">
+<meta property="article:tag" content="linux">
 <meta property="article:tag" content="mathjax">
 </head>
 <body>
@@ -115,34 +120,40 @@ To compile on a single core, use<ul>
 </ul>
 <p>After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install <tt class="docutils literal"><span class="pre">libpng12-dev</span></tt> and compile.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5d8faec04ee04dd4962c49d430c98fe1-0">0</a>
-<a href="#rest_code_5d8faec04ee04dd4962c49d430c98fe1-1">1</a>
-<a href="#rest_code_5d8faec04ee04dd4962c49d430c98fe1-2">2</a>
-<a href="#rest_code_5d8faec04ee04dd4962c49d430c98fe1-3">3</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_5d8faec04ee04dd4962c49d430c98fe1-0"></a><span class="nv">CC</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_5d8faec04ee04dd4962c49d430c98fe1-1"></a><span class="nv">LD</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_5d8faec04ee04dd4962c49d430c98fe1-2"></a><span class="nv">CPP</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
-<a name="rest_code_5d8faec04ee04dd4962c49d430c98fe1-3"></a><span class="nv">CXX</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7807578d1c30478ba4e46bccac282f45-0">0</a>
+<a href="#rest_code_7807578d1c30478ba4e46bccac282f45-1">1</a>
+<a href="#rest_code_7807578d1c30478ba4e46bccac282f45-2">2</a>
+<a href="#rest_code_7807578d1c30478ba4e46bccac282f45-3">3</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_7807578d1c30478ba4e46bccac282f45-0"></a><span class="nv">CC</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_7807578d1c30478ba4e46bccac282f45-1"></a><span class="nv">LD</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_7807578d1c30478ba4e46bccac282f45-2"></a><span class="nv">CPP</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
+<a name="rest_code_7807578d1c30478ba4e46bccac282f45-3"></a><span class="nv">CXX</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
 </pre></td>
 </tr></table>
 <p>The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in <tt class="docutils literal">$HOME/bin</tt> named cfdg with following contents</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_87badf9bc96b47458faca2a7cae9032c-0">0</a>
-<a href="#rest_code_87badf9bc96b47458faca2a7cae9032c-1">1</a>
-<a href="#rest_code_87badf9bc96b47458faca2a7cae9032c-2">2</a>
-<a href="#rest_code_87badf9bc96b47458faca2a7cae9032c-3">3</a>
-<a href="#rest_code_87badf9bc96b47458faca2a7cae9032c-4">4</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_87badf9bc96b47458faca2a7cae9032c-0"></a><span class="ch">#!/bin/bash</span>
-<a name="rest_code_87badf9bc96b47458faca2a7cae9032c-1"></a><span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_87badf9bc96b47458faca2a7cae9032c-2"></a><span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/g++
-<a name="rest_code_87badf9bc96b47458faca2a7cae9032c-3"></a><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/lib64
-<a name="rest_code_87badf9bc96b47458faca2a7cae9032c-4"></a><span class="nv">$HOME</span>/bin/context-free-3.0.9/cfdg <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-0">0</a>
+<a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-1">1</a>
+<a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-2">2</a>
+<a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-3">3</a>
+<a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-4">4</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-0"></a><span class="ch">#!/bin/bash</span>
+<a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-1"></a><span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-2"></a><span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/g++
+<a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-3"></a><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/lib64
+<a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-4"></a><span class="nv">$HOME</span>/bin/context-free-3.0.9/cfdg <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 </pre></td>
 </tr></table>
 <p>and <tt class="docutils literal">chmod +x cfdg</tt>, and have fun with the software!</p>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/computer-art/" rel="tag">computer art</a></li>
+            <li><a class="tag p-category" href="../../categories/context-free-art/" rel="tag">context free art</a></li>
+            <li><a class="tag p-category" href="../../categories/debian/" rel="tag">debian</a></li>
+            <li><a class="tag p-category" href="../../categories/gcc/" rel="tag">GCC</a></li>
+            <li><a class="tag p-category" href="../../categories/linux/" rel="tag">linux</a></li>
+        </ul>
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../installing-and-running-tensorflow-in-debian-wheezy/" rel="prev" title="Installing and Running TensorFlow in Debian Wheezy">Previous post</a>

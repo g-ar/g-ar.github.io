@@ -1,7 +1,7 @@
 .. title: Jolla and sailfish OS
 .. slug: jolla-and-sailfish-os
 .. date: 2014-11-09 16:34:48 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, jolla, sailfish OS, linux, sage, ARM
 .. category: 
 .. link: 
 .. description: 

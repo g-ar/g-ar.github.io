@@ -1,7 +1,7 @@
 .. title: Probability of a sum being less than 1 (convolution of pdf)
 .. slug: probability-of-a-sum-being-less-than-1-convolution-of-pdf
 .. date: 2014-06-01 15:23:45 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, probability, R, J, simulation
 .. category: 
 .. link: 
 .. description: 

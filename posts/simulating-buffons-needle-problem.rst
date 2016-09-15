@@ -1,7 +1,7 @@
 .. title: Simulating Buffon's needle problem
 .. slug: simulating-buffons-needle-problem
 .. date: 2014-02-10 20:32:53 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, simulation, J
 .. category: 
 .. link: 
 .. description: 

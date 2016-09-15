@@ -1,7 +1,7 @@
-.. title: Interesting images -- 2
+.. title: Interesting images - 2
 .. slug: interesting-images-2
 .. date: 2014-02-16 11:43:36 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, computer art, sage, recurrence
 .. category: 
 .. link: 
 .. description: 

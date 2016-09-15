@@ -1,7 +1,7 @@
 .. title: Interesting definite integrals
 .. slug: interesting-definite-integrals
 .. date: 2014-05-04 15:16:30 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, integration
 .. category: 
 .. link: 
 .. description: 

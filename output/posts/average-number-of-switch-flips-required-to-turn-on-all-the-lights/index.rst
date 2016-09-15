@@ -1,7 +1,7 @@
 .. title: Average Number Of Switch Flips Required To Turn On All The Lights
 .. slug: average-number-of-switch-flips-required-to-turn-on-all-the-lights
 .. date: 2014-01-18 10:51:51 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, probability, sage, expected value, markov chain
 .. category: 
 .. link: 
 .. description: 

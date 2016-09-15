@@ -1,7 +1,7 @@
 .. title: Using Directed Graphs to form multivariate recurrence relations
 .. slug: using-directed-graphs-to-form-multivariate-recurrence-relations
 .. date: 2014-07-26 16:26:48 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, recurrence, sage, restricted permutation
 .. category: 
 .. link: 
 .. description: 

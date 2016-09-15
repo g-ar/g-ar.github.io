@@ -1,11 +1,11 @@
 <p><em>There is a bag having 3 red, 3 black, 5 white and 7 green marbles. A marble is randomly picked one after another without replacement till the colour of the picked marble matches with one of the marbles in hand. What is the expected number of marbles we need to pick?</em></p>
 <p>Before trying out the analytical solution, let us get an approximate answer from a simulation.
 It's just some tens of characters in J:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-0">0</a>
-<a href="#rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-1">1</a>
-<a href="#rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-0"></a>a=:(3#0 1),(5#2),(7#3)
-<a name="rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-1"></a>sim =: 3 : &#39;{.1+I.-.~:(5?#a){a&#39;
-<a name="rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-2"></a>(+/%#)(sim &quot;0) 100000#0 NB. about 3.25279
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-0">0</a>
+<a href="#rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-1">1</a>
+<a href="#rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-0"></a>a=:(3#0 1),(5#2),(7#3)
+<a name="rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-1"></a>sim =: 3 : &#39;{.1+I.-.~:(5?#a){a&#39;
+<a name="rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-2"></a>(+/%#)(sim &quot;0) 100000#0 NB. about 3.25279
 </pre></td></tr></table><p>sample size of 5 is chosen by pigeonhole principle.</p>
 <ul class="simple">
 <li><tt class="docutils literal">~:</tt> returns 1 for items which are distinct till that position.</li>
@@ -22,31 +22,31 @@ It's just some tens of characters in J:</p>
 <p>where <span class="math">\(A,B,C,D\)</span> are the initial number of marbles of four colours.</p>
 <p>And it can be directly translated to code.</p>
 <p>In Sage:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-0">0</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-1">1</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-2">2</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-3">3</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-4">4</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-5">5</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-6">6</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-7">7</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-8">8</a>
-<a href="#rest_code_623e4c57b9684ad4a3dc8c80d6182144-9">9</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-0"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">3</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-1"></a><span class="n">B</span> <span class="o">=</span> <span class="mi">3</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-2"></a><span class="n">C</span> <span class="o">=</span> <span class="mi">5</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-3"></a><span class="n">D</span> <span class="o">=</span> <span class="mi">7</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-4"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-5"></a>    <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="o">-</span><span class="n">a</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">B</span><span class="o">-</span><span class="n">b</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">C</span><span class="o">-</span><span class="n">c</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">D</span><span class="o">-</span><span class="n">d</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-6"></a>        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="o">+</span><span class="n">D</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">))</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-7"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">)</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-8"></a><span class="n">ans</span><span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
-<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-9"></a><span class="k">print</span> <span class="n">ans</span><span class="p">,</span> <span class="n">N</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span> <span class="c1"># = 3979/1224 and N() for the numerical approximation = 3.25081699346405</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_fc13357f38f644d484171e59616b96d6-0">0</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-1">1</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-2">2</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-3">3</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-4">4</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-5">5</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-6">6</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-7">7</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-8">8</a>
+<a href="#rest_code_fc13357f38f644d484171e59616b96d6-9">9</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_fc13357f38f644d484171e59616b96d6-0"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">3</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-1"></a><span class="n">B</span> <span class="o">=</span> <span class="mi">3</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-2"></a><span class="n">C</span> <span class="o">=</span> <span class="mi">5</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-3"></a><span class="n">D</span> <span class="o">=</span> <span class="mi">7</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-4"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-5"></a>    <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="o">-</span><span class="n">a</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">B</span><span class="o">-</span><span class="n">b</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">C</span><span class="o">-</span><span class="n">c</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">D</span><span class="o">-</span><span class="n">d</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-6"></a>        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="o">+</span><span class="n">D</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">))</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-7"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">)</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-8"></a><span class="n">ans</span><span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+<a name="rest_code_fc13357f38f644d484171e59616b96d6-9"></a><span class="k">print</span> <span class="n">ans</span><span class="p">,</span> <span class="n">N</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span> <span class="c1"># = 3979/1224 and N() for the numerical approximation = 3.25081699346405</span>
 </pre></td></tr></table><p>Here's an exercise for you to try:</p>
 <p>Repeat the same problem, this time with the replacement of the marbles. What's the expected number of number of picks till you see the same coloured marble again?</p>
 <p>Simulation is easy:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_fe8879ca768347b18c2eea89c884e7d8-0">0</a>
-<a href="#rest_code_fe8879ca768347b18c2eea89c884e7d8-1">1</a>
-<a href="#rest_code_fe8879ca768347b18c2eea89c884e7d8-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_fe8879ca768347b18c2eea89c884e7d8-0"></a>a=:(3#0 1),(5#2),(7#3)
-<a name="rest_code_fe8879ca768347b18c2eea89c884e7d8-1"></a>sim =: 3 : &#39;{.1+I.-.~:(?5##a){a&#39;
-<a name="rest_code_fe8879ca768347b18c2eea89c884e7d8-2"></a>(+/%#)(sim &quot;0) 100000#0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_43af0546d765435589330c9868f2ec84-0">0</a>
+<a href="#rest_code_43af0546d765435589330c9868f2ec84-1">1</a>
+<a href="#rest_code_43af0546d765435589330c9868f2ec84-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_43af0546d765435589330c9868f2ec84-0"></a>a=:(3#0 1),(5#2),(7#3)
+<a name="rest_code_43af0546d765435589330c9868f2ec84-1"></a>sim =: 3 : &#39;{.1+I.-.~:(?5##a){a&#39;
+<a name="rest_code_43af0546d765435589330c9868f2ec84-2"></a>(+/%#)(sim &quot;0) 100000#0
 </pre></td></tr></table><p>In a similar fashion, the recurrence can be modified. (Ans: <span class="math">\(757/243\)</span>)</p>

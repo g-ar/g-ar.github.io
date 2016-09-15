@@ -1,7 +1,7 @@
 .. title: Expected number of marbles to be picked till one of the colours are repeated
 .. slug: expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated
 .. date: 2014-02-11 20:38:26 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, expected value, J, simulation, recurrence, sage
 .. category: 
 .. link: 
 .. description: 

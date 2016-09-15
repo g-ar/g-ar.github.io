@@ -1,7 +1,7 @@
 .. title: Josephus problem -- C versus J
 .. slug: josephus-problem-c-versus-j
 .. date: 2014-03-26 12:00:59 UTC+05:30
-.. tags: mathjax 
+.. tags: mathjax, C, J
 .. category: 
 .. link: 
 .. description: 

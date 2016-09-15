@@ -1,7 +1,7 @@
 .. title: Compiling softwares that require later versions of GCC
 .. slug: compiling-softwares-that-require-later-versions-of-gcc
 .. date: 2015-12-20 19:40:01 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, GCC, context free art, computer art, debian, linux
 .. category: 
 .. link: 
 .. description: 

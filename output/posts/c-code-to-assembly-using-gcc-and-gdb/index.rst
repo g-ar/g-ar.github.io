@@ -1,7 +1,7 @@
 .. title: C code to assembly using gcc and gdb
 .. slug: c-code-to-assembly-using-gcc-and-gdb
 .. date: 2014-01-19 23:29:58 UTC+05:30
-.. tags: 
+.. tags: C, assembly, GCC, GDB, fasm
 .. category: 
 .. link: 
 .. description: 

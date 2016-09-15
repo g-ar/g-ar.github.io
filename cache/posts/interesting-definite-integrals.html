@@ -80,35 +80,35 @@
 \end{equation*}
 </div>
 <p>In Sage, it can be applied as:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-0"> 0</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-1"> 1</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-2"> 2</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-3"> 3</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-4"> 4</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-5"> 5</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-6"> 6</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-7"> 7</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-8"> 8</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-9"> 9</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-10">10</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-11">11</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-12">12</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-13">13</a>
-<a href="#rest_code_927d6a3b97404572b45c7b34fe76707e-14">14</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_927d6a3b97404572b45c7b34fe76707e-0"></a><span class="c1"># Takes a few seconds</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-1"></a><span class="n">var</span><span class="p">(</span><span class="s1">&#39;a b&#39;</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-2"></a><span class="n">forget</span><span class="p">()</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-3"></a><span class="n">assume</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-4"></a><span class="n">intg</span> <span class="o">=</span> <span class="n">e</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">5</span><span class="o">/</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-5"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">integrate</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">intg</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">oo</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-6"></a><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-7"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-8"></a><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-9"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-10"></a><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-11"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-12"></a><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-13"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_927d6a3b97404572b45c7b34fe76707e-14"></a><span class="n">h5</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-0"> 0</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-1"> 1</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-2"> 2</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-3"> 3</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-4"> 4</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-5"> 5</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-6"> 6</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-7"> 7</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-8"> 8</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-9"> 9</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-10">10</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-11">11</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-12">12</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-13">13</a>
+<a href="#rest_code_3c3bf98e4f5e42569801c6644f144f43-14">14</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-0"></a><span class="c1"># Takes a few seconds</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-1"></a><span class="n">var</span><span class="p">(</span><span class="s1">&#39;a b&#39;</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-2"></a><span class="n">forget</span><span class="p">()</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-3"></a><span class="n">assume</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-4"></a><span class="n">intg</span> <span class="o">=</span> <span class="n">e</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">5</span><span class="o">/</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-5"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">integrate</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">intg</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">oo</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-6"></a><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-7"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-8"></a><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-9"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-10"></a><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-11"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-12"></a><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-13"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-14"></a><span class="n">h5</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
 </pre></td></tr></table></li>
 <li><div class="first math">
 \begin{align*}
