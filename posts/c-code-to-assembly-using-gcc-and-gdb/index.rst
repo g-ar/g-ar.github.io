@@ -47,7 +47,7 @@ and disassemble:
 
 We will see something like this:
 
-.. code-block:: asm
+.. code-block:: S
     :number-lines: 0
 
     0x08048454 <+0>  :    push   ebp
@@ -79,7 +79,7 @@ and
 
 shows like this:
 
-.. code-block:: asm
+.. code-block:: S
     :number-lines: 0
 
     0x08048483 <+0>  :    push   ebp
@@ -112,14 +112,14 @@ We can also see that the local variables are allocated space in the stack.
 We need to replace all the relative references by labels, memory references by names and remove all "PTR" keywords.
 Using the example to produce dynamically linked executable from fasm for linux (doing it in 1.70.03), we may write it as:
 
-.. code-block:: asm
+.. code-block:: S
     :number-lines: 0
 
     format ELF executable 3
     entry start
 
-    include      'import32.inc'
-    include      'proc32.inc'
+    include      'examples/elfexe/dynamic/import32.inc'
+    include      'examples/elfexe/dynamic/proc32.inc'
 
     interpreter  '/lib/ld-linux.so.2'
     needed       'libc.so.6'
@@ -128,51 +128,56 @@ Using the example to produce dynamically linked executable from fasm for linux (
     segment readable executable
 
     gcd:
-    push   ebp
-    mov    ebp,esp
-    sub    esp,0x18
-    cmp    DWORD [ebp+0xc],0x0
-    je     l1
-    mov    eax,DWORD [ebp+0x8]
-    mov    edx,eax
-    sar    edx,0x1f
-    idiv   DWORD [ebp+0xc]
-    mov    eax,edx
-    mov    DWORD [esp+0x4],eax
-    mov    eax,DWORD [ebp+0xc]
-    mov    DWORD [esp],eax
-    call   gcd
-    jmp    l2
+        push   ebp
+        mov    ebp,esp
+        sub    esp,0x18
+        cmp    DWORD [ebp+0xc],0x0
+        je     l1
+        mov    eax,DWORD [ebp+0x8]
+        mov    edx,eax
+        sar    edx,0x1f
+        idiv   DWORD [ebp+0xc]
+        mov    eax,edx
+        mov    DWORD [esp+0x4],eax
+        mov    eax,DWORD [ebp+0xc]
+        mov    DWORD [esp],eax
+        call   gcd
+        jmp    l2
     l1:
-    mov    eax,DWORD [ebp+0x8]
+        mov    eax,DWORD [ebp+0x8]
     l2:
-    leave
-    ret
+        leave
+        ret
 
     start:
-    push     ebp
-    mov      ebp,esp
-    and      esp,0xfffffff0
-    sub      esp,0x20
-    cinvoke  scanf,pars,n,m
-    mov      edx,[n]
-    mov      eax,[m]
-    mov      DWORD  [esp+0x4],edx
-    mov      DWORD  [esp],eax
-    call     gcd
-    cinvoke  printf,parspf,eax
-    mov      eax,0x0
-    cinvoke  exit
+        push     ebp
+        mov      ebp,esp
+        and      esp,0xfffffff0
+        sub      esp,0x20
+        cinvoke  scanf,pars,n,m
+        mov      edx,[n]
+        mov      eax,[m]
+        mov      DWORD  [esp+0x4],edx
+        mov      DWORD  [esp],eax
+        call     gcd
+        cinvoke  printf,parspf,eax
+        mov      eax,0x0
+        cinvoke  exit
 
     segment readable writeable
-    pars    db '%d%d',0
-    parspf  db '%d',0xa,0
-    n       dd 0
-    m       dd 0
+        pars    db '%d%d',0
+        parspf  db '%d',0xa,0
+        n       dd 0
+        m       dd 0
 
+and assemble:
 
+.. code-block:: bash
+    :number-lines: 0
 
-The assembled code will perform the same way, but the executable produced is about 10 times smaller! With the assembly code, we will have more liberty to use architecture specific instructions. And, if we see that there are unnecessary register spills happening, we may modify the code to avoid it. (using "register" keyword and -O3 option in gcc makes good use of registers)
+    ./fasm gcd.asm
+
+The assembled code will perform the same way, but the executable produced is about 10 times smaller! With the assembly code, we will have more liberty to use architecture specific instructions. And, if we see that there are unnecessary register spills happening, we may modify the code to avoid it. (using "register" keyword and ``-O3`` option in gcc makes good use of registers)
 
 p.s.
 
@@ -188,4 +193,3 @@ p.s.
 - ``-m32`` option in gcc is not required if 32 bit linux distro is used.
 
 - ``-g`` option is helpful in debugging the executable. We can check instruction-wise disassembly and also deduce the operator  precedence. You'll never need another silly book on C. When in doubt, go to the root!
-

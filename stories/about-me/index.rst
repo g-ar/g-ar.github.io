@@ -21,8 +21,13 @@ These are the tools used for my math problems:
 
 - `FriCAS <http://fricas.sourceforge.net/>`_, another CAS, which has some very good sequence guessing routines missing in Sage.
 
-`https://math.stackexchange.com/users/flair/138850.png?theme=clean <https://math.stackexchange.com/users/flair/138850.png?theme=clean>`_
+.. raw:: html
 
-`github profile <https://github.com/g-ar>`_
+   <p><a href="https://math.stackexchange.com/users/138850/gar"><br />
+   <img title="profile for gar at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields" src="https://math.stackexchange.com/users/flair/138850.png?theme=clean" alt="profile for gar at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields" width="208" height="58" /><br />
+   </a></p>
+   <p><a href="https://github.com/g-ar"><img title="github profile for Gopinath" src="../../images/github_icon_3.png" height="25%"/></a></p>
+    <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license"><img style="border-width:0;" src="https://i1.wp.com/i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="Creative Commons License" /></a><br />
+    This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 
 Don't believe or trust any "research" where the experimental data and code are not in the public domain.

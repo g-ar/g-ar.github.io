@@ -20,8 +20,14 @@ It's just some tens of characters in J:
     (+/%#)(sim "0) 100000#0 NB. about 3.25279
 
 sample size of 5 is chosen by pigeonhole principle.
-~: returns 1 for items which are distinct till that position. -. flips the 1's and 0's.
-I. fetches the indices of non-zero items. 1 added since indexing starts from 0. {. gets the head of the array.
+
+- ``~:`` returns 1 for items which are distinct till that position.
+
+- ``-.`` flips the 1's and 0's.
+
+- ``I.`` fetches the indices of non-zero items. 1 added since indexing starts from 0.
+
+- ``{.`` gets the head of the array.
 
 For the analytical solution, it can be simply expressed as a recurrence relation:
 
@@ -34,6 +40,7 @@ For the analytical solution, it can be simply expressed as a recurrence relation
 where :math:`A,B,C,D` are the initial number of marbles of four colours.
 
 And it can be directly translated to code.
+
 In Sage:
 
 .. code-block:: python

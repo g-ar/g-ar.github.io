@@ -97,24 +97,24 @@ MathJax.Hub.Config({
 <p>There, the hard work is done. Leave the remaining to Sage!</p>
 <p>Obtain the characteristic polynomial of the matrix, which also is the characteristic equation of the required recurrence equation.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-0">0</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-1">1</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-2">2</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-3">3</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-4">4</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-5">5</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-6">6</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-7">7</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_2320a65d4f0947b58ab99ed3d2ace339-8">8</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-0"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">([</span>
-<a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-1"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-2"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-3"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-4"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-5"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-6"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-7"></a><span class="p">])</span>
-<a name="rest_code_2320a65d4f0947b58ab99ed3d2ace339-8"></a><span class="k">print</span> <span class="n">am</span><span class="o">.</span><span class="n">characteristic_polynomial</span><span class="p">()</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-0">0</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-1">1</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-2">2</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-3">3</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-4">4</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-5">5</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-6">6</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-7">7</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-8">8</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-0"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">([</span>
+<a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-1"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-2"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-3"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-4"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-5"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-6"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-7"></a><span class="p">])</span>
+<a name="rest_code_f2b4a4f3049b4e149d52bfa90e7ffc6c-8"></a><span class="k">print</span> <span class="n">am</span><span class="o">.</span><span class="n">characteristic_polynomial</span><span class="p">()</span>
 </pre></td>
 </tr></table>
 <p>The characteristic equation is:</p>
@@ -126,44 +126,49 @@ MathJax.Hub.Config({
 <p>So, the recurrence would be:</p>
 <div class="math">
 \begin{align*}
-\displaystyle a_{i+5}=10\, a_{i+4}-2\, a_{i+2}+a_{i} \\ a_{0}=1 ,\; a_{1}= 9 ,\; a_{2}= 90,\; a_{3}= 898, a_{4}= 8962
+\displaystyle a_{i+5}&amp;=10\, a_{i+4}-2\, a_{i+2}+a_{i} \\
+a_{0}&amp;=1\\
+a_{1}&amp;= 9\\
+a_{2}&amp;= 90\\
+a_{3}&amp;= 898\\
+a_{4}&amp;= 8962\\
 \end{align*}
 </div>
 <p>Wonder if anyone can come up with a combinatorial argument for that equation?!</p>
 <p>Initial conditions can be easily obtained by matrix exponentiation or using a program to iterate through the sequences, e.g.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_9f48a20e85b6409d87ae77c8451141a5-0">0</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_9f48a20e85b6409d87ae77c8451141a5-0"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">am</span><span class="o">^</span><span class="mi">4</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_c64bd2ee4a0e41728cfa7e494f9cb872-0">0</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_c64bd2ee4a0e41728cfa7e494f9cb872-0"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">am</span><span class="o">^</span><span class="mi">4</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
 </pre></td>
 </tr></table>
 <p>or</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d88bc48ce2964dd1aede508d0826d0da-0">0</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d88bc48ce2964dd1aede508d0826d0da-1">1</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d88bc48ce2964dd1aede508d0826d0da-2">2</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d88bc48ce2964dd1aede508d0826d0da-3">3</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d88bc48ce2964dd1aede508d0826d0da-4">4</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_d88bc48ce2964dd1aede508d0826d0da-0"></a><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_d88bc48ce2964dd1aede508d0826d0da-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">):</span>
-<a name="rest_code_d88bc48ce2964dd1aede508d0826d0da-2"></a>    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'122'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'213'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span>
-<a name="rest_code_d88bc48ce2964dd1aede508d0826d0da-3"></a>        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-<a name="rest_code_d88bc48ce2964dd1aede508d0826d0da-4"></a><span class="k">print</span> <span class="n">cnt</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d5e4675e461b4c7283792ed9ead61a66-0">0</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d5e4675e461b4c7283792ed9ead61a66-1">1</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d5e4675e461b4c7283792ed9ead61a66-2">2</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d5e4675e461b4c7283792ed9ead61a66-3">3</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d5e4675e461b4c7283792ed9ead61a66-4">4</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_d5e4675e461b4c7283792ed9ead61a66-0"></a><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_d5e4675e461b4c7283792ed9ead61a66-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">):</span>
+<a name="rest_code_d5e4675e461b4c7283792ed9ead61a66-2"></a>    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'122'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'213'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span>
+<a name="rest_code_d5e4675e461b4c7283792ed9ead61a66-3"></a>        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+<a name="rest_code_d5e4675e461b4c7283792ed9ead61a66-4"></a><span class="k">print</span> <span class="n">cnt</span>
 </pre></td>
 </tr></table>
 <p>We can also automatically get the generating function of the obtained recurrence by using a small program (method is given in "Lectures on generating functions" by S. K. Lando):</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_521e4f8f466845569f2d73f5a43b57df-0">0</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_521e4f8f466845569f2d73f5a43b57df-1">1</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_521e4f8f466845569f2d73f5a43b57df-2">2</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_521e4f8f466845569f2d73f5a43b57df-3">3</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_521e4f8f466845569f2d73f5a43b57df-4">4</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_521e4f8f466845569f2d73f5a43b57df-5">5</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_521e4f8f466845569f2d73f5a43b57df-0"></a><span class="k">def</span> <span class="nf">get_gf</span><span class="p">(</span><span class="n">alst</span><span class="p">,</span><span class="n">initvals</span><span class="p">):</span>
-<a name="rest_code_521e4f8f466845569f2d73f5a43b57df-1"></a>    <span class="n">nn</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">alst</span><span class="p">)</span>
-<a name="rest_code_521e4f8f466845569f2d73f5a43b57df-2"></a>    <span class="n">Am</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">alst</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<a name="rest_code_521e4f8f466845569f2d73f5a43b57df-3"></a>    <span class="n">Bm</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">initvals</span><span class="p">)</span>
-<a name="rest_code_521e4f8f466845569f2d73f5a43b57df-4"></a>    <span class="k">return</span> <span class="p">(((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">Am</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">*</span><span class="n">Bm</span><span class="o">.</span><span class="n">transpose</span><span class="p">())[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">full_simplify</span><span class="p">()</span>
-<a name="rest_code_521e4f8f466845569f2d73f5a43b57df-5"></a><span class="k">print</span> <span class="n">get_gf</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">898</span><span class="p">,</span><span class="mi">8962</span><span class="p">])</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_a5f1ab22020348219aafb8ebae35a55d-0">0</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_a5f1ab22020348219aafb8ebae35a55d-1">1</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_a5f1ab22020348219aafb8ebae35a55d-2">2</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_a5f1ab22020348219aafb8ebae35a55d-3">3</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_a5f1ab22020348219aafb8ebae35a55d-4">4</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_a5f1ab22020348219aafb8ebae35a55d-5">5</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_a5f1ab22020348219aafb8ebae35a55d-0"></a><span class="k">def</span> <span class="nf">get_gf</span><span class="p">(</span><span class="n">alst</span><span class="p">,</span><span class="n">initvals</span><span class="p">):</span>
+<a name="rest_code_a5f1ab22020348219aafb8ebae35a55d-1"></a>    <span class="n">nn</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">alst</span><span class="p">)</span>
+<a name="rest_code_a5f1ab22020348219aafb8ebae35a55d-2"></a>    <span class="n">Am</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">alst</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<a name="rest_code_a5f1ab22020348219aafb8ebae35a55d-3"></a>    <span class="n">Bm</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">initvals</span><span class="p">)</span>
+<a name="rest_code_a5f1ab22020348219aafb8ebae35a55d-4"></a>    <span class="k">return</span> <span class="p">(((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">Am</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">*</span><span class="n">Bm</span><span class="o">.</span><span class="n">transpose</span><span class="p">())[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">full_simplify</span><span class="p">()</span>
+<a name="rest_code_a5f1ab22020348219aafb8ebae35a55d-5"></a><span class="k">print</span> <span class="n">get_gf</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">898</span><span class="p">,</span><span class="mi">8962</span><span class="p">])</span>
 </pre></td>
 </tr></table>
 <p>which gives the g.f.</p>
@@ -183,8 +188,8 @@ MathJax.Hub.Config({
 </div>
 <p>We will visually inspect where the roots lie, to get an idea about the closest root to the origin</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_a2d5b10bcf714b4ca7de8bac8e648376-0">0</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_a2d5b10bcf714b4ca7de8bac8e648376-0"></a><span class="n">complex_plot</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_d04989196785424ab87cba5ec4e8dc95-0">0</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_d04989196785424ab87cba5ec4e8dc95-0"></a><span class="n">complex_plot</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></td>
 </tr></table>
 <div class="figure">
@@ -193,14 +198,14 @@ MathJax.Hub.Config({
 <p>and we see that there is only one real root (also the nearest to origin) and other four are complex.</p>
 <p>We can proceed with the following steps in Sage:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_8facc23f63c548d4a27ec7d604776839-0">0</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_8facc23f63c548d4a27ec7d604776839-1">1</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_8facc23f63c548d4a27ec7d604776839-2">2</a>
-<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_8facc23f63c548d4a27ec7d604776839-3">3</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_8facc23f63c548d4a27ec7d604776839-0"></a><span class="n">s1</span><span class="o">=</span><span class="n">find_root</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<a name="rest_code_8facc23f63c548d4a27ec7d604776839-1"></a><span class="n">rho1</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">s1</span><span class="p">)</span><span class="o">/</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span>
-<a name="rest_code_8facc23f63c548d4a27ec7d604776839-2"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="n">rho1</span><span class="o">/</span><span class="n">s1</span><span class="o">^</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<a name="rest_code_8facc23f63c548d4a27ec7d604776839-3"></a><span class="k">print</span> <span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">15</span><span class="p">)),</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_1d9e2f8057c34e3aada46d1bf4395f9a-0">0</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_1d9e2f8057c34e3aada46d1bf4395f9a-1">1</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_1d9e2f8057c34e3aada46d1bf4395f9a-2">2</a>
+<a href="posts/using-directed-graphs-to-count-the-number-of-patterns/#rest_code_1d9e2f8057c34e3aada46d1bf4395f9a-3">3</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_1d9e2f8057c34e3aada46d1bf4395f9a-0"></a><span class="n">s1</span><span class="o">=</span><span class="n">find_root</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<a name="rest_code_1d9e2f8057c34e3aada46d1bf4395f9a-1"></a><span class="n">rho1</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">s1</span><span class="p">)</span><span class="o">/</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span>
+<a name="rest_code_1d9e2f8057c34e3aada46d1bf4395f9a-2"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="n">rho1</span><span class="o">/</span><span class="n">s1</span><span class="o">^</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_1d9e2f8057c34e3aada46d1bf4395f9a-3"></a><span class="k">print</span> <span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">15</span><span class="p">)),</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>We find the approximation to be</p>
@@ -225,17 +230,25 @@ MathJax.Hub.Config({
 <p>Before trying out the analytical solution, let us get an approximate answer from a simulation.
 It's just some tens of characters in J:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_b6e43d1897914aab8535564760f62029-0">0</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_b6e43d1897914aab8535564760f62029-1">1</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_b6e43d1897914aab8535564760f62029-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_b6e43d1897914aab8535564760f62029-0"></a>a=:(3#0 1),(5#2),(7#3)
-<a name="rest_code_b6e43d1897914aab8535564760f62029-1"></a>sim =: 3 : '{.1+I.-.~:(5?#a){a'
-<a name="rest_code_b6e43d1897914aab8535564760f62029-2"></a>(+/%#)(sim "0) 100000#0 NB. about 3.25279
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-0">0</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-1">1</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-0"></a>a=:(3#0 1),(5#2),(7#3)
+<a name="rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-1"></a>sim =: 3 : '{.1+I.-.~:(5?#a){a'
+<a name="rest_code_a50b4f3a19cf4537bf1a6b66ac3e3e80-2"></a>(+/%#)(sim "0) 100000#0 NB. about 3.25279
 </pre></td>
 </tr></table>
-<p>sample size of 5 is chosen by pigeonhole principle.
-~: returns 1 for items which are distinct till that position. -. flips the 1's and 0's.
-I. fetches the indices of non-zero items. 1 added since indexing starts from 0. {. gets the head of the array.</p>
+<p>sample size of 5 is chosen by pigeonhole principle.</p>
+<ul class="simple">
+<li>
+<tt class="docutils literal">~:</tt> returns 1 for items which are distinct till that position.</li>
+<li>
+<tt class="docutils literal"><span class="pre">-.</span></tt> flips the 1's and 0's.</li>
+<li>
+<tt class="docutils literal">I.</tt> fetches the indices of non-zero items. 1 added since indexing starts from 0.</li>
+<li>
+<tt class="docutils literal">{.</tt> gets the head of the array.</li>
+</ul>
 <p>For the analytical solution, it can be simply expressed as a recurrence relation:</p>
 <div class="math">
 \begin{equation*}
@@ -243,41 +256,41 @@ I. fetches the indices of non-zero items. 1 added since indexing starts from 0. 
 \end{equation*}
 </div>
 <p>where <span class="math">\(A,B,C,D\)</span> are the initial number of marbles of four colours.</p>
-<p>And it can be directly translated to code.
-In Sage:</p>
+<p>And it can be directly translated to code.</p>
+<p>In Sage:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-0">0</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-1">1</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-2">2</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-3">3</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-4">4</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-5">5</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-6">6</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-7">7</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-8">8</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_f041dcea5b944653a2e10498fa5c048b-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_f041dcea5b944653a2e10498fa5c048b-0"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">3</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-1"></a><span class="n">B</span> <span class="o">=</span> <span class="mi">3</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-2"></a><span class="n">C</span> <span class="o">=</span> <span class="mi">5</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-3"></a><span class="n">D</span> <span class="o">=</span> <span class="mi">7</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-4"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-5"></a>    <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="o">-</span><span class="n">a</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">B</span><span class="o">-</span><span class="n">b</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">C</span><span class="o">-</span><span class="n">c</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">D</span><span class="o">-</span><span class="n">d</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-6"></a>        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="o">+</span><span class="n">D</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">))</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-7"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">)</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-8"></a><span class="n">ans</span><span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
-<a name="rest_code_f041dcea5b944653a2e10498fa5c048b-9"></a><span class="k">print</span> <span class="n">ans</span><span class="p">,</span> <span class="n">N</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span> <span class="c1"># = 3979/1224 and N() for the numerical approximation = 3.25081699346405</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-0">0</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-1">1</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-2">2</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-3">3</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-4">4</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-5">5</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-6">6</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-7">7</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-8">8</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_623e4c57b9684ad4a3dc8c80d6182144-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-0"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">3</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-1"></a><span class="n">B</span> <span class="o">=</span> <span class="mi">3</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-2"></a><span class="n">C</span> <span class="o">=</span> <span class="mi">5</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-3"></a><span class="n">D</span> <span class="o">=</span> <span class="mi">7</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-4"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-5"></a>    <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="o">-</span><span class="n">a</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">B</span><span class="o">-</span><span class="n">b</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">C</span><span class="o">-</span><span class="n">c</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">D</span><span class="o">-</span><span class="n">d</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-6"></a>        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="o">+</span><span class="n">D</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">))</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-7"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="p">)</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-8"></a><span class="n">ans</span><span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+<a name="rest_code_623e4c57b9684ad4a3dc8c80d6182144-9"></a><span class="k">print</span> <span class="n">ans</span><span class="p">,</span> <span class="n">N</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span> <span class="c1"># = 3979/1224 and N() for the numerical approximation = 3.25081699346405</span>
 </pre></td>
 </tr></table>
 <p>Here's an exercise for you to try:</p>
 <p>Repeat the same problem, this time with the replacement of the marbles. What's the expected number of number of picks till you see the same coloured marble again?</p>
 <p>Simulation is easy:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_2bb2d908d40442d79779fd2c576cfc21-0">0</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_2bb2d908d40442d79779fd2c576cfc21-1">1</a>
-<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_2bb2d908d40442d79779fd2c576cfc21-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_2bb2d908d40442d79779fd2c576cfc21-0"></a>a=:(3#0 1),(5#2),(7#3)
-<a name="rest_code_2bb2d908d40442d79779fd2c576cfc21-1"></a>sim =: 3 : '{.1+I.-.~:(?5##a){a'
-<a name="rest_code_2bb2d908d40442d79779fd2c576cfc21-2"></a>(+/%#)(sim "0) 100000#0
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fe8879ca768347b18c2eea89c884e7d8-0">0</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fe8879ca768347b18c2eea89c884e7d8-1">1</a>
+<a href="posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fe8879ca768347b18c2eea89c884e7d8-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_fe8879ca768347b18c2eea89c884e7d8-0"></a>a=:(3#0 1),(5#2),(7#3)
+<a name="rest_code_fe8879ca768347b18c2eea89c884e7d8-1"></a>sim =: 3 : '{.1+I.-.~:(?5##a){a'
+<a name="rest_code_fe8879ca768347b18c2eea89c884e7d8-2"></a>(+/%#)(sim "0) 100000#0
 </pre></td>
 </tr></table>
 <p>In a similar fashion, the recurrence can be modified. (Ans: <span class="math">\(757/243\)</span>)</p>
@@ -299,32 +312,32 @@ In Sage:</p>
 \end{equation*}
 </div>
 <p>How can we convince ourselves that the formula has been derived correctly? How to simulate geometric shapes?</p>
-<p>The answer is to use the parametric representation of the points. If the needle of length <span class="math">\(l\)</span> is dropped, then it makes an angle <span class="math">\(\theta\)</span> with the horizontal. For simulating, take one end of the needle as a reference, and it must be randomly and uniformly distributed in <span class="math">\([0,d)\)</span>. Call the random number as h. The other end of the needle will then be at a distance <span class="math">\(h+l*sin(\theta)\)</span>.
-Now, for the condition that the needle touches the line, the other end must be either higher than d or less than zero. Hence, we can simulate the experiment by picking h in <span class="math">\(U(0,d)\)</span> and <span class="math">\(\theta \in U(0,2\, \theta)\)</span>.</p>
+<p>The answer is to use the parametric representation of the points. If the needle of length <span class="math">\(l\)</span> is dropped, then it makes an angle <span class="math">\(\theta\)</span> with the horizontal. For simulating, take one end of the needle as a reference, and it must be randomly and uniformly distributed in <span class="math">\([0,d)\)</span>. Call the random number as <span class="math">\(h\)</span>. The other end of the needle will then be at a distance <span class="math">\(h+l\cdot sin(\theta)\)</span>.</p>
+<p>Now, for the condition that the needle touches the line, the other end must be either higher than <span class="math">\(d\)</span> or less than zero. Hence, we can simulate the experiment by picking <span class="math">\(h\)</span> in <span class="math">\(U(0,d)\)</span> and <span class="math">\(\theta \in U(0,2\, \theta)\)</span>.</p>
 <p>Following is the code in J:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-buffons-needle-problem/#rest_code_40fb72c46c9a46c583c52df3ad0e4081-0">0</a>
-<a href="posts/simulating-buffons-needle-problem/#rest_code_40fb72c46c9a46c583c52df3ad0e4081-1">1</a>
-<a href="posts/simulating-buffons-needle-problem/#rest_code_40fb72c46c9a46c583c52df3ad0e4081-2">2</a>
-<a href="posts/simulating-buffons-needle-problem/#rest_code_40fb72c46c9a46c583c52df3ad0e4081-3">3</a>
-<a href="posts/simulating-buffons-needle-problem/#rest_code_40fb72c46c9a46c583c52df3ad0e4081-4">4</a>
-<a href="posts/simulating-buffons-needle-problem/#rest_code_40fb72c46c9a46c583c52df3ad0e4081-5">5</a>
-<a href="posts/simulating-buffons-needle-problem/#rest_code_40fb72c46c9a46c583c52df3ad0e4081-6">6</a>
-<a href="posts/simulating-buffons-needle-problem/#rest_code_40fb72c46c9a46c583c52df3ad0e4081-7">7</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_40fb72c46c9a46c583c52df3ad0e4081-0"></a>load 'trig'
-<a name="rest_code_40fb72c46c9a46c583c52df3ad0e4081-1"></a>'l d'=:4 1
-<a name="rest_code_40fb72c46c9a46c583c52df3ad0e4081-2"></a>    sim =: 3 : 0
-<a name="rest_code_40fb72c46c9a46c583c52df3ad0e4081-3"></a>h=:d*?1000000#0
-<a name="rest_code_40fb72c46c9a46c583c52df3ad0e4081-4"></a>th=:2p1*?1000000#0
-<a name="rest_code_40fb72c46c9a46c583c52df3ad0e4081-5"></a>(+/%#)((h+l*sin th)&gt;d)+.((h+l*sin th)&lt;0)
-<a name="rest_code_40fb72c46c9a46c583c52df3ad0e4081-6"></a>)
-<a name="rest_code_40fb72c46c9a46c583c52df3ad0e4081-7"></a>    sim 0
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-buffons-needle-problem/#rest_code_7872735186e145ea946f22d2cedf8572-0">0</a>
+<a href="posts/simulating-buffons-needle-problem/#rest_code_7872735186e145ea946f22d2cedf8572-1">1</a>
+<a href="posts/simulating-buffons-needle-problem/#rest_code_7872735186e145ea946f22d2cedf8572-2">2</a>
+<a href="posts/simulating-buffons-needle-problem/#rest_code_7872735186e145ea946f22d2cedf8572-3">3</a>
+<a href="posts/simulating-buffons-needle-problem/#rest_code_7872735186e145ea946f22d2cedf8572-4">4</a>
+<a href="posts/simulating-buffons-needle-problem/#rest_code_7872735186e145ea946f22d2cedf8572-5">5</a>
+<a href="posts/simulating-buffons-needle-problem/#rest_code_7872735186e145ea946f22d2cedf8572-6">6</a>
+<a href="posts/simulating-buffons-needle-problem/#rest_code_7872735186e145ea946f22d2cedf8572-7">7</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_7872735186e145ea946f22d2cedf8572-0"></a>load 'trig'
+<a name="rest_code_7872735186e145ea946f22d2cedf8572-1"></a>'l d'=:4 1
+<a name="rest_code_7872735186e145ea946f22d2cedf8572-2"></a>    sim =: 3 : 0
+<a name="rest_code_7872735186e145ea946f22d2cedf8572-3"></a>h=:d*?1000000#0
+<a name="rest_code_7872735186e145ea946f22d2cedf8572-4"></a>th=:2p1*?1000000#0
+<a name="rest_code_7872735186e145ea946f22d2cedf8572-5"></a>(+/%#)((h+l*sin th)&gt;d)+.((h+l*sin th)&lt;0)
+<a name="rest_code_7872735186e145ea946f22d2cedf8572-6"></a>)
+<a name="rest_code_7872735186e145ea946f22d2cedf8572-7"></a>    sim 0
 </pre></td>
 </tr></table>
 <p>It gives an answer about <span class="math">\(0.919978\)</span>, and changing <span class="math">\(l\)</span> and <span class="math">\(d\)</span> to</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-buffons-needle-problem/#rest_code_a5261766feb8470db74981b6404cbee0-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_a5261766feb8470db74981b6404cbee0-0"></a>'l d'=:1 4
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-buffons-needle-problem/#rest_code_94fd1426372946a7b7665a0a1716c7ec-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_94fd1426372946a7b7665a0a1716c7ec-0"></a>'l d'=:1 4
 </pre></td>
 </tr></table>
 <p>gives about <span class="math">\(0.15907\)</span>, which are close to actual answers <span class="math">\(0.920000066713994\)</span> and <span class="math">\(0.159154943091895\)</span>, respectively.</p>
@@ -346,25 +359,34 @@ Now, for the condition that the needle touches the line, the other end must be e
 <p>For the simulation, we will be using a language called <a class="reference external" href="https://jsoftware.com">J</a>. The programs written in J can be very short compared to other well known languages. So, we can focus on the problem at hand instead of the program.</p>
 <p>Let's see how it can be used for our simulation (there can be other ways, here’s my shot):</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-0">0</a>
-<a href="posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-1">1</a>
-<a href="posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-0"></a>a=:13#(i.4)
-<a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-1"></a>sim=: 3 : '+/2=/\(13?52){a'
-<a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-2"></a>(+/%#)(sim "0) 1000000#0
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_23e45e94782f4818ac2ff1a564116a1c-0">0</a>
+<a href="posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_23e45e94782f4818ac2ff1a564116a1c-1">1</a>
+<a href="posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_23e45e94782f4818ac2ff1a564116a1c-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-0"></a>a=:13#(i.4)
+<a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-1"></a>sim=: 3 : '+/2=/\(13?52){a'
+<a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-2"></a>(+/%#)(sim "0) 1000000#0
 </pre></td>
 </tr></table>
-<p>That's it, less than 70 characters! It output 2.82489 for me. When we are proceeding with an analytical method, if we get an answer around 2.82, then we can be pretty sure that it's right.</p>
-<p>Some explanation about the program:
-In J, every operation is performed right to left, if no parentheses are provided.
-So, if we write <span class="math">\(2*5+3\)</span>, answer would be 16 and not 13. No operator precedence here.</p>
+<p>That's it, less than 70 characters! It output <span class="math">\(2.82489\)</span> for me. When we are proceeding with an analytical method, if we get an answer around <span class="math">\(2.82\)</span>, then we can be pretty sure that it's right.</p>
+<p>Some explanation about the program:</p>
+<p>In J, every operation is performed right to left, if no parentheses are provided.
+So, if we write <tt class="docutils literal">2*5+3</tt>, answer would be <tt class="docutils literal">16</tt> and not <tt class="docutils literal">13</tt>. No operator precedence here.</p>
 <p>In J terminology, the operators are called verbs. They can be monadic or dyadic. Check the help files for more info.</p>
-<p>Line 1: <tt class="docutils literal">i.4</tt> is array of integers <tt class="docutils literal">0 1 2 3</tt>, representing 4 suits. <tt class="docutils literal">13#</tt> repeats each element 13 times.</p>
-<p>Line 2: is the function for our simulation. Read it right to left. <tt class="docutils literal">{</tt> is the verb for indexing.
-<tt class="docutils literal"><span class="pre">(13?52)</span></tt> gets 13 random integers in <tt class="docutils literal"><span class="pre">0..51</span></tt> without replacement, to simulate 13 card draws.
-<tt class="docutils literal"><span class="pre">2=/\</span></tt> compares two adjacent values from the selected list, and returns 1 or 0 for true or false, respectively.
-<tt class="docutils literal">+/</tt> gives us the sum of the array, which is the total number of pairs with same adjacent suit.</p>
-<p>Line 3: " is a verb for rank. ~"0~ gets atomic values in the rhs, i.e. a million zeros, the rhs is not used in our simulation, it's just for performing the experiment a million times. The outcome of each experiment is then averaged, by using the tacit definition <tt class="docutils literal"><span class="pre">(+/%#)</span></tt>. This last line almost always remains the same for any similar kind of simulation.</p>
+<ol class="arabic simple">
+<li>
+<tt class="docutils literal">i.4</tt> is array of integers <tt class="docutils literal">0 1 2 3</tt>, representing 4 suits. <tt class="docutils literal">13#</tt> repeats each element 13 times.</li>
+<li>
+<tt class="docutils literal">sim</tt> is the function for our simulation. Read it right to left. <tt class="docutils literal">{</tt> is the verb for indexing.<ul>
+<li>
+<tt class="docutils literal"><span class="pre">(13?52)</span></tt> gets 13 random integers in <tt class="docutils literal"><span class="pre">0..51</span></tt> without replacement, to simulate 13 card draws.</li>
+<li>
+<tt class="docutils literal"><span class="pre">2=/\</span></tt> compares two adjacent values from the selected list, and returns 1 or 0 for true or false, respectively.</li>
+<li>
+<tt class="docutils literal">+/</tt> gives us the sum of the array, which is the total number of pairs with same adjacent suit.</li>
+</ul>
+</li>
+<li>" is a verb for rank. "0 gets atomic values in the rhs, i.e. a million zeros, the rhs is not used in our simulation, it's just for performing the experiment a million times. The outcome of each experiment is then averaged, by using the tacit definition <tt class="docutils literal"><span class="pre">(+/%#)</span></tt>. This last line almost always remains the same for any similar kind of simulation.</li>
+</ol>
 <p>Lastly, experiment with different number of picks and observe how answer is changing according to that.</p>
 <p>Now, for the analytical result, the linearity of expectation is used.</p>
 <p>The probability that the card in positions i and i+1 are of the same suit is given by</p>
@@ -421,10 +443,7 @@ MathJax.Hub.Config({
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
-            
-        </footer>
+        <footer id="footer"></footer>
 </div>
 </div>
 

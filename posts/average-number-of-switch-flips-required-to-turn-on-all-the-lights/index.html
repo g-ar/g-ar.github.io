@@ -105,7 +105,7 @@ MathJax.Hub.Config({
 <p>In the method using the absorbing Markov chain, the starting state is for all turned off.
 It can move to the next state which is for one random light turned on. The probability of moving to that state is 1.</p>
 <p>From state 1, it can go back to state 0 with a probability of <span class="math">\(\dfrac{1}{n}\)</span>, or to state 2 with probability of <span class="math">\(1-\dfrac{1}{n}\)</span>.</p>
-<p>And so on, in the <span class="math">\((n-1)^{th}\)</span> state, it can go to the absorbing state n with a probability of frac{1}{n}.</p>
+<p>And so on, in the <span class="math">\((n-1)^{th}\)</span> state, it can go to the absorbing state n with a probability of <span class="math">\(\dfrac{1}{n}\)</span>.</p>
 <p>E.g. For <span class="math">\(n=6\)</span>, the matrix looks like this:</p>
 <div class="math">
 \begin{equation*}
@@ -166,24 +166,24 @@ A^8=\left(\begin{array}{rrrrrrr}
 <p>Answer is <span class="math">\(A^8[0,6] = \dfrac{215}{5832}\)</span></p>
 <p>We can construct the markov chain and calculate the expected value in Sagemath (a very promising free CAS) as follows:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-0">0</a>
-<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-1">1</a>
-<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-2">2</a>
-<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-3">3</a>
-<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-4">4</a>
-<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-5">5</a>
-<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-6">6</a>
-<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-7">7</a>
-<a href="#rest_code_2c11ca9c30f2424daa74e4402517686f-8">8</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_2c11ca9c30f2424daa74e4402517686f-0"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-1"></a><span class="n">mx</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-2"></a><span class="n">mx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-4"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-5"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-6"></a><span class="n">mx</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-7"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
-<a name="rest_code_2c11ca9c30f2424daa74e4402517686f-8"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">am</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">inverse</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-0">0</a>
+<a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-1">1</a>
+<a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-2">2</a>
+<a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-3">3</a>
+<a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-4">4</a>
+<a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-5">5</a>
+<a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-6">6</a>
+<a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-7">7</a>
+<a href="#rest_code_44a11bcf69d844bb95849ed6e769ff90-8">8</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-0"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-1"></a><span class="n">mx</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-2"></a><span class="n">mx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-4"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-5"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-6"></a><span class="n">mx</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-7"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
+<a name="rest_code_44a11bcf69d844bb95849ed6e769ff90-8"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">am</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">inverse</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
 </pre></td>
 </tr></table>
 <p>If we want to know only the expected value, we can use the tree method:</p>
@@ -191,53 +191,37 @@ A^8=\left(\begin{array}{rrrrrrr}
 <img alt="../../images/flip1.png" src="../../images/flip1.png"><p class="caption">Probability tree to calculate expected value</p>
 </div>
 <div class="math">
-\begin{equation*}
-E_0=1\cdot(1+E_1)
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-E_1 = \dfrac{1}{n}\cdot(1+E_0)+\left(1-\dfrac{1}{n}\right)\cdot(1+E_2)
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-E_2=\dfrac{2}{n}\cdot(1+E_1)+\left(1-\dfrac{2}{n}\right)\cdot(1+E_3)
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-\vdots
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-E_{n-1}=\dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot(1)
-\end{equation*}
+\begin{align*}
+\displaystyle E_0&amp;=1\cdot(1+E_1) \\
+E_1 &amp;= \dfrac{1}{n}\cdot(1+E_0)+\left(1-\dfrac{1}{n}\right)\cdot(1+E_2)\\
+E_2 &amp;= \dfrac{2}{n}\cdot(1+E_1)+\left(1-\dfrac{2}{n}\right)\cdot(1+E_3)\\
+\vdots \\
+E_{n-1} &amp;= \dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot(1)\\
+\end{align*}
 </div>
 <p>From the above set of equations, we can derive the following algorithm to calculate the expected value in Sage:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-0">0</a>
-<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-1">1</a>
-<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-2">2</a>
-<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-3">3</a>
-<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-4">4</a>
-<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-5">5</a>
-<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-6">6</a>
-<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-7">7</a>
-<a href="#rest_code_068ed99fb44043808abbe43ccfcc6997-8">8</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_068ed99fb44043808abbe43ccfcc6997-0"></a><span class="n">ax</span><span class="o">=</span><span class="mi">1</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-1"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-2"></a><span class="n">summ</span><span class="o">=</span><span class="mi">0</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-3"></a><span class="n">i</span><span class="o">=</span><span class="mi">0</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-4"></a><span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-5"></a>    <span class="n">ax</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-6"></a>    <span class="n">summ</span> <span class="o">+=</span> <span class="n">ax</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-7"></a>    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-<a name="rest_code_068ed99fb44043808abbe43ccfcc6997-8"></a><span class="k">print</span> <span class="n">summ</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-0">0</a>
+<a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-1">1</a>
+<a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-2">2</a>
+<a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-3">3</a>
+<a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-4">4</a>
+<a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-5">5</a>
+<a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-6">6</a>
+<a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-7">7</a>
+<a href="#rest_code_c29fc5d304f1424f967016a729d52b1a-8">8</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_c29fc5d304f1424f967016a729d52b1a-0"></a><span class="n">ax</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-1"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-2"></a><span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-3"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-4"></a><span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-5"></a>    <span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">ax</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-6"></a>    <span class="n">summ</span> <span class="o">+=</span> <span class="n">ax</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-7"></a>    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+<a name="rest_code_c29fc5d304f1424f967016a729d52b1a-8"></a><span class="k">print</span> <span class="n">summ</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
 </pre></td>
 </tr></table>
-<p>As we see, the n is taken to be 6, and the answer returned is 416/5. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.</p>
+<p>As we see, the n is taken to be <span class="math">\(6\)</span>, and the answer returned is <span class="math">\(416/5\)</span>. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.</p>
 <p>For higher values of n, we get e.g.</p>
 <p><span class="math">\(n=32:\)</span></p>
 <div class="math">
@@ -277,10 +261,7 @@ MathJax.Hub.Config({
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
-            
-        </footer>
+        <footer id="footer"></footer>
 </div>
 </div>
 

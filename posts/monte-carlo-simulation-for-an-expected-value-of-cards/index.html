@@ -108,25 +108,34 @@ E.g. in ♠♥♥♣♦♣♣♦♦♣♠♠♣ , there">
 <p>For the simulation, we will be using a language called <a class="reference external" href="https://jsoftware.com">J</a>. The programs written in J can be very short compared to other well known languages. So, we can focus on the problem at hand instead of the program.</p>
 <p>Let's see how it can be used for our simulation (there can be other ways, here’s my shot):</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-0">0</a>
-<a href="#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-1">1</a>
-<a href="#rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-0"></a>a=:13#(i.4)
-<a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-1"></a>sim=: 3 : '+/2=/\(13?52){a'
-<a name="rest_code_9a7c04106eb0478c9b00d25f8ac7eec2-2"></a>(+/%#)(sim "0) 1000000#0
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_23e45e94782f4818ac2ff1a564116a1c-0">0</a>
+<a href="#rest_code_23e45e94782f4818ac2ff1a564116a1c-1">1</a>
+<a href="#rest_code_23e45e94782f4818ac2ff1a564116a1c-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-0"></a>a=:13#(i.4)
+<a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-1"></a>sim=: 3 : '+/2=/\(13?52){a'
+<a name="rest_code_23e45e94782f4818ac2ff1a564116a1c-2"></a>(+/%#)(sim "0) 1000000#0
 </pre></td>
 </tr></table>
-<p>That's it, less than 70 characters! It output 2.82489 for me. When we are proceeding with an analytical method, if we get an answer around 2.82, then we can be pretty sure that it's right.</p>
-<p>Some explanation about the program:
-In J, every operation is performed right to left, if no parentheses are provided.
-So, if we write <span class="math">\(2*5+3\)</span>, answer would be 16 and not 13. No operator precedence here.</p>
+<p>That's it, less than 70 characters! It output <span class="math">\(2.82489\)</span> for me. When we are proceeding with an analytical method, if we get an answer around <span class="math">\(2.82\)</span>, then we can be pretty sure that it's right.</p>
+<p>Some explanation about the program:</p>
+<p>In J, every operation is performed right to left, if no parentheses are provided.
+So, if we write <tt class="docutils literal">2*5+3</tt>, answer would be <tt class="docutils literal">16</tt> and not <tt class="docutils literal">13</tt>. No operator precedence here.</p>
 <p>In J terminology, the operators are called verbs. They can be monadic or dyadic. Check the help files for more info.</p>
-<p>Line 1: <tt class="docutils literal">i.4</tt> is array of integers <tt class="docutils literal">0 1 2 3</tt>, representing 4 suits. <tt class="docutils literal">13#</tt> repeats each element 13 times.</p>
-<p>Line 2: is the function for our simulation. Read it right to left. <tt class="docutils literal">{</tt> is the verb for indexing.
-<tt class="docutils literal"><span class="pre">(13?52)</span></tt> gets 13 random integers in <tt class="docutils literal"><span class="pre">0..51</span></tt> without replacement, to simulate 13 card draws.
-<tt class="docutils literal"><span class="pre">2=/\</span></tt> compares two adjacent values from the selected list, and returns 1 or 0 for true or false, respectively.
-<tt class="docutils literal">+/</tt> gives us the sum of the array, which is the total number of pairs with same adjacent suit.</p>
-<p>Line 3: " is a verb for rank. ~"0~ gets atomic values in the rhs, i.e. a million zeros, the rhs is not used in our simulation, it's just for performing the experiment a million times. The outcome of each experiment is then averaged, by using the tacit definition <tt class="docutils literal"><span class="pre">(+/%#)</span></tt>. This last line almost always remains the same for any similar kind of simulation.</p>
+<ol class="arabic simple">
+<li>
+<tt class="docutils literal">i.4</tt> is array of integers <tt class="docutils literal">0 1 2 3</tt>, representing 4 suits. <tt class="docutils literal">13#</tt> repeats each element 13 times.</li>
+<li>
+<tt class="docutils literal">sim</tt> is the function for our simulation. Read it right to left. <tt class="docutils literal">{</tt> is the verb for indexing.<ul>
+<li>
+<tt class="docutils literal"><span class="pre">(13?52)</span></tt> gets 13 random integers in <tt class="docutils literal"><span class="pre">0..51</span></tt> without replacement, to simulate 13 card draws.</li>
+<li>
+<tt class="docutils literal"><span class="pre">2=/\</span></tt> compares two adjacent values from the selected list, and returns 1 or 0 for true or false, respectively.</li>
+<li>
+<tt class="docutils literal">+/</tt> gives us the sum of the array, which is the total number of pairs with same adjacent suit.</li>
+</ul>
+</li>
+<li>" is a verb for rank. "0 gets atomic values in the rhs, i.e. a million zeros, the rhs is not used in our simulation, it's just for performing the experiment a million times. The outcome of each experiment is then averaged, by using the tacit definition <tt class="docutils literal"><span class="pre">(+/%#)</span></tt>. This last line almost always remains the same for any similar kind of simulation.</li>
+</ol>
 <p>Lastly, experiment with different number of picks and observe how answer is changing according to that.</p>
 <p>Now, for the analytical result, the linearity of expectation is used.</p>
 <p>The probability that the card in positions i and i+1 are of the same suit is given by</p>
@@ -181,10 +190,7 @@ MathJax.Hub.Config({
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2016         <a href="mailto:gopinath68@gmail.com">Gopinath</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
-            
-        </footer>
+        <footer id="footer"></footer>
 </div>
 </div>
 
