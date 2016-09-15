@@ -1,7 +1,7 @@
 .. title: Deriving Explicit Formulas from Markov Chains
 .. slug: deriving-explicit-formulas-from-markov-chains
 .. date: 2015-08-09 17:11:29 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, generating function, sage, markov chain, J, simulation
 .. category: 
 .. link: 
 .. description: 

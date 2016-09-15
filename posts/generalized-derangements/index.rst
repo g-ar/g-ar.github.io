@@ -1,7 +1,7 @@
 .. title: Generalized Derangements
 .. slug: generalized-derangements
 .. date: 2014-04-04 21:03:19 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, derangement, rook polynomial, integration, summation, sage
 .. category: 
 .. link: 
 .. description: 

@@ -33,7 +33,11 @@ i.e. what is
 \di">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2014-06-01T15:23:45+05:30">
+<meta property="article:tag" content="J">
 <meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="probability">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="simulation">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -158,57 +162,57 @@ i.e. what is
 <p>That's some formula!</p>
 <p>In Sage, it can be written as</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-0">0</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-1">1</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-2">2</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-3">3</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-4">4</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-5">5</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-6">6</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-7">7</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-8">8</a>
-<a href="#rest_code_2f14190baf2c419487943f0506eb9e1b-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_2f14190baf2c419487943f0506eb9e1b-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">'k y z'</span><span class="p">)</span>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-1"></a><span class="n">assume</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-2"></a><span class="n">assume</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-3"></a><span class="n">f1</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="n">k</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-4"></a><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-6"></a>    <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">f1</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-7"></a>    <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-8"></a>
-<a name="rest_code_2f14190baf2c419487943f0506eb9e1b-9"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">gamma</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="o">/</span><span class="n">gamma</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-0">0</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-1">1</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-2">2</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-3">3</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-4">4</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-5">5</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-6">6</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-7">7</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-8">8</a>
+<a href="#rest_code_1f8bb036cfe2484d9932f6af699d577c-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">'k y z'</span><span class="p">)</span>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-1"></a><span class="n">assume</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-2"></a><span class="n">assume</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-3"></a><span class="n">f1</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="n">k</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-4"></a><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-6"></a>    <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">f1</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-7"></a>    <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-8"></a>
+<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-9"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">gamma</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="o">/</span><span class="n">gamma</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>To verify our answer, we can perform a simulation:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a701d053e7f349f1ac9a568bccb20561-0">0</a>
-<a href="#rest_code_a701d053e7f349f1ac9a568bccb20561-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_a701d053e7f349f1ac9a568bccb20561-0"></a>sim=: 3 : '1&gt;+/(?6#0)^6'
-<a name="rest_code_a701d053e7f349f1ac9a568bccb20561-1"></a>(+/%#)(sim"0)100000#0 NB. = 0.63926
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_0af8bb27121148e5918a9b1ef5060535-0">0</a>
+<a href="#rest_code_0af8bb27121148e5918a9b1ef5060535-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_0af8bb27121148e5918a9b1ef5060535-0"></a>sim=: 3 : '1&gt;+/(?6#0)^6'
+<a name="rest_code_0af8bb27121148e5918a9b1ef5060535-1"></a>(+/%#)(sim"0)100000#0 NB. = 0.63926
 </pre></td>
 </tr></table>
 <p>If we want to perform a simulation in a more verbose language, R is a good candidate.</p>
 <p>The code in R looks like:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ef70c6310dd94a719a7474f40ffd6836-0">0</a>
-<a href="#rest_code_ef70c6310dd94a719a7474f40ffd6836-1">1</a>
-<a href="#rest_code_ef70c6310dd94a719a7474f40ffd6836-2">2</a>
-<a href="#rest_code_ef70c6310dd94a719a7474f40ffd6836-3">3</a></pre></div></td>
-<td class="code"><pre class="code R"><a name="rest_code_ef70c6310dd94a719a7474f40ffd6836-0"></a>n <span class="o">=</span> <span class="m">6</span>
-<a name="rest_code_ef70c6310dd94a719a7474f40ffd6836-1"></a>k <span class="o">=</span> <span class="m">6</span>
-<a name="rest_code_ef70c6310dd94a719a7474f40ffd6836-2"></a>b <span class="o">=</span> <span class="kt">array</span><span class="p">(</span>runif<span class="p">(</span>n<span class="o">*</span><span class="m">1e6</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span>n<span class="p">,</span><span class="m">1e6</span><span class="p">))</span>
-<a name="rest_code_ef70c6310dd94a719a7474f40ffd6836-3"></a><span class="kp">mean</span><span class="p">(</span><span class="kp">apply</span><span class="p">(</span>b<span class="o">^</span>k<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="kp">sum</span><span class="p">)</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8b061d233b604463bdaf4fa82e5106cd-0">0</a>
+<a href="#rest_code_8b061d233b604463bdaf4fa82e5106cd-1">1</a>
+<a href="#rest_code_8b061d233b604463bdaf4fa82e5106cd-2">2</a>
+<a href="#rest_code_8b061d233b604463bdaf4fa82e5106cd-3">3</a></pre></div></td>
+<td class="code"><pre class="code R"><a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-0"></a>n <span class="o">=</span> <span class="m">6</span>
+<a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-1"></a>k <span class="o">=</span> <span class="m">6</span>
+<a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-2"></a>b <span class="o">=</span> <span class="kt">array</span><span class="p">(</span>runif<span class="p">(</span>n<span class="o">*</span><span class="m">1e6</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span>n<span class="p">,</span><span class="m">1e6</span><span class="p">))</span>
+<a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-3"></a><span class="kp">mean</span><span class="p">(</span><span class="kp">apply</span><span class="p">(</span>b<span class="o">^</span>k<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="kp">sum</span><span class="p">)</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1515644cde6b42d388d8aa2e036be086-0">0</a>
-<a href="#rest_code_1515644cde6b42d388d8aa2e036be086-1">1</a>
-<a href="#rest_code_1515644cde6b42d388d8aa2e036be086-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_1515644cde6b42d388d8aa2e036be086-0"></a>'n k'=: 6 6
-<a name="rest_code_1515644cde6b42d388d8aa2e036be086-1"></a>a=:(n, 1e6) $ ?(n*1e6)#0
-<a name="rest_code_1515644cde6b42d388d8aa2e036be086-2"></a>(+/%#)1&gt;+/a^k NB. = 0.637572
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_3a1e195bc4904f5d83131dc4159b66a7-0">0</a>
+<a href="#rest_code_3a1e195bc4904f5d83131dc4159b66a7-1">1</a>
+<a href="#rest_code_3a1e195bc4904f5d83131dc4159b66a7-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-0"></a>'n k'=: 6 6
+<a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-1"></a>a=:(n, 1e6) $ ?(n*1e6)#0
+<a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-2"></a>(+/%#)1&gt;+/a^k NB. = 0.637572
 </pre></td>
 </tr></table>
 <p>The corresponding probability derived analytically is:</p>
@@ -223,7 +227,12 @@ i.e. what is
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Volume_of_an_n-ball">3. Volume of a n-ball</a></p>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/j/" rel="tag">J</a></li>
+            <li><a class="tag p-category" href="../../categories/probability/" rel="tag">probability</a></li>
+            <li><a class="tag p-category" href="../../categories/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../categories/simulation/" rel="tag">simulation</a></li>
+        </ul>
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../interesting-definite-integrals/" rel="prev" title="Interesting definite integrals">Previous post</a>

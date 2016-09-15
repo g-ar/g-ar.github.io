@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R (multiset)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/multiset.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 15 Sep 2016 17:51:37 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Multisets and multivariate generating functions</title><link>https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Consider a multiset, &lt;span class="math"&gt;\(S = \{11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 15, 15, 15\}\)&lt;/span&gt;.
+&lt;em&gt;How many combinations of 8 elements can be made from the set so that the sum of those 8 elements is equal to 105, when the numbers are picked without replacement?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Here, if the sum is not asked, the problem can be solved using an ordinary generating function as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+G(x) = (1+x+x^2+x^3+x^4)^2\, (1+x+x^2+x^3+x^4+x^5)\, (1+x+x^2+x^3+x^4+x^5+x^6)\, (1+x+x^2+x^3)
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and finding &lt;span class="math"&gt;\([x^8]G(x)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;But when the sum is also there as a constraint, we require one more variable to keep track of the sum. So, we may use &lt;span class="math"&gt;\(x\)&lt;/span&gt; to know the number of elements chosen, and &lt;span class="math"&gt;\(y\)&lt;/span&gt; for the sum of those numbers. Hence, the required bivariate generating function can be written as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+G(x,y) = {\left(x^{6} y^{84} + x^{5} y^{70} + x^{4} y^{56} + x^{3} y^{42} + x^{2} y^{28} + x y^{14} + 1\right)}\\ {\left(x^{5} y^{65} + x^{4} y^{52} + x^{3} y^{39} + x^{2} y^{26} + x y^{13} + 1\right)} {\left(x^{4} y^{48} + x^{3} y^{36} + x^{2} y^{24} + x y^{12} + 1\right)}\\ {\left(x^{4} y^{44} + x^{3} y^{33} + x^{2} y^{22} + x y^{11} + 1\right)} {\left(x^{3} y^{45} + x^{2} y^{30} + x y^{15} + 1\right)}
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Now, the answer to the question would be &lt;span class="math"&gt;\([x^8 y^{105}] G(x,y)\)&lt;/span&gt; in the expansion of the product.&lt;/p&gt;
+&lt;p&gt;If the question was to find the number of combinations with replacement, the generating function can be represented as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+G(x,y) = \dfrac{1}{\left(1-x\, y^{11}\right)\left(1-x\, y^{12}\right)\left(1-x\, y^{13}\right)\left(1-x\, y^{14}\right)\left(1-x\, y^{15}\right)}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Now, let us focus our attention to a related probability problem:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;From the multiset S, what is the probability of choosing 8 elements such that the sum of those 8 elements is equal to 105, when the numbers are picked without replacement?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This looks simple and we may be tempted to say that the answer is &lt;span class="math"&gt;\([x^8 y^{105}]G(x,y) / [x^8] G(x)\)&lt;/span&gt;, but note that some combinations of numbers are more probable to be picked since the number of each element are not the same. E.g. If the set contains &lt;span class="math"&gt;\(\{11, 11, 12\}\)&lt;/span&gt;, the probability of choosing &lt;span class="math"&gt;\(\{11, 11\}\)&lt;/span&gt; will be more than the probability of choosing &lt;span class="math"&gt;\(\{11, 12\}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Anyway, it can still be solved using a generating function:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+P(x,y) = \left(1+\binom{4}{1}\, (x\, y^{11})^{1}+\binom{4}{2}\, (x\, y^{11})^{2}+\binom{4}{3}\, (x\, y^{11})^{3}+\binom{4}{4}\, (x\, y^{11})^{4}\right)\\ \left(1+\binom{4}{1}\, (x\, y^{12})^{1}+\binom{4}{2}\, (x\, y^{12})^{2}+\binom{4}{3}\, (x\, y^{12})^{3}+\binom{4}{4}\, (x\, y^{12})^{4}\right)\\ \left(1+\binom{5}{1}\, (x\, y^{13})^{1}+\binom{5}{2}\, (x\, y^{13})^{2}+\binom{5}{3}\, (x\, y^{13})^{3}+\binom{5}{4}\, (x\, y^{13})^{4}+\binom{5}{5}\, (x\, y^{13})^{5}\right)\\ \left(1+\binom{6}{1}\, (x\, y^{14})^{1}+\binom{6}{2}\, (x\, y^{14})^{2}+\binom{6}{3}\, (x\, y^{14})^{3}+\binom{6}{4}\, (x\, y^{14})^{4}+\binom{6}{5}\, (x\, y^{14})^{5}+\binom{6}{6}\, (x\, y^{14})^{6}\right)\\ \left(1+\binom{3}{1}\, (x\, y^{15})^{1}+\binom{3}{2}\, (x\, y^{15})^{2}+\binom{3}{3}\, (x\, y^{15})^{3}\right)
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;and the required probability is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\mathbb{P} = \dfrac{[x^8 y^{105}] P(x,y)}{\dbinom{22}{8}} = \dfrac{343}{2805} \approx 0.122281639928699
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;And what is the probability if we do it with replacement? In this case, the probability can be found by using an exponential generating function, which is written as:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+E(x,y) = e^{x\, \left(4\, y^{11}+4\, y^{12}+5\, y^{13}+6\, y^{14}+3\, y^{15} \right)}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and the probability is given by &lt;span class="math"&gt;\([x^8 y^{105}]E(x,y)\dfrac{8!}{22^8} = \dfrac{5621995920}{22^8} \approx 0.102449319851133\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The above probabilities can also be verified by monte-carlo simulations in J, for the without replacement case:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-0"&gt;&lt;/a&gt;lst=:(4#11,12),(5#13),(6#14),3#15
+&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-1"&gt;&lt;/a&gt;sim=: 3 : '105=+/(8?#lst){lst'
+&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and for the with replacement case:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-0"&gt;&lt;/a&gt;lst=:(4#11,12),(5#13),(6#14),3#15
+&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-1"&gt;&lt;/a&gt;sim=: 3 : '105=+/(?8##lst){lst'
+&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</description><category>generating function</category><category>J</category><category>mathjax</category><category>multiset</category><category>simulation</category><guid>https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/</guid><pubDate>Fri, 03 Jul 2015 11:30:24 GMT</pubDate></item></channel></rss>

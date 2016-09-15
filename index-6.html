@@ -131,22 +131,22 @@ E(x,y) = e^{x\, \left(4\, y^{11}+4\, y^{12}+5\, y^{13}+6\, y^{14}+3\, y^{15} \ri
 <p>and the probability is given by <span class="math">\([x^8 y^{105}]E(x,y)\dfrac{8!}{22^8} = \dfrac{5621995920}{22^8} \approx 0.102449319851133\)</span>.</p>
 <p>The above probabilities can also be verified by monte-carlo simulations in J, for the without replacement case:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/multisets-and-multivariate-generating-functions/#rest_code_1abb9109c06c4076b4d857676500ede1-0">0</a>
-<a href="posts/multisets-and-multivariate-generating-functions/#rest_code_1abb9109c06c4076b4d857676500ede1-1">1</a>
-<a href="posts/multisets-and-multivariate-generating-functions/#rest_code_1abb9109c06c4076b4d857676500ede1-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_1abb9109c06c4076b4d857676500ede1-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
-<a name="rest_code_1abb9109c06c4076b4d857676500ede1-1"></a>sim=: 3 : '105=+/(8?#lst){lst'
-<a name="rest_code_1abb9109c06c4076b4d857676500ede1-2"></a>(+/%#)(sim"0)1e5#0
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-0">0</a>
+<a href="posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-1">1</a>
+<a href="posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_c69166cbe0be4c67bccb2738bc440464-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
+<a name="rest_code_c69166cbe0be4c67bccb2738bc440464-1"></a>sim=: 3 : '105=+/(8?#lst){lst'
+<a name="rest_code_c69166cbe0be4c67bccb2738bc440464-2"></a>(+/%#)(sim"0)1e5#0
 </pre></td>
 </tr></table>
 <p>and for the with replacement case:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/multisets-and-multivariate-generating-functions/#rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-0">0</a>
-<a href="posts/multisets-and-multivariate-generating-functions/#rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-1">1</a>
-<a href="posts/multisets-and-multivariate-generating-functions/#rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
-<a name="rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-1"></a>sim=: 3 : '105=+/(?8##lst){lst'
-<a name="rest_code_117ec34c9b294c5da3fd0b8d3b9f6578-2"></a>(+/%#)(sim"0)1e5#0
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-0">0</a>
+<a href="posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-1">1</a>
+<a href="posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-0"></a>lst=:(4#11,12),(5#13),(6#14),3#15
+<a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-1"></a>sim=: 3 : '105=+/(?8##lst){lst'
+<a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-2"></a>(+/%#)(sim"0)1e5#0
 </pre></td>
 </tr></table>
 </div>
@@ -181,30 +181,30 @@ boxes are left?</p>
 </ul>
 <p>Back to our problem, how many rounds can we expect for the game to last? Let us do the simulation by computing answers for small values, in J:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-0"> 0</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-1"> 1</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-2"> 2</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-3"> 3</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-4"> 4</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-5"> 5</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-6"> 6</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-7"> 7</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-8"> 8</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-9"> 9</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-10">10</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_31afeef5aa5a491482bcb92b0ff6030e-11">11</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-0"></a>   'm n'=:5 3
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-1"></a>   sim=: 3 : 0
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-2"></a>a=:m
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-3"></a>c=:0
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-4"></a>while. (a&gt;0) do.
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-5"></a>b=:+/~:?n#a
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-6"></a>a=:a-b
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-7"></a>c=:c+1
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-8"></a>end.
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-9"></a>c return.
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-10"></a>)
-<a name="rest_code_31afeef5aa5a491482bcb92b0ff6030e-11"></a>   (+/%#)(sim"0)1e5#0
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-0"> 0</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-1"> 1</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-2"> 2</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-3"> 3</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-4"> 4</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-5"> 5</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-6"> 6</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-7"> 7</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-8"> 8</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-9"> 9</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-10">10</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-11">11</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-0"></a>   'm n'=:5 3
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-1"></a>   sim=: 3 : 0
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-2"></a>a=:m
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-3"></a>c=:0
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-4"></a>while. (a&gt;0) do.
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-5"></a>b=:+/~:?n#a
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-6"></a>a=:a-b
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-7"></a>c=:c+1
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-8"></a>end.
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-9"></a>c return.
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-10"></a>)
+<a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-11"></a>   (+/%#)(sim"0)1e5#0
 </pre></td>
 </tr></table>
 <p>Running the above gives a value of about <span class="math">\(2.554\)</span></p>
@@ -236,40 +236,40 @@ The boundary condition is <span class="math">\(E[1]=1\)</span>, since obviously 
 <p><span class="math">\(E[5]\)</span> would be <span class="math">\(\dfrac{18391}{7200} = 2.5543\)</span> which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a formula.</p>
 <p>Let us calculate the number of ways to partition a number <span class="math">\(n\)</span> of length <span class="math">\(3\)</span> (number of people fixed at <span class="math">\(m=3\)</span>), using sage:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-0"> 0</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-1"> 1</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-2"> 2</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-3"> 3</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-4"> 4</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-5"> 5</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-6"> 6</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-7"> 7</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-8"> 8</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-9"> 9</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-10">10</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-11">11</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-12">12</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-13">13</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-14">14</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-15">15</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_69ab91ba5fa34831be583f3ce46836bf-16">16</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-0"></a><span class="k">def</span> <span class="nf">afun</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span><span class="n">bb</span><span class="p">,</span><span class="n">cc</span><span class="p">):</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-1"></a>    <span class="n">nn</span> <span class="o">=</span> <span class="n">aa</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-2"></a>    <span class="n">nbac</span> <span class="o">=</span> <span class="n">nn</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-3"></a>    <span class="n">mm</span> <span class="o">=</span> <span class="n">bb</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-4"></a>    <span class="n">ll</span> <span class="o">=</span> <span class="n">cc</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-5"></a>    <span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-6"></a>    <span class="n">alst</span> <span class="o">=</span> <span class="n">Partitions</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="n">ll</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-7"></a>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alst</span><span class="p">:</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-8"></a>        <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">mm</span><span class="o">-</span><span class="n">ll</span><span class="p">))</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-9"></a>        <span class="n">tot</span> <span class="o">=</span> <span class="mi">1</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-10"></a>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-11"></a>            <span class="n">tot</span> <span class="o">*=</span> <span class="n">binomial</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-12"></a>            <span class="n">nn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">-</span><span class="n">c</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-13"></a>        <span class="n">summ</span> <span class="o">+=</span> <span class="n">Permutations</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">cardinality</span><span class="p">()</span><span class="o">*</span><span class="n">tot</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-14"></a>        <span class="n">nn</span> <span class="o">=</span> <span class="n">nbac</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-15"></a>    <span class="k">return</span> <span class="n">summ</span>
-<a name="rest_code_69ab91ba5fa34831be583f3ce46836bf-16"></a><span class="k">print</span> <span class="p">[</span><span class="n">afun</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">16</span><span class="p">)]</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-0"> 0</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-1"> 1</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-2"> 2</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-3"> 3</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-4"> 4</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-5"> 5</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-6"> 6</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-7"> 7</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-8"> 8</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-9"> 9</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-10">10</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-11">11</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-12">12</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-13">13</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-14">14</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-15">15</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-16">16</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-0"></a><span class="k">def</span> <span class="nf">afun</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span><span class="n">bb</span><span class="p">,</span><span class="n">cc</span><span class="p">):</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-1"></a>    <span class="n">nn</span> <span class="o">=</span> <span class="n">aa</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-2"></a>    <span class="n">nbac</span> <span class="o">=</span> <span class="n">nn</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-3"></a>    <span class="n">mm</span> <span class="o">=</span> <span class="n">bb</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-4"></a>    <span class="n">ll</span> <span class="o">=</span> <span class="n">cc</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-5"></a>    <span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-6"></a>    <span class="n">alst</span> <span class="o">=</span> <span class="n">Partitions</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="n">ll</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-7"></a>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alst</span><span class="p">:</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-8"></a>        <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">mm</span><span class="o">-</span><span class="n">ll</span><span class="p">))</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-9"></a>        <span class="n">tot</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-10"></a>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-11"></a>            <span class="n">tot</span> <span class="o">*=</span> <span class="n">binomial</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-12"></a>            <span class="n">nn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">-</span><span class="n">c</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-13"></a>        <span class="n">summ</span> <span class="o">+=</span> <span class="n">Permutations</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">cardinality</span><span class="p">()</span><span class="o">*</span><span class="n">tot</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-14"></a>        <span class="n">nn</span> <span class="o">=</span> <span class="n">nbac</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-15"></a>    <span class="k">return</span> <span class="n">summ</span>
+<a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-16"></a><span class="k">print</span> <span class="p">[</span><span class="n">afun</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">16</span><span class="p">)]</span>
 </pre></td>
 </tr></table>
 <p>What this function afun does is that for <span class="math">\(n\)</span> and <span class="math">\(m\)</span>, it computes the number of partitions having length <span class="math">\(l (\le m)\)</span>, and we compute the list of values for <span class="math">\(l=m=3\)</span> and varying <span class="math">\(n\)</span>.</p>
@@ -284,14 +284,14 @@ E_{1,m} &amp;= 1
 </div>
 <p>In maxima (which will cache the values to speed up recurrence computation), it can be written as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/getting-started-with-experimental-mathematics/#rest_code_927cab07876f401788c996e6d59b30e4-0">0</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_927cab07876f401788c996e6d59b30e4-1">1</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_927cab07876f401788c996e6d59b30e4-2">2</a>
-<a href="posts/getting-started-with-experimental-mathematics/#rest_code_927cab07876f401788c996e6d59b30e4-3">3</a></pre></div></td>
-<td class="code"><pre class="code scheme"><a name="rest_code_927cab07876f401788c996e6d59b30e4-0"></a><span class="nv">m:3$</span>
-<a name="rest_code_927cab07876f401788c996e6d59b30e4-1"></a><span class="nv">E</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="nv">:1$</span>
-<a name="rest_code_927cab07876f401788c996e6d59b30e4-2"></a><span class="nv">E</span><span class="p">[</span><span class="nv">n</span><span class="p">]</span><span class="nv">:=sum</span><span class="p">(</span><span class="nf">stirling2</span><span class="p">(</span><span class="nf">m,j</span><span class="p">)</span><span class="nv">*factorial</span><span class="p">(</span><span class="nf">n</span><span class="p">)</span><span class="nv">/factorial</span><span class="p">(</span><span class="nf">n-j</span><span class="p">)</span><span class="nv">*E</span><span class="p">[</span><span class="nv">n-j</span><span class="p">]</span><span class="nv">/n^m,j,1,n-1</span><span class="p">)</span><span class="nv">+1$</span>
-<a name="rest_code_927cab07876f401788c996e6d59b30e4-3"></a><span class="nv">float</span><span class="p">(</span><span class="nf">E</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="c1">;</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-0">0</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-1">1</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-2">2</a>
+<a href="posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-3">3</a></pre></div></td>
+<td class="code"><pre class="code scheme"><a name="rest_code_d874665e4db94b2aac69710c4949528f-0"></a><span class="nv">m:3$</span>
+<a name="rest_code_d874665e4db94b2aac69710c4949528f-1"></a><span class="nv">E</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="nv">:1$</span>
+<a name="rest_code_d874665e4db94b2aac69710c4949528f-2"></a><span class="nv">E</span><span class="p">[</span><span class="nv">n</span><span class="p">]</span><span class="nv">:=sum</span><span class="p">(</span><span class="nf">stirling2</span><span class="p">(</span><span class="nf">m,j</span><span class="p">)</span><span class="nv">*factorial</span><span class="p">(</span><span class="nf">n</span><span class="p">)</span><span class="nv">/factorial</span><span class="p">(</span><span class="nf">n-j</span><span class="p">)</span><span class="nv">*E</span><span class="p">[</span><span class="nv">n-j</span><span class="p">]</span><span class="nv">/n^m,j,1,n-1</span><span class="p">)</span><span class="nv">+1$</span>
+<a name="rest_code_d874665e4db94b2aac69710c4949528f-3"></a><span class="nv">float</span><span class="p">(</span><span class="nf">E</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="c1">;</span>
 </pre></td>
 </tr></table>
 </div>
@@ -346,24 +346,24 @@ E_{1,m} &amp;= 1
 <li>
 <p class="first">The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/jolla-and-sailfish-os/#rest_code_1df74b6d53d049f08b6c300935232331-0">0</a></pre></div></td>
-<td class="code"><pre class="code sh"><a name="rest_code_1df74b6d53d049f08b6c300935232331-0"></a>sqlite3 .local/share/commhistory/commhistory.db
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/jolla-and-sailfish-os/#rest_code_997889bd0f794af5ae2bfdfee74a7891-0">0</a></pre></div></td>
+<td class="code"><pre class="code sh"><a name="rest_code_997889bd0f794af5ae2bfdfee74a7891-0"></a>sqlite3 .local/share/commhistory/commhistory.db
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">Then, to display all the sms messages, run commands like</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/jolla-and-sailfish-os/#rest_code_4d4c67d1715a447f882ed6d74637fe7b-0">0</a></pre></div></td>
-<td class="code"><pre class="code sql"><a name="rest_code_4d4c67d1715a447f882ed6d74637fe7b-0"></a><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">events</span> <span class="k">where</span> <span class="k">type</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/jolla-and-sailfish-os/#rest_code_f306facd19ec4d37b8b3b60048eeb351-0">0</a></pre></div></td>
+<td class="code"><pre class="code sql"><a name="rest_code_f306facd19ec4d37b8b3b60048eeb351-0"></a><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">events</span> <span class="k">where</span> <span class="k">type</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">If we want to know what each column is about, run</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/jolla-and-sailfish-os/#rest_code_03ce22bf71d54952aaaa17f867f2ffc4-0">0</a></pre></div></td>
-<td class="code"><pre class="code sql"><a name="rest_code_03ce22bf71d54952aaaa17f867f2ffc4-0"></a><span class="p">.</span><span class="n">headers</span> <span class="k">ON</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/jolla-and-sailfish-os/#rest_code_648d73ba788a48bf9a8972755d36cab0-0">0</a></pre></div></td>
+<td class="code"><pre class="code sql"><a name="rest_code_648d73ba788a48bf9a8972755d36cab0-0"></a><span class="p">.</span><span class="n">headers</span> <span class="k">ON</span>
 </pre></td>
 </tr></table>
 </li>

@@ -30,7 +30,12 @@ MathJax.Hub.Config({
 Most of the reviews scattered on the net miss the fact that it i">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2014-11-09T16:34:48+05:30">
+<meta property="article:tag" content="ARM">
+<meta property="article:tag" content="jolla">
+<meta property="article:tag" content="linux">
 <meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="sage">
+<meta property="article:tag" content="sailfish OS">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -142,24 +147,24 @@ Most of the reviews scattered on the net miss the fact that it i">
 <li>
 <p class="first">The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1df74b6d53d049f08b6c300935232331-0">0</a></pre></div></td>
-<td class="code"><pre class="code sh"><a name="rest_code_1df74b6d53d049f08b6c300935232331-0"></a>sqlite3 .local/share/commhistory/commhistory.db
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_997889bd0f794af5ae2bfdfee74a7891-0">0</a></pre></div></td>
+<td class="code"><pre class="code sh"><a name="rest_code_997889bd0f794af5ae2bfdfee74a7891-0"></a>sqlite3 .local/share/commhistory/commhistory.db
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">Then, to display all the sms messages, run commands like</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_4d4c67d1715a447f882ed6d74637fe7b-0">0</a></pre></div></td>
-<td class="code"><pre class="code sql"><a name="rest_code_4d4c67d1715a447f882ed6d74637fe7b-0"></a><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">events</span> <span class="k">where</span> <span class="k">type</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f306facd19ec4d37b8b3b60048eeb351-0">0</a></pre></div></td>
+<td class="code"><pre class="code sql"><a name="rest_code_f306facd19ec4d37b8b3b60048eeb351-0"></a><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">events</span> <span class="k">where</span> <span class="k">type</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">If we want to know what each column is about, run</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_03ce22bf71d54952aaaa17f867f2ffc4-0">0</a></pre></div></td>
-<td class="code"><pre class="code sql"><a name="rest_code_03ce22bf71d54952aaaa17f867f2ffc4-0"></a><span class="p">.</span><span class="n">headers</span> <span class="k">ON</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_648d73ba788a48bf9a8972755d36cab0-0">0</a></pre></div></td>
+<td class="code"><pre class="code sql"><a name="rest_code_648d73ba788a48bf9a8972755d36cab0-0"></a><span class="p">.</span><span class="n">headers</span> <span class="k">ON</span>
 </pre></td>
 </tr></table>
 </li>
@@ -176,7 +181,13 @@ Most of the reviews scattered on the net miss the fact that it i">
 <p><a class="reference external" href="https://github.com/ArchimedesPi/SageMathematics-raspi/">3. Sage 6.0 for RPi download</a></p>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/arm/" rel="tag">ARM</a></li>
+            <li><a class="tag p-category" href="../../categories/jolla/" rel="tag">jolla</a></li>
+            <li><a class="tag p-category" href="../../categories/linux/" rel="tag">linux</a></li>
+            <li><a class="tag p-category" href="../../categories/sage/" rel="tag">sage</a></li>
+            <li><a class="tag p-category" href="../../categories/sailfish-os/" rel="tag">sailfish OS</a></li>
+        </ul>
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../using-directed-graphs-to-form-multivariate-recurrence-relations/" rel="prev" title="Using Directed Graphs to form multivariate recurrence relations">Previous post</a>

@@ -1,7 +1,7 @@
 .. title: Multisets and multivariate generating functions
 .. slug: multisets-and-multivariate-generating-functions
 .. date: 2015-07-03 17:00:24 UTC+05:30
-.. tags: 
+.. tags: mathjax, multiset, generating function, simulation, J
 .. category: 
 .. link: 
 .. description: 

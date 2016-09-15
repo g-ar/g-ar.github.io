@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R (J)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/j.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 15 Sep 2016 17:51:38 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Deriving Explicit Formulas from Markov Chains</title><link>https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Once we formulate the markov model correctly, we can obtain the generating function for each entry in the matrix, where there's a possibility of getting the explicit formula. Let's take a look at one such problem:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A six faced unbiased die is rolled :math:`n` times. What is the probability that we get to see all the six numbers in the sequence?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Setting up a markov chain is easy:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle A= \begin{pmatrix} 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; \frac{1}{6} &amp;amp; \frac{5}{6} &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; \frac{1}{3} &amp;amp; \frac{2}{3} &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \frac{1}{2} &amp;amp; \frac{1}{2} &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \frac{2}{3} &amp;amp; \frac{1}{3} &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \frac{5}{6} &amp;amp; \frac{1}{6}\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{pmatrix}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;The states indicate the number of faces shown up. E.g. the row above the last row indicates that when 5 faces are seen, there's a probability of &lt;span class="math"&gt;\(5/6\)&lt;/span&gt; remaining in the same state and &lt;span class="math"&gt;\(1/6\)&lt;/span&gt; moving to the final state.&lt;/p&gt;
+&lt;p&gt;So, &lt;span class="math"&gt;\(A^n[0,6]\)&lt;/span&gt;, gives the required answer. But we can also find the generating function for that entry by computing &lt;span class="math"&gt;\((I-x\, A)^{-1}\)&lt;/span&gt;, which is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle G(x) = \frac{10 \, x^{6}}{{\left(5 \, x - 6\right)} {\left(2 \, x - 3\right)} {\left(x - 1\right)} {\left(x - 2\right)} {\left(x - 3\right)} {\left(x - 6\right)}}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and on partial fractions it's&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle G(x) = \frac{36}{5 \, x - 6} - \frac{45}{2 \, x - 3} - \frac{1}{x - 1} + \frac{40}{x - 2} - \frac{45}{x - 3} + \frac{36}{x - 6} + 1
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and the probability can be written by extracting &lt;span class="math"&gt;\([x^n]G(x)\)&lt;/span&gt; as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}(n) = 1-\frac{6}{6^n}+\frac{15}{3^n}-\frac{20}{2^n}+15\left(\frac{2}{3}\right)^n-6\left(\frac{5}{6}\right)^n
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;which can be verified by a simulation in J:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_574b07518cfe4817ab00db3b4a14a758-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_574b07518cfe4817ab00db3b4a14a758-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_574b07518cfe4817ab00db3b4a14a758-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_574b07518cfe4817ab00db3b4a14a758-0"&gt;&lt;/a&gt;n=:10
+&lt;a name="rest_code_574b07518cfe4817ab00db3b4a14a758-1"&gt;&lt;/a&gt;sim=: 3 : '6=+/~:?n#6'
+&lt;a name="rest_code_574b07518cfe4817ab00db3b4a14a758-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0 NB. about 0.27
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\mathbb{P}(10) = \dfrac{38045}{139968} \approx 0.271812128486511
+\end{equation*}
+&lt;/div&gt;&lt;/div&gt;</description><category>generating function</category><category>J</category><category>markov chain</category><category>mathjax</category><category>sage</category><category>simulation</category><guid>https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/</guid><pubDate>Sun, 09 Aug 2015 11:41:29 GMT</pubDate></item><item><title>Multisets and multivariate generating functions</title><link>https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Consider a multiset, &lt;span class="math"&gt;\(S = \{11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 15, 15, 15\}\)&lt;/span&gt;.
+&lt;em&gt;How many combinations of 8 elements can be made from the set so that the sum of those 8 elements is equal to 105, when the numbers are picked without replacement?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Here, if the sum is not asked, the problem can be solved using an ordinary generating function as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+G(x) = (1+x+x^2+x^3+x^4)^2\, (1+x+x^2+x^3+x^4+x^5)\, (1+x+x^2+x^3+x^4+x^5+x^6)\, (1+x+x^2+x^3)
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and finding &lt;span class="math"&gt;\([x^8]G(x)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;But when the sum is also there as a constraint, we require one more variable to keep track of the sum. So, we may use &lt;span class="math"&gt;\(x\)&lt;/span&gt; to know the number of elements chosen, and &lt;span class="math"&gt;\(y\)&lt;/span&gt; for the sum of those numbers. Hence, the required bivariate generating function can be written as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+G(x,y) = {\left(x^{6} y^{84} + x^{5} y^{70} + x^{4} y^{56} + x^{3} y^{42} + x^{2} y^{28} + x y^{14} + 1\right)}\\ {\left(x^{5} y^{65} + x^{4} y^{52} + x^{3} y^{39} + x^{2} y^{26} + x y^{13} + 1\right)} {\left(x^{4} y^{48} + x^{3} y^{36} + x^{2} y^{24} + x y^{12} + 1\right)}\\ {\left(x^{4} y^{44} + x^{3} y^{33} + x^{2} y^{22} + x y^{11} + 1\right)} {\left(x^{3} y^{45} + x^{2} y^{30} + x y^{15} + 1\right)}
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Now, the answer to the question would be &lt;span class="math"&gt;\([x^8 y^{105}] G(x,y)\)&lt;/span&gt; in the expansion of the product.&lt;/p&gt;
+&lt;p&gt;If the question was to find the number of combinations with replacement, the generating function can be represented as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+G(x,y) = \dfrac{1}{\left(1-x\, y^{11}\right)\left(1-x\, y^{12}\right)\left(1-x\, y^{13}\right)\left(1-x\, y^{14}\right)\left(1-x\, y^{15}\right)}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Now, let us focus our attention to a related probability problem:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;From the multiset S, what is the probability of choosing 8 elements such that the sum of those 8 elements is equal to 105, when the numbers are picked without replacement?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This looks simple and we may be tempted to say that the answer is &lt;span class="math"&gt;\([x^8 y^{105}]G(x,y) / [x^8] G(x)\)&lt;/span&gt;, but note that some combinations of numbers are more probable to be picked since the number of each element are not the same. E.g. If the set contains &lt;span class="math"&gt;\(\{11, 11, 12\}\)&lt;/span&gt;, the probability of choosing &lt;span class="math"&gt;\(\{11, 11\}\)&lt;/span&gt; will be more than the probability of choosing &lt;span class="math"&gt;\(\{11, 12\}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Anyway, it can still be solved using a generating function:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+P(x,y) = \left(1+\binom{4}{1}\, (x\, y^{11})^{1}+\binom{4}{2}\, (x\, y^{11})^{2}+\binom{4}{3}\, (x\, y^{11})^{3}+\binom{4}{4}\, (x\, y^{11})^{4}\right)\\ \left(1+\binom{4}{1}\, (x\, y^{12})^{1}+\binom{4}{2}\, (x\, y^{12})^{2}+\binom{4}{3}\, (x\, y^{12})^{3}+\binom{4}{4}\, (x\, y^{12})^{4}\right)\\ \left(1+\binom{5}{1}\, (x\, y^{13})^{1}+\binom{5}{2}\, (x\, y^{13})^{2}+\binom{5}{3}\, (x\, y^{13})^{3}+\binom{5}{4}\, (x\, y^{13})^{4}+\binom{5}{5}\, (x\, y^{13})^{5}\right)\\ \left(1+\binom{6}{1}\, (x\, y^{14})^{1}+\binom{6}{2}\, (x\, y^{14})^{2}+\binom{6}{3}\, (x\, y^{14})^{3}+\binom{6}{4}\, (x\, y^{14})^{4}+\binom{6}{5}\, (x\, y^{14})^{5}+\binom{6}{6}\, (x\, y^{14})^{6}\right)\\ \left(1+\binom{3}{1}\, (x\, y^{15})^{1}+\binom{3}{2}\, (x\, y^{15})^{2}+\binom{3}{3}\, (x\, y^{15})^{3}\right)
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;and the required probability is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\mathbb{P} = \dfrac{[x^8 y^{105}] P(x,y)}{\dbinom{22}{8}} = \dfrac{343}{2805} \approx 0.122281639928699
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;And what is the probability if we do it with replacement? In this case, the probability can be found by using an exponential generating function, which is written as:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+E(x,y) = e^{x\, \left(4\, y^{11}+4\, y^{12}+5\, y^{13}+6\, y^{14}+3\, y^{15} \right)}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and the probability is given by &lt;span class="math"&gt;\([x^8 y^{105}]E(x,y)\dfrac{8!}{22^8} = \dfrac{5621995920}{22^8} \approx 0.102449319851133\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The above probabilities can also be verified by monte-carlo simulations in J, for the without replacement case:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-0"&gt;&lt;/a&gt;lst=:(4#11,12),(5#13),(6#14),3#15
+&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-1"&gt;&lt;/a&gt;sim=: 3 : '105=+/(8?#lst){lst'
+&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and for the with replacement case:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-0"&gt;&lt;/a&gt;lst=:(4#11,12),(5#13),(6#14),3#15
+&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-1"&gt;&lt;/a&gt;sim=: 3 : '105=+/(?8##lst){lst'
+&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</description><category>generating function</category><category>J</category><category>mathjax</category><category>multiset</category><category>simulation</category><guid>https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/</guid><pubDate>Fri, 03 Jul 2015 11:30:24 GMT</pubDate></item><item><title>Getting started with experimental mathematics</title><link>https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Here is one &lt;a class="reference external" href="https://math.stackexchange.com/questions/1061083/average-time-to-fill-boxes-with-balls/"&gt;nice problem&lt;/a&gt; to describe how arrive at a formula experimentally.&lt;/p&gt;
+&lt;p&gt;To rephrase the problem:&lt;/p&gt;
+&lt;p&gt;There are &lt;span class="math"&gt;\(m\)&lt;/span&gt; people with one ball each, and &lt;span class="math"&gt;\(n\)&lt;/span&gt; boxes. In a round, each of them picks one box randomly (uniformly and independently) and
+drops the ball in it. Whichever box is not empty is removed, and the next round starts. How many rounds, on an average, will it take till no
+boxes are left?&lt;/p&gt;
+&lt;p&gt;Obtaining a formula directly by combinatorial arguments without computing any values and getting it right is quite difficult, and prone to errors.&lt;/p&gt;
+&lt;p&gt;So, let us obtain it experimentally.&lt;/p&gt;
+&lt;p&gt;What does experimental math involve?&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Brute force through the problem&lt;ul&gt;
+&lt;li&gt;Write a program which describes the problem&lt;/li&gt;
+&lt;li&gt;obtain the first few values&lt;/li&gt;
+&lt;li&gt;take it to either oeis or a sequence guessing routine&lt;/li&gt;
+&lt;li&gt;Then we may be able to find a formula&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;If it's a problem on probability, do a simulation to cross verify with the formula&lt;/li&gt;
+&lt;li&gt;Having a lot of fun, doing both math and programming at the same time!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Back to our problem, how many rounds can we expect for the game to last? Let us do the simulation by computing answers for small values, in J:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-11"&gt;11&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-0"&gt;&lt;/a&gt;   'm n'=:5 3
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-1"&gt;&lt;/a&gt;   sim=: 3 : 0
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-2"&gt;&lt;/a&gt;a=:m
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-3"&gt;&lt;/a&gt;c=:0
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-4"&gt;&lt;/a&gt;while. (a&amp;gt;0) do.
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-5"&gt;&lt;/a&gt;b=:+/~:?n#a
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-6"&gt;&lt;/a&gt;a=:a-b
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-7"&gt;&lt;/a&gt;c=:c+1
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-8"&gt;&lt;/a&gt;end.
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-9"&gt;&lt;/a&gt;c return.
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-10"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-11"&gt;&lt;/a&gt;   (+/%#)(sim"0)1e5#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Running the above gives a value of about &lt;span class="math"&gt;\(2.554\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Next, we will try to compute some numbers:
+How many ways is it possible for 3 balls to be placed 5 boxes such that everybody chooses the same box?&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(abc,0,0,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(= 5\)&lt;/span&gt; ways&lt;/p&gt;
+&lt;p&gt;How many ways is it possible for 3 balls to be placed 5 boxes such that two boxes are selected?&lt;/p&gt;
+&lt;p&gt;Do some casework:&lt;/p&gt;
+&lt;p&gt;One box may contain two balls, one box with one ball and one empty box.&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(ab,c,0,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(ac,b,0,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(bc,a,0,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(= 3\cdot 5!/3! = 60\)&lt;/span&gt; ways&lt;/p&gt;
+&lt;p&gt;How many ways is it possible for 3 balls to be placed 5 boxes such that 3 boxes are selected?&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(a,b,c,0,0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(= 5!/2! = 60\)&lt;/span&gt; ways&lt;/p&gt;
+&lt;p&gt;And we see that the total turns out to be &lt;span class="math"&gt;\(5 + 60 + 60 = 125\)&lt;/span&gt;, which is 53, the number of ways of arranging the balls in boxes without any restriction.&lt;/p&gt;
+&lt;p&gt;To calculate the expected value, we have&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+E[n] = p_1 * E[n-1] + p_2 * E[n-2] + \cdots + p_m * E[n-m]
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(p_m\)&lt;/span&gt; means the probability of choosing &lt;span class="math"&gt;\(m\)&lt;/span&gt; different boxes from &lt;span class="math"&gt;\(n\)&lt;/span&gt; boxes.&lt;/p&gt;
+&lt;p&gt;For &lt;span class="math"&gt;\(m=3\)&lt;/span&gt; and &lt;span class="math"&gt;\(n=5\)&lt;/span&gt;, &lt;span class="math"&gt;\(E[5] = 5/125*E[4]+60/125*E[3]+60/125*E[2] + 1\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then, calculate similarly for &lt;span class="math"&gt;\(n=4\)&lt;/span&gt; and &lt;span class="math"&gt;\(m=3\)&lt;/span&gt; to get &lt;span class="math"&gt;\(E[4]\)&lt;/span&gt; and so on.
+The boundary condition is &lt;span class="math"&gt;\(E[1]=1\)&lt;/span&gt;, since obviously the game would end in one round if there was a single box.&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(E[5]\)&lt;/span&gt; would be &lt;span class="math"&gt;\(\dfrac{18391}{7200} = 2.5543\)&lt;/span&gt; which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a formula.&lt;/p&gt;
+&lt;p&gt;Let us calculate the number of ways to partition a number &lt;span class="math"&gt;\(n\)&lt;/span&gt; of length &lt;span class="math"&gt;\(3\)&lt;/span&gt; (number of people fixed at &lt;span class="math"&gt;\(m=3\)&lt;/span&gt;), using sage:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-0"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;aa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;bb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-1"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aa&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-2"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nbac&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-3"&gt;&lt;/a&gt;    &lt;span class="n"&gt;mm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bb&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-4"&gt;&lt;/a&gt;    &lt;span class="n"&gt;ll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cc&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;alst&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Partitions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alst&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-8"&gt;&lt;/a&gt;        &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-9"&gt;&lt;/a&gt;        &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-10"&gt;&lt;/a&gt;        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-11"&gt;&lt;/a&gt;            &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;*=&lt;/span&gt; &lt;span class="n"&gt;binomial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-12"&gt;&lt;/a&gt;            &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-13"&gt;&lt;/a&gt;        &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;Permutations&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cardinality&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;tot&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-14"&gt;&lt;/a&gt;        &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nbac&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-15"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;summ&lt;/span&gt;
+&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-16"&gt;&lt;/a&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;What this function afun does is that for &lt;span class="math"&gt;\(n\)&lt;/span&gt; and &lt;span class="math"&gt;\(m\)&lt;/span&gt;, it computes the number of partitions having length &lt;span class="math"&gt;\(l (\le m)\)&lt;/span&gt;, and we compute the list of values for &lt;span class="math"&gt;\(l=m=3\)&lt;/span&gt; and varying &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Insert that list to oeis, and bingo! The second answer shown looks promising: &lt;span class="math"&gt;\(A(k,3)\)&lt;/span&gt; where &lt;span class="math"&gt;\(A(k,n)= \sum_{m=1}^k (-1)^{m+1}\cdot \binom{n}{m} \cdot m^k\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;It seems to be related to the stirling numbers of the second kind.&lt;/p&gt;
+&lt;p&gt;After some trial and error, the equation turns out to be:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle E_{n,m} &amp;amp;= \left(\sum_{j=1}^{n-1} \left\lbrace {m \atop j} \right\rbrace \dfrac{n!}{(n-j)!} \dfrac{E_{n-j,m}}{n^m}\right)+1\\
+E_{1,m} &amp;amp;= 1
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;In maxima (which will cache the values to speed up recurrence computation), it can be written as:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_d874665e4db94b2aac69710c4949528f-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;m:3$&lt;/span&gt;
+&lt;a name="rest_code_d874665e4db94b2aac69710c4949528f-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;:1$&lt;/span&gt;
+&lt;a name="rest_code_d874665e4db94b2aac69710c4949528f-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;:=sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;stirling2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;m,j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;*factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;/factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;n-j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;*E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;n-j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;/n^m,j,1,n-1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;+1$&lt;/span&gt;
+&lt;a name="rest_code_d874665e4db94b2aac69710c4949528f-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</description><category>expected value</category><category>experimental mathematics</category><category>J</category><category>mathjax</category><category>recurrence</category><category>sage</category><category>simulation</category><guid>https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/</guid><pubDate>Tue, 16 Dec 2014 11:17:39 GMT</pubDate></item><item><title>Probability of a sum being less than 1 (convolution of pdf)</title><link>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;If we choose &lt;span class="math"&gt;\(n\)&lt;/span&gt; numbers randomly and uniformly from &lt;span class="math"&gt;\([0,1]\)&lt;/span&gt; and raise each number to &lt;span class="math"&gt;\(k\)&lt;/span&gt; &lt;span class="math"&gt;\((k&amp;gt;0)\)&lt;/span&gt;, what is the probability that the sum will be less than 1?&lt;/p&gt;
+&lt;p&gt;i.e. what is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&amp;lt;1\right)\;\;\; , x_i\in \mathcal{U}\left(0,1\right)
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;The answer can be derived by using convolution of probability density functions.&lt;/p&gt;
+&lt;p&gt;For two pdfs, &lt;span class="math"&gt;\(f(x)\)&lt;/span&gt; and &lt;span class="math"&gt;\(g(y)\)&lt;/span&gt;, the convolution &lt;span class="math"&gt;\(f*g\)&lt;/span&gt; is defined as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle \left(f*g\right)(z) &amp;amp;= \int_{-\infty}^{\infty} \, f(z-y)g(y)\, dy\\
+&amp;amp;= \int_{-\infty}^{\infty} \, g(z-x) f(x)\, dx
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Let &lt;span class="math"&gt;\(X_1\)&lt;/span&gt; and &lt;span class="math"&gt;\(X_2\)&lt;/span&gt; be two random variables which represent &lt;span class="math"&gt;\(x_1^{1/k}\)&lt;/span&gt; and &lt;span class="math"&gt;\(x_2^{1/k}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The pdf is then given by:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle f_{X_1}(x)=f_{X_2}(x)=\frac{d}{dx} (x^k)=k\, x^{k-1}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and the pdf of the sum of two numbers &lt;span class="math"&gt;\(f_2(z)\)&lt;/span&gt; (in the region &lt;span class="math"&gt;\(0\le z \le 1\)&lt;/span&gt;) is:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle f_2(z)&amp;amp;= \int_{0}^{z} \, f_{X_1}(z-y) f_{X_2}(y) \, dy\\
+&amp;amp;= k^2\cdot z^{2\, k - 1}\cdot \mathrm{B}(k, k)
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;After this, we can iteratively continue for more terms:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle f_3(z)&amp;amp;= \int_{0}^{z} \, f_{X_1}(z-y) f_{2}(y) \, dy\\
+&amp;amp;= k^3\cdot z^{3\, k - 1}\cdot \mathrm{B}(2\, k, k)\cdot \mathrm{B}(k, k)
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Continuing in that manner, for sum of &lt;span class="math"&gt;\(n\)&lt;/span&gt; terms, we will end up with:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle f_n(z) = k^n\cdot z^{n\, k - 1}\cdot \prod_{i=1}^{n-1} \mathrm{B}(i\, k, k)
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Since we require the probability of the sum to be less than one, we will evaluate that integral and write the beta functions in terms of gamma functions and simplify:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&amp;lt;1\right) &amp;amp;= \int_{0}^{1} \, f_n(z)\, dz\\
+&amp;amp;= \frac{k^{n-1}}{n}\prod_{i=1}^{n-1} \mathrm{B}(i\, k, k) \\
+&amp;amp;= \frac{k^{n-1}\big(\Gamma(k)\big)^n}{n\, \Gamma(n\, k)} \\
+&amp;amp;= \frac{\big(\Gamma(k+1)\big)^n}{\Gamma(n\, k+1)}
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;That's some formula!&lt;/p&gt;
+&lt;p&gt;In Sage, it can be written as&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-7"&gt;7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-8"&gt;8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-9"&gt;9&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-0"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'k y z'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-5"&gt;&lt;/a&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-9"&gt;&lt;/a&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To verify our answer, we can perform a simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_0af8bb27121148e5918a9b1ef5060535-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_0af8bb27121148e5918a9b1ef5060535-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_0af8bb27121148e5918a9b1ef5060535-0"&gt;&lt;/a&gt;sim=: 3 : '1&amp;gt;+/(?6#0)^6'
+&lt;a name="rest_code_0af8bb27121148e5918a9b1ef5060535-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0 NB. = 0.63926
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want to perform a simulation in a more verbose language, R is a good candidate.&lt;/p&gt;
+&lt;p&gt;The code in R looks like:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code R"&gt;&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-0"&gt;&lt;/a&gt;n &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-1"&gt;&lt;/a&gt;k &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-2"&gt;&lt;/a&gt;b &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;runif&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;dim&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-3"&gt;&lt;/a&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;b&lt;span class="o"&gt;^&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-0"&gt;&lt;/a&gt;'n k'=: 6 6
+&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-1"&gt;&lt;/a&gt;a=:(n, 1e6) $ ?(n*1e6)#0
+&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-2"&gt;&lt;/a&gt;(+/%#)1&amp;gt;+/a^k NB. = 0.637572
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The corresponding probability derived analytically is:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^6 x_i^6\Big)&amp;lt;1\right) = f\left(6,\frac{1}{6}\right) \\ = \Gamma\left(\frac{7}{6}\right)^6 \approx 0.637528558759471
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf"&gt;1. Dartmouth Probability Book&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://arxiv.org/pdf/cs/0604056.pdf"&gt;2. An arxiv article&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Volume_of_an_n-ball"&gt;3. Volume of a n-ball&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>J</category><category>mathjax</category><category>probability</category><category>R</category><category>simulation</category><guid>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</guid><pubDate>Sun, 01 Jun 2014 09:53:45 GMT</pubDate></item><item><title>Monte-Carlo simulations in J</title><link>https://g-ar.github.io/posts/monte-carlo-simulations-in-j/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;We will see some more problems on probability, and how to do it in J.&lt;/p&gt;
+&lt;div class="section" id="derangement-problem"&gt;
+&lt;h2&gt;1 Derangement problem&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls are put into the boxes (one in each) randomly, what's the probability that none of the balls are put in the boxes with matching number?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;By simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_00bd5b77377f42cd872617e70eca6959-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_00bd5b77377f42cd872617e70eca6959-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_00bd5b77377f42cd872617e70eca6959-0"&gt;&lt;/a&gt;sim=: 3 : '0=+/(i.30)=30?30'
+&lt;a name="rest_code_00bd5b77377f42cd872617e70eca6959-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The analytical answer:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_6b252df14dad450fbfca5e07a196cd65-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_6b252df14dad450fbfca5e07a196cd65-0"&gt;&lt;/a&gt;+/((30$(1 _1))*(%!i.30))
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="urns-balls-and-a-gamble"&gt;
+&lt;h2&gt;2 Urns, balls and a gamble.&lt;/h2&gt;
+&lt;p&gt;A game is played with the following rules: There is an urn with 20 balls, 10 red and 10 white. You need pick 10 balls out of these 20.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;If 10 balls are of the same color, you get $300&lt;/li&gt;
+&lt;li&gt;If 9 balls are of the same color, you get $30&lt;/li&gt;
+&lt;li&gt;If 8 balls are of the same color, you get $3&lt;/li&gt;
+&lt;li&gt;If 7 balls are of the same color, you get $2&lt;/li&gt;
+&lt;li&gt;If 6 balls are of the same color, you get $1&lt;/li&gt;
+&lt;li&gt;If 5 balls are of the same color, you lose $5&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;What's your expected amount?&lt;/p&gt;
+&lt;p&gt;Simulation answer:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_2da4b0f4dce846228728fe394ce8bf85-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_2da4b0f4dce846228728fe394ce8bf85-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_2da4b0f4dce846228728fe394ce8bf85-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_2da4b0f4dce846228728fe394ce8bf85-0"&gt;&lt;/a&gt;a=: 10#0 1
+&lt;a name="rest_code_2da4b0f4dce846228728fe394ce8bf85-1"&gt;&lt;/a&gt;sim=: 3 : '((_5 * 5 = ]) + ([: +/ 4 6 =/ ]) + (2 * [: +/ 3 7 =/ ]) + (3 * [: +/ 2 8 =/ ]) + (30 * [: +/ 1 9 =/ ]) + 300 * [: +/ 10 0 =/ ])+/(10?20){a'
+&lt;a name="rest_code_2da4b0f4dce846228728fe394ce8bf85-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1000000#0  NB. = _0.826702
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Analytical answer (hypergeometric distribution):&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(A=\{1, 2, 3, 30, 300, -5\}\)&lt;/span&gt;&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \sum_{i=0}^{4}\dfrac{A_i\cdot 2\, \dbinom{10}{i}\dbinom{10}{10-i}}{\dbinom{20}{10}}+\dfrac{A_5\cdot \dbinom{10}{5}^2}{\dbinom{20}{10}} =-\dfrac{76485}{92378}=-0.827956872848514
+\end{equation*}
+&lt;/div&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_cd0a4315f2194cbc9782a9ce90723916-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_cd0a4315f2194cbc9782a9ce90723916-0"&gt;&lt;/a&gt;_5 1 2 3 30 300)*(((5!10)^2), (2 * (10 !~ ]) * 10 !~ 10 - ]) 6+i.5)%10!20
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="birthday-problem"&gt;
+&lt;h2&gt;3 Birthday problem&lt;/h2&gt;
+&lt;p&gt;How many people should be in a room such that the probability of at least two of them sharing the same birthday is more than 0.5? (Assume 365 days in an year)&lt;/p&gt;
+&lt;p&gt;By Simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_25f596979bec474797949b2a2560469d-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_25f596979bec474797949b2a2560469d-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_25f596979bec474797949b2a2560469d-0"&gt;&lt;/a&gt;sim=: 3 : '23&amp;gt;+/~:?23#365'
+&lt;a name="rest_code_25f596979bec474797949b2a2560469d-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Analytically:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_73e996cfa76f49a692c04f64b020ac2b-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_73e996cfa76f49a692c04f64b020ac2b-0"&gt;&lt;/a&gt;1-*/((365-i.23)%(365)) NB. = 0.507297234323985
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To see a plot of the probabilities, up to 100 people in a room:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_10974293dec541da9f96c20c328bb2d2-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_10974293dec541da9f96c20c328bb2d2-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_10974293dec541da9f96c20c328bb2d2-0"&gt;&lt;/a&gt;load'plot'
+&lt;a name="rest_code_10974293dec541da9f96c20c328bb2d2-1"&gt;&lt;/a&gt;'marker' plot (1+i.100);((1 - [: */ 365 %~ 365 - i.)"0) 1+i.100
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="dice"&gt;
+&lt;h2&gt;4 4 dice&lt;/h2&gt;
+&lt;p&gt;Four dice are rolled, what's the probability that no two faces are repeated? (E.g. 6 4 2 5 is okay, but 3 6 5 6 is forbidden)&lt;/p&gt;
+&lt;p&gt;By simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_4b272ce45ce94172ac428966a9411340-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_4b272ce45ce94172ac428966a9411340-0"&gt;&lt;/a&gt;sim=: 3 : '(4 = [: +/ [: +/ =/~)?4#6'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;By permutation:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}=\dfrac{\dbinom{6}{4}\cdot 4!}{6^4} = \dfrac{5}{18} = 0.2777777
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Putting that in J console:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_edcba5fe8fad4fa7919baaa616cdebf1-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_edcba5fe8fad4fa7919baaa616cdebf1-0"&gt;&lt;/a&gt;((4!6)*!4)%6^4
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;By counting:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_a93b8895f62a4396a2d329263182c139-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_a93b8895f62a4396a2d329263182c139-0"&gt;&lt;/a&gt;(+/4=+/"1~:"1(6 6 6 6#:i.1296))%6^4 NB. this uses base-6 representation till 6^4
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="the-ballot-problem"&gt;
+&lt;h2&gt;5 The ballot problem&lt;/h2&gt;
+&lt;p&gt;In an election, candidate A receives n votes, and candidate B receives m votes where &lt;span class="math"&gt;\(n &amp;gt; m\)&lt;/span&gt;. Assuming that all orderings are equally likely, show that the probability that A is always ahead in the count of votes is &lt;span class="math"&gt;\(\dfrac{n - m}{n + m}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Here's a simulation to see that it may be true:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-0"&gt;&lt;/a&gt;n=:55
+&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-1"&gt;&lt;/a&gt;m=:45
+&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-2"&gt;&lt;/a&gt;a=:(m#_1),n#1
+&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-3"&gt;&lt;/a&gt;sim=: 3 : '100=+/0&amp;lt;+/\(100?100){a'
+&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-4"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0 NB. = 0.0993
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;which is close to 0.1 computed from the formula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="an-ace-from-a-regular-deck-of-52-cards"&gt;
+&lt;h2&gt;6 An ace from a regular deck of 52 cards&lt;/h2&gt;
+&lt;p&gt;A deck of cards is well shuffled, and placed face down on a table. The cards are picked one after another, what's the probability that you get to see the first ace when &lt;span class="math"&gt;\(k^{th}\)&lt;/span&gt; card is picked?&lt;/p&gt;
+&lt;p&gt;Finding the answer is quite easy, which is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}(k)=\dfrac{\dbinom{48}{k-1}}{\dbinom{52}{k-1}}\cdot \dfrac{4}{52-k}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and a simulation can back up our claim, e.g. for &lt;span class="math"&gt;\(k=5\)&lt;/span&gt;:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_d8f637b56c894ab0a76f914b12626d43-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_d8f637b56c894ab0a76f914b12626d43-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_d8f637b56c894ab0a76f914b12626d43-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_d8f637b56c894ab0a76f914b12626d43-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_d8f637b56c894ab0a76f914b12626d43-0"&gt;&lt;/a&gt;pos=: 5
+&lt;a name="rest_code_d8f637b56c894ab0a76f914b12626d43-1"&gt;&lt;/a&gt;a=:(4#1),48#0
+&lt;a name="rest_code_d8f637b56c894ab0a76f914b12626d43-2"&gt;&lt;/a&gt;sim=: 3 : 'pos=1+{.I.(52?52){a'
+&lt;a name="rest_code_d8f637b56c894ab0a76f914b12626d43-3"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and the probabilities for first five positions:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_52894888dd4a4b61aad1fb1b1e2cbb90-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_52894888dd4a4b61aad1fb1b1e2cbb90-0"&gt;&lt;/a&gt;(((48 !~ 1 -~ ]) % 52 !~ 1 -~ ]) * 4 % 52 - 1 -~ ]) 1+i.5
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;</description><category>derangement</category><category>expected value</category><category>J</category><category>mathjax</category><category>probability</category><category>simulation</category><guid>https://g-ar.github.io/posts/monte-carlo-simulations-in-j/</guid><pubDate>Sat, 29 Mar 2014 06:46:24 GMT</pubDate></item><item><title>Josephus problem -- C versus J</title><link>https://g-ar.github.io/posts/josephus-problem-c-versus-j/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we will see about implementation of a famous problem -- the Josephus Problem.&lt;/p&gt;
+&lt;p&gt;As you can see, there's already an implementation in mathematica. But, not many of us are rich enough to buy MM. So, we need to make use of awesome and free programming languages like C and J! C for fast execution, J for quick coding.&lt;/p&gt;
+&lt;p&gt;First, to implement in C, we need to write our own data structures. We will make use of a circular linked list, since that's how the josephus problem is stated.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-17"&gt;17&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-18"&gt;18&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-19"&gt;19&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-20"&gt;20&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-21"&gt;21&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-22"&gt;22&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-23"&gt;23&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-24"&gt;24&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-25"&gt;25&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-26"&gt;26&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-27"&gt;27&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-28"&gt;28&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-29"&gt;29&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-30"&gt;30&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-31"&gt;31&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-32"&gt;32&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-33"&gt;33&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-34"&gt;34&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-35"&gt;35&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-36"&gt;36&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-37"&gt;37&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-38"&gt;38&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-39"&gt;39&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-40"&gt;40&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-41"&gt;41&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-42"&gt;42&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-43"&gt;43&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-44"&gt;44&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-45"&gt;45&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_fe2c090efe544416ba0afebb1fab055e-46"&gt;46&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code C"&gt;&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-0"&gt;&lt;/a&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-1"&gt;&lt;/a&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-6"&gt;&lt;/a&gt;   &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-7"&gt;&lt;/a&gt;   &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-10"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;kill&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-12"&gt;&lt;/a&gt;    &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;prev&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-13"&gt;&lt;/a&gt;    &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-14"&gt;&lt;/a&gt;        &lt;span class="n"&gt;prev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-15"&gt;&lt;/a&gt;        &lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-16"&gt;&lt;/a&gt;        &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-17"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-18"&gt;&lt;/a&gt;    &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-19"&gt;&lt;/a&gt;    &lt;span class="n"&gt;free&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-20"&gt;&lt;/a&gt;    &lt;span class="n"&gt;prev&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-21"&gt;&lt;/a&gt;    &lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-22"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-23"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-24"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-25"&gt;&lt;/a&gt;    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-26"&gt;&lt;/a&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-27"&gt;&lt;/a&gt;    &lt;span class="n"&gt;scanf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"%d"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-28"&gt;&lt;/a&gt;    &lt;span class="n"&gt;scanf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"%d"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-29"&gt;&lt;/a&gt;    &lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-30"&gt;&lt;/a&gt;    &lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-31"&gt;&lt;/a&gt;    &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-32"&gt;&lt;/a&gt;    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-33"&gt;&lt;/a&gt;    &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-34"&gt;&lt;/a&gt;        &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-35"&gt;&lt;/a&gt;        &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-36"&gt;&lt;/a&gt;        &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-37"&gt;&lt;/a&gt;        &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-38"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-39"&gt;&lt;/a&gt;    &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-40"&gt;&lt;/a&gt;    &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-41"&gt;&lt;/a&gt;        &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-42"&gt;&lt;/a&gt;        &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-43"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-44"&gt;&lt;/a&gt;    &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"%d&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-45"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_fe2c090efe544416ba0afebb1fab055e-46"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;For the original Josephus problem, &lt;span class="math"&gt;\(n=41\)&lt;/span&gt; and &lt;span class="math"&gt;\(k=3\)&lt;/span&gt;, and the program answers &lt;span class="math"&gt;\(31\)&lt;/span&gt; as expected.
+Next, we move on to J:&lt;/p&gt;
+&lt;p&gt;J being an array programming language, there are verbs to operate on arrays. So, the josephus problem is a natural candidate for J. Here it goes:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_2daeb9e803d34479b356f8b7426a09b1-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_2daeb9e803d34479b356f8b7426a09b1-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_2daeb9e803d34479b356f8b7426a09b1-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_2daeb9e803d34479b356f8b7426a09b1-0"&gt;&lt;/a&gt;a=:1+i.41
+&lt;a name="rest_code_2daeb9e803d34479b356f8b7426a09b1-1"&gt;&lt;/a&gt;jose=: 4 : 'a=:}.(x-1)|.y'  NB. rotate and delete the first item
+&lt;a name="rest_code_2daeb9e803d34479b356f8b7426a09b1-2"&gt;&lt;/a&gt;3 jose^:(_1+#a) a
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;There, very much smaller than the C version. J code above uses nesting of function, i.e. the function jose is applied 40 times on array 'a', and a single element remains after that.&lt;/p&gt;
+&lt;p&gt;A more explicit version can be written as:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_bfc36bcbec324291b9c92b1ee62b3672-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_bfc36bcbec324291b9c92b1ee62b3672-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_bfc36bcbec324291b9c92b1ee62b3672-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_bfc36bcbec324291b9c92b1ee62b3672-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_bfc36bcbec324291b9c92b1ee62b3672-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_bfc36bcbec324291b9c92b1ee62b3672-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/josephus-problem-c-versus-j/#rest_code_bfc36bcbec324291b9c92b1ee62b3672-6"&gt;6&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-0"&gt;&lt;/a&gt;    jos =: 4 : 0
+&lt;a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-1"&gt;&lt;/a&gt;while. (#y)&amp;gt;1 do.
+&lt;a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-2"&gt;&lt;/a&gt;y=.}.(x-1)|.y
+&lt;a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-3"&gt;&lt;/a&gt;end.
+&lt;a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-4"&gt;&lt;/a&gt;return. y
+&lt;a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-5"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-6"&gt;&lt;/a&gt;    3 jos 1+i.41
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;When n is small, the execution time does not make much difference either in J or C. But we can notice the difference clearly when n is large. E.g. for &lt;span class="math"&gt;\(n=40000\)&lt;/span&gt; and &lt;span class="math"&gt;\(k=11\)&lt;/span&gt;, the time taken in J is about 1.68s and in C, it's only about 0.018s in my machine. J can be sped up a bit by operating on multiple items at a time, and makes the program a little more complicated.&lt;/p&gt;
+&lt;p&gt;You may wish to compare this with your favorite language's implementation in rosettacode, which has several clever solutions.&lt;/p&gt;&lt;/div&gt;</description><category>C</category><category>J</category><category>mathjax</category><guid>https://g-ar.github.io/posts/josephus-problem-c-versus-j/</guid><pubDate>Wed, 26 Mar 2014 06:30:59 GMT</pubDate></item><item><title>Expected number of marbles to be picked till one of the colours are repeated</title><link>https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;em&gt;There is a bag having 3 red, 3 black, 5 white and 7 green marbles. A marble is randomly picked one after another without replacement till the colour of the picked marble matches with one of the marbles in hand. What is the expected number of marbles we need to pick?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Before trying out the analytical solution, let us get an approximate answer from a simulation.
+It's just some tens of characters in J:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-0"&gt;&lt;/a&gt;a=:(3#0 1),(5#2),(7#3)
+&lt;a name="rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-1"&gt;&lt;/a&gt;sim =: 3 : '{.1+I.-.~:(5?#a){a'
+&lt;a name="rest_code_1bcfcb892d7143c9939cf39a3fb53cd1-2"&gt;&lt;/a&gt;(+/%#)(sim "0) 100000#0 NB. about 3.25279
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;sample size of 5 is chosen by pigeonhole principle.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;~:&lt;/tt&gt; returns 1 for items which are distinct till that position.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-.&lt;/span&gt;&lt;/tt&gt; flips the 1's and 0's.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;I.&lt;/tt&gt; fetches the indices of non-zero items. 1 added since indexing starts from 0.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;{.&lt;/tt&gt; gets the head of the array.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For the analytical solution, it can be simply expressed as a recurrence relation:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle f_{a,b,c,d} = \begin{cases} A+B+C+D-(a+b+c+d) &amp;amp; A-a = 2 \lor B-b = 2 \lor C-c = 2 \lor D-d = 2\\ &amp;amp; \\ \dfrac{1}{a+b+c+d}\left(a\cdot f_{a-1,b,c,d} + b\cdot f_{a,b-1,c,d} + c\cdot f_{a,b,c-1,d} + d\cdot f_{a,b,c,d-1}\right) &amp;amp; \text{otherwise} \end{cases}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(A,B,C,D\)&lt;/span&gt; are the initial number of marbles of four colours.&lt;/p&gt;
+&lt;p&gt;And it can be directly translated to code.&lt;/p&gt;
+&lt;p&gt;In Sage:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-7"&gt;7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-8"&gt;8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_fc13357f38f644d484171e59616b96d6-9"&gt;9&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-0"&gt;&lt;/a&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;D&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-5"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-6"&gt;&lt;/a&gt;        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-8"&gt;&lt;/a&gt;&lt;span class="n"&gt;ans&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_fc13357f38f644d484171e59616b96d6-9"&gt;&lt;/a&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;ans&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ans&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# = 3979/1224 and N() for the numerical approximation = 3.25081699346405&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Here's an exercise for you to try:&lt;/p&gt;
+&lt;p&gt;Repeat the same problem, this time with the replacement of the marbles. What's the expected number of number of picks till you see the same coloured marble again?&lt;/p&gt;
+&lt;p&gt;Simulation is easy:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_43af0546d765435589330c9868f2ec84-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_43af0546d765435589330c9868f2ec84-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/#rest_code_43af0546d765435589330c9868f2ec84-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_43af0546d765435589330c9868f2ec84-0"&gt;&lt;/a&gt;a=:(3#0 1),(5#2),(7#3)
+&lt;a name="rest_code_43af0546d765435589330c9868f2ec84-1"&gt;&lt;/a&gt;sim =: 3 : '{.1+I.-.~:(?5##a){a'
+&lt;a name="rest_code_43af0546d765435589330c9868f2ec84-2"&gt;&lt;/a&gt;(+/%#)(sim "0) 100000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;In a similar fashion, the recurrence can be modified. (Ans: &lt;span class="math"&gt;\(757/243\)&lt;/span&gt;)&lt;/p&gt;&lt;/div&gt;</description><category>expected value</category><category>J</category><category>mathjax</category><category>recurrence</category><category>sage</category><category>simulation</category><guid>https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/</guid><pubDate>Tue, 11 Feb 2014 15:08:26 GMT</pubDate></item><item><title>Simulating Buffon's needle problem</title><link>https://g-ar.github.io/posts/simulating-buffons-needle-problem/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Buffon's needle problem is a classic problem on geometric probability. mathworld describes the problem quite well, and gives the following formula for the probability that the needle touches a line:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}(x)=\begin{cases} \dfrac{2}{\pi}\, x&amp;amp; x\le 1\\ &amp;amp; \\ \dfrac{2}{\pi}\, \left(x-\sqrt{x^2-1}+\sec^{-1}{x}\right)&amp;amp; x&amp;gt;1 \end{cases}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;How can we convince ourselves that the formula has been derived correctly? How to simulate geometric shapes?&lt;/p&gt;
+&lt;p&gt;The answer is to use the parametric representation of the points. If the needle of length &lt;span class="math"&gt;\(l\)&lt;/span&gt; is dropped, then it makes an angle &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; with the horizontal. For simulating, take one end of the needle as a reference, and it must be randomly and uniformly distributed in &lt;span class="math"&gt;\([0,d)\)&lt;/span&gt;. Call the random number as &lt;span class="math"&gt;\(h\)&lt;/span&gt;. The other end of the needle will then be at a distance &lt;span class="math"&gt;\(h+l\cdot sin(\theta)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Now, for the condition that the needle touches the line, the other end must be either higher than &lt;span class="math"&gt;\(d\)&lt;/span&gt; or less than zero. Hence, we can simulate the experiment by picking &lt;span class="math"&gt;\(h\)&lt;/span&gt; in &lt;span class="math"&gt;\(U(0,d)\)&lt;/span&gt; and &lt;span class="math"&gt;\(\theta \in U(0,2\, \theta)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Following is the code in J:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-7"&gt;7&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-0"&gt;&lt;/a&gt;load 'trig'
+&lt;a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-1"&gt;&lt;/a&gt;'l d'=:4 1
+&lt;a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-2"&gt;&lt;/a&gt;    sim =: 3 : 0
+&lt;a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-3"&gt;&lt;/a&gt;h=:d*?1000000#0
+&lt;a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-4"&gt;&lt;/a&gt;th=:2p1*?1000000#0
+&lt;a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-5"&gt;&lt;/a&gt;(+/%#)((h+l*sin th)&amp;gt;d)+.((h+l*sin th)&amp;lt;0)
+&lt;a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-6"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-7"&gt;&lt;/a&gt;    sim 0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;It gives an answer about &lt;span class="math"&gt;\(0.919978\)&lt;/span&gt;, and changing &lt;span class="math"&gt;\(l\)&lt;/span&gt; and &lt;span class="math"&gt;\(d\)&lt;/span&gt; to&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/simulating-buffons-needle-problem/#rest_code_2ec7f95b25b24754b8f146c7e36a2503-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_2ec7f95b25b24754b8f146c7e36a2503-0"&gt;&lt;/a&gt;'l d'=:1 4
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;gives about &lt;span class="math"&gt;\(0.15907\)&lt;/span&gt;, which are close to actual answers &lt;span class="math"&gt;\(0.920000066713994\)&lt;/span&gt; and &lt;span class="math"&gt;\(0.159154943091895\)&lt;/span&gt;, respectively.&lt;/p&gt;&lt;/div&gt;</description><category>J</category><category>mathjax</category><category>simulation</category><guid>https://g-ar.github.io/posts/simulating-buffons-needle-problem/</guid><pubDate>Mon, 10 Feb 2014 15:02:53 GMT</pubDate></item><item><title>Monte-Carlo simulation for an expected value of cards</title><link>https://g-ar.github.io/posts/monte-carlo-simulation-for-an-expected-value-of-cards/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;em&gt;Suppose we have a standard deck of 52 cards, and we pick 13 cards randomly and arrange them in a row, what is the expected number of adjacent pairs that are of same suit?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;E.g. in ♠♥♥♣♦♣♣♦♦♣♠♠♣ , there are 4 adjacent pairs that are of same suit. On an average, what would be the expected number of such pairs?&lt;/p&gt;
+&lt;p&gt;Newcomers to probability theory would find such a question a bit tricky. In such a situation, using a computer for simulation/enumeration would ease the job. For this problem, enumeration can yield the exact answer, but getting all the combinations is awkward.&lt;/p&gt;
+&lt;p&gt;In such cases, simulation is there for our rescue! Even an approximate answer would be sufficient to conjecture a formula.&lt;/p&gt;
+&lt;p&gt;For the simulation, we will be using a language called &lt;a class="reference external" href="https://jsoftware.com"&gt;J&lt;/a&gt;. The programs written in J can be very short compared to other well known languages. So, we can focus on the problem at hand instead of the program.&lt;/p&gt;
+&lt;p&gt;Let's see how it can be used for our simulation (there can be other ways, here’s my shot):&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_8f81718b69f149a0bbb7f26074d34b7b-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_8f81718b69f149a0bbb7f26074d34b7b-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulation-for-an-expected-value-of-cards/#rest_code_8f81718b69f149a0bbb7f26074d34b7b-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-0"&gt;&lt;/a&gt;a=:13#(i.4)
+&lt;a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-1"&gt;&lt;/a&gt;sim=: 3 : '+/2=/\(13?52){a'
+&lt;a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-2"&gt;&lt;/a&gt;(+/%#)(sim "0) 1000000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;That's it, less than 70 characters! It output &lt;span class="math"&gt;\(2.82489\)&lt;/span&gt; for me. When we are proceeding with an analytical method, if we get an answer around &lt;span class="math"&gt;\(2.82\)&lt;/span&gt;, then we can be pretty sure that it's right.&lt;/p&gt;
+&lt;p&gt;Some explanation about the program:&lt;/p&gt;
+&lt;p&gt;In J, every operation is performed right to left, if no parentheses are provided.
+So, if we write &lt;tt class="docutils literal"&gt;2*5+3&lt;/tt&gt;, answer would be &lt;tt class="docutils literal"&gt;16&lt;/tt&gt; and not &lt;tt class="docutils literal"&gt;13&lt;/tt&gt;. No operator precedence here.&lt;/p&gt;
+&lt;p&gt;In J terminology, the operators are called verbs. They can be monadic or dyadic. Check the help files for more info.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;i.4&lt;/tt&gt; is array of integers &lt;tt class="docutils literal"&gt;0 1 2 3&lt;/tt&gt;, representing 4 suits. &lt;tt class="docutils literal"&gt;13#&lt;/tt&gt; repeats each element 13 times.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;sim&lt;/tt&gt; is the function for our simulation. Read it right to left. &lt;tt class="docutils literal"&gt;{&lt;/tt&gt; is the verb for indexing.&lt;ul&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;(13?52)&lt;/span&gt;&lt;/tt&gt; gets 13 random integers in &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;0..51&lt;/span&gt;&lt;/tt&gt; without replacement, to simulate 13 card draws.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;2=/\&lt;/span&gt;&lt;/tt&gt; compares two adjacent values from the selected list, and returns 1 or 0 for true or false, respectively.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;+/&lt;/tt&gt; gives us the sum of the array, which is the total number of pairs with same adjacent suit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;" is a verb for rank. "0 gets atomic values in the rhs, i.e. a million zeros, the rhs is not used in our simulation, it's just for performing the experiment a million times. The outcome of each experiment is then averaged, by using the tacit definition &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;(+/%#)&lt;/span&gt;&lt;/tt&gt;. This last line almost always remains the same for any similar kind of simulation.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Lastly, experiment with different number of picks and observe how answer is changing according to that.&lt;/p&gt;
+&lt;p&gt;Now, for the analytical result, the linearity of expectation is used.&lt;/p&gt;
+&lt;p&gt;The probability that the card in positions i and i+1 are of the same suit is given by&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}[c_i=c_{i+1} | c_i \text{ is spade}] = \frac{13}{52}\cdot \frac{12}{51}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and similarly for three other suits. The total probability is then&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}[c_i=c_{i+1}] = \frac{13}{52}\cdot \frac{12}{51} \times 4 = \frac{4}{17}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;This is also the expected number of pairs of the same suit when two cards are picked. We write the expected value as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{E}[c_i=c_{i+1}] = \frac{4}{17}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Hence, by linearity of expectation, when ‘n’ cards are picked, we can expect&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \sum_{i=1}^{n}\mathbb{E}[c_i=c_{i+1}] = \frac{4\, (n-1)}{17}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;adjacent pairs to be of the same suit.&lt;/p&gt;
+&lt;p&gt;For &lt;span class="math"&gt;\(n=13\)&lt;/span&gt;, it would be &lt;span class="math"&gt;\(48/17\)&lt;/span&gt;, or &lt;span class="math"&gt;\(2.82352941176471\)&lt;/span&gt; cards, which agrees with the simulation.&lt;/p&gt;&lt;/div&gt;</description><category>expected value</category><category>J</category><category>mathjax</category><category>simulation</category><guid>https://g-ar.github.io/posts/monte-carlo-simulation-for-an-expected-value-of-cards/</guid><pubDate>Sun, 09 Feb 2014 14:47:59 GMT</pubDate></item></channel></rss>

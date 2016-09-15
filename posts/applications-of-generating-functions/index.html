@@ -21,7 +21,7 @@ MathJax.Hub.Config({
     }
 });
 </script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Gopinath">
-<link rel="prev" href="../interesting-images-2/" title="Interesting images -- 2" type="text/html">
+<link rel="prev" href="../interesting-images-2/" title="Interesting images - 2" type="text/html">
 <link rel="next" href="../josephus-problem-c-versus-j/" title="Josephus problem -- C versus J" type="text/html">
 <meta property="og:site_name" content="Gopinath A R">
 <meta property="og:title" content="Applications of Generating Functions">
@@ -29,7 +29,14 @@ MathJax.Hub.Config({
 <meta property="og:description" content="Generating Function (g.f.) is one of the most important tools in combinatorics. Many problems which are difficult to do by combinatorial arguments and by cases are trivial when g.f. is applied. Below ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2014-03-19T20:54:04+05:30">
+<meta property="article:tag" content="diophantine equations">
+<meta property="article:tag" content="expected value">
+<meta property="article:tag" content="generating function">
+<meta property="article:tag" content="infinite series">
 <meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="probability">
+<meta property="article:tag" content="sage">
+<meta property="article:tag" content="summation">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -120,8 +127,8 @@ MathJax.Hub.Config({
 <p>Hence, there are 11 solutions for the d.e under the constraints.</p>
 <p>In Sage, this can be found by the taylor expansion:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_0cf9198ad20b43d58816a56ef3a7ac73-0">0</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_0cf9198ad20b43d58816a56ef3a7ac73-0"></a><span class="n">taylor</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">21</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">20</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">31</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8702715f770b4c51958c8d5fcd9002af-0">0</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_8702715f770b4c51958c8d5fcd9002af-0"></a><span class="n">taylor</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">21</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">20</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">31</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>We can even get a closed form if the problem is changed to</p>
@@ -224,10 +231,10 @@ To derive it from g.f., we must first find the g.f. for , which can be easily ob
 </div>
 <p>which can be verified by Sage</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d9bc2026dac04c318c56aa669279dc6f-0">0</a>
-<a href="#rest_code_d9bc2026dac04c318c56aa669279dc6f-1">1</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_d9bc2026dac04c318c56aa669279dc6f-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">'n'</span><span class="p">);</span>
-<a name="rest_code_d9bc2026dac04c318c56aa669279dc6f-1"></a><span class="n">show</span><span class="p">(</span><span class="n">factor</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)))</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_9d156e0cbce04942a0a8d8e4e0467337-0">0</a>
+<a href="#rest_code_9d156e0cbce04942a0a8d8e4e0467337-1">1</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_9d156e0cbce04942a0a8d8e4e0467337-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">'n'</span><span class="p">);</span>
+<a name="rest_code_9d156e0cbce04942a0a8d8e4e0467337-1"></a><span class="n">show</span><span class="p">(</span><span class="n">factor</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)))</span>
 </pre></td>
 </tr></table>
 <ol class="loweralpha simple" start="2">
@@ -275,8 +282,8 @@ i)</p>
 </div>
 <p>In Sage, it's written as</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d03d7940232343c3b027dfa5e88e25ed-0">0</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_d03d7940232343c3b027dfa5e88e25ed-0"></a><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_4a1f9b88343747fd8c85f496b8aa3dfe-0">0</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_4a1f9b88343747fd8c85f496b8aa3dfe-0"></a><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 </div>
@@ -309,10 +316,18 @@ i)</p>
 </div>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/diophantine-equations/" rel="tag">diophantine equations</a></li>
+            <li><a class="tag p-category" href="../../categories/expected-value/" rel="tag">expected value</a></li>
+            <li><a class="tag p-category" href="../../categories/generating-function/" rel="tag">generating function</a></li>
+            <li><a class="tag p-category" href="../../categories/infinite-series/" rel="tag">infinite series</a></li>
+            <li><a class="tag p-category" href="../../categories/probability/" rel="tag">probability</a></li>
+            <li><a class="tag p-category" href="../../categories/sage/" rel="tag">sage</a></li>
+            <li><a class="tag p-category" href="../../categories/summation/" rel="tag">summation</a></li>
+        </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../interesting-images-2/" rel="prev" title="Interesting images -- 2">Previous post</a>
+                <a href="../interesting-images-2/" rel="prev" title="Interesting images - 2">Previous post</a>
             </li>
             <li class="next">
                 <a href="../josephus-problem-c-versus-j/" rel="next" title="Josephus problem -- C versus J">Next post</a>

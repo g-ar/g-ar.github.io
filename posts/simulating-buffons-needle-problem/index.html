@@ -31,7 +31,9 @@ MathJax.Hub.Config({
 ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2014-02-10T20:32:53+05:30">
+<meta property="article:tag" content="J">
 <meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="simulation">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -113,34 +115,37 @@ MathJax.Hub.Config({
 <p>Now, for the condition that the needle touches the line, the other end must be either higher than <span class="math">\(d\)</span> or less than zero. Hence, we can simulate the experiment by picking <span class="math">\(h\)</span> in <span class="math">\(U(0,d)\)</span> and <span class="math">\(\theta \in U(0,2\, \theta)\)</span>.</p>
 <p>Following is the code in J:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7872735186e145ea946f22d2cedf8572-0">0</a>
-<a href="#rest_code_7872735186e145ea946f22d2cedf8572-1">1</a>
-<a href="#rest_code_7872735186e145ea946f22d2cedf8572-2">2</a>
-<a href="#rest_code_7872735186e145ea946f22d2cedf8572-3">3</a>
-<a href="#rest_code_7872735186e145ea946f22d2cedf8572-4">4</a>
-<a href="#rest_code_7872735186e145ea946f22d2cedf8572-5">5</a>
-<a href="#rest_code_7872735186e145ea946f22d2cedf8572-6">6</a>
-<a href="#rest_code_7872735186e145ea946f22d2cedf8572-7">7</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_7872735186e145ea946f22d2cedf8572-0"></a>load 'trig'
-<a name="rest_code_7872735186e145ea946f22d2cedf8572-1"></a>'l d'=:4 1
-<a name="rest_code_7872735186e145ea946f22d2cedf8572-2"></a>    sim =: 3 : 0
-<a name="rest_code_7872735186e145ea946f22d2cedf8572-3"></a>h=:d*?1000000#0
-<a name="rest_code_7872735186e145ea946f22d2cedf8572-4"></a>th=:2p1*?1000000#0
-<a name="rest_code_7872735186e145ea946f22d2cedf8572-5"></a>(+/%#)((h+l*sin th)&gt;d)+.((h+l*sin th)&lt;0)
-<a name="rest_code_7872735186e145ea946f22d2cedf8572-6"></a>)
-<a name="rest_code_7872735186e145ea946f22d2cedf8572-7"></a>    sim 0
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-0">0</a>
+<a href="#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-1">1</a>
+<a href="#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-2">2</a>
+<a href="#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-3">3</a>
+<a href="#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-4">4</a>
+<a href="#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-5">5</a>
+<a href="#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-6">6</a>
+<a href="#rest_code_21fa85563fb9491ebd90c3d8d5a5b180-7">7</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-0"></a>load 'trig'
+<a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-1"></a>'l d'=:4 1
+<a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-2"></a>    sim =: 3 : 0
+<a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-3"></a>h=:d*?1000000#0
+<a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-4"></a>th=:2p1*?1000000#0
+<a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-5"></a>(+/%#)((h+l*sin th)&gt;d)+.((h+l*sin th)&lt;0)
+<a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-6"></a>)
+<a name="rest_code_21fa85563fb9491ebd90c3d8d5a5b180-7"></a>    sim 0
 </pre></td>
 </tr></table>
 <p>It gives an answer about <span class="math">\(0.919978\)</span>, and changing <span class="math">\(l\)</span> and <span class="math">\(d\)</span> to</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_94fd1426372946a7b7665a0a1716c7ec-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_94fd1426372946a7b7665a0a1716c7ec-0"></a>'l d'=:1 4
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2ec7f95b25b24754b8f146c7e36a2503-0">0</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_2ec7f95b25b24754b8f146c7e36a2503-0"></a>'l d'=:1 4
 </pre></td>
 </tr></table>
 <p>gives about <span class="math">\(0.15907\)</span>, which are close to actual answers <span class="math">\(0.920000066713994\)</span> and <span class="math">\(0.159154943091895\)</span>, respectively.</p>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags"></ul>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/j/" rel="tag">J</a></li>
+            <li><a class="tag p-category" href="../../categories/simulation/" rel="tag">simulation</a></li>
+        </ul>
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../monte-carlo-simulation-for-an-expected-value-of-cards/" rel="prev" title="Monte-Carlo simulation for an expected value of cards">Previous post</a>

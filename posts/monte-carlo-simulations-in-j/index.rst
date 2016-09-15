@@ -1,7 +1,7 @@
 .. title: Monte-Carlo simulations in J
 .. slug: monte-carlo-simulations-in-j
 .. date: 2014-03-29 12:16:24 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, simulation, J, derangement, expected value, probability
 .. category: 
 .. link: 
 .. description: 

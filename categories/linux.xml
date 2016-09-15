@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R (linux)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/linux.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 15 Sep 2016 17:51:37 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Compiling softwares that require later versions of GCC</title><link>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Suppose we require to install the latest version of a software, but the repository doesn't have it, we usually either get the latest source code and compile, or download the compiled binary if available, and run it. But if we are running some old distro, latest binary refuse to run complaining that it requires GLIBC 2.16 to run etc. When the binary file refuses to run, we can then try to compile the source, which usually works fine. But sometimes it happens that the source requires a language standard, which is unsupported by the GCC version installed. In such cases, we can download the latest GCC, compile it, and then compile the required software using the latest GCC. We'll see an example to compile "Context Free" -- a program which generates art from a context free grammar, and requires C++11 standard to compile. The steps mentioned below were done on debian wheezy, whose software repository contains version 2 of cfdg whereas the latest version is 3.&lt;/p&gt;
+&lt;p&gt;In order to compile the latest version of contextfree in debian wheezy:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Download the latest GCC&lt;/li&gt;
+&lt;li&gt;Extract and configure with a prefix path, so that we can avoid installing it to a directory which requires root privilege&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;./configure &lt;span class="pre"&gt;--prefix=$HOME/bin/custom_gcc&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;The compile and install to that path, the whole process takes much time anywhere between 10 mins to a couple of hours or more, depending on the speed of the machine and the number of cores used.
+To compile on a single core, use&lt;ul&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;make&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;make install&lt;/tt&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;libpng12-dev&lt;/span&gt;&lt;/tt&gt; and compile.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7807578d1c30478ba4e46bccac282f45-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7807578d1c30478ba4e46bccac282f45-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7807578d1c30478ba4e46bccac282f45-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7807578d1c30478ba4e46bccac282f45-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_7807578d1c30478ba4e46bccac282f45-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_7807578d1c30478ba4e46bccac282f45-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;LD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_7807578d1c30478ba4e46bccac282f45-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CPP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;a name="rest_code_7807578d1c30478ba4e46bccac282f45-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CXX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in &lt;tt class="docutils literal"&gt;$HOME/bin&lt;/tt&gt; named cfdg with following contents&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-0"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CXX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/lib64
+&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/context-free-3.0.9/cfdg &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and &lt;tt class="docutils literal"&gt;chmod +x cfdg&lt;/tt&gt;, and have fun with the software!&lt;/p&gt;&lt;/div&gt;</description><category>computer art</category><category>context free art</category><category>debian</category><category>GCC</category><category>linux</category><category>mathjax</category><guid>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</guid><pubDate>Sun, 20 Dec 2015 14:10:01 GMT</pubDate></item><item><title>Installing and Running TensorFlow in Debian Wheezy</title><link>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;A couple of days ago google released what they term it as the second generation deep learning neural network software system, called TensorFlow. Google has been taking much interest in deep learning since two or three years (perhaps having surplus computation power?), and they are using it for all sorts of softwares they develop &lt;span class="math"&gt;\(-\)&lt;/span&gt; maps, translation, spying on you for targeted ads etc. So, I thought of trying out their newly released tool.&lt;/p&gt;
+&lt;p&gt;First, I tried to install it using their "easy way" using &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt;. Getting into the virtual environment is easy, and pip install command also worked, but when importing tensorflow, it spit an ugly ImportError &lt;span class="math"&gt;\(-\)&lt;/span&gt; &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/lib/x86_64-linux-gnu/libc.so.6:&lt;/span&gt; version `GLIBC_2.17' not found&lt;/tt&gt;. Now, for the other option.&lt;/p&gt;
+&lt;p&gt;Next, I thought installing from sources would definitely go well. Downloaded all the source codes and dependencies required by the project, and bazel was one of them. Downloaded bazel as well, but when the installation script was run, that method also went kaput with some error complaining about the kernel version or something. Running from a virtual machine or installing some latest distro was my only option, I thought. But no! There's another method using docker image, which I overlooked even though that was mentioned at the top of the installation page.&lt;/p&gt;
+&lt;p&gt;Here are the steps:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Docker runs only on 64-bit OS with kernel version 3.10 or higher. So, the first step must be to install the latest kernel available from wheezy backports. Follow the backport instructions&lt;/li&gt;
+&lt;li&gt;Then reboot the machine selecting the latest kernel version&lt;/li&gt;
+&lt;li&gt;Follow the docker installation steps&lt;/li&gt;
+&lt;li&gt;Now, we are all set to install TensorFlow. Simply run&lt;ul&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;sudo docker run &lt;span class="pre"&gt;-it&lt;/span&gt; b.gcr.io/tensorflow/tensorflow&lt;/tt&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;That will pull all the required dependencies and set the docker image (which was about 300MiB to download)&lt;/li&gt;
+&lt;li&gt;Wouldn't it be convenient if we could add some data persistance, to save data so that the host could use it? There's an option for that as well&lt;ul&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;sudo docker run &lt;span class="pre"&gt;-it&lt;/span&gt; &lt;span class="pre"&gt;-v&lt;/span&gt; &lt;span class="pre"&gt;/host/dir:/docker/dir&lt;/span&gt; b.gcr.io/tensorflow/tensorflow&lt;/tt&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Now the &lt;tt class="docutils literal"&gt;/host/dir&lt;/tt&gt; is mounted to the &lt;tt class="docutils literal"&gt;/docker/dir&lt;/tt&gt; when the image is run&lt;/li&gt;
+&lt;li&gt;And that's it, no need of a virtualbox, which wastes more time and space than to run a docker image&lt;/li&gt;
+&lt;li&gt;Check an example program from the tutorial, like plotting mandelbrot set&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</description><category>debian</category><category>docker</category><category>linux</category><category>mathjax</category><category>tensorflow</category><guid>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</guid><pubDate>Wed, 11 Nov 2015 11:46:08 GMT</pubDate></item><item><title>Jolla and sailfish OS</title><link>https://g-ar.github.io/posts/jolla-and-sailfish-os/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Last week, I bought a Jolla phone after looking at some of the amazing features it offers. What are those amazing features? We'll see..&lt;/p&gt;
+&lt;p&gt;Most of the reviews scattered on the net miss the fact that it is a fully functional linux machine! We can install gcc, python etc. from the terminal (after the developer mode is activated). Let me list some of the things I did after getting my hands on the Jolla phone:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;I didn't have an access point for wifi, so used hostapd to create one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Create a Jolla account to download the required softwares. (Phone's very much usable even without a sim card)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;After creating the account, we'll be able to enable the developer mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Now, the terminal will be displayed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Open the terminal, become a root by typing in &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;devel-su&lt;/span&gt;&lt;/tt&gt; and the password from the settings-&amp;gt;system-&amp;gt;developer-mode&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;We can also login via ssh, which will make our typing a lot easier. I connected via WLAN's IP address (&lt;tt class="docutils literal"&gt;ssh &lt;span class="pre"&gt;nemo@ip-addr&lt;/span&gt;&lt;/tt&gt;, and type the password)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;gcc, g++, gdb, python and strace can be installed by issuing commands like &lt;tt class="docutils literal"&gt;pkcon install gcc&lt;/tt&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Since we are also interested to do some math, what are our options?&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;I downloaded sagemath for arm &lt;span class="math"&gt;\(-\)&lt;/span&gt; &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;sage-5.13-armv7l-Linux&lt;/span&gt;&lt;/tt&gt;, and tried to run it. Too bad, it crashed saying &lt;tt class="docutils literal"&gt;ImportError: libcblas.so.3: cannot open shared object file: No such file or directory&lt;/tt&gt; (Update: The sage 6.0 binary available for RPi works for jolla too, woohoo! Only issue I found till now is that plotting did not work.)&lt;/li&gt;
+&lt;li&gt;For FriCAS, Axiom, maxima etc., binaries are not available for ARM. To compile them, they require a lisp compiler, which isn't available in the repos yet (ecl is available in openrepos.net, did not try it though).&lt;/li&gt;
+&lt;li&gt;But anyway, if we look into &lt;a class="reference external" href="https://openrepos.net"&gt;openrepos&lt;/a&gt;, we find sympy, numpy, IPython, and matplotlib, which are more than sufficient for a mobile phone!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Why use IPython? Because, it provides us with a notebook interface which can be opened remotely, and also tab completion feature&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;We can also install several useful softwares like emacs, system monitor, cpufrequtils etc. from openrepos.net. Hence, we can have the tools we need with us all the time! (Emacs calc mode itself can serve as a mini CAS!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_997889bd0f794af5ae2bfdfee74a7891-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_997889bd0f794af5ae2bfdfee74a7891-0"&gt;&lt;/a&gt;sqlite3 .local/share/commhistory/commhistory.db
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Then, to display all the sms messages, run commands like&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_f306facd19ec4d37b8b3b60048eeb351-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sql"&gt;&lt;a name="rest_code_f306facd19ec4d37b8b3b60048eeb351-0"&gt;&lt;/a&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;If we want to know what each column is about, run&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_648d73ba788a48bf9a8972755d36cab0-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sql"&gt;&lt;a name="rest_code_648d73ba788a48bf9a8972755d36cab0-0"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;headers&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;And to top it all, though an ARM binary is not available, we can easily compile J to run it from the console! I think it's perfectly suitable language that can be used on a phone. (J download for RPi works too)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To conclude, it's totally developer friendly. If anyone likes to program but hates all those manifest files seen in other mobile OSes, it feels like bliss! No need of bloated SDKs, no need of emulators (though it's there if a UI is required), just a simple ssh to connect to the phone and start coding!&lt;/p&gt;
+&lt;p&gt;It's friendly towards "end users" too, don't believe the "reviews" that say it has a "steep" learning curve because of its gesture based controls. The tutorial it displays when the phone is started is more than enough to understand the Sailfish OS. I won't talk about its UI, since pretty much all the other reviews are about only that and apps, pfff.&lt;/p&gt;
+&lt;p&gt;Nokia made a big mistake and died by dumping MeeGo and embracing m$.&lt;/p&gt;
+&lt;p&gt;I wish Jolla team a big success, but I also wish that they remove the mandatory signing up of a Jolla account for enabling developer mode.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://nims11.wordpress.com/2012/04/27/hostapd-the-linux-way-to-create-virtual-wifi-access-point/"&gt;1. Creating AP using hostapd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://stackoverflow.com/questions/24490278/run-ipython-notebook-from-a-remote-server"&gt;2. Run IPython remotely&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/ArchimedesPi/SageMathematics-raspi/"&gt;3. Sage 6.0 for RPi download&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>ARM</category><category>jolla</category><category>linux</category><category>mathjax</category><category>sage</category><category>sailfish OS</category><guid>https://g-ar.github.io/posts/jolla-and-sailfish-os/</guid><pubDate>Sun, 09 Nov 2014 11:04:48 GMT</pubDate></item><item><title>FriCAS -- an introduction</title><link>https://g-ar.github.io/posts/fricas-an-introduction/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;There are quite a few different free computer algebra systems around &lt;span class="math"&gt;\(-\)&lt;/span&gt; Sage, maxima, sympy, FriCAS/Axiom etc. &lt;span class="math"&gt;\(-\)&lt;/span&gt; each having its strengths and lack of something. Having choices and access to source code are good, since we are not at mercy of vendors like those big M developers for bug fixes and feature additions (along with outrageous licence costs).&lt;/p&gt;
+&lt;p&gt;I have been using FriCAS for a while mainly for its number sequence guessing routines, an indispensable part when working on enumeration problems. But recently, when I tried other operations which I mostly do in Sage or maxima, like integration and solving equations, I was surprised to see it could give simpler and more complete answers than Sage/maxima.&lt;/p&gt;
+&lt;p&gt;One more good thing is that it comes with a fricas mode for emacs, which has many more features compared to running from a terminal. E.g. it gives features like auto-completion, matched-parenthesis highlighting, shortcut keys for navigating through the input, yanking text etc., and of course, we can define our own shortcuts since it's emacs! Let us see how to set FriCAS up and run from emacs in linux. The latest version at the time is 1.2.3, and I have only tried amd64 binary version.&lt;/p&gt;
+&lt;p&gt;Make a directory &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; if not already there, and add to the &lt;tt class="docutils literal"&gt;$PATH&lt;/tt&gt; environment variable. Extract the components to &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt;. To run it, we need to modify a few paths in its files. Go to &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin&lt;/tt&gt;, in fricas file, update the variable &lt;tt class="docutils literal"&gt;exec_prefix&lt;/tt&gt; to&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_53beb0d6da5e4abe9afa30660e3192c0-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_53beb0d6da5e4abe9afa30660e3192c0-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;exec_prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;FRICAS_PREFIX&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="p"&gt;/home/bin/usr/local&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;In file efricas, update FRICASCMD to&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f7ba6f4bcfee4c70a68f0e93f83835c3-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_f7ba6f4bcfee4c70a68f0e93f83835c3-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FRICASCMD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'/home/bin/fricas'&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and also update the line which calls emacs.&lt;/p&gt;
+&lt;p&gt;Update the function fricas &lt;span class="math"&gt;\(-\)&lt;/span&gt; run in &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/lib/fricas/emacs/fricas.el&lt;/tt&gt; to&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-5"&gt;5&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-0"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;fricas-run&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-1"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Run FriCAS in the current BUFFER."&lt;/span&gt;
+&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-2"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Starting FriCAS..."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;start-process-shell-command&lt;/span&gt; &lt;span class="s"&gt;"fricas"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;current-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-4"&gt;&lt;/a&gt;                               &lt;span class="nv"&gt;fricas-run-command&lt;/span&gt;
+&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-5"&gt;&lt;/a&gt;                               &lt;span class="s"&gt;"-noclef"&lt;/span&gt; &lt;span class="s"&gt;"2&amp;gt;/dev/null"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Otherwise, FriCAS won't start within emacs.&lt;/p&gt;
+&lt;p&gt;Next, create two bash scripts within &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; with filenames "fricas" &lt;span class="math"&gt;\(-\)&lt;/span&gt; which is to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/fricas&lt;/tt&gt;, and "efricas" to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/efricas&lt;/tt&gt;. Make those two newly created files as executable. There, we are all set now. Simply open the terminal, and enter "efricas" to run fricas within emacs. If everything goes well, we will have fricas running within emacs.&lt;/p&gt;
+&lt;p&gt;Now, let us have a brief overview of its commands (some are examples taken from the axiom book),
+and its advantages to other free CAS, and probably even the paid ones.&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;INTEGRATION&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_b198b359985c4f538de95baf465803ad-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_b198b359985c4f538de95baf465803ad-0"&gt;&lt;/a&gt;integrate(tan(atan(x)/3),x)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This integral is an example mentioned in their document, which is instantly solved by fricas, but Sage/maxima fails after trying for a long time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7730bec8495c4f118e20b75e1d526bdf-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_7730bec8495c4f118e20b75e1d526bdf-0"&gt;&lt;/a&gt;integrate((x+a)^(1/2)/x,x)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This gives two results, for negative and non-negative a.&lt;/p&gt;
+&lt;p&gt;Hence, besides having a good capability, another advantage over Sage and maxima is that we need not declare the symbols which will be used in operations. It also computes the results for all possible cases, and doesn't nag us to make assumptions like in the case of Sage/maxima. (sometimes it keeps asking for the same assumption even if we have already done so!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SOLVING EQUATIONS&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_6dab55959e664f75802edfd434cea315-0"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000)
+&lt;a name="rest_code_6dab55959e664f75802edfd434cea315-1"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000.0)
+&lt;a name="rest_code_6dab55959e664f75802edfd434cea315-2"&gt;&lt;/a&gt;radicalSolve(x^3+x+1)
+&lt;a name="rest_code_6dab55959e664f75802edfd434cea315-3"&gt;&lt;/a&gt;complexSolve(x^3+x+1,1/1000.0)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;etc. All of the above call the same algorithm to compute the roots, but the result is returned depending on the data type.&lt;/p&gt;
+&lt;p&gt;It can also solve non-linear simultaneous equations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-0"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1.E-10)
+&lt;a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-1"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1/10^10)
+&lt;a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-2"&gt;&lt;/a&gt;radicalSolve([x+y^2-4,x^2+y-2])
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;We can see that it can give all the exact results also effortlessly. In Sage/maxima, there is currently no way of making itto output all results in form of radicals.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;RECURRENCE RELATIONS&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The recursions are transformed into iterated code and compiled! And since it can also symbolically compute, this proves very useful to examine sequences.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ef28145e6e27406297250cd9268f7fdb-0"&gt;&lt;/a&gt;fib(0)==0
+&lt;a name="rest_code_ef28145e6e27406297250cd9268f7fdb-1"&gt;&lt;/a&gt;fib(1)==1
+&lt;a name="rest_code_ef28145e6e27406297250cd9268f7fdb-2"&gt;&lt;/a&gt;fib(n)==fib(n-1)+fib(n-2)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This automatically compiles and computes the fibonacci numbers as an iterated code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-7"&gt;7&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-0"&gt;&lt;/a&gt;a(0)==1
+&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-1"&gt;&lt;/a&gt;a(1)==1
+&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-2"&gt;&lt;/a&gt;a(2)==1
+&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-3"&gt;&lt;/a&gt;b(0)==0
+&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-4"&gt;&lt;/a&gt;b(1)==0
+&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-5"&gt;&lt;/a&gt;b(2)==0
+&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-6"&gt;&lt;/a&gt;a(n)==a(n-1)+b(n-1)
+&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-7"&gt;&lt;/a&gt;b(n)==a(n-3)+b(n-3)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This simultaneous recurrence is actually narayana's cows sequence, and this kind of recurrence is compiled as well!
+Using this, we will make use of the guessing routines.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;GUESS&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The guessing routine in FriCAS can give us the likely generating function, recurrence relation, functional equation etc.&lt;/p&gt;
+&lt;p&gt;Using the above simultaneous recurrence, the generating function can be obtained as:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_cff9a618d09447a7aebb045e54dc1569-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_cff9a618d09447a7aebb045e54dc1569-0"&gt;&lt;/a&gt;guessAlg [a(i)+b(i) for i in 0..20]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Try for the recurrence relation.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f873ff5b3580487facfaf3e3cafe791b-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_f873ff5b3580487facfaf3e3cafe791b-0"&gt;&lt;/a&gt;guessPRec [a(i)+b(i) for i in 0..20]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This command gives a single recurrence relation! Hence, we may solve a problem our way and use the guessing routines for simplification.
+Series expansion&lt;/p&gt;
+&lt;p&gt;Working with series is also in a way different and easy.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_cdde01bcdd4a4a178d28866bde983f78-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_cdde01bcdd4a4a178d28866bde983f78-0"&gt;&lt;/a&gt;series(x/(1-x-x^2),x=0)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;or like this&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_b52d5143ea2040d28744d96500a4e19b-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_b52d5143ea2040d28744d96500a4e19b-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_b52d5143ea2040d28744d96500a4e19b-0"&gt;&lt;/a&gt;x:=series 'x
+&lt;a name="rest_code_b52d5143ea2040d28744d96500a4e19b-1"&gt;&lt;/a&gt;x/(1-x-x^2)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;If we require only the list of coefficients of the series&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_3e65717917c9495da72e614b918411c5-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_3e65717917c9495da72e614b918411c5-0"&gt;&lt;/a&gt;cf:=coefficients x/(1-x-x^2)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want the &lt;span class="math"&gt;\([x^{100}]\)&lt;/span&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_e4ef0f0e98634daca208d8b25d5f4b33-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_e4ef0f0e98634daca208d8b25d5f4b33-0"&gt;&lt;/a&gt;coefficient(x/(1-x-x^2),100)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;or&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;cf.200&lt;/tt&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SOME MISCELLANEOUS INFO&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Since the output is always pretty-printed and does not provide a way to turn it off (though there are options to output different formats like TeX, fortran, html etc.), we can obtain an unparsed output the following way:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_fc1accb33e9c4594a27cdb384acc4f27-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_fc1accb33e9c4594a27cdb384acc4f27-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_fc1accb33e9c4594a27cdb384acc4f27-0"&gt;&lt;/a&gt;k:=(-b)^(1/3)/(1+b)
+&lt;a name="rest_code_fc1accb33e9c4594a27cdb384acc4f27-1"&gt;&lt;/a&gt;unparse(k :: InputForm)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Shell commands can be executed within it:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ba0756426ea94673b17b392819a04f90-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ba0756426ea94673b17b392819a04f90-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ba0756426ea94673b17b392819a04f90-0"&gt;&lt;/a&gt;)system pwd
+&lt;a name="rest_code_ba0756426ea94673b17b392819a04f90-1"&gt;&lt;/a&gt;)system date
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;CHANGE OUTPUT FORMAT&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7763a5ebde74442a99b7f0314a2d503b-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7763a5ebde74442a99b7f0314a2d503b-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_7763a5ebde74442a99b7f0314a2d503b-0"&gt;&lt;/a&gt;)set output tex on
+&lt;a name="rest_code_7763a5ebde74442a99b7f0314a2d503b-1"&gt;&lt;/a&gt;)set output tex abc.tex
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SHOW TIME FOR EXECUTION&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_991dc78c7dd144d6839007454ce54b5c-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_991dc78c7dd144d6839007454ce54b5c-0"&gt;&lt;/a&gt;)set messages time on
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Sage provides an interface to FriCAS, so we may even run it within Sage.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_0b68dcfa3c7240de8d6c213c783ffa19-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_0b68dcfa3c7240de8d6c213c783ffa19-0"&gt;&lt;/a&gt;fricas('series(1/sqrt(1-x),x=0)')
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;and there are many more. It even has its own language &lt;span class="math"&gt;\(-\)&lt;/span&gt; SPAD.&lt;/p&gt;
+&lt;p&gt;For more details, see&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://fricas.sourceforge.net/doc/book.pdf"&gt;1. Axiom book&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://axiom-wiki.newsynthesis.org/SandBoxFriCAS"&gt;2. FriCAS sandbox&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;and of course, the source code is available to know "everything" about it!&lt;/p&gt;&lt;/div&gt;</description><category>axiom</category><category>emacs</category><category>fricas</category><category>integration</category><category>linux</category><category>mathjax</category><category>recurrence</category><category>summation</category><guid>https://g-ar.github.io/posts/fricas-an-introduction/</guid><pubDate>Wed, 18 Jun 2014 10:05:29 GMT</pubDate></item><item><title>Configuring Broadband Connection using pppoeconf</title><link>https://g-ar.github.io/posts/configuring-broadband-connection-using-pppoeconf/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;It all started when the lightning struck and disrupted the internet service. Previously, the settings were stored in the router itself, but after the incident it was no longer connecting to the ppp server.&lt;/p&gt;
+&lt;p&gt;I called the ISP, and the router's configuration was changed by the support guy and since he's familiar only with windoze, I had to reboot it to windows xp (which I no longer use, only linux based OS now). Now, in order to connect to the internet, the username/password needs to be given in the dial-up prompt for the broadband connection (pppoe). But, for some weird reason, DNS was working, but no ping reply from any sites!&lt;/p&gt;
+&lt;p&gt;So I decided to try in linux mint, and thought of using pppoeconf.&lt;/p&gt;
+&lt;p&gt;It's straight-forward, for my ISP's connection the default settings worked. The only information which I needed to change was the username/password&lt;/p&gt;
+&lt;p&gt;To my surprise, ping replies were okay, but the DNS look up was not working now. After tinkering around with the files in &lt;tt class="docutils literal"&gt;/etc/ppp&lt;/tt&gt; and reading some man pages related to ppp, I discovered an info referring to &lt;tt class="docutils literal"&gt;/etc/resolv.conf&lt;/tt&gt; file. But, there was no such file in &lt;tt class="docutils literal"&gt;/etc&lt;/tt&gt; by default.&lt;/p&gt;
+&lt;p&gt;So, I copied the &lt;tt class="docutils literal"&gt;/etc/ppp/resolv.conf&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;/etc&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;Surprise again, it was still not working. Then I tried &lt;tt class="docutils literal"&gt;strace nslookup google.com&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;Somewhere near the end of the output, I found &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;open("/etc/resolv.conf",&lt;/span&gt; O_RDONLY) = &lt;span class="pre"&gt;-1&lt;/span&gt; EACCES (Permission denied)&lt;/tt&gt;. So, &lt;tt class="docutils literal"&gt;sudo chmod 0644 /etc/resolv.conf&lt;/tt&gt;, and rebooted the system.&lt;/p&gt;
+&lt;p&gt;Everything worked fine after that.&lt;/p&gt;
+&lt;p&gt;Update: Actually, we need not worry about configuring from the terminal at all. With network manager already there, we just need to go to "network connections"-&amp;gt;"DSL"  in the menu, and add our connection id/passwd.&lt;/p&gt;&lt;/div&gt;</description><category>broadband</category><category>linux</category><category>mathjax</category><category>pppoe</category><category>strace</category><guid>https://g-ar.github.io/posts/configuring-broadband-connection-using-pppoeconf/</guid><pubDate>Wed, 14 Nov 2012 17:21:48 GMT</pubDate></item></channel></rss>

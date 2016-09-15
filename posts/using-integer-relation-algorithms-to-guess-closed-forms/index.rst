@@ -1,7 +1,7 @@
 .. title: Using integer relation algorithms to guess closed forms
 .. slug: using-integer-relation-algorithms-to-guess-closed-forms
 .. date: 2016-07-02 19:51:29 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, pslq, integration, experiment math
 .. category: 
 .. link: 
 .. description: 

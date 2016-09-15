@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R (derangement)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/derangement.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 15 Sep 2016 17:51:38 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Generalized Derangements</title><link>https://g-ar.github.io/posts/generalized-derangements/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Derangement problems are quite easy to do when there are no restrictions.
+Suppose we want to extend the problem with restrictions, e.g.:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;There are bins numbered 1,2,3,4,1,2,3,4,1,2 , and there are balls numbered 1,2,3,4,5,1,2,3,4,5 (distinguishable, say, two sets with different colors), and each bin is to contain a single ball such that the number of the bin and the ball should not match. In how many ways can that be done? (or what is the probability of that happening?)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This can be solved by using Rook polynomials.&lt;/p&gt;
+&lt;p&gt;The rook polynomial for a &lt;span class="math"&gt;\(m\times n\)&lt;/span&gt; rectangle is:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle r_{m,n}(x)=\sum_{k=0}^n{m\choose k}\, {n!\over (n-k)!}\, x^k
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;For this problem:&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(m=\)&lt;/span&gt; number of bins numbered 's'&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(n=\)&lt;/span&gt; number of balls numbered 's'&lt;/p&gt;
+&lt;p&gt;and the rook polynomial we require to solve our problem is:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle R(x)&amp;amp;=r_{3,2}(x)\, r_{3,2}(x)\, r_{2,2}(x)\, r_{2,2}(x)\\\\
+R(x)&amp;amp;=(6\, x^2 + 6\, x + 1)^2\, (2\, x^2 + 4\, x + 1)^2
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Now, with this rook polynomial, the number of ways of derangements can be found in two ways:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \int_0^\infty \, x^n\, R\left(-\dfrac{1}{x}\right)\, e^{-x}\, dx
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(n\)&lt;/span&gt; is the number of bins.&lt;/p&gt;
+&lt;p&gt;Another way is to expand &lt;span class="math"&gt;\(R(x)\)&lt;/span&gt; and replace each &lt;span class="math"&gt;\(x^i\)&lt;/span&gt; with &lt;span class="math"&gt;\(i\cdot (n-i)!\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The answer divided by &lt;span class="math"&gt;\(n!\)&lt;/span&gt; gives the probability.&lt;/p&gt;
+&lt;p&gt;Both ways are described in the following Sage code:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_33481564981845a9a69a17c6ef0338c5-11"&gt;11&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-0"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'k'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;rp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;binomial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;SR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;balls&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;bins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)[:&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;balls&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-5"&gt;&lt;/a&gt;&lt;span class="n"&gt;stbin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bins&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-6"&gt;&lt;/a&gt;&lt;span class="n"&gt;nums&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;bins&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stbin&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-7"&gt;&lt;/a&gt;&lt;span class="n"&gt;rook&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;expand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;rp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bins&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;balls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stbin&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-8"&gt;&lt;/a&gt;&lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-9"&gt;&lt;/a&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-10"&gt;&lt;/a&gt;    &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;rook&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;coefficient&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_33481564981845a9a69a17c6ef0338c5-11"&gt;&lt;/a&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;summ&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s2"&gt;"="&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;rook&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;oo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s2"&gt;"~"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;summ&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;&lt;span class="n"&gt;summ&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;tt class="docutils literal"&gt;283/2520 = 283/2520 ~ 0.112301587301587 407520&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;which agrees with a simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_e7e383db457a49919c2f291ac0cff743-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_e7e383db457a49919c2f291ac0cff743-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_e7e383db457a49919c2f291ac0cff743-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_e7e383db457a49919c2f291ac0cff743-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_e7e383db457a49919c2f291ac0cff743-0"&gt;&lt;/a&gt;lst=.10$1 2 3 4
+&lt;a name="rest_code_e7e383db457a49919c2f291ac0cff743-1"&gt;&lt;/a&gt;a=.2#1+i.5
+&lt;a name="rest_code_e7e383db457a49919c2f291ac0cff743-2"&gt;&lt;/a&gt;sim=: 3 : '0=+/((10?10){a)=lst'
+&lt;a name="rest_code_e7e383db457a49919c2f291ac0cff743-3"&gt;&lt;/a&gt;(+/%#)(sim"0)1000000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;which is about &lt;span class="math"&gt;\(0.112101\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If we now turn our attention to the classic derangement problem, e.g. 10 bins and balls, each numbered 1 to 10, we change the variables accordingly:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_75160eca3d0946c38bb097e27ce1d245-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/generalized-derangements/#rest_code_75160eca3d0946c38bb097e27ce1d245-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_75160eca3d0946c38bb097e27ce1d245-0"&gt;&lt;/a&gt;&lt;span class="n"&gt;balls&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_75160eca3d0946c38bb097e27ce1d245-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;bins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;balls&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;We see that the summ is indeed &lt;span class="math"&gt;\(1334961\)&lt;/span&gt;, which is the number of derangements, &lt;span class="math"&gt;\(D(10)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://math.stackexchange.com/questions/414023/probability-of-winning-the-game-1-2-3"&gt;1. Stackexchange problem&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.cs.uleth.ca/~holzmann/notes/rook.pdf"&gt;2. Notes on rook polynomial&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>derangement</category><category>integration</category><category>mathjax</category><category>rook polynomial</category><category>sage</category><category>summation</category><guid>https://g-ar.github.io/posts/generalized-derangements/</guid><pubDate>Fri, 04 Apr 2014 15:33:19 GMT</pubDate></item><item><title>Monte-Carlo simulations in J</title><link>https://g-ar.github.io/posts/monte-carlo-simulations-in-j/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;We will see some more problems on probability, and how to do it in J.&lt;/p&gt;
+&lt;div class="section" id="derangement-problem"&gt;
+&lt;h2&gt;1 Derangement problem&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls are put into the boxes (one in each) randomly, what's the probability that none of the balls are put in the boxes with matching number?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;By simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_00bd5b77377f42cd872617e70eca6959-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_00bd5b77377f42cd872617e70eca6959-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_00bd5b77377f42cd872617e70eca6959-0"&gt;&lt;/a&gt;sim=: 3 : '0=+/(i.30)=30?30'
+&lt;a name="rest_code_00bd5b77377f42cd872617e70eca6959-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The analytical answer:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_6b252df14dad450fbfca5e07a196cd65-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_6b252df14dad450fbfca5e07a196cd65-0"&gt;&lt;/a&gt;+/((30$(1 _1))*(%!i.30))
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="urns-balls-and-a-gamble"&gt;
+&lt;h2&gt;2 Urns, balls and a gamble.&lt;/h2&gt;
+&lt;p&gt;A game is played with the following rules: There is an urn with 20 balls, 10 red and 10 white. You need pick 10 balls out of these 20.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;If 10 balls are of the same color, you get $300&lt;/li&gt;
+&lt;li&gt;If 9 balls are of the same color, you get $30&lt;/li&gt;
+&lt;li&gt;If 8 balls are of the same color, you get $3&lt;/li&gt;
+&lt;li&gt;If 7 balls are of the same color, you get $2&lt;/li&gt;
+&lt;li&gt;If 6 balls are of the same color, you get $1&lt;/li&gt;
+&lt;li&gt;If 5 balls are of the same color, you lose $5&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;What's your expected amount?&lt;/p&gt;
+&lt;p&gt;Simulation answer:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_2da4b0f4dce846228728fe394ce8bf85-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_2da4b0f4dce846228728fe394ce8bf85-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_2da4b0f4dce846228728fe394ce8bf85-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_2da4b0f4dce846228728fe394ce8bf85-0"&gt;&lt;/a&gt;a=: 10#0 1
+&lt;a name="rest_code_2da4b0f4dce846228728fe394ce8bf85-1"&gt;&lt;/a&gt;sim=: 3 : '((_5 * 5 = ]) + ([: +/ 4 6 =/ ]) + (2 * [: +/ 3 7 =/ ]) + (3 * [: +/ 2 8 =/ ]) + (30 * [: +/ 1 9 =/ ]) + 300 * [: +/ 10 0 =/ ])+/(10?20){a'
+&lt;a name="rest_code_2da4b0f4dce846228728fe394ce8bf85-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1000000#0  NB. = _0.826702
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Analytical answer (hypergeometric distribution):&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(A=\{1, 2, 3, 30, 300, -5\}\)&lt;/span&gt;&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \sum_{i=0}^{4}\dfrac{A_i\cdot 2\, \dbinom{10}{i}\dbinom{10}{10-i}}{\dbinom{20}{10}}+\dfrac{A_5\cdot \dbinom{10}{5}^2}{\dbinom{20}{10}} =-\dfrac{76485}{92378}=-0.827956872848514
+\end{equation*}
+&lt;/div&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_cd0a4315f2194cbc9782a9ce90723916-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_cd0a4315f2194cbc9782a9ce90723916-0"&gt;&lt;/a&gt;_5 1 2 3 30 300)*(((5!10)^2), (2 * (10 !~ ]) * 10 !~ 10 - ]) 6+i.5)%10!20
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="birthday-problem"&gt;
+&lt;h2&gt;3 Birthday problem&lt;/h2&gt;
+&lt;p&gt;How many people should be in a room such that the probability of at least two of them sharing the same birthday is more than 0.5? (Assume 365 days in an year)&lt;/p&gt;
+&lt;p&gt;By Simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_25f596979bec474797949b2a2560469d-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_25f596979bec474797949b2a2560469d-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_25f596979bec474797949b2a2560469d-0"&gt;&lt;/a&gt;sim=: 3 : '23&amp;gt;+/~:?23#365'
+&lt;a name="rest_code_25f596979bec474797949b2a2560469d-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Analytically:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_73e996cfa76f49a692c04f64b020ac2b-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_73e996cfa76f49a692c04f64b020ac2b-0"&gt;&lt;/a&gt;1-*/((365-i.23)%(365)) NB. = 0.507297234323985
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To see a plot of the probabilities, up to 100 people in a room:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_10974293dec541da9f96c20c328bb2d2-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_10974293dec541da9f96c20c328bb2d2-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_10974293dec541da9f96c20c328bb2d2-0"&gt;&lt;/a&gt;load'plot'
+&lt;a name="rest_code_10974293dec541da9f96c20c328bb2d2-1"&gt;&lt;/a&gt;'marker' plot (1+i.100);((1 - [: */ 365 %~ 365 - i.)"0) 1+i.100
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="dice"&gt;
+&lt;h2&gt;4 4 dice&lt;/h2&gt;
+&lt;p&gt;Four dice are rolled, what's the probability that no two faces are repeated? (E.g. 6 4 2 5 is okay, but 3 6 5 6 is forbidden)&lt;/p&gt;
+&lt;p&gt;By simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_4b272ce45ce94172ac428966a9411340-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_4b272ce45ce94172ac428966a9411340-0"&gt;&lt;/a&gt;sim=: 3 : '(4 = [: +/ [: +/ =/~)?4#6'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;By permutation:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}=\dfrac{\dbinom{6}{4}\cdot 4!}{6^4} = \dfrac{5}{18} = 0.2777777
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Putting that in J console:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_edcba5fe8fad4fa7919baaa616cdebf1-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_edcba5fe8fad4fa7919baaa616cdebf1-0"&gt;&lt;/a&gt;((4!6)*!4)%6^4
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;By counting:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_a93b8895f62a4396a2d329263182c139-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_a93b8895f62a4396a2d329263182c139-0"&gt;&lt;/a&gt;(+/4=+/"1~:"1(6 6 6 6#:i.1296))%6^4 NB. this uses base-6 representation till 6^4
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="the-ballot-problem"&gt;
+&lt;h2&gt;5 The ballot problem&lt;/h2&gt;
+&lt;p&gt;In an election, candidate A receives n votes, and candidate B receives m votes where &lt;span class="math"&gt;\(n &amp;gt; m\)&lt;/span&gt;. Assuming that all orderings are equally likely, show that the probability that A is always ahead in the count of votes is &lt;span class="math"&gt;\(\dfrac{n - m}{n + m}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Here's a simulation to see that it may be true:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_dadddf9858b447c49e71a8948bc51a2e-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-0"&gt;&lt;/a&gt;n=:55
+&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-1"&gt;&lt;/a&gt;m=:45
+&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-2"&gt;&lt;/a&gt;a=:(m#_1),n#1
+&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-3"&gt;&lt;/a&gt;sim=: 3 : '100=+/0&amp;lt;+/\(100?100){a'
+&lt;a name="rest_code_dadddf9858b447c49e71a8948bc51a2e-4"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0 NB. = 0.0993
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;which is close to 0.1 computed from the formula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="an-ace-from-a-regular-deck-of-52-cards"&gt;
+&lt;h2&gt;6 An ace from a regular deck of 52 cards&lt;/h2&gt;
+&lt;p&gt;A deck of cards is well shuffled, and placed face down on a table. The cards are picked one after another, what's the probability that you get to see the first ace when &lt;span class="math"&gt;\(k^{th}\)&lt;/span&gt; card is picked?&lt;/p&gt;
+&lt;p&gt;Finding the answer is quite easy, which is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}(k)=\dfrac{\dbinom{48}{k-1}}{\dbinom{52}{k-1}}\cdot \dfrac{4}{52-k}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and a simulation can back up our claim, e.g. for &lt;span class="math"&gt;\(k=5\)&lt;/span&gt;:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_d8f637b56c894ab0a76f914b12626d43-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_d8f637b56c894ab0a76f914b12626d43-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_d8f637b56c894ab0a76f914b12626d43-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_d8f637b56c894ab0a76f914b12626d43-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_d8f637b56c894ab0a76f914b12626d43-0"&gt;&lt;/a&gt;pos=: 5
+&lt;a name="rest_code_d8f637b56c894ab0a76f914b12626d43-1"&gt;&lt;/a&gt;a=:(4#1),48#0
+&lt;a name="rest_code_d8f637b56c894ab0a76f914b12626d43-2"&gt;&lt;/a&gt;sim=: 3 : 'pos=1+{.I.(52?52){a'
+&lt;a name="rest_code_d8f637b56c894ab0a76f914b12626d43-3"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and the probabilities for first five positions:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/monte-carlo-simulations-in-j/#rest_code_52894888dd4a4b61aad1fb1b1e2cbb90-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_52894888dd4a4b61aad1fb1b1e2cbb90-0"&gt;&lt;/a&gt;(((48 !~ 1 -~ ]) % 52 !~ 1 -~ ]) * 4 % 52 - 1 -~ ]) 1+i.5
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;</description><category>derangement</category><category>expected value</category><category>J</category><category>mathjax</category><category>probability</category><category>simulation</category><guid>https://g-ar.github.io/posts/monte-carlo-simulations-in-j/</guid><pubDate>Sat, 29 Mar 2014 06:46:24 GMT</pubDate></item></channel></rss>

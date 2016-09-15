@@ -1,7 +1,7 @@
 .. title: Using directed graphs to count the number of patterns
 .. slug: using-directed-graphs-to-count-the-number-of-patterns
 .. date: 2014-02-12 20:43:44 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, sage, recurrence, restricted permutation
 .. category: 
 .. link: 
 .. description: 

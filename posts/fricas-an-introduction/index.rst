@@ -1,7 +1,7 @@
 .. title: FriCAS -- an introduction
 .. slug: fricas-an-introduction
 .. date: 2014-06-18 15:35:29 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, fricas, axiom, linux, integration, summation, emacs, recurrence
 .. category: 
 .. link: 
 .. description: 

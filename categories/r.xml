@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R (R)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/r.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 15 Sep 2016 17:51:37 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Probability of a sum being less than 1 (convolution of pdf)</title><link>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;If we choose &lt;span class="math"&gt;\(n\)&lt;/span&gt; numbers randomly and uniformly from &lt;span class="math"&gt;\([0,1]\)&lt;/span&gt; and raise each number to &lt;span class="math"&gt;\(k\)&lt;/span&gt; &lt;span class="math"&gt;\((k&amp;gt;0)\)&lt;/span&gt;, what is the probability that the sum will be less than 1?&lt;/p&gt;
+&lt;p&gt;i.e. what is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&amp;lt;1\right)\;\;\; , x_i\in \mathcal{U}\left(0,1\right)
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;The answer can be derived by using convolution of probability density functions.&lt;/p&gt;
+&lt;p&gt;For two pdfs, &lt;span class="math"&gt;\(f(x)\)&lt;/span&gt; and &lt;span class="math"&gt;\(g(y)\)&lt;/span&gt;, the convolution &lt;span class="math"&gt;\(f*g\)&lt;/span&gt; is defined as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle \left(f*g\right)(z) &amp;amp;= \int_{-\infty}^{\infty} \, f(z-y)g(y)\, dy\\
+&amp;amp;= \int_{-\infty}^{\infty} \, g(z-x) f(x)\, dx
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Let &lt;span class="math"&gt;\(X_1\)&lt;/span&gt; and &lt;span class="math"&gt;\(X_2\)&lt;/span&gt; be two random variables which represent &lt;span class="math"&gt;\(x_1^{1/k}\)&lt;/span&gt; and &lt;span class="math"&gt;\(x_2^{1/k}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The pdf is then given by:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle f_{X_1}(x)=f_{X_2}(x)=\frac{d}{dx} (x^k)=k\, x^{k-1}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;and the pdf of the sum of two numbers &lt;span class="math"&gt;\(f_2(z)\)&lt;/span&gt; (in the region &lt;span class="math"&gt;\(0\le z \le 1\)&lt;/span&gt;) is:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle f_2(z)&amp;amp;= \int_{0}^{z} \, f_{X_1}(z-y) f_{X_2}(y) \, dy\\
+&amp;amp;= k^2\cdot z^{2\, k - 1}\cdot \mathrm{B}(k, k)
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;After this, we can iteratively continue for more terms:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle f_3(z)&amp;amp;= \int_{0}^{z} \, f_{X_1}(z-y) f_{2}(y) \, dy\\
+&amp;amp;= k^3\cdot z^{3\, k - 1}\cdot \mathrm{B}(2\, k, k)\cdot \mathrm{B}(k, k)
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Continuing in that manner, for sum of &lt;span class="math"&gt;\(n\)&lt;/span&gt; terms, we will end up with:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\displaystyle f_n(z) = k^n\cdot z^{n\, k - 1}\cdot \prod_{i=1}^{n-1} \mathrm{B}(i\, k, k)
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Since we require the probability of the sum to be less than one, we will evaluate that integral and write the beta functions in terms of gamma functions and simplify:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^n x_i^k\Big)&amp;lt;1\right) &amp;amp;= \int_{0}^{1} \, f_n(z)\, dz\\
+&amp;amp;= \frac{k^{n-1}}{n}\prod_{i=1}^{n-1} \mathrm{B}(i\, k, k) \\
+&amp;amp;= \frac{k^{n-1}\big(\Gamma(k)\big)^n}{n\, \Gamma(n\, k)} \\
+&amp;amp;= \frac{\big(\Gamma(k+1)\big)^n}{\Gamma(n\, k+1)}
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;That's some formula!&lt;/p&gt;
+&lt;p&gt;In Sage, it can be written as&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-7"&gt;7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-8"&gt;8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-9"&gt;9&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-0"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'k y z'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-5"&gt;&lt;/a&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-9"&gt;&lt;/a&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To verify our answer, we can perform a simulation:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_0af8bb27121148e5918a9b1ef5060535-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_0af8bb27121148e5918a9b1ef5060535-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_0af8bb27121148e5918a9b1ef5060535-0"&gt;&lt;/a&gt;sim=: 3 : '1&amp;gt;+/(?6#0)^6'
+&lt;a name="rest_code_0af8bb27121148e5918a9b1ef5060535-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0 NB. = 0.63926
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want to perform a simulation in a more verbose language, R is a good candidate.&lt;/p&gt;
+&lt;p&gt;The code in R looks like:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code R"&gt;&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-0"&gt;&lt;/a&gt;n &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-1"&gt;&lt;/a&gt;k &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-2"&gt;&lt;/a&gt;b &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;runif&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;dim&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-3"&gt;&lt;/a&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;b&lt;span class="o"&gt;^&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-0"&gt;&lt;/a&gt;'n k'=: 6 6
+&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-1"&gt;&lt;/a&gt;a=:(n, 1e6) $ ?(n*1e6)#0
+&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-2"&gt;&lt;/a&gt;(+/%#)1&amp;gt;+/a^k NB. = 0.637572
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The corresponding probability derived analytically is:&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+\displaystyle \mathbb{P}\left(\Big(\sum_{i=1}^6 x_i^6\Big)&amp;lt;1\right) = f\left(6,\frac{1}{6}\right) \\ = \Gamma\left(\frac{7}{6}\right)^6 \approx 0.637528558759471
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf"&gt;1. Dartmouth Probability Book&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://arxiv.org/pdf/cs/0604056.pdf"&gt;2. An arxiv article&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Volume_of_an_n-ball"&gt;3. Volume of a n-ball&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>J</category><category>mathjax</category><category>probability</category><category>R</category><category>simulation</category><guid>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</guid><pubDate>Sun, 01 Jun 2014 09:53:45 GMT</pubDate></item></channel></rss>

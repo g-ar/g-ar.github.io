@@ -1,7 +1,7 @@
 .. title: Configuring Broadband Connection using pppoeconf
 .. slug: configuring-broadband-connection-using-pppoeconf
 .. date: 2012-11-14 22:51:48 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, linux, strace, broadband, pppoe
 .. category: 
 .. link: 
 .. description: 

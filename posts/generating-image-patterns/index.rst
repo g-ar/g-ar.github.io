@@ -1,7 +1,7 @@
 .. title: Generating image patterns
 .. slug: generating-image-patterns
 .. date: 2014-02-07 20:11:32 UTC+05:30
-.. tags: mathjax
+.. tags: mathjax, computer art, C, GCC
 .. category: 
 .. link: 
 .. description: 

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R (experiment math)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/experiment-math.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 15 Sep 2016 17:51:37 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
+In particular, we'll use the excellent math toolkit by David Bailey et. al. aimed at experimental mathematics -- &lt;a class="reference external" href="http://crd.lbl.gov/~dhbailey/mpdist/arprec-2.2.18.tar.gz"&gt;arprec&lt;/a&gt;.
+Compile and run mathtool.&lt;/p&gt;
+&lt;p&gt;The following problems are taken from &lt;a class="reference external" href="https://brilliant.org"&gt;Brilliant&lt;/a&gt;&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
+\begin{equation*}
+\displaystyle \int_0^{\frac{\pi}{3}} x \left(\ln{\left(2 \sin{\frac{x}{2}}\right)}\right)^2 \, dx = \frac{c\, \pi^a}{b}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Find $a, b,$ and &lt;span class="math"&gt;\(c\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Start mathtool, and enter the commands in sequence:
+(Only the relevent output is shown after command executions)&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-15"&gt;15&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-0"&gt;&lt;/a&gt;integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-1"&gt;&lt;/a&gt;-- snip --
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-2"&gt;&lt;/a&gt;&amp;gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-3"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-4"&gt;&lt;/a&gt;pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-5"&gt;&lt;/a&gt;-- snip --
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-6"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-7"&gt;&lt;/a&gt;&amp;gt; +  6480.* pslq001
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-8"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq002
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-9"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq003
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-10"&gt;&lt;/a&gt;&amp;gt; +   -17.* pslq004
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-11"&gt;&lt;/a&gt;&amp;gt; Result[ 37] through Result[ 40] =
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-12"&gt;&lt;/a&gt;&amp;gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-14"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-15"&gt;&lt;/a&gt;&amp;gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;So, the above output means, &lt;span class="math"&gt;\(0= 6480\times 0.255548541292907628552389761683331310377371752536366075420056165916 - 17\times \pi^4\)&lt;/span&gt;, and hence &lt;span class="math"&gt;\(c=17, a=4, b=6480\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;When doing such computations, it's good to have more digits when computing integral or sums, and reduce the epsilon value when using pslq, so that it checks for fewer decimal places when trying for an integer relation. Otherwise, it is likely to miss the relation when the numerical accuracy is kept high. digits=100 and epsilon=-50 worked well for me in most cases.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
+\begin{equation*}
+\displaystyle \int_0^{2\log{\phi}} \log{\left(2\, \sinh{\frac{x}{2}}\right)} = -\frac{\pi^a}{b}
+\end{equation*}
+&lt;/div&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-0"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-1"&gt;&lt;/a&gt;integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-2"&gt;&lt;/a&gt;&amp;gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-3"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-4"&gt;&lt;/a&gt;pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-6"&gt;&lt;/a&gt;&amp;gt; +  10.* pslq001
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-7"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq002
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-8"&gt;&lt;/a&gt;&amp;gt; +   1.* pslq003
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-9"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq004
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-11"&gt;&lt;/a&gt;&amp;gt; Result[ 29] through Result[ 33] =
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-12"&gt;&lt;/a&gt;&amp;gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-14"&gt;&lt;/a&gt;&amp;gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;In this example, mathtool chokes when lower limit is 0 saying argument is too large, so keep it close to 0. Then using pslq, we see that a=2 and b=10.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
+\begin{equation*}
+\displaystyle \int_{-\infty}^{\infty} \dfrac{\log{\left(1 + e^{2x}\right)}}{1 + e^{3\, x}} = \frac{a \pi^b}{c}
+\end{equation*}
+&lt;/div&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_ac86f150ebf047839d0ff9065c913421-0"&gt;0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_ac86f150ebf047839d0ff9065c913421-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ac86f150ebf047839d0ff9065c913421-0"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_ac86f150ebf047839d0ff9065c913421-1"&gt;&lt;/a&gt;Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we try to execute it directly, it complains "argument too large". So, we transform it by substituting &lt;span class="math"&gt;\(e^x=y\)&lt;/span&gt;&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-17"&gt;17&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-0"&gt;&lt;/a&gt;Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-1"&gt;&lt;/a&gt;&amp;gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-2"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-3"&gt;&lt;/a&gt;pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-4"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-5"&gt;&lt;/a&gt;&amp;gt; +  216.* pslq001
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-6"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq002
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-7"&gt;&lt;/a&gt;&amp;gt; +  -13.* pslq003
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-8"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq004
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-9"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq005
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-10"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq006
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-11"&gt;&lt;/a&gt;&amp;gt; Result[  7] through Result[ 12] =
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-12"&gt;&lt;/a&gt;&amp;gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-14"&gt;&lt;/a&gt;&amp;gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-17"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Hence, &lt;span class="math"&gt;\(a=13, b=2, c=216\)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class="first math"&gt;
+\begin{equation*}
+\displaystyle \int_0^1 \log{x}\log{\left(1-x\right)} dx = \frac{a}{b}-\frac{\pi^c}{d}
+\end{equation*}
+&lt;/div&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-0"&gt; 0&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-17"&gt;17&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-18"&gt;18&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-19"&gt;19&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-20"&gt;20&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-0"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-1"&gt;&lt;/a&gt;integrate[log[x]*log[1-x],{x,0,1}]
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-2"&gt;&lt;/a&gt;&amp;gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-3"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-4"&gt;&lt;/a&gt;pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-6"&gt;&lt;/a&gt;&amp;gt; +  -6.* pslq001
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-7"&gt;&lt;/a&gt;&amp;gt; +  12.* pslq002
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-8"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq003
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-9"&gt;&lt;/a&gt;&amp;gt; +  -1.* pslq004
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-11"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq006
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-12"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq007
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-13"&gt;&lt;/a&gt;&amp;gt; Result[ 27] through Result[ 33] =
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-14"&gt;&lt;/a&gt;&amp;gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-15"&gt;&lt;/a&gt;&amp;gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-17"&gt;&lt;/a&gt;&amp;gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-18"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-19"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-20"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Therefore, &lt;span class="math"&gt;\(a=2, b=1, c=2, d=6\)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;&lt;/div&gt;</description><category>experiment math</category><category>integration</category><category>mathjax</category><category>pslq</category><guid>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</guid><pubDate>Sat, 02 Jul 2016 14:21:29 GMT</pubDate></item></channel></rss>
