@@ -48,7 +48,7 @@ and the probability can be written by extracting :math:`[x^n]G(x)` as
 which can be verified by a simulation in J:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     n=:10
     sim=: 3 : '6=+/~:?n#6'

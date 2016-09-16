@@ -27,7 +27,7 @@ In order to compile the latest version of contextfree in debian wheezy:
 After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install ``libpng12-dev`` and compile.
 
 .. code-block:: bash
-    :number-lines: 0
+    :number-lines: 1
 
     CC = $(HOME)/bin/gcc_custom/bin/gcc
     LD = $(HOME)/bin/gcc_custom/bin/gcc
@@ -37,7 +37,7 @@ After GCC is installed, we need to indicate in the makefile of contextfree to us
 The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in ``$HOME/bin`` named cfdg with following contents
 
 .. code-block:: bash
-    :number-lines: 0
+    :number-lines: 1
 
     #!/bin/bash
     export CC=$HOME/bin/gcc_custom/bin/gcc

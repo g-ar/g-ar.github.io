@@ -73,7 +73,7 @@ That's some formula!
 In Sage, it can be written as
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     var('k y z')
     assume(k>0)
@@ -89,7 +89,7 @@ In Sage, it can be written as
 To verify our answer, we can perform a simulation:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     sim=: 3 : '1>+/(?6#0)^6'
     (+/%#)(sim"0)100000#0 NB. = 0.63926
@@ -99,7 +99,7 @@ If we want to perform a simulation in a more verbose language, R is a good candi
 The code in R looks like:
 
 .. code-block:: R
-    :number-lines: 0
+    :number-lines: 1
 
     n = 6
     k = 6
@@ -109,7 +109,7 @@ The code in R looks like:
 and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     'n k'=: 6 6
     a=:(n, 1e6) $ ?(n*1e6)#0

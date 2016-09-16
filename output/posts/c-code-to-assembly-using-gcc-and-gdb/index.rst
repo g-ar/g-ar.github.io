@@ -14,7 +14,7 @@ In this post, we will see how to translate a small C program to assembly (using 
 Consider the following, where the code for gcd is taken from rosetta code:
 
 .. code-block:: C
-    :number-lines: 0
+    :number-lines: 1
 
     #include <stdio.h>
 
@@ -33,14 +33,14 @@ Consider the following, where the code for gcd is taken from rosetta code:
 Compile to 32 bit code as
 
 .. code-block:: bash
-    :number-lines: 0
+    :number-lines: 1
 
     gcc -o gcd gcd.c -m32
 
 and disassemble:
 
 .. code-block:: bash
-    :number-lines: 0
+    :number-lines: 1
 
     gdb ./gcd
     (gdb) disas gcd
@@ -48,7 +48,7 @@ and disassemble:
 We will see something like this:
 
 .. code-block:: S
-    :number-lines: 0
+    :number-lines: 1
 
     0x08048454 <+0>  :    push   ebp
     0x08048455 <+1>  :    mov    ebp,esp
@@ -72,7 +72,7 @@ We will see something like this:
 and
 
 .. code-block:: bash
-    :number-lines: 0
+    :number-lines: 1
 
     (gdb) disas main
 
@@ -80,7 +80,7 @@ and
 shows like this:
 
 .. code-block:: S
-    :number-lines: 0
+    :number-lines: 1
 
     0x08048483 <+0>  :    push   ebp
     0x08048484 <+1>  :    mov    ebp,esp
@@ -113,7 +113,7 @@ We need to replace all the relative references by labels, memory references by n
 Using the example to produce dynamically linked executable from fasm for linux (doing it in 1.70.03), we may write it as:
 
 .. code-block:: S
-    :number-lines: 0
+    :number-lines: 1
 
     format ELF executable 3
     entry start
@@ -173,7 +173,7 @@ Using the example to produce dynamically linked executable from fasm for linux (
 and assemble:
 
 .. code-block:: bash
-    :number-lines: 0
+    :number-lines: 1
 
     ./fasm gcd.asm
 
@@ -184,7 +184,7 @@ p.s.
 - By default, disassembly syntax is not intel. To change it, use
 
   .. code-block:: bash
-      :number-lines: 0
+      :number-lines: 1
 
       set disassembly-flavor intel
 

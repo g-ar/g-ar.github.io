@@ -25,7 +25,7 @@ There, the hard work is done. Leave the remaining to Sage!
 Obtain the characteristic polynomial of the matrix, which also is the characteristic equation of the required recurrence equation.
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
 
     am=matrix([
@@ -63,14 +63,14 @@ Wonder if anyone can come up with a combinatorial argument for that equation?!
 Initial conditions can be easily obtained by matrix exponentiation or using a program to iterate through the sequences, e.g.
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     print sum((am^4)[0,:].list())
 
 or
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     cnt = 0
     for i in range(1000,10000):
@@ -81,7 +81,7 @@ or
 We can also automatically get the generating function of the obtained recurrence by using a small program (method is given in "Lectures on generating functions" by S. K. Lando):
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     def get_gf(alst,initvals):
         nn=len(alst)
@@ -111,7 +111,7 @@ If we have a generating function of the form :math:`G(x)=U(x)/V(x)`, then the as
 We will visually inspect where the roots lie, to get an idea about the closest root to the origin
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     complex_plot(x^5 - 2*x^3 + 10*x - 1,(-2, 2), (-2, 2))
 
@@ -124,7 +124,7 @@ and we see that there is only one real root (also the nearest to origin) and oth
 We can proceed with the following steps in Sage:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     s1=find_root(x^5 - 2*x^3 + 10*x - 1, 0, 4)
     rho1=(1-s1)/diff(x^5 - 2*x^3 + 10*x - 1,x).subs(x=s1)

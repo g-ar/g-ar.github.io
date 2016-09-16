@@ -33,7 +33,7 @@ Hence, there are 11 solutions for the d.e under the constraints.
 In Sage, this can be found by the taylor expansion:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     taylor((x-x^21)/(1-x)*(x^20-x^31)/(1-x),x,0,35).coefficient(x,35)
 
@@ -165,7 +165,7 @@ and the sum of the squares is
 which can be verified by Sage
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     var('n');
     show(factor(sum(x^2,x,0,n)))
@@ -226,7 +226,7 @@ where :math:`D` is the differential operator :math:`d/dz` and
 In Sage, it's written as
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     (x*diff(x*diff(x/(1-x-x^2),x),x)).subs(x=1/12)
 

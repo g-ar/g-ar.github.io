@@ -20,7 +20,7 @@ For the simulation, we will be using a language called `J <https://jsoftware.com
 Let's see how it can be used for our simulation (there can be other ways, here’s my shot):
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     a=:13#(i.4)
     sim=: 3 : '+/2=/\(13?52){a'

@@ -77,7 +77,7 @@ We will see a list of few integrals which yields to differentiation under the in
     In Sage, it can be applied as:
 
     .. code-block:: python
-        :number-lines: 0
+        :number-lines: 1
 
         # Takes a few seconds
         var('a b')

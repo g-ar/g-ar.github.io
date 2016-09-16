@@ -17,14 +17,14 @@ One more good thing is that it comes with a fricas mode for emacs, which has man
 Make a directory ``$HOME/bin/`` if not already there, and add to the ``$PATH`` environment variable. Extract the components to ``$HOME/bin/``. To run it, we need to modify a few paths in its files. Go to ``$HOME/bin/usr/local/bin``, in fricas file, update the variable ``exec_prefix`` to
 
 .. code-block:: sh
-    :number-lines: 0
+    :number-lines: 1
 
     exec_prefix="${FRICAS_PREFIX:-/home/bin/usr/local}"
 
 In file efricas, update FRICASCMD to
 
 .. code-block:: sh
-    :number-lines: 0
+    :number-lines: 1
 
     FRICASCMD='/home/bin/fricas'   
 
@@ -33,7 +33,7 @@ and also update the line which calls emacs.
 Update the function fricas :math:`-` run in ``$HOME/bin/usr/local/lib/fricas/emacs/fricas.el`` to
 
 .. code-block:: scheme
-    :number-lines: 0
+    :number-lines: 1
 
     (defun fricas-run ()
       "Run FriCAS in the current BUFFER."
@@ -52,7 +52,7 @@ and its advantages to other free CAS, and probably even the paid ones.
 1) **INTEGRATION**
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        integrate(tan(atan(x)/3),x)
 
@@ -60,7 +60,7 @@ and its advantages to other free CAS, and probably even the paid ones.
 
 2) 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        integrate((x+a)^(1/2)/x,x)
 
@@ -71,7 +71,7 @@ and its advantages to other free CAS, and probably even the paid ones.
 3) **SOLVING EQUATIONS**
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        solve(x^3+x+1,1/1000)
        solve(x^3+x+1,1/1000.0)
@@ -84,7 +84,7 @@ and its advantages to other free CAS, and probably even the paid ones.
 
 4) 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        solve([x+y^2-4,x^2+y-2],1.E-10)
        solve([x+y^2-4,x^2+y-2],1/10^10)
@@ -97,7 +97,7 @@ and its advantages to other free CAS, and probably even the paid ones.
    The recursions are transformed into iterated code and compiled! And since it can also symbolically compute, this proves very useful to examine sequences.
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        fib(0)==0
        fib(1)==1
@@ -107,7 +107,7 @@ and its advantages to other free CAS, and probably even the paid ones.
 
 6) 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        a(0)==1
        a(1)==1
@@ -128,14 +128,14 @@ and its advantages to other free CAS, and probably even the paid ones.
    Using the above simultaneous recurrence, the generating function can be obtained as:
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        guessAlg [a(i)+b(i) for i in 0..20]
 
 8) Try for the recurrence relation.
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        guessPRec [a(i)+b(i) for i in 0..20]
 
@@ -146,14 +146,14 @@ and its advantages to other free CAS, and probably even the paid ones.
 
 9) 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        series(x/(1-x-x^2),x=0)
 
    or like this
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        x:=series 'x
        x/(1-x-x^2)
@@ -161,14 +161,14 @@ and its advantages to other free CAS, and probably even the paid ones.
 10) If we require only the list of coefficients of the series
 
     .. code-block:: text
-        :number-lines: 0
+        :number-lines: 1
 
         cf:=coefficients x/(1-x-x^2)
 
     If we want the :math:`[x^{100}]`
 
     .. code-block:: text
-        :number-lines: 0
+        :number-lines: 1
 
         coefficient(x/(1-x-x^2),100)
 
@@ -181,7 +181,7 @@ and its advantages to other free CAS, and probably even the paid ones.
     Since the output is always pretty-printed and does not provide a way to turn it off (though there are options to output different formats like TeX, fortran, html etc.), we can obtain an unparsed output the following way:
 
     .. code-block:: text
-        :number-lines: 0
+        :number-lines: 1
 
         k:=(-b)^(1/3)/(1+b)
         unparse(k :: InputForm)
@@ -189,7 +189,7 @@ and its advantages to other free CAS, and probably even the paid ones.
 12) Shell commands can be executed within it:
 
     .. code-block:: text
-        :number-lines: 0
+        :number-lines: 1
 
         )system pwd
         )system date
@@ -199,7 +199,7 @@ and its advantages to other free CAS, and probably even the paid ones.
 13) **CHANGE OUTPUT FORMAT**
 
     .. code-block:: text
-        :number-lines: 0
+        :number-lines: 1
 
         )set output tex on
         )set output tex abc.tex
@@ -207,14 +207,14 @@ and its advantages to other free CAS, and probably even the paid ones.
 14) **SHOW TIME FOR EXECUTION**
 
     .. code-block:: text
-        :number-lines: 0
+        :number-lines: 1
 
         )set messages time on
 
 15) Sage provides an interface to FriCAS, so we may even run it within Sage.
 
     .. code-block:: text
-        :number-lines: 0
+        :number-lines: 1
 
         fricas('series(1/sqrt(1-x),x=0)')
 

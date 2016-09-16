@@ -67,7 +67,7 @@ and the probability is given by :math:`[x^8 y^{105}]E(x,y)\dfrac{8!}{22^8} = \df
 The above probabilities can also be verified by monte-carlo simulations in J, for the without replacement case:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     lst=:(4#11,12),(5#13),(6#14),3#15
     sim=: 3 : '105=+/(8?#lst){lst'
@@ -76,7 +76,7 @@ The above probabilities can also be verified by monte-carlo simulations in J, fo
 and for the with replacement case:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     lst=:(4#11,12),(5#13),(6#14),3#15
     sim=: 3 : '105=+/(?8##lst){lst'

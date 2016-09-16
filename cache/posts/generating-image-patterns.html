@@ -1,97 +1,97 @@
 <p>Computer and art mix very nicely. We can algorithmically generate patterns, be it pictures or music, which are aesthetic.</p>
 <p>Here is an example program for *nix systems which generates fractal like tiling.
 We use tga format, which is simple but uncompressed. For compression, we may use imagemagick suit's convert command.</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-0"> 0</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-1"> 1</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-2"> 2</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-3"> 3</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-4"> 4</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-5"> 5</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-6"> 6</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-7"> 7</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-8"> 8</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-9"> 9</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-10">10</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-11">11</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-12">12</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-13">13</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-14">14</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-15">15</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-16">16</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-17">17</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-18">18</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-19">19</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-20">20</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-21">21</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-22">22</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-23">23</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-24">24</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-25">25</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-26">26</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-27">27</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-28">28</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-29">29</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-30">30</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-31">31</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-32">32</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-33">33</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-34">34</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-35">35</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-36">36</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-37">37</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-38">38</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-39">39</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-40">40</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-41">41</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-42">42</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-43">43</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-44">44</a>
-<a href="#rest_code_78f28cb5321147759a3d8cb841ff03d5-45">45</a></pre></div></td><td class="code"><pre class="code C"><a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-0"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-1"></a><span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-2"></a><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-3"></a><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-4"></a><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-5"></a>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-6"></a><span class="cp">#define width 1366</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-7"></a><span class="cp">#define height 768</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-8"></a>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-9"></a><span class="kt">char</span> <span class="n">pic</span><span class="p">[</span><span class="n">height</span><span class="p">][</span><span class="n">width</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-10"></a>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-11"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-12"></a>  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-13"></a>  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-14"></a>  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-15"></a>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-16"></a>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">height</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-17"></a>    <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">width</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-18"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-19"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-20"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(((</span><span class="n">i</span><span class="o">^</span><span class="p">(</span><span class="o">~</span><span class="n">j</span><span class="p">))</span><span class="o">&amp;</span><span class="p">((</span><span class="o">~</span><span class="n">i</span><span class="o">-</span><span class="mi">350</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">3</span><span class="p">)))</span><span class="o">&amp;</span><span class="mi">255</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-21"></a>    <span class="p">}</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-22"></a>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-23"></a>  <span class="k">if</span> <span class="p">((</span><span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;image.tga&quot;</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">+</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="n">S_IRUSR</span> <span class="o">|</span> <span class="n">S_IWUSR</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-24"></a>  <span class="p">{</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-25"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;error opening file</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-26"></a>    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-27"></a>  <span class="p">}</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-28"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-29"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-30"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-31"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-32"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-33"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-34"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-35"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-36"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-37"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-38"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-39"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-40"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-41"></a>  <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-42"></a>  <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">pic</span><span class="p">,</span> <span class="n">width</span><span class="o">*</span><span class="n">height</span><span class="o">*</span><span class="mi">3</span><span class="p">);</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-43"></a>  <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-44"></a>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_78f28cb5321147759a3d8cb841ff03d5-45"></a><span class="p">}</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-1"> 1</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-2"> 2</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-3"> 3</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-4"> 4</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-5"> 5</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-6"> 6</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-7"> 7</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-8"> 8</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-9"> 9</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-10">10</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-11">11</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-12">12</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-13">13</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-14">14</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-15">15</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-16">16</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-17">17</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-18">18</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-19">19</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-20">20</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-21">21</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-22">22</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-23">23</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-24">24</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-25">25</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-26">26</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-27">27</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-28">28</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-29">29</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-30">30</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-31">31</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-32">32</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-33">33</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-34">34</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-35">35</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-36">36</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-37">37</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-38">38</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-39">39</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-40">40</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-41">41</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-42">42</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-43">43</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-44">44</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-45">45</a>
+<a href="#rest_code_34ee4b34daa0428caa3e8fcba24710fd-46">46</a></pre></div></td><td class="code"><pre class="code C"><a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-2"></a><span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-3"></a><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-4"></a><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-5"></a><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-6"></a>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-7"></a><span class="cp">#define width 1366</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-8"></a><span class="cp">#define height 768</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-9"></a>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-10"></a><span class="kt">char</span> <span class="n">pic</span><span class="p">[</span><span class="n">height</span><span class="p">][</span><span class="n">width</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-11"></a>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-12"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-13"></a>  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-14"></a>  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-15"></a>  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-16"></a>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-17"></a>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">height</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-18"></a>    <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">width</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-19"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-20"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-21"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(((</span><span class="n">i</span><span class="o">^</span><span class="p">(</span><span class="o">~</span><span class="n">j</span><span class="p">))</span><span class="o">&amp;</span><span class="p">((</span><span class="o">~</span><span class="n">i</span><span class="o">-</span><span class="mi">350</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">3</span><span class="p">)))</span><span class="o">&amp;</span><span class="mi">255</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-22"></a>    <span class="p">}</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-23"></a>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-24"></a>  <span class="k">if</span> <span class="p">((</span><span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;image.tga&quot;</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">+</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="n">S_IRUSR</span> <span class="o">|</span> <span class="n">S_IWUSR</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-25"></a>  <span class="p">{</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-26"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;error opening file</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-27"></a>    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-28"></a>  <span class="p">}</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-29"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-30"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-31"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-32"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-33"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-34"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-35"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-36"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-37"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-38"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-39"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-40"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-41"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-42"></a>  <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-43"></a>  <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">pic</span><span class="p">,</span> <span class="n">width</span><span class="o">*</span><span class="n">height</span><span class="o">*</span><span class="mi">3</span><span class="p">);</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-44"></a>  <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-45"></a>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_34ee4b34daa0428caa3e8fcba24710fd-46"></a><span class="p">}</span>
 </pre></td></tr></table><div class="figure">
 <img alt="../../images/pattern.png" src="../../images/pattern.png" />
 <p class="caption">Image generated by the program</p>

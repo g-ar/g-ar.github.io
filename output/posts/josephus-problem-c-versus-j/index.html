@@ -107,131 +107,131 @@ As you can see, there's already an implementation in mathematica. But, not many 
 <p>As you can see, there's already an implementation in mathematica. But, not many of us are rich enough to buy MM. So, we need to make use of awesome and free programming languages like C and J! C for fast execution, J for quick coding.</p>
 <p>First, to implement in C, we need to write our own data structures. We will make use of a circular linked list, since that's how the josephus problem is stated.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-0"> 0</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-1"> 1</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-2"> 2</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-3"> 3</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-4"> 4</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-5"> 5</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-6"> 6</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-7"> 7</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-8"> 8</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-9"> 9</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-10">10</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-11">11</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-12">12</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-13">13</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-14">14</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-15">15</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-16">16</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-17">17</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-18">18</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-19">19</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-20">20</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-21">21</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-22">22</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-23">23</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-24">24</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-25">25</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-26">26</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-27">27</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-28">28</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-29">29</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-30">30</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-31">31</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-32">32</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-33">33</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-34">34</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-35">35</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-36">36</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-37">37</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-38">38</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-39">39</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-40">40</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-41">41</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-42">42</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-43">43</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-44">44</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-45">45</a>
-<a href="#rest_code_fe2c090efe544416ba0afebb1fab055e-46">46</a></pre></div></td>
-<td class="code"><pre class="code C"><a name="rest_code_fe2c090efe544416ba0afebb1fab055e-0"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-2"></a>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-3"></a><span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">cur</span><span class="p">,</span><span class="o">*</span><span class="n">tmp</span><span class="p">,</span><span class="o">*</span><span class="n">head</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-4"></a><span class="k">struct</span> <span class="n">node</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-5"></a><span class="p">{</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-6"></a>   <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-7"></a>   <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-8"></a><span class="p">};</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-9"></a>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-10"></a><span class="kt">void</span> <span class="nf">kill</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-11"></a><span class="p">{</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-12"></a>    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">prev</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-13"></a>    <span class="k">while</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">){</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-14"></a>        <span class="n">prev</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-15"></a>        <span class="n">head</span><span class="o">=</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-16"></a>        <span class="n">k</span><span class="o">--</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-17"></a>    <span class="p">}</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-18"></a>    <span class="n">tmp</span><span class="o">=</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-19"></a>    <span class="n">free</span><span class="p">(</span><span class="n">head</span><span class="p">);</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-20"></a>    <span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">tmp</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-21"></a>    <span class="n">head</span><span class="o">=</span><span class="n">tmp</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-22"></a><span class="p">}</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-23"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-24"></a><span class="p">{</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-25"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">i</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-26"></a>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-27"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-28"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">k</span><span class="p">);</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-29"></a>    <span class="n">head</span><span class="o">=</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="p">));</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-30"></a>    <span class="n">head</span><span class="o">-&gt;</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-31"></a>    <span class="n">tmp</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-32"></a>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-33"></a>    <span class="p">{</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-34"></a>        <span class="n">cur</span><span class="o">=</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="p">));</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-35"></a>        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">num</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-36"></a>        <span class="n">tmp</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">cur</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-37"></a>        <span class="n">tmp</span><span class="o">=</span><span class="n">cur</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-38"></a>    <span class="p">}</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-39"></a>    <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-40"></a>    <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">){</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-41"></a>        <span class="n">kill</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-42"></a>        <span class="n">n</span><span class="o">--</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-43"></a>    <span class="p">}</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-44"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">num</span><span class="p">);</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-45"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_fe2c090efe544416ba0afebb1fab055e-46"></a><span class="p">}</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-1"> 1</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-2"> 2</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-3"> 3</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-4"> 4</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-5"> 5</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-6"> 6</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-7"> 7</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-8"> 8</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-9"> 9</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-10">10</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-11">11</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-12">12</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-13">13</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-14">14</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-15">15</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-16">16</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-17">17</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-18">18</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-19">19</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-20">20</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-21">21</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-22">22</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-23">23</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-24">24</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-25">25</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-26">26</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-27">27</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-28">28</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-29">29</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-30">30</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-31">31</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-32">32</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-33">33</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-34">34</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-35">35</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-36">36</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-37">37</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-38">38</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-39">39</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-40">40</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-41">41</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-42">42</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-43">43</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-44">44</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-45">45</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-46">46</a>
+<a href="#rest_code_904b945ba89445c6b4f3c5bf09668c58-47">47</a></pre></div></td>
+<td class="code"><pre class="code C"><a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-2"></a><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-3"></a>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-4"></a><span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">cur</span><span class="p">,</span><span class="o">*</span><span class="n">tmp</span><span class="p">,</span><span class="o">*</span><span class="n">head</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-5"></a><span class="k">struct</span> <span class="n">node</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-6"></a><span class="p">{</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-7"></a>   <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-8"></a>   <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-9"></a><span class="p">};</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-10"></a>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-11"></a><span class="kt">void</span> <span class="nf">kill</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-12"></a><span class="p">{</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-13"></a>    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">prev</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-14"></a>    <span class="k">while</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">){</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-15"></a>        <span class="n">prev</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-16"></a>        <span class="n">head</span><span class="o">=</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-17"></a>        <span class="n">k</span><span class="o">--</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-18"></a>    <span class="p">}</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-19"></a>    <span class="n">tmp</span><span class="o">=</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-20"></a>    <span class="n">free</span><span class="p">(</span><span class="n">head</span><span class="p">);</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-21"></a>    <span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">tmp</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-22"></a>    <span class="n">head</span><span class="o">=</span><span class="n">tmp</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-23"></a><span class="p">}</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-24"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-25"></a><span class="p">{</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-26"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">i</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-27"></a>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-28"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-29"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">k</span><span class="p">);</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-30"></a>    <span class="n">head</span><span class="o">=</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="p">));</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-31"></a>    <span class="n">head</span><span class="o">-&gt;</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-32"></a>    <span class="n">tmp</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-33"></a>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-34"></a>    <span class="p">{</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-35"></a>        <span class="n">cur</span><span class="o">=</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">node</span><span class="p">));</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-36"></a>        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">num</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-37"></a>        <span class="n">tmp</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">cur</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-38"></a>        <span class="n">tmp</span><span class="o">=</span><span class="n">cur</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-39"></a>    <span class="p">}</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-40"></a>    <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">head</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-41"></a>    <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">){</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-42"></a>        <span class="n">kill</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-43"></a>        <span class="n">n</span><span class="o">--</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-44"></a>    <span class="p">}</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-45"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">num</span><span class="p">);</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-46"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_904b945ba89445c6b4f3c5bf09668c58-47"></a><span class="p">}</span>
 </pre></td>
 </tr></table>
 <p>For the original Josephus problem, <span class="math">\(n=41\)</span> and <span class="math">\(k=3\)</span>, and the program answers <span class="math">\(31\)</span> as expected.
 Next, we move on to J:</p>
 <p>J being an array programming language, there are verbs to operate on arrays. So, the josephus problem is a natural candidate for J. Here it goes:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2daeb9e803d34479b356f8b7426a09b1-0">0</a>
-<a href="#rest_code_2daeb9e803d34479b356f8b7426a09b1-1">1</a>
-<a href="#rest_code_2daeb9e803d34479b356f8b7426a09b1-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_2daeb9e803d34479b356f8b7426a09b1-0"></a>a=:1+i.41
-<a name="rest_code_2daeb9e803d34479b356f8b7426a09b1-1"></a>jose=: 4 : 'a=:}.(x-1)|.y'  NB. rotate and delete the first item
-<a name="rest_code_2daeb9e803d34479b356f8b7426a09b1-2"></a>3 jose^:(_1+#a) a
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_54f6293fcb55483bbf8a9b441e1a333d-1">1</a>
+<a href="#rest_code_54f6293fcb55483bbf8a9b441e1a333d-2">2</a>
+<a href="#rest_code_54f6293fcb55483bbf8a9b441e1a333d-3">3</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_54f6293fcb55483bbf8a9b441e1a333d-1"></a>a=:1+i.41
+<a name="rest_code_54f6293fcb55483bbf8a9b441e1a333d-2"></a>jose=: 4 : 'a=:}.(x-1)|.y'  NB. rotate and delete the first item
+<a name="rest_code_54f6293fcb55483bbf8a9b441e1a333d-3"></a>3 jose^:(_1+#a) a
 </pre></td>
 </tr></table>
 <p>There, very much smaller than the C version. J code above uses nesting of function, i.e. the function jose is applied 40 times on array 'a', and a single element remains after that.</p>
 <p>A more explicit version can be written as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_bfc36bcbec324291b9c92b1ee62b3672-0">0</a>
-<a href="#rest_code_bfc36bcbec324291b9c92b1ee62b3672-1">1</a>
-<a href="#rest_code_bfc36bcbec324291b9c92b1ee62b3672-2">2</a>
-<a href="#rest_code_bfc36bcbec324291b9c92b1ee62b3672-3">3</a>
-<a href="#rest_code_bfc36bcbec324291b9c92b1ee62b3672-4">4</a>
-<a href="#rest_code_bfc36bcbec324291b9c92b1ee62b3672-5">5</a>
-<a href="#rest_code_bfc36bcbec324291b9c92b1ee62b3672-6">6</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-0"></a>    jos =: 4 : 0
-<a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-1"></a>while. (#y)&gt;1 do.
-<a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-2"></a>y=.}.(x-1)|.y
-<a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-3"></a>end.
-<a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-4"></a>return. y
-<a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-5"></a>)
-<a name="rest_code_bfc36bcbec324291b9c92b1ee62b3672-6"></a>    3 jos 1+i.41
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c5c3afed738e4b7399e899bcfdec05c2-1">1</a>
+<a href="#rest_code_c5c3afed738e4b7399e899bcfdec05c2-2">2</a>
+<a href="#rest_code_c5c3afed738e4b7399e899bcfdec05c2-3">3</a>
+<a href="#rest_code_c5c3afed738e4b7399e899bcfdec05c2-4">4</a>
+<a href="#rest_code_c5c3afed738e4b7399e899bcfdec05c2-5">5</a>
+<a href="#rest_code_c5c3afed738e4b7399e899bcfdec05c2-6">6</a>
+<a href="#rest_code_c5c3afed738e4b7399e899bcfdec05c2-7">7</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_c5c3afed738e4b7399e899bcfdec05c2-1"></a>    jos =: 4 : 0
+<a name="rest_code_c5c3afed738e4b7399e899bcfdec05c2-2"></a>while. (#y)&gt;1 do.
+<a name="rest_code_c5c3afed738e4b7399e899bcfdec05c2-3"></a>y=.}.(x-1)|.y
+<a name="rest_code_c5c3afed738e4b7399e899bcfdec05c2-4"></a>end.
+<a name="rest_code_c5c3afed738e4b7399e899bcfdec05c2-5"></a>return. y
+<a name="rest_code_c5c3afed738e4b7399e899bcfdec05c2-6"></a>)
+<a name="rest_code_c5c3afed738e4b7399e899bcfdec05c2-7"></a>    3 jos 1+i.41
 </pre></td>
 </tr></table>
 <p>When n is small, the execution time does not make much difference either in J or C. But we can notice the difference clearly when n is large. E.g. for <span class="math">\(n=40000\)</span> and <span class="math">\(k=11\)</span>, the time taken in J is about 1.68s and in C, it's only about 0.018s in my machine. J can be sped up a bit by operating on multiple items at a time, and makes the program a little more complicated.</p>

@@ -14,7 +14,7 @@ As you can see, there's already an implementation in mathematica. But, not many 
 First, to implement in C, we need to write our own data structures. We will make use of a circular linked list, since that's how the josephus problem is stated.
 
 .. code-block:: C
-    :number-lines: 0
+    :number-lines: 1
 
     #include <stdio.h>
     #include <stdlib.h>
@@ -70,7 +70,7 @@ Next, we move on to J:
 J being an array programming language, there are verbs to operate on arrays. So, the josephus problem is a natural candidate for J. Here it goes:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     a=:1+i.41
     jose=: 4 : 'a=:}.(x-1)|.y'  NB. rotate and delete the first item
@@ -81,7 +81,7 @@ There, very much smaller than the C version. J code above uses nesting of functi
 A more explicit version can be written as:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
         jos =: 4 : 0
     while. (#y)>1 do.

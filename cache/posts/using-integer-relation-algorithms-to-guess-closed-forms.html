@@ -11,37 +11,37 @@ Compile and run mathtool.</p>
 <p>Find $a, b,$ and <span class="math">\(c\)</span>.</p>
 <p>Start mathtool, and enter the commands in sequence:
 (Only the relevent output is shown after command executions)</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-0"> 0</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-1"> 1</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-2"> 2</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-3"> 3</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-4"> 4</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-5"> 5</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-6"> 6</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-7"> 7</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-8"> 8</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-9"> 9</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-10">10</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-11">11</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-12">12</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-13">13</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-14">14</a>
-<a href="#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-15">15</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-0"></a>integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-1"></a>-- snip --
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-2"></a>&gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-3"></a>epsilon=-50
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-4"></a>pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-5"></a>-- snip --
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-6"></a>&gt; Relation:  0 =
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-7"></a>&gt; +  6480.* pslq001
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-8"></a>&gt; +     0.* pslq002
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-9"></a>&gt; +     0.* pslq003
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-10"></a>&gt; +   -17.* pslq004
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-11"></a>&gt; Result[ 37] through Result[ 40] =
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-12"></a>&gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-14"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-15"></a>&gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-1"> 1</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-2"> 2</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-3"> 3</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-4"> 4</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-5"> 5</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-6"> 6</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-7"> 7</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-8"> 8</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-9"> 9</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-10">10</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-11">11</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-12">12</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-13">13</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-14">14</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-15">15</a>
+<a href="#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-16">16</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-1"></a>integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-2"></a>-- snip --
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-3"></a>&gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-4"></a>epsilon=-50
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-5"></a>pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-6"></a>-- snip --
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-7"></a>&gt; Relation:  0 =
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-8"></a>&gt; +  6480.* pslq001
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-9"></a>&gt; +     0.* pslq002
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-10"></a>&gt; +     0.* pslq003
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-11"></a>&gt; +   -17.* pslq004
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-12"></a>&gt; Result[ 37] through Result[ 40] =
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-13"></a>&gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-14"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-15"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-16"></a>&gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
 </pre></td></tr></table><p>So, the above output means, <span class="math">\(0= 6480\times 0.255548541292907628552389761683331310377371752536366075420056165916 - 17\times \pi^4\)</span>, and hence <span class="math">\(c=17, a=4, b=6480\)</span></p>
 <p>When doing such computations, it's good to have more digits when computing integral or sums, and reduce the epsilon value when using pslq, so that it checks for fewer decimal places when trying for an integer relation. Otherwise, it is likely to miss the relation when the numerical accuracy is kept high. digits=100 and epsilon=-50 worked well for me in most cases.</p>
 </li>
@@ -50,39 +50,39 @@ Compile and run mathtool.</p>
 \displaystyle \int_0^{2\log{\phi}} \log{\left(2\, \sinh{\frac{x}{2}}\right)} = -\frac{\pi^a}{b}
 \end{equation*}
 </div>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c0499093594a4727a8fb80931d57377f-0"> 0</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-1"> 1</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-2"> 2</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-3"> 3</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-4"> 4</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-5"> 5</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-6"> 6</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-7"> 7</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-8"> 8</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-9"> 9</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-10">10</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-11">11</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-12">12</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-13">13</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-14">14</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-15">15</a>
-<a href="#rest_code_c0499093594a4727a8fb80931d57377f-16">16</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_c0499093594a4727a8fb80931d57377f-0"></a>epsilon=-100
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-1"></a>integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-2"></a>&gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-3"></a>epsilon=-50
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-4"></a>pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-5"></a>&gt; Relation:  0 =
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-6"></a>&gt; +  10.* pslq001
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-7"></a>&gt; +   0.* pslq002
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-8"></a>&gt; +   1.* pslq003
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-9"></a>&gt; +   0.* pslq004
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-10"></a>&gt; +   0.* pslq005
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-11"></a>&gt; Result[ 29] through Result[ 33] =
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-12"></a>&gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-14"></a>&gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-15"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_c0499093594a4727a8fb80931d57377f-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-1"> 1</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-2"> 2</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-3"> 3</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-4"> 4</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-5"> 5</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-6"> 6</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-7"> 7</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-8"> 8</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-9"> 9</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-10">10</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-11">11</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-12">12</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-13">13</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-14">14</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-15">15</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-16">16</a>
+<a href="#rest_code_b1825a9a934c428d94b854e92f7e184c-17">17</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_b1825a9a934c428d94b854e92f7e184c-1"></a>epsilon=-100
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-2"></a>integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-3"></a>&gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-4"></a>epsilon=-50
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-5"></a>pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-6"></a>&gt; Relation:  0 =
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-7"></a>&gt; +  10.* pslq001
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-8"></a>&gt; +   0.* pslq002
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-9"></a>&gt; +   1.* pslq003
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-10"></a>&gt; +   0.* pslq004
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-11"></a>&gt; +   0.* pslq005
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-12"></a>&gt; Result[ 29] through Result[ 33] =
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-13"></a>&gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-14"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-15"></a>&gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_b1825a9a934c428d94b854e92f7e184c-17"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 </pre></td></tr></table><p>In this example, mathtool chokes when lower limit is 0 saying argument is too large, so keep it close to 0. Then using pslq, we see that a=2 and b=10.</p>
 </li>
 <li><div class="first math">
@@ -90,45 +90,45 @@ Compile and run mathtool.</p>
 \displaystyle \int_{-\infty}^{\infty} \dfrac{\log{\left(1 + e^{2x}\right)}}{1 + e^{3\, x}} = \frac{a \pi^b}{c}
 \end{equation*}
 </div>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ac86f150ebf047839d0ff9065c913421-0">0</a>
-<a href="#rest_code_ac86f150ebf047839d0ff9065c913421-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_ac86f150ebf047839d0ff9065c913421-0"></a>epsilon=-100
-<a name="rest_code_ac86f150ebf047839d0ff9065c913421-1"></a>Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c638c55089d64c9a8baf4ce4187699a3-1">1</a>
+<a href="#rest_code_c638c55089d64c9a8baf4ce4187699a3-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_c638c55089d64c9a8baf4ce4187699a3-1"></a>epsilon=-100
+<a name="rest_code_c638c55089d64c9a8baf4ce4187699a3-2"></a>Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
 </pre></td></tr></table><p>If we try to execute it directly, it complains &quot;argument too large&quot;. So, we transform it by substituting <span class="math">\(e^x=y\)</span></p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-0"> 0</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-1"> 1</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-2"> 2</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-3"> 3</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-4"> 4</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-5"> 5</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-6"> 6</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-7"> 7</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-8"> 8</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-9"> 9</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-10">10</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-11">11</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-12">12</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-13">13</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-14">14</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-15">15</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-16">16</a>
-<a href="#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-17">17</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-0"></a>Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-1"></a>&gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-2"></a>epsilon=-50
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-3"></a>pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-4"></a>&gt; Relation:  0 =
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-5"></a>&gt; +  216.* pslq001
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-6"></a>&gt; +    0.* pslq002
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-7"></a>&gt; +  -13.* pslq003
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-8"></a>&gt; +    0.* pslq004
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-9"></a>&gt; +    0.* pslq005
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-10"></a>&gt; +    0.* pslq006
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-11"></a>&gt; Result[  7] through Result[ 12] =
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-12"></a>&gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-13"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-14"></a>&gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-15"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-17"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-1"> 1</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-2"> 2</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-3"> 3</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-4"> 4</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-5"> 5</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-6"> 6</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-7"> 7</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-8"> 8</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-9"> 9</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-10">10</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-11">11</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-12">12</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-13">13</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-14">14</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-15">15</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-16">16</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-17">17</a>
+<a href="#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-18">18</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-1"></a>Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-2"></a>&gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-3"></a>epsilon=-50
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-4"></a>pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-5"></a>&gt; Relation:  0 =
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-6"></a>&gt; +  216.* pslq001
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-7"></a>&gt; +    0.* pslq002
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-8"></a>&gt; +  -13.* pslq003
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-9"></a>&gt; +    0.* pslq004
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-10"></a>&gt; +    0.* pslq005
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-11"></a>&gt; +    0.* pslq006
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-12"></a>&gt; Result[  7] through Result[ 12] =
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-13"></a>&gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-14"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-15"></a>&gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-17"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-18"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 </pre></td></tr></table><p>Hence, <span class="math">\(a=13, b=2, c=216\)</span></p>
 </li>
 <li><div class="first math">
@@ -136,47 +136,47 @@ Compile and run mathtool.</p>
 \displaystyle \int_0^1 \log{x}\log{\left(1-x\right)} dx = \frac{a}{b}-\frac{\pi^c}{d}
 \end{equation*}
 </div>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-0"> 0</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-1"> 1</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-2"> 2</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-3"> 3</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-4"> 4</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-5"> 5</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-6"> 6</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-7"> 7</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-8"> 8</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-9"> 9</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-10">10</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-11">11</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-12">12</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-13">13</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-14">14</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-15">15</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-16">16</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-17">17</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-18">18</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-19">19</a>
-<a href="#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-20">20</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-0"></a>epsilon=-100
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-1"></a>integrate[log[x]*log[1-x],{x,0,1}]
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-2"></a>&gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-3"></a>epsilon=-50
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-4"></a>pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-5"></a>&gt; Relation:  0 =
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-6"></a>&gt; +  -6.* pslq001
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-7"></a>&gt; +  12.* pslq002
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-8"></a>&gt; +   0.* pslq003
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-9"></a>&gt; +  -1.* pslq004
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-10"></a>&gt; +   0.* pslq005
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-11"></a>&gt; +   0.* pslq006
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-12"></a>&gt; +   0.* pslq007
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-13"></a>&gt; Result[ 27] through Result[ 33] =
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-14"></a>&gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-15"></a>&gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-16"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-17"></a>&gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-18"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-19"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-<a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-20"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-1"> 1</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-2"> 2</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-3"> 3</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-4"> 4</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-5"> 5</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-6"> 6</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-7"> 7</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-8"> 8</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-9"> 9</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-10">10</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-11">11</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-12">12</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-13">13</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-14">14</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-15">15</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-16">16</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-17">17</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-18">18</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-19">19</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-20">20</a>
+<a href="#rest_code_3062df19895d4bf38918d36e41bd12bb-21">21</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_3062df19895d4bf38918d36e41bd12bb-1"></a>epsilon=-100
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-2"></a>integrate[log[x]*log[1-x],{x,0,1}]
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-3"></a>&gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-4"></a>epsilon=-50
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-5"></a>pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-6"></a>&gt; Relation:  0 =
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-7"></a>&gt; +  -6.* pslq001
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-8"></a>&gt; +  12.* pslq002
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-9"></a>&gt; +   0.* pslq003
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-10"></a>&gt; +  -1.* pslq004
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-11"></a>&gt; +   0.* pslq005
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-12"></a>&gt; +   0.* pslq006
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-13"></a>&gt; +   0.* pslq007
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-14"></a>&gt; Result[ 27] through Result[ 33] =
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-15"></a>&gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-16"></a>&gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-17"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-18"></a>&gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-19"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-20"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+<a name="rest_code_3062df19895d4bf38918d36e41bd12bb-21"></a>&gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 </pre></td></tr></table><p>Therefore, <span class="math">\(a=2, b=1, c=2, d=6\)</span></p>
 </li>
 </ol>

@@ -13,7 +13,7 @@ Before trying out the analytical solution, let us get an approximate answer from
 It's just some tens of characters in J:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     a=:(3#0 1),(5#2),(7#3)
     sim =: 3 : '{.1+I.-.~:(5?#a){a'
@@ -44,7 +44,7 @@ And it can be directly translated to code.
 In Sage:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     A = 3
     B = 3
@@ -64,7 +64,7 @@ Repeat the same problem, this time with the replacement of the marbles. What's t
 Simulation is easy:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     a=:(3#0 1),(5#2),(7#3)
     sim =: 3 : '{.1+I.-.~:(?5##a){a'

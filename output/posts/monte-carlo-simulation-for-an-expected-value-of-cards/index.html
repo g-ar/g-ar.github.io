@@ -111,12 +111,12 @@ E.g. in ♠♥♥♣♦♣♣♦♦♣♠♠♣ , there">
 <p>For the simulation, we will be using a language called <a class="reference external" href="https://jsoftware.com">J</a>. The programs written in J can be very short compared to other well known languages. So, we can focus on the problem at hand instead of the program.</p>
 <p>Let's see how it can be used for our simulation (there can be other ways, here’s my shot):</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8f81718b69f149a0bbb7f26074d34b7b-0">0</a>
-<a href="#rest_code_8f81718b69f149a0bbb7f26074d34b7b-1">1</a>
-<a href="#rest_code_8f81718b69f149a0bbb7f26074d34b7b-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-0"></a>a=:13#(i.4)
-<a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-1"></a>sim=: 3 : '+/2=/\(13?52){a'
-<a name="rest_code_8f81718b69f149a0bbb7f26074d34b7b-2"></a>(+/%#)(sim "0) 1000000#0
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_20738831a5944e41b0c28ffbacde08d4-1">1</a>
+<a href="#rest_code_20738831a5944e41b0c28ffbacde08d4-2">2</a>
+<a href="#rest_code_20738831a5944e41b0c28ffbacde08d4-3">3</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_20738831a5944e41b0c28ffbacde08d4-1"></a>a=:13#(i.4)
+<a name="rest_code_20738831a5944e41b0c28ffbacde08d4-2"></a>sim=: 3 : '+/2=/\(13?52){a'
+<a name="rest_code_20738831a5944e41b0c28ffbacde08d4-3"></a>(+/%#)(sim "0) 1000000#0
 </pre></td>
 </tr></table>
 <p>That's it, less than 70 characters! It output <span class="math">\(2.82489\)</span> for me. When we are proceeding with an analytical method, if we get an answer around <span class="math">\(2.82\)</span>, then we can be pretty sure that it's right.</p>

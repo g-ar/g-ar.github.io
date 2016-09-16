@@ -38,7 +38,7 @@ What does experimental math involve?
 Back to our problem, how many rounds can we expect for the game to last? Let us do the simulation by computing answers for small values, in J:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
        'm n'=:5 3
        sim=: 3 : 0
@@ -104,7 +104,7 @@ The boundary condition is :math:`E[1]=1`, since obviously the game would end in 
 Let us calculate the number of ways to partition a number :math:`n` of length :math:`3` (number of people fixed at :math:`m=3`), using sage:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     def afun(aa,bb,cc):
         nn = aa
@@ -141,7 +141,7 @@ After some trial and error, the equation turns out to be:
 In maxima (which will cache the values to speed up recurrence computation), it can be written as:
 
 .. code-block:: scheme
-    :number-lines: 0
+    :number-lines: 1
 
     m:3$
     E[1]:1$

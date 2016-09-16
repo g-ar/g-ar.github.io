@@ -91,7 +91,7 @@ We can construct the markov chain and calculate the expected value in Sagemath (
 
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     n=6
     mx=[[0]*(n+1) for i in range(n+1)]
@@ -124,7 +124,7 @@ If we want to know only the expected value, we can use the tree method:
 From the above set of equations, we can derive the following algorithm to calculate the expected value in Sage:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     ax = 1
     n = 6

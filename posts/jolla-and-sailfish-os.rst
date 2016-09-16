@@ -41,21 +41,21 @@ Most of the reviews scattered on the net miss the fact that it is a fully functi
 - The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.
 
   .. code-block:: sh
-      :number-lines: 0
+      :number-lines: 1
 
       sqlite3 .local/share/commhistory/commhistory.db
 
 - Then, to display all the sms messages, run commands like
 
   .. code-block:: sql
-      :number-lines: 0
+      :number-lines: 1
 
       select * from events where type=2;
 
 - If we want to know what each column is about, run
 
   .. code-block:: sql
-      :number-lines: 0
+      :number-lines: 1
 
       .headers ON
 

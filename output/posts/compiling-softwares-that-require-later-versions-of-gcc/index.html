@@ -120,28 +120,28 @@ To compile on a single core, use<ul>
 </ul>
 <p>After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install <tt class="docutils literal"><span class="pre">libpng12-dev</span></tt> and compile.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7807578d1c30478ba4e46bccac282f45-0">0</a>
-<a href="#rest_code_7807578d1c30478ba4e46bccac282f45-1">1</a>
-<a href="#rest_code_7807578d1c30478ba4e46bccac282f45-2">2</a>
-<a href="#rest_code_7807578d1c30478ba4e46bccac282f45-3">3</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_7807578d1c30478ba4e46bccac282f45-0"></a><span class="nv">CC</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_7807578d1c30478ba4e46bccac282f45-1"></a><span class="nv">LD</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_7807578d1c30478ba4e46bccac282f45-2"></a><span class="nv">CPP</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
-<a name="rest_code_7807578d1c30478ba4e46bccac282f45-3"></a><span class="nv">CXX</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_6063225bb5c94aeb90ef37bcdf280529-1">1</a>
+<a href="#rest_code_6063225bb5c94aeb90ef37bcdf280529-2">2</a>
+<a href="#rest_code_6063225bb5c94aeb90ef37bcdf280529-3">3</a>
+<a href="#rest_code_6063225bb5c94aeb90ef37bcdf280529-4">4</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-1"></a><span class="nv">CC</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-2"></a><span class="nv">LD</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-3"></a><span class="nv">CPP</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
+<a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-4"></a><span class="nv">CXX</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
 </pre></td>
 </tr></table>
 <p>The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in <tt class="docutils literal">$HOME/bin</tt> named cfdg with following contents</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-0">0</a>
-<a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-1">1</a>
-<a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-2">2</a>
-<a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-3">3</a>
-<a href="#rest_code_1ae3059c36f0404fb1661c1571cc9543-4">4</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-0"></a><span class="ch">#!/bin/bash</span>
-<a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-1"></a><span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-2"></a><span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/g++
-<a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-3"></a><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/lib64
-<a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-4"></a><span class="nv">$HOME</span>/bin/context-free-3.0.9/cfdg <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d437fedb898f4b1a847dfafb7f3d959e-1">1</a>
+<a href="#rest_code_d437fedb898f4b1a847dfafb7f3d959e-2">2</a>
+<a href="#rest_code_d437fedb898f4b1a847dfafb7f3d959e-3">3</a>
+<a href="#rest_code_d437fedb898f4b1a847dfafb7f3d959e-4">4</a>
+<a href="#rest_code_d437fedb898f4b1a847dfafb7f3d959e-5">5</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-1"></a><span class="ch">#!/bin/bash</span>
+<a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-2"></a><span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/gcc
+<a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-3"></a><span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/g++
+<a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-4"></a><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/lib64
+<a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-5"></a><span class="nv">$HOME</span>/bin/context-free-3.0.9/cfdg <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 </pre></td>
 </tr></table>
 <p>and <tt class="docutils literal">chmod +x cfdg</tt>, and have fun with the software!</p>
