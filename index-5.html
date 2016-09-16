@@ -148,31 +148,31 @@ relation:</p>
 <p>One more good thing is that it comes with a fricas mode for emacs, which has many more features compared to running from a terminal. E.g. it gives features like auto-completion, matched-parenthesis highlighting, shortcut keys for navigating through the input, yanking text etc., and of course, we can define our own shortcuts since it's emacs! Let us see how to set FriCAS up and run from emacs in linux. The latest version at the time is 1.2.3, and I have only tried amd64 binary version.</p>
 <p>Make a directory <tt class="docutils literal">$HOME/bin/</tt> if not already there, and add to the <tt class="docutils literal">$PATH</tt> environment variable. Extract the components to <tt class="docutils literal">$HOME/bin/</tt>. To run it, we need to modify a few paths in its files. Go to <tt class="docutils literal">$HOME/bin/usr/local/bin</tt>, in fricas file, update the variable <tt class="docutils literal">exec_prefix</tt> to</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_53beb0d6da5e4abe9afa30660e3192c0-0">0</a></pre></div></td>
-<td class="code"><pre class="code sh"><a name="rest_code_53beb0d6da5e4abe9afa30660e3192c0-0"></a><span class="nv">exec_prefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">FRICAS_PREFIX</span><span class="k">:-</span><span class="p">/home/bin/usr/local</span><span class="si">}</span><span class="s2">"</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_a6c89f4c7ca046ffa62edcc0217f80a4-1">1</a></pre></div></td>
+<td class="code"><pre class="code sh"><a name="rest_code_a6c89f4c7ca046ffa62edcc0217f80a4-1"></a><span class="nv">exec_prefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">FRICAS_PREFIX</span><span class="k">:-</span><span class="p">/home/bin/usr/local</span><span class="si">}</span><span class="s2">"</span>
 </pre></td>
 </tr></table>
 <p>In file efricas, update FRICASCMD to</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_f7ba6f4bcfee4c70a68f0e93f83835c3-0">0</a></pre></div></td>
-<td class="code"><pre class="code sh"><a name="rest_code_f7ba6f4bcfee4c70a68f0e93f83835c3-0"></a><span class="nv">FRICASCMD</span><span class="o">=</span><span class="s1">'/home/bin/fricas'</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_a7abaa55d5fd47a7b7f1a2a56aa473f1-1">1</a></pre></div></td>
+<td class="code"><pre class="code sh"><a name="rest_code_a7abaa55d5fd47a7b7f1a2a56aa473f1-1"></a><span class="nv">FRICASCMD</span><span class="o">=</span><span class="s1">'/home/bin/fricas'</span>
 </pre></td>
 </tr></table>
 <p>and also update the line which calls emacs.</p>
 <p>Update the function fricas <span class="math">\(-\)</span> run in <tt class="docutils literal">$HOME/bin/usr/local/lib/fricas/emacs/fricas.el</tt> to</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-1">1</a>
-<a href="posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-2">2</a>
-<a href="posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-3">3</a>
-<a href="posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-4">4</a>
-<a href="posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-5">5</a></pre></div></td>
-<td class="code"><pre class="code scheme"><a name="rest_code_10b545138a314c12a0ba36de23341f39-0"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">fricas-run</span> <span class="p">()</span>
-<a name="rest_code_10b545138a314c12a0ba36de23341f39-1"></a>  <span class="s">"Run FriCAS in the current BUFFER."</span>
-<a name="rest_code_10b545138a314c12a0ba36de23341f39-2"></a>  <span class="p">(</span><span class="nf">message</span> <span class="s">"Starting FriCAS..."</span><span class="p">)</span>
-<a name="rest_code_10b545138a314c12a0ba36de23341f39-3"></a>  <span class="p">(</span><span class="nf">start-process-shell-command</span> <span class="s">"fricas"</span> <span class="p">(</span><span class="nf">current-buffer</span><span class="p">)</span>
-<a name="rest_code_10b545138a314c12a0ba36de23341f39-4"></a>                               <span class="nv">fricas-run-command</span>
-<a name="rest_code_10b545138a314c12a0ba36de23341f39-5"></a>                               <span class="s">"-noclef"</span> <span class="s">"2&gt;/dev/null"</span><span class="p">))</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-2">2</a>
+<a href="posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-3">3</a>
+<a href="posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-4">4</a>
+<a href="posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-5">5</a>
+<a href="posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-6">6</a></pre></div></td>
+<td class="code"><pre class="code scheme"><a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-1"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">fricas-run</span> <span class="p">()</span>
+<a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-2"></a>  <span class="s">"Run FriCAS in the current BUFFER."</span>
+<a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-3"></a>  <span class="p">(</span><span class="nf">message</span> <span class="s">"Starting FriCAS..."</span><span class="p">)</span>
+<a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-4"></a>  <span class="p">(</span><span class="nf">start-process-shell-command</span> <span class="s">"fricas"</span> <span class="p">(</span><span class="nf">current-buffer</span><span class="p">)</span>
+<a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-5"></a>                               <span class="nv">fricas-run-command</span>
+<a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-6"></a>                               <span class="s">"-noclef"</span> <span class="s">"2&gt;/dev/null"</span><span class="p">))</span>
 </pre></td>
 </tr></table>
 <p>Otherwise, FriCAS won't start within emacs.</p>
@@ -183,16 +183,16 @@ and its advantages to other free CAS, and probably even the paid ones.</p>
 <li>
 <p class="first"><strong>INTEGRATION</strong></p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_b198b359985c4f538de95baf465803ad-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_b198b359985c4f538de95baf465803ad-0"></a>integrate(tan(atan(x)/3),x)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_b31aad649c1c48f29a3ae510c7b266d3-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_b31aad649c1c48f29a3ae510c7b266d3-1"></a>integrate(tan(atan(x)/3),x)
 </pre></td>
 </tr></table>
 <p>This integral is an example mentioned in their document, which is instantly solved by fricas, but Sage/maxima fails after trying for a long time.</p>
 </li>
 <li>
 <div class="first"><table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_7730bec8495c4f118e20b75e1d526bdf-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_7730bec8495c4f118e20b75e1d526bdf-0"></a>integrate((x+a)^(1/2)/x,x)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_bbaf9aa23e614bf89298dda5accd2bbe-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_bbaf9aa23e614bf89298dda5accd2bbe-1"></a>integrate((x+a)^(1/2)/x,x)
 </pre></td>
 </tr></table></div>
 <p>This gives two results, for negative and non-negative a.</p>
@@ -201,14 +201,14 @@ and its advantages to other free CAS, and probably even the paid ones.</p>
 <li>
 <p class="first"><strong>SOLVING EQUATIONS</strong></p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-1">1</a>
-<a href="posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-2">2</a>
-<a href="posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-3">3</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_6dab55959e664f75802edfd434cea315-0"></a>solve(x^3+x+1,1/1000)
-<a name="rest_code_6dab55959e664f75802edfd434cea315-1"></a>solve(x^3+x+1,1/1000.0)
-<a name="rest_code_6dab55959e664f75802edfd434cea315-2"></a>radicalSolve(x^3+x+1)
-<a name="rest_code_6dab55959e664f75802edfd434cea315-3"></a>complexSolve(x^3+x+1,1/1000.0)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_d064e5afdfb048ff8dec64a7fdc62c34-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_d064e5afdfb048ff8dec64a7fdc62c34-2">2</a>
+<a href="posts/fricas-an-introduction/#rest_code_d064e5afdfb048ff8dec64a7fdc62c34-3">3</a>
+<a href="posts/fricas-an-introduction/#rest_code_d064e5afdfb048ff8dec64a7fdc62c34-4">4</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_d064e5afdfb048ff8dec64a7fdc62c34-1"></a>solve(x^3+x+1,1/1000)
+<a name="rest_code_d064e5afdfb048ff8dec64a7fdc62c34-2"></a>solve(x^3+x+1,1/1000.0)
+<a name="rest_code_d064e5afdfb048ff8dec64a7fdc62c34-3"></a>radicalSolve(x^3+x+1)
+<a name="rest_code_d064e5afdfb048ff8dec64a7fdc62c34-4"></a>complexSolve(x^3+x+1,1/1000.0)
 </pre></td>
 </tr></table>
 <p>etc. All of the above call the same algorithm to compute the roots, but the result is returned depending on the data type.</p>
@@ -216,12 +216,12 @@ and its advantages to other free CAS, and probably even the paid ones.</p>
 </li>
 <li>
 <div class="first"><table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-1">1</a>
-<a href="posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-0"></a>solve([x+y^2-4,x^2+y-2],1.E-10)
-<a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-1"></a>solve([x+y^2-4,x^2+y-2],1/10^10)
-<a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-2"></a>radicalSolve([x+y^2-4,x^2+y-2])
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_936d83e2020645deb930ec9cdd92ba8e-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_936d83e2020645deb930ec9cdd92ba8e-2">2</a>
+<a href="posts/fricas-an-introduction/#rest_code_936d83e2020645deb930ec9cdd92ba8e-3">3</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_936d83e2020645deb930ec9cdd92ba8e-1"></a>solve([x+y^2-4,x^2+y-2],1.E-10)
+<a name="rest_code_936d83e2020645deb930ec9cdd92ba8e-2"></a>solve([x+y^2-4,x^2+y-2],1/10^10)
+<a name="rest_code_936d83e2020645deb930ec9cdd92ba8e-3"></a>radicalSolve([x+y^2-4,x^2+y-2])
 </pre></td>
 </tr></table></div>
 <p>We can see that it can give all the exact results also effortlessly. In Sage/maxima, there is currently no way of making itto output all results in form of radicals.</p>
@@ -230,34 +230,34 @@ and its advantages to other free CAS, and probably even the paid ones.</p>
 <p class="first"><strong>RECURRENCE RELATIONS</strong></p>
 <p>The recursions are transformed into iterated code and compiled! And since it can also symbolically compute, this proves very useful to examine sequences.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-1">1</a>
-<a href="posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_ef28145e6e27406297250cd9268f7fdb-0"></a>fib(0)==0
-<a name="rest_code_ef28145e6e27406297250cd9268f7fdb-1"></a>fib(1)==1
-<a name="rest_code_ef28145e6e27406297250cd9268f7fdb-2"></a>fib(n)==fib(n-1)+fib(n-2)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-2">2</a>
+<a href="posts/fricas-an-introduction/#rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-3">3</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-1"></a>fib(0)==0
+<a name="rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-2"></a>fib(1)==1
+<a name="rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-3"></a>fib(n)==fib(n-1)+fib(n-2)
 </pre></td>
 </tr></table>
 <p>This automatically compiles and computes the fibonacci numbers as an iterated code.</p>
 </li>
 <li>
 <div class="first"><table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-1">1</a>
-<a href="posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-2">2</a>
-<a href="posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-3">3</a>
-<a href="posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-4">4</a>
-<a href="posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-5">5</a>
-<a href="posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-6">6</a>
-<a href="posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-7">7</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-0"></a>a(0)==1
-<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-1"></a>a(1)==1
-<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-2"></a>a(2)==1
-<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-3"></a>b(0)==0
-<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-4"></a>b(1)==0
-<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-5"></a>b(2)==0
-<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-6"></a>a(n)==a(n-1)+b(n-1)
-<a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-7"></a>b(n)==a(n-3)+b(n-3)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-2">2</a>
+<a href="posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-3">3</a>
+<a href="posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-4">4</a>
+<a href="posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-5">5</a>
+<a href="posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-6">6</a>
+<a href="posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-7">7</a>
+<a href="posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-8">8</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_39234d6d712e424fa121bde35bd09e2f-1"></a>a(0)==1
+<a name="rest_code_39234d6d712e424fa121bde35bd09e2f-2"></a>a(1)==1
+<a name="rest_code_39234d6d712e424fa121bde35bd09e2f-3"></a>a(2)==1
+<a name="rest_code_39234d6d712e424fa121bde35bd09e2f-4"></a>b(0)==0
+<a name="rest_code_39234d6d712e424fa121bde35bd09e2f-5"></a>b(1)==0
+<a name="rest_code_39234d6d712e424fa121bde35bd09e2f-6"></a>b(2)==0
+<a name="rest_code_39234d6d712e424fa121bde35bd09e2f-7"></a>a(n)==a(n-1)+b(n-1)
+<a name="rest_code_39234d6d712e424fa121bde35bd09e2f-8"></a>b(n)==a(n-3)+b(n-3)
 </pre></td>
 </tr></table></div>
 <p>This simultaneous recurrence is actually narayana's cows sequence, and this kind of recurrence is compiled as well!
@@ -268,16 +268,16 @@ Using this, we will make use of the guessing routines.</p>
 <p>The guessing routine in FriCAS can give us the likely generating function, recurrence relation, functional equation etc.</p>
 <p>Using the above simultaneous recurrence, the generating function can be obtained as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_cff9a618d09447a7aebb045e54dc1569-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_cff9a618d09447a7aebb045e54dc1569-0"></a>guessAlg [a(i)+b(i) for i in 0..20]
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_e7c7b72c69cf477a8514e30e10a357df-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_e7c7b72c69cf477a8514e30e10a357df-1"></a>guessAlg [a(i)+b(i) for i in 0..20]
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">Try for the recurrence relation.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_f873ff5b3580487facfaf3e3cafe791b-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_f873ff5b3580487facfaf3e3cafe791b-0"></a>guessPRec [a(i)+b(i) for i in 0..20]
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_bae5e922378a4c718fdf79cb94f46e9a-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_bae5e922378a4c718fdf79cb94f46e9a-1"></a>guessPRec [a(i)+b(i) for i in 0..20]
 </pre></td>
 </tr></table>
 <p>This command gives a single recurrence relation! Hence, we may solve a problem our way and use the guessing routines for simplification.
@@ -286,30 +286,30 @@ Series expansion</p>
 </li>
 <li>
 <div class="first"><table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_cdde01bcdd4a4a178d28866bde983f78-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_cdde01bcdd4a4a178d28866bde983f78-0"></a>series(x/(1-x-x^2),x=0)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_cd7f93a59fbf4c47804596069f5f017c-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_cd7f93a59fbf4c47804596069f5f017c-1"></a>series(x/(1-x-x^2),x=0)
 </pre></td>
 </tr></table></div>
 <p>or like this</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_b52d5143ea2040d28744d96500a4e19b-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_b52d5143ea2040d28744d96500a4e19b-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_b52d5143ea2040d28744d96500a4e19b-0"></a>x:=series 'x
-<a name="rest_code_b52d5143ea2040d28744d96500a4e19b-1"></a>x/(1-x-x^2)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_0a632a0ae28e457ebc72531cbb71bb64-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_0a632a0ae28e457ebc72531cbb71bb64-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_0a632a0ae28e457ebc72531cbb71bb64-1"></a>x:=series 'x
+<a name="rest_code_0a632a0ae28e457ebc72531cbb71bb64-2"></a>x/(1-x-x^2)
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">If we require only the list of coefficients of the series</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_3e65717917c9495da72e614b918411c5-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_3e65717917c9495da72e614b918411c5-0"></a>cf:=coefficients x/(1-x-x^2)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_ebb8d9c8b6e446e3934465a9ad22a597-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_ebb8d9c8b6e446e3934465a9ad22a597-1"></a>cf:=coefficients x/(1-x-x^2)
 </pre></td>
 </tr></table>
 <p>If we want the <span class="math">\([x^{100}]\)</span></p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_e4ef0f0e98634daca208d8b25d5f4b33-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_e4ef0f0e98634daca208d8b25d5f4b33-0"></a>coefficient(x/(1-x-x^2),100)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_39c30134beab4ca7be88eec59485b5ab-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_39c30134beab4ca7be88eec59485b5ab-1"></a>coefficient(x/(1-x-x^2),100)
 </pre></td>
 </tr></table>
 <p>or</p>
@@ -319,20 +319,20 @@ Series expansion</p>
 <p class="first"><strong>SOME MISCELLANEOUS INFO</strong></p>
 <p>Since the output is always pretty-printed and does not provide a way to turn it off (though there are options to output different formats like TeX, fortran, html etc.), we can obtain an unparsed output the following way:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_fc1accb33e9c4594a27cdb384acc4f27-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_fc1accb33e9c4594a27cdb384acc4f27-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_fc1accb33e9c4594a27cdb384acc4f27-0"></a>k:=(-b)^(1/3)/(1+b)
-<a name="rest_code_fc1accb33e9c4594a27cdb384acc4f27-1"></a>unparse(k :: InputForm)
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_ec6f4a2f37fd4add9ac260dcf09dfc1a-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_ec6f4a2f37fd4add9ac260dcf09dfc1a-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_ec6f4a2f37fd4add9ac260dcf09dfc1a-1"></a>k:=(-b)^(1/3)/(1+b)
+<a name="rest_code_ec6f4a2f37fd4add9ac260dcf09dfc1a-2"></a>unparse(k :: InputForm)
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">Shell commands can be executed within it:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_ba0756426ea94673b17b392819a04f90-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_ba0756426ea94673b17b392819a04f90-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_ba0756426ea94673b17b392819a04f90-0"></a>)system pwd
-<a name="rest_code_ba0756426ea94673b17b392819a04f90-1"></a>)system date
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_023e2bb2a6dc441abcf1e10d8d7fb861-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_023e2bb2a6dc441abcf1e10d8d7fb861-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_023e2bb2a6dc441abcf1e10d8d7fb861-1"></a>)system pwd
+<a name="rest_code_023e2bb2a6dc441abcf1e10d8d7fb861-2"></a>)system date
 </pre></td>
 </tr></table>
 <p>etc.</p>
@@ -340,26 +340,26 @@ Series expansion</p>
 <li>
 <p class="first"><strong>CHANGE OUTPUT FORMAT</strong></p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_7763a5ebde74442a99b7f0314a2d503b-0">0</a>
-<a href="posts/fricas-an-introduction/#rest_code_7763a5ebde74442a99b7f0314a2d503b-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_7763a5ebde74442a99b7f0314a2d503b-0"></a>)set output tex on
-<a name="rest_code_7763a5ebde74442a99b7f0314a2d503b-1"></a>)set output tex abc.tex
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_d97740f5352d4673b9ac8c83cb16209c-1">1</a>
+<a href="posts/fricas-an-introduction/#rest_code_d97740f5352d4673b9ac8c83cb16209c-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_d97740f5352d4673b9ac8c83cb16209c-1"></a>)set output tex on
+<a name="rest_code_d97740f5352d4673b9ac8c83cb16209c-2"></a>)set output tex abc.tex
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first"><strong>SHOW TIME FOR EXECUTION</strong></p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_991dc78c7dd144d6839007454ce54b5c-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_991dc78c7dd144d6839007454ce54b5c-0"></a>)set messages time on
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_210214e2f3d946bd990990590e34d0bc-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_210214e2f3d946bd990990590e34d0bc-1"></a>)set messages time on
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">Sage provides an interface to FriCAS, so we may even run it within Sage.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_0b68dcfa3c7240de8d6c213c783ffa19-0">0</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_0b68dcfa3c7240de8d6c213c783ffa19-0"></a>fricas('series(1/sqrt(1-x),x=0)')
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/fricas-an-introduction/#rest_code_76bf87546ed2427a94cb5bf8d4658ff3-1">1</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_76bf87546ed2427a94cb5bf8d4658ff3-1"></a>fricas('series(1/sqrt(1-x),x=0)')
 </pre></td>
 </tr></table>
 </li>
@@ -434,57 +434,57 @@ Series expansion</p>
 <p>That's some formula!</p>
 <p>In Sage, it can be written as</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-0">0</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-1">1</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-2">2</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-3">3</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-4">4</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-5">5</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-6">6</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-7">7</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-8">8</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-0"></a><span class="n">var</span><span class="p">(</span><span class="s1">'k y z'</span><span class="p">)</span>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-1"></a><span class="n">assume</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-2"></a><span class="n">assume</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-3"></a><span class="n">f1</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="n">k</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-4"></a><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-6"></a>    <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">f1</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-7"></a>    <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-8"></a>
-<a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-9"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">gamma</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="o">/</span><span class="n">gamma</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-1"> 1</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-2"> 2</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-3"> 3</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-4"> 4</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-5"> 5</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-6"> 6</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-7"> 7</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-8"> 8</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-9"> 9</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-10">10</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_99a68855542e4facb2385cfb0996c732-1"></a><span class="n">var</span><span class="p">(</span><span class="s1">'k y z'</span><span class="p">)</span>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-2"></a><span class="n">assume</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-3"></a><span class="n">assume</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-4"></a><span class="n">f1</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="n">k</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-5"></a><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-6"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-7"></a>    <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">f1</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-8"></a>    <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-9"></a>
+<a name="rest_code_99a68855542e4facb2385cfb0996c732-10"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">gamma</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="o">/</span><span class="n">gamma</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>To verify our answer, we can perform a simulation:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_0af8bb27121148e5918a9b1ef5060535-0">0</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_0af8bb27121148e5918a9b1ef5060535-1">1</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_0af8bb27121148e5918a9b1ef5060535-0"></a>sim=: 3 : '1&gt;+/(?6#0)^6'
-<a name="rest_code_0af8bb27121148e5918a9b1ef5060535-1"></a>(+/%#)(sim"0)100000#0 NB. = 0.63926
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_76857048cbe84412b66d3ba76897a393-1">1</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_76857048cbe84412b66d3ba76897a393-2">2</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_76857048cbe84412b66d3ba76897a393-1"></a>sim=: 3 : '1&gt;+/(?6#0)^6'
+<a name="rest_code_76857048cbe84412b66d3ba76897a393-2"></a>(+/%#)(sim"0)100000#0 NB. = 0.63926
 </pre></td>
 </tr></table>
 <p>If we want to perform a simulation in a more verbose language, R is a good candidate.</p>
 <p>The code in R looks like:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-0">0</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-1">1</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-2">2</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-3">3</a></pre></div></td>
-<td class="code"><pre class="code R"><a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-0"></a>n <span class="o">=</span> <span class="m">6</span>
-<a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-1"></a>k <span class="o">=</span> <span class="m">6</span>
-<a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-2"></a>b <span class="o">=</span> <span class="kt">array</span><span class="p">(</span>runif<span class="p">(</span>n<span class="o">*</span><span class="m">1e6</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span>n<span class="p">,</span><span class="m">1e6</span><span class="p">))</span>
-<a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-3"></a><span class="kp">mean</span><span class="p">(</span><span class="kp">apply</span><span class="p">(</span>b<span class="o">^</span>k<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="kp">sum</span><span class="p">)</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_329aecfbb6b44ea589dc8e953799c477-1">1</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_329aecfbb6b44ea589dc8e953799c477-2">2</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_329aecfbb6b44ea589dc8e953799c477-3">3</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_329aecfbb6b44ea589dc8e953799c477-4">4</a></pre></div></td>
+<td class="code"><pre class="code R"><a name="rest_code_329aecfbb6b44ea589dc8e953799c477-1"></a>n <span class="o">=</span> <span class="m">6</span>
+<a name="rest_code_329aecfbb6b44ea589dc8e953799c477-2"></a>k <span class="o">=</span> <span class="m">6</span>
+<a name="rest_code_329aecfbb6b44ea589dc8e953799c477-3"></a>b <span class="o">=</span> <span class="kt">array</span><span class="p">(</span>runif<span class="p">(</span>n<span class="o">*</span><span class="m">1e6</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span>n<span class="p">,</span><span class="m">1e6</span><span class="p">))</span>
+<a name="rest_code_329aecfbb6b44ea589dc8e953799c477-4"></a><span class="kp">mean</span><span class="p">(</span><span class="kp">apply</span><span class="p">(</span>b<span class="o">^</span>k<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="kp">sum</span><span class="p">)</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-0">0</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-1">1</a>
-<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-2">2</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-0"></a>'n k'=: 6 6
-<a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-1"></a>a=:(n, 1e6) $ ?(n*1e6)#0
-<a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-2"></a>(+/%#)1&gt;+/a^k NB. = 0.637572
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1d9de261ca2e46dd82df332f805b0518-1">1</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1d9de261ca2e46dd82df332f805b0518-2">2</a>
+<a href="posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1d9de261ca2e46dd82df332f805b0518-3">3</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_1d9de261ca2e46dd82df332f805b0518-1"></a>'n k'=: 6 6
+<a name="rest_code_1d9de261ca2e46dd82df332f805b0518-2"></a>a=:(n, 1e6) $ ?(n*1e6)#0
+<a name="rest_code_1d9de261ca2e46dd82df332f805b0518-3"></a>(+/%#)1&gt;+/a^k NB. = 0.637572
 </pre></td>
 </tr></table>
 <p>The corresponding probability derived analytically is:</p>
@@ -602,36 +602,36 @@ Series expansion</p>
 </div>
 <p>In Sage, it can be applied as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-0"> 0</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-1"> 1</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-2"> 2</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-3"> 3</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-4"> 4</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-5"> 5</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-6"> 6</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-7"> 7</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-8"> 8</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-9"> 9</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-10">10</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-11">11</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-12">12</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-13">13</a>
-<a href="posts/interesting-definite-integrals/#rest_code_3c3bf98e4f5e42569801c6644f144f43-14">14</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-0"></a><span class="c1"># Takes a few seconds</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-1"></a><span class="n">var</span><span class="p">(</span><span class="s1">'a b'</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-2"></a><span class="n">forget</span><span class="p">()</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-3"></a><span class="n">assume</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-4"></a><span class="n">intg</span> <span class="o">=</span> <span class="n">e</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">5</span><span class="o">/</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-5"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">integrate</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">intg</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">oo</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-6"></a><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-7"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-8"></a><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-9"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-10"></a><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-11"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-12"></a><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-13"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_3c3bf98e4f5e42569801c6644f144f43-14"></a><span class="n">h5</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-1"> 1</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-2"> 2</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-3"> 3</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-4"> 4</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-5"> 5</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-6"> 6</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-7"> 7</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-8"> 8</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-9"> 9</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-10">10</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-11">11</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-12">12</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-13">13</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-14">14</a>
+<a href="posts/interesting-definite-integrals/#rest_code_6374ba0080904eb788c5ef93133db2f4-15">15</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_6374ba0080904eb788c5ef93133db2f4-1"></a><span class="c1"># Takes a few seconds</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-2"></a><span class="n">var</span><span class="p">(</span><span class="s1">'a b'</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-3"></a><span class="n">forget</span><span class="p">()</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-4"></a><span class="n">assume</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-5"></a><span class="n">intg</span> <span class="o">=</span> <span class="n">e</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">5</span><span class="o">/</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-6"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">integrate</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">intg</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">oo</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-7"></a><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-8"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h1</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-9"></a><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-10"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h2</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-11"></a><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-12"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h3</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-13"></a><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-14"></a><span class="n">tmp</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">h4</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_6374ba0080904eb788c5ef93133db2f4-15"></a><span class="n">h5</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-</span><span class="n">limit</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">oo</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 </li>

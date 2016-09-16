@@ -23,7 +23,7 @@ Now, for the condition that the needle touches the line, the other end must be e
 Following is the code in J:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     load 'trig'
     'l d'=:4 1    
@@ -37,7 +37,7 @@ Following is the code in J:
 It gives an answer about :math:`0.919978`, and changing :math:`l` and :math:`d` to
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     'l d'=:1 4
 

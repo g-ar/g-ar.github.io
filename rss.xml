@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Gopinath A R</title><link>https://g-ar.github.io/</link><description>Some random stuffs -- Programming and Mathematics</description><atom:link type="application/rss+xml" href="https://g-ar.github.io/rss.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 15 Sep 2016 17:51:37 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R</title><link>https://g-ar.github.io/</link><description>Some random stuffs -- Programming and Mathematics</description><atom:link href="https://g-ar.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Fri, 16 Sep 2016 08:36:35 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Using integer relation algorithms to guess closed forms</title><link>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;In this post, we'll see about guessing closed forms of the answers obtained by numerical methods.
 In particular, we'll use the excellent math toolkit by David Bailey et. al. aimed at experimental mathematics -- &lt;a class="reference external" href="http://crd.lbl.gov/~dhbailey/mpdist/arprec-2.2.18.tar.gz"&gt;arprec&lt;/a&gt;.
 Compile and run mathtool.&lt;/p&gt;
 &lt;p&gt;The following problems are taken from &lt;a class="reference external" href="https://brilliant.org"&gt;Brilliant&lt;/a&gt;&lt;/p&gt;
@@ -12,37 +12,37 @@ Compile and run mathtool.&lt;/p&gt;
 &lt;p&gt;Find $a, b,$ and &lt;span class="math"&gt;\(c\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Start mathtool, and enter the commands in sequence:
 (Only the relevent output is shown after command executions)&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-15"&gt;15&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-0"&gt;&lt;/a&gt;integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-1"&gt;&lt;/a&gt;-- snip --
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-2"&gt;&lt;/a&gt;&amp;gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-3"&gt;&lt;/a&gt;epsilon=-50
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-4"&gt;&lt;/a&gt;pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-5"&gt;&lt;/a&gt;-- snip --
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-6"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-7"&gt;&lt;/a&gt;&amp;gt; +  6480.* pslq001
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-8"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq002
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-9"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq003
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-10"&gt;&lt;/a&gt;&amp;gt; +   -17.* pslq004
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-11"&gt;&lt;/a&gt;&amp;gt; Result[ 37] through Result[ 40] =
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-12"&gt;&lt;/a&gt;&amp;gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-14"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_776b81f3ac3b43eebdd0e8fc0e471d40-15"&gt;&lt;/a&gt;&amp;gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-1"&gt;&lt;/a&gt;integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-2"&gt;&lt;/a&gt;-- snip --
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-3"&gt;&lt;/a&gt;&amp;gt; 0.25554854129290762855238976168333131037737175253636607542005616591624
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-4"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-5"&gt;&lt;/a&gt;pslq[0.25554854129290762855238976168333131037737175253636607542005616591624, table[pi^i,{i,2,4}]]
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-6"&gt;&lt;/a&gt;-- snip --
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-7"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-8"&gt;&lt;/a&gt;&amp;gt; +  6480.* pslq001
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-9"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq002
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-10"&gt;&lt;/a&gt;&amp;gt; +     0.* pslq003
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-11"&gt;&lt;/a&gt;&amp;gt; +   -17.* pslq004
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-12"&gt;&lt;/a&gt;&amp;gt; Result[ 37] through Result[ 40] =
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-13"&gt;&lt;/a&gt;&amp;gt;      6480.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-14"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_fee4aad3de8d4b9291d41311dc3fd5c8-16"&gt;&lt;/a&gt;&amp;gt;       -17.00000000000000000000000000000000000000000000000000000000000000000000
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;So, the above output means, &lt;span class="math"&gt;\(0= 6480\times 0.255548541292907628552389761683331310377371752536366075420056165916 - 17\times \pi^4\)&lt;/span&gt;, and hence &lt;span class="math"&gt;\(c=17, a=4, b=6480\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;When doing such computations, it's good to have more digits when computing integral or sums, and reduce the epsilon value when using pslq, so that it checks for fewer decimal places when trying for an integer relation. Otherwise, it is likely to miss the relation when the numerical accuracy is kept high. digits=100 and epsilon=-50 worked well for me in most cases.&lt;/p&gt;
 &lt;/li&gt;
@@ -51,39 +51,39 @@ Compile and run mathtool.&lt;/p&gt;
 \displaystyle \int_0^{2\log{\phi}} \log{\left(2\, \sinh{\frac{x}{2}}\right)} = -\frac{\pi^a}{b}
 \end{equation*}
 &lt;/div&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-15"&gt;15&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c0499093594a4727a8fb80931d57377f-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-0"&gt;&lt;/a&gt;epsilon=-100
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-1"&gt;&lt;/a&gt;integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-2"&gt;&lt;/a&gt;&amp;gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-3"&gt;&lt;/a&gt;epsilon=-50
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-4"&gt;&lt;/a&gt;pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-6"&gt;&lt;/a&gt;&amp;gt; +  10.* pslq001
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-7"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq002
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-8"&gt;&lt;/a&gt;&amp;gt; +   1.* pslq003
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-9"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq004
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-11"&gt;&lt;/a&gt;&amp;gt; Result[ 29] through Result[ 33] =
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-12"&gt;&lt;/a&gt;&amp;gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-14"&gt;&lt;/a&gt;&amp;gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_c0499093594a4727a8fb80931d57377f-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_b1825a9a934c428d94b854e92f7e184c-17"&gt;17&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-1"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-2"&gt;&lt;/a&gt;integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-3"&gt;&lt;/a&gt;&amp;gt; -0.98696044010893586188344909998761511353136994072407906264133493762200
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-4"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-5"&gt;&lt;/a&gt;pslq[-0.98696044010893586188344909998761511353136994072407906264133493762200, table[pi^i,{i,1,4}]]
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-6"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-7"&gt;&lt;/a&gt;&amp;gt; +  10.* pslq001
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-8"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq002
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-9"&gt;&lt;/a&gt;&amp;gt; +   1.* pslq003
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq004
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-11"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-12"&gt;&lt;/a&gt;&amp;gt; Result[ 29] through Result[ 33] =
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-13"&gt;&lt;/a&gt;&amp;gt;        10.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-14"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-15"&gt;&lt;/a&gt;&amp;gt;         1.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_b1825a9a934c428d94b854e92f7e184c-17"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;In this example, mathtool chokes when lower limit is 0 saying argument is too large, so keep it close to 0. Then using pslq, we see that a=2 and b=10.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;div class="first math"&gt;
@@ -91,45 +91,45 @@ Compile and run mathtool.&lt;/p&gt;
 \displaystyle \int_{-\infty}^{\infty} \dfrac{\log{\left(1 + e^{2x}\right)}}{1 + e^{3\, x}} = \frac{a \pi^b}{c}
 \end{equation*}
 &lt;/div&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_ac86f150ebf047839d0ff9065c913421-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_ac86f150ebf047839d0ff9065c913421-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ac86f150ebf047839d0ff9065c913421-0"&gt;&lt;/a&gt;epsilon=-100
-&lt;a name="rest_code_ac86f150ebf047839d0ff9065c913421-1"&gt;&lt;/a&gt;Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c638c55089d64c9a8baf4ce4187699a3-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_c638c55089d64c9a8baf4ce4187699a3-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_c638c55089d64c9a8baf4ce4187699a3-1"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_c638c55089d64c9a8baf4ce4187699a3-2"&gt;&lt;/a&gt;Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we try to execute it directly, it complains "argument too large". So, we transform it by substituting &lt;span class="math"&gt;\(e^x=y\)&lt;/span&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-15"&gt;15&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-16"&gt;16&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_549ab93f8a6c43f1a4a6fc2a14826615-17"&gt;17&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-0"&gt;&lt;/a&gt;Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-1"&gt;&lt;/a&gt;&amp;gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-2"&gt;&lt;/a&gt;epsilon=-50
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-3"&gt;&lt;/a&gt;pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-4"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-5"&gt;&lt;/a&gt;&amp;gt; +  216.* pslq001
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-6"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq002
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-7"&gt;&lt;/a&gt;&amp;gt; +  -13.* pslq003
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-8"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq004
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-9"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq005
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-10"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq006
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-11"&gt;&lt;/a&gt;&amp;gt; Result[  7] through Result[ 12] =
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-12"&gt;&lt;/a&gt;&amp;gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-13"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-14"&gt;&lt;/a&gt;&amp;gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-15"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_549ab93f8a6c43f1a4a6fc2a14826615-17"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-17"&gt;17&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_2c0f8e6ea395415db1fc9b29d2995d87-18"&gt;18&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-1"&gt;&lt;/a&gt;Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-2"&gt;&lt;/a&gt;&amp;gt; 0.59400396858408176872614992128884242944017635321356610251561824949472
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-3"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-4"&gt;&lt;/a&gt;pslq[0.59400396858408176872614992128884242944017635321356610251561824949472,table[pi^i,{i,1,5}]]
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-6"&gt;&lt;/a&gt;&amp;gt; +  216.* pslq001
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-7"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq002
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-8"&gt;&lt;/a&gt;&amp;gt; +  -13.* pslq003
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-9"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq004
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-10"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq005
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-11"&gt;&lt;/a&gt;&amp;gt; +    0.* pslq006
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-12"&gt;&lt;/a&gt;&amp;gt; Result[  7] through Result[ 12] =
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-13"&gt;&lt;/a&gt;&amp;gt;       216.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-14"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-15"&gt;&lt;/a&gt;&amp;gt;       -13.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-17"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_2c0f8e6ea395415db1fc9b29d2995d87-18"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Hence, &lt;span class="math"&gt;\(a=13, b=2, c=216\)&lt;/span&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;div class="first math"&gt;
@@ -137,47 +137,47 @@ Compile and run mathtool.&lt;/p&gt;
 \displaystyle \int_0^1 \log{x}\log{\left(1-x\right)} dx = \frac{a}{b}-\frac{\pi^c}{d}
 \end{equation*}
 &lt;/div&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-15"&gt;15&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-16"&gt;16&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-17"&gt;17&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-18"&gt;18&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-19"&gt;19&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-20"&gt;20&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-0"&gt;&lt;/a&gt;epsilon=-100
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-1"&gt;&lt;/a&gt;integrate[log[x]*log[1-x],{x,0,1}]
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-2"&gt;&lt;/a&gt;&amp;gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-3"&gt;&lt;/a&gt;epsilon=-50
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-4"&gt;&lt;/a&gt;pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-5"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-6"&gt;&lt;/a&gt;&amp;gt; +  -6.* pslq001
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-7"&gt;&lt;/a&gt;&amp;gt; +  12.* pslq002
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-8"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq003
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-9"&gt;&lt;/a&gt;&amp;gt; +  -1.* pslq004
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-10"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-11"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq006
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-12"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq007
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-13"&gt;&lt;/a&gt;&amp;gt; Result[ 27] through Result[ 33] =
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-14"&gt;&lt;/a&gt;&amp;gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-15"&gt;&lt;/a&gt;&amp;gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-16"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-17"&gt;&lt;/a&gt;&amp;gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-18"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-19"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
-&lt;a name="rest_code_3ddbfb1486df4807b35acfdf1cc0c0bb-20"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-17"&gt;17&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-18"&gt;18&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-19"&gt;19&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-20"&gt;20&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/#rest_code_3062df19895d4bf38918d36e41bd12bb-21"&gt;21&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-1"&gt;&lt;/a&gt;epsilon=-100
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-2"&gt;&lt;/a&gt;integrate[log[x]*log[1-x],{x,0,1}]
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-3"&gt;&lt;/a&gt;&amp;gt; 0.35506593315177356352758483335397481078105009879320156226444177062999
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-4"&gt;&lt;/a&gt;epsilon=-50
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-5"&gt;&lt;/a&gt;pslq[0.35506593315177356352758483335397481078105009879320156226444177062999, 1,table[pi^i,{i,1,5}]]
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-6"&gt;&lt;/a&gt;&amp;gt; Relation:  0 =
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-7"&gt;&lt;/a&gt;&amp;gt; +  -6.* pslq001
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-8"&gt;&lt;/a&gt;&amp;gt; +  12.* pslq002
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-9"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq003
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-10"&gt;&lt;/a&gt;&amp;gt; +  -1.* pslq004
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-11"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq005
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-12"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq006
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-13"&gt;&lt;/a&gt;&amp;gt; +   0.* pslq007
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-14"&gt;&lt;/a&gt;&amp;gt; Result[ 27] through Result[ 33] =
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-15"&gt;&lt;/a&gt;&amp;gt;        -6.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-16"&gt;&lt;/a&gt;&amp;gt;        12.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-17"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-18"&gt;&lt;/a&gt;&amp;gt;        -1.00000000000000000000000000000000000000000000000000000000000000000000
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-19"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-20"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
+&lt;a name="rest_code_3062df19895d4bf38918d36e41bd12bb-21"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Therefore, &lt;span class="math"&gt;\(a=2, b=1, c=2, d=6\)&lt;/span&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;&lt;/div&gt;</description><category>experiment math</category><category>integration</category><category>mathjax</category><category>pslq</category><guid>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</guid><pubDate>Sat, 02 Jul 2016 14:21:29 GMT</pubDate></item><item><title>Compiling softwares that require later versions of GCC</title><link>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Suppose we require to install the latest version of a software, but the repository doesn't have it, we usually either get the latest source code and compile, or download the compiled binary if available, and run it. But if we are running some old distro, latest binary refuse to run complaining that it requires GLIBC 2.16 to run etc. When the binary file refuses to run, we can then try to compile the source, which usually works fine. But sometimes it happens that the source requires a language standard, which is unsupported by the GCC version installed. In such cases, we can download the latest GCC, compile it, and then compile the required software using the latest GCC. We'll see an example to compile "Context Free" -- a program which generates art from a context free grammar, and requires C++11 standard to compile. The steps mentioned below were done on debian wheezy, whose software repository contains version 2 of cfdg whereas the latest version is 3.&lt;/p&gt;
@@ -194,23 +194,23 @@ To compile on a single core, use&lt;ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;libpng12-dev&lt;/span&gt;&lt;/tt&gt; and compile.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7807578d1c30478ba4e46bccac282f45-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7807578d1c30478ba4e46bccac282f45-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7807578d1c30478ba4e46bccac282f45-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_7807578d1c30478ba4e46bccac282f45-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_7807578d1c30478ba4e46bccac282f45-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_7807578d1c30478ba4e46bccac282f45-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;LD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_7807578d1c30478ba4e46bccac282f45-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CPP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
-&lt;a name="rest_code_7807578d1c30478ba4e46bccac282f45-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CXX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_6063225bb5c94aeb90ef37bcdf280529-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_6063225bb5c94aeb90ef37bcdf280529-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_6063225bb5c94aeb90ef37bcdf280529-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_6063225bb5c94aeb90ef37bcdf280529-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;LD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CPP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CXX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in &lt;tt class="docutils literal"&gt;$HOME/bin&lt;/tt&gt; named cfdg with following contents&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_1ae3059c36f0404fb1661c1571cc9543-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-0"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CXX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/g++
-&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/lib64
-&lt;a name="rest_code_1ae3059c36f0404fb1661c1571cc9543-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/context-free-3.0.9/cfdg &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-5"&gt;5&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/gcc
+&lt;a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CXX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/g++
+&lt;a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-4"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/lib64
+&lt;a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-5"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/context-free-3.0.9/cfdg &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and &lt;tt class="docutils literal"&gt;chmod +x cfdg&lt;/tt&gt;, and have fun with the software!&lt;/p&gt;&lt;/div&gt;</description><category>computer art</category><category>context free art</category><category>debian</category><category>GCC</category><category>linux</category><category>mathjax</category><guid>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</guid><pubDate>Sun, 20 Dec 2015 14:10:01 GMT</pubDate></item><item><title>Installing and Running TensorFlow in Debian Wheezy</title><link>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;A couple of days ago google released what they term it as the second generation deep learning neural network software system, called TensorFlow. Google has been taking much interest in deep learning since two or three years (perhaps having surplus computation power?), and they are using it for all sorts of softwares they develop &lt;span class="math"&gt;\(-\)&lt;/span&gt; maps, translation, spying on you for targeted ads etc. So, I thought of trying out their newly released tool.&lt;/p&gt;
 &lt;p&gt;First, I tried to install it using their "easy way" using &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt;. Getting into the virtual environment is easy, and pip install command also worked, but when importing tensorflow, it spit an ugly ImportError &lt;span class="math"&gt;\(-\)&lt;/span&gt; &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/lib/x86_64-linux-gnu/libc.so.6:&lt;/span&gt; version `GLIBC_2.17' not found&lt;/tt&gt;. Now, for the other option.&lt;/p&gt;
 &lt;p&gt;Next, I thought installing from sources would definitely go well. Downloaded all the source codes and dependencies required by the project, and bazel was one of them. Downloaded bazel as well, but when the installation script was run, that method also went kaput with some error complaining about the kernel version or something. Running from a virtual machine or installing some latest distro was my only option, I thought. But no! There's another method using docker image, which I overlooked even though that was mentioned at the top of the installation page.&lt;/p&gt;
@@ -259,11 +259,11 @@ To compile on a single core, use&lt;ul&gt;
 \end{equation*}
 &lt;/div&gt;
 &lt;p&gt;which can be verified by a simulation in J:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_574b07518cfe4817ab00db3b4a14a758-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_574b07518cfe4817ab00db3b4a14a758-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_574b07518cfe4817ab00db3b4a14a758-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_574b07518cfe4817ab00db3b4a14a758-0"&gt;&lt;/a&gt;n=:10
-&lt;a name="rest_code_574b07518cfe4817ab00db3b4a14a758-1"&gt;&lt;/a&gt;sim=: 3 : '6=+/~:?n#6'
-&lt;a name="rest_code_574b07518cfe4817ab00db3b4a14a758-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0 NB. about 0.27
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_e3ddfcd0c5bc4c549310a51a9c747362-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_e3ddfcd0c5bc4c549310a51a9c747362-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/#rest_code_e3ddfcd0c5bc4c549310a51a9c747362-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_e3ddfcd0c5bc4c549310a51a9c747362-1"&gt;&lt;/a&gt;n=:10
+&lt;a name="rest_code_e3ddfcd0c5bc4c549310a51a9c747362-2"&gt;&lt;/a&gt;sim=: 3 : '6=+/~:?n#6'
+&lt;a name="rest_code_e3ddfcd0c5bc4c549310a51a9c747362-3"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0 NB. about 0.27
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{equation*}
@@ -314,17 +314,17 @@ E(x,y) = e^{x\, \left(4\, y^{11}+4\, y^{12}+5\, y^{13}+6\, y^{14}+3\, y^{15} \ri
 &lt;/div&gt;
 &lt;p&gt;and the probability is given by &lt;span class="math"&gt;\([x^8 y^{105}]E(x,y)\dfrac{8!}{22^8} = \dfrac{5621995920}{22^8} \approx 0.102449319851133\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The above probabilities can also be verified by monte-carlo simulations in J, for the without replacement case:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_c69166cbe0be4c67bccb2738bc440464-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-0"&gt;&lt;/a&gt;lst=:(4#11,12),(5#13),(6#14),3#15
-&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-1"&gt;&lt;/a&gt;sim=: 3 : '105=+/(8?#lst){lst'
-&lt;a name="rest_code_c69166cbe0be4c67bccb2738bc440464-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_4a643fbb2710495da09ba1dbdf94eeb2-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_4a643fbb2710495da09ba1dbdf94eeb2-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_4a643fbb2710495da09ba1dbdf94eeb2-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_4a643fbb2710495da09ba1dbdf94eeb2-1"&gt;&lt;/a&gt;lst=:(4#11,12),(5#13),(6#14),3#15
+&lt;a name="rest_code_4a643fbb2710495da09ba1dbdf94eeb2-2"&gt;&lt;/a&gt;sim=: 3 : '105=+/(8?#lst){lst'
+&lt;a name="rest_code_4a643fbb2710495da09ba1dbdf94eeb2-3"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and for the with replacement case:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_1a1dfa352fe04278970ff04c42a3553c-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-0"&gt;&lt;/a&gt;lst=:(4#11,12),(5#13),(6#14),3#15
-&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-1"&gt;&lt;/a&gt;sim=: 3 : '105=+/(?8##lst){lst'
-&lt;a name="rest_code_1a1dfa352fe04278970ff04c42a3553c-2"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_0cb7390787b949e5905466a949b2c2e4-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_0cb7390787b949e5905466a949b2c2e4-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/#rest_code_0cb7390787b949e5905466a949b2c2e4-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_0cb7390787b949e5905466a949b2c2e4-1"&gt;&lt;/a&gt;lst=:(4#11,12),(5#13),(6#14),3#15
+&lt;a name="rest_code_0cb7390787b949e5905466a949b2c2e4-2"&gt;&lt;/a&gt;sim=: 3 : '105=+/(?8##lst){lst'
+&lt;a name="rest_code_0cb7390787b949e5905466a949b2c2e4-3"&gt;&lt;/a&gt;(+/%#)(sim"0)1e5#0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</description><category>generating function</category><category>J</category><category>mathjax</category><category>multiset</category><category>simulation</category><guid>https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/</guid><pubDate>Fri, 03 Jul 2015 11:30:24 GMT</pubDate></item><item><title>Getting started with experimental mathematics</title><link>https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Here is one &lt;a class="reference external" href="https://math.stackexchange.com/questions/1061083/average-time-to-fill-boxes-with-balls/"&gt;nice problem&lt;/a&gt; to describe how arrive at a formula experimentally.&lt;/p&gt;
 &lt;p&gt;To rephrase the problem:&lt;/p&gt;
 &lt;p&gt;There are &lt;span class="math"&gt;\(m\)&lt;/span&gt; people with one ball each, and &lt;span class="math"&gt;\(n\)&lt;/span&gt; boxes. In a round, each of them picks one box randomly (uniformly and independently) and
@@ -345,29 +345,29 @@ boxes are left?&lt;/p&gt;
 &lt;li&gt;Having a lot of fun, doing both math and programming at the same time!&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Back to our problem, how many rounds can we expect for the game to last? Let us do the simulation by computing answers for small values, in J:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_4844f12d9e184486a50f3adbaeca4d6a-11"&gt;11&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-0"&gt;&lt;/a&gt;   'm n'=:5 3
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-1"&gt;&lt;/a&gt;   sim=: 3 : 0
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-2"&gt;&lt;/a&gt;a=:m
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-3"&gt;&lt;/a&gt;c=:0
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-4"&gt;&lt;/a&gt;while. (a&amp;gt;0) do.
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-5"&gt;&lt;/a&gt;b=:+/~:?n#a
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-6"&gt;&lt;/a&gt;a=:a-b
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-7"&gt;&lt;/a&gt;c=:c+1
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-8"&gt;&lt;/a&gt;end.
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-9"&gt;&lt;/a&gt;c return.
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-10"&gt;&lt;/a&gt;)
-&lt;a name="rest_code_4844f12d9e184486a50f3adbaeca4d6a-11"&gt;&lt;/a&gt;   (+/%#)(sim"0)1e5#0
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_db608cfca974444d89d6f3333fa3a165-12"&gt;12&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-1"&gt;&lt;/a&gt;   'm n'=:5 3
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-2"&gt;&lt;/a&gt;   sim=: 3 : 0
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-3"&gt;&lt;/a&gt;a=:m
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-4"&gt;&lt;/a&gt;c=:0
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-5"&gt;&lt;/a&gt;while. (a&amp;gt;0) do.
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-6"&gt;&lt;/a&gt;b=:+/~:?n#a
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-7"&gt;&lt;/a&gt;a=:a-b
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-8"&gt;&lt;/a&gt;c=:c+1
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-9"&gt;&lt;/a&gt;end.
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-10"&gt;&lt;/a&gt;c return.
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-11"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_db608cfca974444d89d6f3333fa3a165-12"&gt;&lt;/a&gt;   (+/%#)(sim"0)1e5#0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Running the above gives a value of about &lt;span class="math"&gt;\(2.554\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Next, we will try to compute some numbers:
 How many ways is it possible for 3 balls to be placed 5 boxes such that everybody chooses the same box?&lt;/p&gt;
@@ -396,39 +396,39 @@ E[n] = p_1 * E[n-1] + p_2 * E[n-2] + \cdots + p_m * E[n-m]
 The boundary condition is &lt;span class="math"&gt;\(E[1]=1\)&lt;/span&gt;, since obviously the game would end in one round if there was a single box.&lt;/p&gt;
 &lt;p&gt;&lt;span class="math"&gt;\(E[5]\)&lt;/span&gt; would be &lt;span class="math"&gt;\(\dfrac{18391}{7200} = 2.5543\)&lt;/span&gt; which is close to the simulation. Hence, we can proceed with our experimentation for conjecturing a formula.&lt;/p&gt;
 &lt;p&gt;Let us calculate the number of ways to partition a number &lt;span class="math"&gt;\(n\)&lt;/span&gt; of length &lt;span class="math"&gt;\(3\)&lt;/span&gt; (number of people fixed at &lt;span class="math"&gt;\(m=3\)&lt;/span&gt;), using sage:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-0"&gt; 0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-11"&gt;11&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-12"&gt;12&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-13"&gt;13&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-14"&gt;14&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-15"&gt;15&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_97f2766c26934bafa82819f4bb1f2ad1-16"&gt;16&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-0"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;aa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;bb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-1"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aa&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-2"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nbac&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-3"&gt;&lt;/a&gt;    &lt;span class="n"&gt;mm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bb&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-4"&gt;&lt;/a&gt;    &lt;span class="n"&gt;ll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cc&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;alst&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Partitions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alst&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-8"&gt;&lt;/a&gt;        &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-9"&gt;&lt;/a&gt;        &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-10"&gt;&lt;/a&gt;        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-11"&gt;&lt;/a&gt;            &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;*=&lt;/span&gt; &lt;span class="n"&gt;binomial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-12"&gt;&lt;/a&gt;            &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-13"&gt;&lt;/a&gt;        &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;Permutations&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cardinality&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;tot&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-14"&gt;&lt;/a&gt;        &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nbac&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-15"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;summ&lt;/span&gt;
-&lt;a name="rest_code_97f2766c26934bafa82819f4bb1f2ad1-16"&gt;&lt;/a&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_3a6a3c71cb85445e9f34390a7e1e6626-17"&gt;17&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;aa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;bb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-2"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aa&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-3"&gt;&lt;/a&gt;    &lt;span class="n"&gt;nbac&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-4"&gt;&lt;/a&gt;    &lt;span class="n"&gt;mm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bb&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;ll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cc&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-7"&gt;&lt;/a&gt;    &lt;span class="n"&gt;alst&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Partitions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-8"&gt;&lt;/a&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alst&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-9"&gt;&lt;/a&gt;        &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-10"&gt;&lt;/a&gt;        &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-11"&gt;&lt;/a&gt;        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-12"&gt;&lt;/a&gt;            &lt;span class="n"&gt;tot&lt;/span&gt; &lt;span class="o"&gt;*=&lt;/span&gt; &lt;span class="n"&gt;binomial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-13"&gt;&lt;/a&gt;            &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-14"&gt;&lt;/a&gt;        &lt;span class="n"&gt;summ&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;Permutations&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cardinality&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;tot&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-15"&gt;&lt;/a&gt;        &lt;span class="n"&gt;nn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nbac&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-16"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;summ&lt;/span&gt;
+&lt;a name="rest_code_3a6a3c71cb85445e9f34390a7e1e6626-17"&gt;&lt;/a&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;afun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;What this function afun does is that for &lt;span class="math"&gt;\(n\)&lt;/span&gt; and &lt;span class="math"&gt;\(m\)&lt;/span&gt;, it computes the number of partitions having length &lt;span class="math"&gt;\(l (\le m)\)&lt;/span&gt;, and we compute the list of values for &lt;span class="math"&gt;\(l=m=3\)&lt;/span&gt; and varying &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Insert that list to oeis, and bingo! The second answer shown looks promising: &lt;span class="math"&gt;\(A(k,3)\)&lt;/span&gt; where &lt;span class="math"&gt;\(A(k,n)= \sum_{m=1}^k (-1)^{m+1}\cdot \binom{n}{m} \cdot m^k\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It seems to be related to the stirling numbers of the second kind.&lt;/p&gt;
@@ -440,13 +440,13 @@ E_{1,m} &amp;amp;= 1
 \end{align*}
 &lt;/div&gt;
 &lt;p&gt;In maxima (which will cache the values to speed up recurrence computation), it can be written as:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_d874665e4db94b2aac69710c4949528f-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_d874665e4db94b2aac69710c4949528f-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;m:3$&lt;/span&gt;
-&lt;a name="rest_code_d874665e4db94b2aac69710c4949528f-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;:1$&lt;/span&gt;
-&lt;a name="rest_code_d874665e4db94b2aac69710c4949528f-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;:=sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;stirling2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;m,j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;*factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;/factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;n-j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;*E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;n-j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;/n^m,j,1,n-1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;+1$&lt;/span&gt;
-&lt;a name="rest_code_d874665e4db94b2aac69710c4949528f-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_cff1cddfc7774880bca69676f75a40d8-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_cff1cddfc7774880bca69676f75a40d8-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_cff1cddfc7774880bca69676f75a40d8-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/#rest_code_cff1cddfc7774880bca69676f75a40d8-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_cff1cddfc7774880bca69676f75a40d8-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;m:3$&lt;/span&gt;
+&lt;a name="rest_code_cff1cddfc7774880bca69676f75a40d8-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;:1$&lt;/span&gt;
+&lt;a name="rest_code_cff1cddfc7774880bca69676f75a40d8-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;:=sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;stirling2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;m,j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;*factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;/factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;n-j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;*E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;n-j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;/n^m,j,1,n-1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;+1$&lt;/span&gt;
+&lt;a name="rest_code_cff1cddfc7774880bca69676f75a40d8-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;E&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</description><category>expected value</category><category>experimental mathematics</category><category>J</category><category>mathjax</category><category>recurrence</category><category>sage</category><category>simulation</category><guid>https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/</guid><pubDate>Tue, 16 Dec 2014 11:17:39 GMT</pubDate></item><item><title>Jolla and sailfish OS</title><link>https://g-ar.github.io/posts/jolla-and-sailfish-os/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Last week, I bought a Jolla phone after looking at some of the amazing features it offers. What are those amazing features? We'll see..&lt;/p&gt;
 &lt;p&gt;Most of the reviews scattered on the net miss the fact that it is a fully functional linux machine! We can install gcc, python etc. from the terminal (after the developer mode is activated). Let me list some of the things I did after getting my hands on the Jolla phone:&lt;/p&gt;
 &lt;ul&gt;
@@ -476,13 +476,13 @@ E_{1,m} &amp;amp;= 1
 &lt;li&gt;&lt;p class="first"&gt;We can also install several useful softwares like emacs, system monitor, cpufrequtils etc. from openrepos.net. Hence, we can have the tools we need with us all the time! (Emacs calc mode itself can serve as a mini CAS!)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_997889bd0f794af5ae2bfdfee74a7891-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_997889bd0f794af5ae2bfdfee74a7891-0"&gt;&lt;/a&gt;sqlite3 .local/share/commhistory/commhistory.db
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_f2ed86b8e8ff4e8580fac7bf45666dbb-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_f2ed86b8e8ff4e8580fac7bf45666dbb-1"&gt;&lt;/a&gt;sqlite3 .local/share/commhistory/commhistory.db
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;Then, to display all the sms messages, run commands like&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_f306facd19ec4d37b8b3b60048eeb351-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sql"&gt;&lt;a name="rest_code_f306facd19ec4d37b8b3b60048eeb351-0"&gt;&lt;/a&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_bef283b817f74a9a8ed02da2f7921b9a-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sql"&gt;&lt;a name="rest_code_bef283b817f74a9a8ed02da2f7921b9a-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt; &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;If we want to know what each column is about, run&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_648d73ba788a48bf9a8972755d36cab0-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sql"&gt;&lt;a name="rest_code_648d73ba788a48bf9a8972755d36cab0-0"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;headers&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/jolla-and-sailfish-os/#rest_code_c70dd54e93224d999918fec8c729cb3e-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sql"&gt;&lt;a name="rest_code_c70dd54e93224d999918fec8c729cb3e-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;headers&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;And to top it all, though an ARM binary is not available, we can easily compile J to run it from the console! I think it's perfectly suitable language that can be used on a phone. (J download for RPi works too)&lt;/p&gt;
 &lt;/li&gt;
@@ -543,126 +543,126 @@ relation:&lt;/p&gt;
 &lt;p&gt;I have been using FriCAS for a while mainly for its number sequence guessing routines, an indispensable part when working on enumeration problems. But recently, when I tried other operations which I mostly do in Sage or maxima, like integration and solving equations, I was surprised to see it could give simpler and more complete answers than Sage/maxima.&lt;/p&gt;
 &lt;p&gt;One more good thing is that it comes with a fricas mode for emacs, which has many more features compared to running from a terminal. E.g. it gives features like auto-completion, matched-parenthesis highlighting, shortcut keys for navigating through the input, yanking text etc., and of course, we can define our own shortcuts since it's emacs! Let us see how to set FriCAS up and run from emacs in linux. The latest version at the time is 1.2.3, and I have only tried amd64 binary version.&lt;/p&gt;
 &lt;p&gt;Make a directory &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; if not already there, and add to the &lt;tt class="docutils literal"&gt;$PATH&lt;/tt&gt; environment variable. Extract the components to &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt;. To run it, we need to modify a few paths in its files. Go to &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin&lt;/tt&gt;, in fricas file, update the variable &lt;tt class="docutils literal"&gt;exec_prefix&lt;/tt&gt; to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_53beb0d6da5e4abe9afa30660e3192c0-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_53beb0d6da5e4abe9afa30660e3192c0-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;exec_prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;FRICAS_PREFIX&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="p"&gt;/home/bin/usr/local&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_a6c89f4c7ca046ffa62edcc0217f80a4-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_a6c89f4c7ca046ffa62edcc0217f80a4-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;exec_prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;FRICAS_PREFIX&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="p"&gt;/home/bin/usr/local&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;In file efricas, update FRICASCMD to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f7ba6f4bcfee4c70a68f0e93f83835c3-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_f7ba6f4bcfee4c70a68f0e93f83835c3-0"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FRICASCMD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'/home/bin/fricas'&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_a7abaa55d5fd47a7b7f1a2a56aa473f1-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_a7abaa55d5fd47a7b7f1a2a56aa473f1-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FRICASCMD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'/home/bin/fricas'&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and also update the line which calls emacs.&lt;/p&gt;
 &lt;p&gt;Update the function fricas &lt;span class="math"&gt;\(-\)&lt;/span&gt; run in &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/lib/fricas/emacs/fricas.el&lt;/tt&gt; to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_10b545138a314c12a0ba36de23341f39-5"&gt;5&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-0"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;fricas-run&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
-&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-1"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Run FriCAS in the current BUFFER."&lt;/span&gt;
-&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-2"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Starting FriCAS..."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;start-process-shell-command&lt;/span&gt; &lt;span class="s"&gt;"fricas"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;current-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-4"&gt;&lt;/a&gt;                               &lt;span class="nv"&gt;fricas-run-command&lt;/span&gt;
-&lt;a name="rest_code_10b545138a314c12a0ba36de23341f39-5"&gt;&lt;/a&gt;                               &lt;span class="s"&gt;"-noclef"&lt;/span&gt; &lt;span class="s"&gt;"2&amp;gt;/dev/null"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_db5fa40ac78646ecb4a8146b21ca3e85-6"&gt;6&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;fricas-run&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Run FriCAS in the current BUFFER."&lt;/span&gt;
+&lt;a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Starting FriCAS..."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-4"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;start-process-shell-command&lt;/span&gt; &lt;span class="s"&gt;"fricas"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;current-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-5"&gt;&lt;/a&gt;                               &lt;span class="nv"&gt;fricas-run-command&lt;/span&gt;
+&lt;a name="rest_code_db5fa40ac78646ecb4a8146b21ca3e85-6"&gt;&lt;/a&gt;                               &lt;span class="s"&gt;"-noclef"&lt;/span&gt; &lt;span class="s"&gt;"2&amp;gt;/dev/null"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Otherwise, FriCAS won't start within emacs.&lt;/p&gt;
 &lt;p&gt;Next, create two bash scripts within &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; with filenames "fricas" &lt;span class="math"&gt;\(-\)&lt;/span&gt; which is to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/fricas&lt;/tt&gt;, and "efricas" to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/efricas&lt;/tt&gt;. Make those two newly created files as executable. There, we are all set now. Simply open the terminal, and enter "efricas" to run fricas within emacs. If everything goes well, we will have fricas running within emacs.&lt;/p&gt;
 &lt;p&gt;Now, let us have a brief overview of its commands (some are examples taken from the axiom book),
 and its advantages to other free CAS, and probably even the paid ones.&lt;/p&gt;
 &lt;ol class="arabic"&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;INTEGRATION&lt;/strong&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_b198b359985c4f538de95baf465803ad-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_b198b359985c4f538de95baf465803ad-0"&gt;&lt;/a&gt;integrate(tan(atan(x)/3),x)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_b31aad649c1c48f29a3ae510c7b266d3-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_b31aad649c1c48f29a3ae510c7b266d3-1"&gt;&lt;/a&gt;integrate(tan(atan(x)/3),x)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This integral is an example mentioned in their document, which is instantly solved by fricas, but Sage/maxima fails after trying for a long time.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7730bec8495c4f118e20b75e1d526bdf-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_7730bec8495c4f118e20b75e1d526bdf-0"&gt;&lt;/a&gt;integrate((x+a)^(1/2)/x,x)
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_bbaf9aa23e614bf89298dda5accd2bbe-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_bbaf9aa23e614bf89298dda5accd2bbe-1"&gt;&lt;/a&gt;integrate((x+a)^(1/2)/x,x)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This gives two results, for negative and non-negative a.&lt;/p&gt;
 &lt;p&gt;Hence, besides having a good capability, another advantage over Sage and maxima is that we need not declare the symbols which will be used in operations. It also computes the results for all possible cases, and doesn't nag us to make assumptions like in the case of Sage/maxima. (sometimes it keeps asking for the same assumption even if we have already done so!)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SOLVING EQUATIONS&lt;/strong&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6dab55959e664f75802edfd434cea315-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_6dab55959e664f75802edfd434cea315-0"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000)
-&lt;a name="rest_code_6dab55959e664f75802edfd434cea315-1"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000.0)
-&lt;a name="rest_code_6dab55959e664f75802edfd434cea315-2"&gt;&lt;/a&gt;radicalSolve(x^3+x+1)
-&lt;a name="rest_code_6dab55959e664f75802edfd434cea315-3"&gt;&lt;/a&gt;complexSolve(x^3+x+1,1/1000.0)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_d064e5afdfb048ff8dec64a7fdc62c34-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_d064e5afdfb048ff8dec64a7fdc62c34-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_d064e5afdfb048ff8dec64a7fdc62c34-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_d064e5afdfb048ff8dec64a7fdc62c34-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_d064e5afdfb048ff8dec64a7fdc62c34-1"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000)
+&lt;a name="rest_code_d064e5afdfb048ff8dec64a7fdc62c34-2"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000.0)
+&lt;a name="rest_code_d064e5afdfb048ff8dec64a7fdc62c34-3"&gt;&lt;/a&gt;radicalSolve(x^3+x+1)
+&lt;a name="rest_code_d064e5afdfb048ff8dec64a7fdc62c34-4"&gt;&lt;/a&gt;complexSolve(x^3+x+1,1/1000.0)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;etc. All of the above call the same algorithm to compute the roots, but the result is returned depending on the data type.&lt;/p&gt;
 &lt;p&gt;It can also solve non-linear simultaneous equations.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-0"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1.E-10)
-&lt;a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-1"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1/10^10)
-&lt;a name="rest_code_dcd9e29888e2411c99ac3fcb40ed9eb6-2"&gt;&lt;/a&gt;radicalSolve([x+y^2-4,x^2+y-2])
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_936d83e2020645deb930ec9cdd92ba8e-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_936d83e2020645deb930ec9cdd92ba8e-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_936d83e2020645deb930ec9cdd92ba8e-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_936d83e2020645deb930ec9cdd92ba8e-1"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1.E-10)
+&lt;a name="rest_code_936d83e2020645deb930ec9cdd92ba8e-2"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1/10^10)
+&lt;a name="rest_code_936d83e2020645deb930ec9cdd92ba8e-3"&gt;&lt;/a&gt;radicalSolve([x+y^2-4,x^2+y-2])
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;We can see that it can give all the exact results also effortlessly. In Sage/maxima, there is currently no way of making itto output all results in form of radicals.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;RECURRENCE RELATIONS&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The recursions are transformed into iterated code and compiled! And since it can also symbolically compute, this proves very useful to examine sequences.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ef28145e6e27406297250cd9268f7fdb-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ef28145e6e27406297250cd9268f7fdb-0"&gt;&lt;/a&gt;fib(0)==0
-&lt;a name="rest_code_ef28145e6e27406297250cd9268f7fdb-1"&gt;&lt;/a&gt;fib(1)==1
-&lt;a name="rest_code_ef28145e6e27406297250cd9268f7fdb-2"&gt;&lt;/a&gt;fib(n)==fib(n-1)+fib(n-2)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-1"&gt;&lt;/a&gt;fib(0)==0
+&lt;a name="rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-2"&gt;&lt;/a&gt;fib(1)==1
+&lt;a name="rest_code_76adbb95bc0a4be3971a8dcd980ea2ec-3"&gt;&lt;/a&gt;fib(n)==fib(n-1)+fib(n-2)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This automatically compiles and computes the fibonacci numbers as an iterated code.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-5"&gt;5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-6"&gt;6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f1ed69f805d24adfb99a04bac863f4d8-7"&gt;7&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-0"&gt;&lt;/a&gt;a(0)==1
-&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-1"&gt;&lt;/a&gt;a(1)==1
-&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-2"&gt;&lt;/a&gt;a(2)==1
-&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-3"&gt;&lt;/a&gt;b(0)==0
-&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-4"&gt;&lt;/a&gt;b(1)==0
-&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-5"&gt;&lt;/a&gt;b(2)==0
-&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-6"&gt;&lt;/a&gt;a(n)==a(n-1)+b(n-1)
-&lt;a name="rest_code_f1ed69f805d24adfb99a04bac863f4d8-7"&gt;&lt;/a&gt;b(n)==a(n-3)+b(n-3)
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-7"&gt;7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39234d6d712e424fa121bde35bd09e2f-8"&gt;8&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_39234d6d712e424fa121bde35bd09e2f-1"&gt;&lt;/a&gt;a(0)==1
+&lt;a name="rest_code_39234d6d712e424fa121bde35bd09e2f-2"&gt;&lt;/a&gt;a(1)==1
+&lt;a name="rest_code_39234d6d712e424fa121bde35bd09e2f-3"&gt;&lt;/a&gt;a(2)==1
+&lt;a name="rest_code_39234d6d712e424fa121bde35bd09e2f-4"&gt;&lt;/a&gt;b(0)==0
+&lt;a name="rest_code_39234d6d712e424fa121bde35bd09e2f-5"&gt;&lt;/a&gt;b(1)==0
+&lt;a name="rest_code_39234d6d712e424fa121bde35bd09e2f-6"&gt;&lt;/a&gt;b(2)==0
+&lt;a name="rest_code_39234d6d712e424fa121bde35bd09e2f-7"&gt;&lt;/a&gt;a(n)==a(n-1)+b(n-1)
+&lt;a name="rest_code_39234d6d712e424fa121bde35bd09e2f-8"&gt;&lt;/a&gt;b(n)==a(n-3)+b(n-3)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This simultaneous recurrence is actually narayana's cows sequence, and this kind of recurrence is compiled as well!
 Using this, we will make use of the guessing routines.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;GUESS&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The guessing routine in FriCAS can give us the likely generating function, recurrence relation, functional equation etc.&lt;/p&gt;
 &lt;p&gt;Using the above simultaneous recurrence, the generating function can be obtained as:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_cff9a618d09447a7aebb045e54dc1569-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_cff9a618d09447a7aebb045e54dc1569-0"&gt;&lt;/a&gt;guessAlg [a(i)+b(i) for i in 0..20]
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_e7c7b72c69cf477a8514e30e10a357df-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_e7c7b72c69cf477a8514e30e10a357df-1"&gt;&lt;/a&gt;guessAlg [a(i)+b(i) for i in 0..20]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;Try for the recurrence relation.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f873ff5b3580487facfaf3e3cafe791b-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_f873ff5b3580487facfaf3e3cafe791b-0"&gt;&lt;/a&gt;guessPRec [a(i)+b(i) for i in 0..20]
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_bae5e922378a4c718fdf79cb94f46e9a-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_bae5e922378a4c718fdf79cb94f46e9a-1"&gt;&lt;/a&gt;guessPRec [a(i)+b(i) for i in 0..20]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This command gives a single recurrence relation! Hence, we may solve a problem our way and use the guessing routines for simplification.
 Series expansion&lt;/p&gt;
 &lt;p&gt;Working with series is also in a way different and easy.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_cdde01bcdd4a4a178d28866bde983f78-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_cdde01bcdd4a4a178d28866bde983f78-0"&gt;&lt;/a&gt;series(x/(1-x-x^2),x=0)
+&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_cd7f93a59fbf4c47804596069f5f017c-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_cd7f93a59fbf4c47804596069f5f017c-1"&gt;&lt;/a&gt;series(x/(1-x-x^2),x=0)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;or like this&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_b52d5143ea2040d28744d96500a4e19b-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_b52d5143ea2040d28744d96500a4e19b-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_b52d5143ea2040d28744d96500a4e19b-0"&gt;&lt;/a&gt;x:=series 'x
-&lt;a name="rest_code_b52d5143ea2040d28744d96500a4e19b-1"&gt;&lt;/a&gt;x/(1-x-x^2)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_0a632a0ae28e457ebc72531cbb71bb64-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_0a632a0ae28e457ebc72531cbb71bb64-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_0a632a0ae28e457ebc72531cbb71bb64-1"&gt;&lt;/a&gt;x:=series 'x
+&lt;a name="rest_code_0a632a0ae28e457ebc72531cbb71bb64-2"&gt;&lt;/a&gt;x/(1-x-x^2)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;If we require only the list of coefficients of the series&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_3e65717917c9495da72e614b918411c5-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_3e65717917c9495da72e614b918411c5-0"&gt;&lt;/a&gt;cf:=coefficients x/(1-x-x^2)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ebb8d9c8b6e446e3934465a9ad22a597-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ebb8d9c8b6e446e3934465a9ad22a597-1"&gt;&lt;/a&gt;cf:=coefficients x/(1-x-x^2)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want the &lt;span class="math"&gt;\([x^{100}]\)&lt;/span&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_e4ef0f0e98634daca208d8b25d5f4b33-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_e4ef0f0e98634daca208d8b25d5f4b33-0"&gt;&lt;/a&gt;coefficient(x/(1-x-x^2),100)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_39c30134beab4ca7be88eec59485b5ab-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_39c30134beab4ca7be88eec59485b5ab-1"&gt;&lt;/a&gt;coefficient(x/(1-x-x^2),100)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;or&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;cf.200&lt;/tt&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SOME MISCELLANEOUS INFO&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Since the output is always pretty-printed and does not provide a way to turn it off (though there are options to output different formats like TeX, fortran, html etc.), we can obtain an unparsed output the following way:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_fc1accb33e9c4594a27cdb384acc4f27-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_fc1accb33e9c4594a27cdb384acc4f27-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_fc1accb33e9c4594a27cdb384acc4f27-0"&gt;&lt;/a&gt;k:=(-b)^(1/3)/(1+b)
-&lt;a name="rest_code_fc1accb33e9c4594a27cdb384acc4f27-1"&gt;&lt;/a&gt;unparse(k :: InputForm)
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ec6f4a2f37fd4add9ac260dcf09dfc1a-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ec6f4a2f37fd4add9ac260dcf09dfc1a-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ec6f4a2f37fd4add9ac260dcf09dfc1a-1"&gt;&lt;/a&gt;k:=(-b)^(1/3)/(1+b)
+&lt;a name="rest_code_ec6f4a2f37fd4add9ac260dcf09dfc1a-2"&gt;&lt;/a&gt;unparse(k :: InputForm)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;Shell commands can be executed within it:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ba0756426ea94673b17b392819a04f90-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ba0756426ea94673b17b392819a04f90-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ba0756426ea94673b17b392819a04f90-0"&gt;&lt;/a&gt;)system pwd
-&lt;a name="rest_code_ba0756426ea94673b17b392819a04f90-1"&gt;&lt;/a&gt;)system date
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_023e2bb2a6dc441abcf1e10d8d7fb861-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_023e2bb2a6dc441abcf1e10d8d7fb861-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_023e2bb2a6dc441abcf1e10d8d7fb861-1"&gt;&lt;/a&gt;)system pwd
+&lt;a name="rest_code_023e2bb2a6dc441abcf1e10d8d7fb861-2"&gt;&lt;/a&gt;)system date
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;etc.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;CHANGE OUTPUT FORMAT&lt;/strong&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7763a5ebde74442a99b7f0314a2d503b-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7763a5ebde74442a99b7f0314a2d503b-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_7763a5ebde74442a99b7f0314a2d503b-0"&gt;&lt;/a&gt;)set output tex on
-&lt;a name="rest_code_7763a5ebde74442a99b7f0314a2d503b-1"&gt;&lt;/a&gt;)set output tex abc.tex
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_d97740f5352d4673b9ac8c83cb16209c-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_d97740f5352d4673b9ac8c83cb16209c-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_d97740f5352d4673b9ac8c83cb16209c-1"&gt;&lt;/a&gt;)set output tex on
+&lt;a name="rest_code_d97740f5352d4673b9ac8c83cb16209c-2"&gt;&lt;/a&gt;)set output tex abc.tex
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SHOW TIME FOR EXECUTION&lt;/strong&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_991dc78c7dd144d6839007454ce54b5c-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_991dc78c7dd144d6839007454ce54b5c-0"&gt;&lt;/a&gt;)set messages time on
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_210214e2f3d946bd990990590e34d0bc-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_210214e2f3d946bd990990590e34d0bc-1"&gt;&lt;/a&gt;)set messages time on
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;Sage provides an interface to FriCAS, so we may even run it within Sage.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_0b68dcfa3c7240de8d6c213c783ffa19-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_0b68dcfa3c7240de8d6c213c783ffa19-0"&gt;&lt;/a&gt;fricas('series(1/sqrt(1-x),x=0)')
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_76bf87546ed2427a94cb5bf8d4658ff3-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_76bf87546ed2427a94cb5bf8d4658ff3-1"&gt;&lt;/a&gt;fricas('series(1/sqrt(1-x),x=0)')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;and there are many more. It even has its own language &lt;span class="math"&gt;\(-\)&lt;/span&gt; SPAD.&lt;/p&gt;
@@ -722,44 +722,44 @@ Series expansion&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;That's some formula!&lt;/p&gt;
 &lt;p&gt;In Sage, it can be written as&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-5"&gt;5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-6"&gt;6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-7"&gt;7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-8"&gt;8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1f8bb036cfe2484d9932f6af699d577c-9"&gt;9&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-0"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'k y z'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-5"&gt;&lt;/a&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-7"&gt;&lt;/a&gt;    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_1f8bb036cfe2484d9932f6af699d577c-9"&gt;&lt;/a&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_99a68855542e4facb2385cfb0996c732-10"&gt;10&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'k y z'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-2"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;assume&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-5"&gt;&lt;/a&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-6"&gt;&lt;/a&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-7"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;integrate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-8"&gt;&lt;/a&gt;    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_99a68855542e4facb2385cfb0996c732-10"&gt;&lt;/a&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gamma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To verify our answer, we can perform a simulation:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_0af8bb27121148e5918a9b1ef5060535-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_0af8bb27121148e5918a9b1ef5060535-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_0af8bb27121148e5918a9b1ef5060535-0"&gt;&lt;/a&gt;sim=: 3 : '1&amp;gt;+/(?6#0)^6'
-&lt;a name="rest_code_0af8bb27121148e5918a9b1ef5060535-1"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0 NB. = 0.63926
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_76857048cbe84412b66d3ba76897a393-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_76857048cbe84412b66d3ba76897a393-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_76857048cbe84412b66d3ba76897a393-1"&gt;&lt;/a&gt;sim=: 3 : '1&amp;gt;+/(?6#0)^6'
+&lt;a name="rest_code_76857048cbe84412b66d3ba76897a393-2"&gt;&lt;/a&gt;(+/%#)(sim"0)100000#0 NB. = 0.63926
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want to perform a simulation in a more verbose language, R is a good candidate.&lt;/p&gt;
 &lt;p&gt;The code in R looks like:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_8b061d233b604463bdaf4fa82e5106cd-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code R"&gt;&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-0"&gt;&lt;/a&gt;n &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
-&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-1"&gt;&lt;/a&gt;k &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
-&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-2"&gt;&lt;/a&gt;b &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;runif&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;dim&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_8b061d233b604463bdaf4fa82e5106cd-3"&gt;&lt;/a&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;b&lt;span class="o"&gt;^&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_329aecfbb6b44ea589dc8e953799c477-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_329aecfbb6b44ea589dc8e953799c477-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_329aecfbb6b44ea589dc8e953799c477-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_329aecfbb6b44ea589dc8e953799c477-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code R"&gt;&lt;a name="rest_code_329aecfbb6b44ea589dc8e953799c477-1"&gt;&lt;/a&gt;n &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+&lt;a name="rest_code_329aecfbb6b44ea589dc8e953799c477-2"&gt;&lt;/a&gt;k &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+&lt;a name="rest_code_329aecfbb6b44ea589dc8e953799c477-3"&gt;&lt;/a&gt;b &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;runif&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;dim&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1e6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_329aecfbb6b44ea589dc8e953799c477-4"&gt;&lt;/a&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;b&lt;span class="o"&gt;^&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-0"&gt;0&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_3a1e195bc4904f5d83131dc4159b66a7-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-0"&gt;&lt;/a&gt;'n k'=: 6 6
-&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-1"&gt;&lt;/a&gt;a=:(n, 1e6) $ ?(n*1e6)#0
-&lt;a name="rest_code_3a1e195bc4904f5d83131dc4159b66a7-2"&gt;&lt;/a&gt;(+/%#)1&amp;gt;+/a^k NB. = 0.637572
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1d9de261ca2e46dd82df332f805b0518-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1d9de261ca2e46dd82df332f805b0518-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/#rest_code_1d9de261ca2e46dd82df332f805b0518-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_1d9de261ca2e46dd82df332f805b0518-1"&gt;&lt;/a&gt;'n k'=: 6 6
+&lt;a name="rest_code_1d9de261ca2e46dd82df332f805b0518-2"&gt;&lt;/a&gt;a=:(n, 1e6) $ ?(n*1e6)#0
+&lt;a name="rest_code_1d9de261ca2e46dd82df332f805b0518-3"&gt;&lt;/a&gt;(+/%#)1&amp;gt;+/a^k NB. = 0.637572
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The corresponding probability derived analytically is:&lt;/p&gt;
 &lt;div class="math"&gt;
 \begin{align*}

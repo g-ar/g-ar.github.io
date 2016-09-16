@@ -12,7 +12,7 @@ Let us command the computer to generate some more art!
 Below is a modification from previous post. 
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     plt=Graphics()
     n = 5
@@ -27,7 +27,7 @@ Below is a modification from previous post.
     Fractal eyes
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     plt=Graphics()
     n = 10
@@ -44,7 +44,7 @@ Below is a modification from previous post.
     Circles!
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     plt=Graphics()
     n = 200
@@ -59,7 +59,7 @@ Below is a modification from previous post.
 Some more, parametric plot using lines. Smooth edges are okay, few rough edges are a pain, many rough edges are soothing! 
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     def draw(a,b,d):
         d=d*pi/180

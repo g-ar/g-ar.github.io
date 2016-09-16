@@ -17,7 +17,7 @@ We will see some more problems on probability, and how to do it in J.
 By simulation:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     sim=: 3 : '0=+/(i.30)=30?30'
     (+/%#)(sim"0)100000#0
@@ -25,7 +25,7 @@ By simulation:
 The analytical answer:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     +/((30$(1 _1))*(%!i.30))
 
@@ -51,7 +51,7 @@ What's your expected amount?
 Simulation answer:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     a=: 10#0 1
     sim=: 3 : '((_5 * 5 = ]) + ([: +/ 4 6 =/ ]) + (2 * [: +/ 3 7 =/ ]) + (3 * [: +/ 2 8 =/ ]) + (30 * [: +/ 1 9 =/ ]) + 300 * [: +/ 10 0 =/ ])+/(10?20){a'
@@ -68,7 +68,7 @@ Analytical answer (hypergeometric distribution):
     \displaystyle \sum_{i=0}^{4}\dfrac{A_i\cdot 2\, \dbinom{10}{i}\dbinom{10}{10-i}}{\dbinom{20}{10}}+\dfrac{A_5\cdot \dbinom{10}{5}^2}{\dbinom{20}{10}} =-\dfrac{76485}{92378}=-0.827956872848514
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     _5 1 2 3 30 300)*(((5!10)^2), (2 * (10 !~ ]) * 10 !~ 10 - ]) 6+i.5)%10!20
 
@@ -80,7 +80,7 @@ How many people should be in a room such that the probability of at least two of
 By Simulation:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     sim=: 3 : '23>+/~:?23#365'
     (+/%#)(sim"0)100000#0
@@ -88,14 +88,14 @@ By Simulation:
 Analytically:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     1-*/((365-i.23)%(365)) NB. = 0.507297234323985
 
 To see a plot of the probabilities, up to 100 people in a room:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     load'plot'
     'marker' plot (1+i.100);((1 - [: */ 365 %~ 365 - i.)"0) 1+i.100
@@ -108,7 +108,7 @@ Four dice are rolled, what's the probability that no two faces are repeated? (E.
 By simulation:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     sim=: 3 : '(4 = [: +/ [: +/ =/~)?4#6'
 
@@ -123,14 +123,14 @@ By permutation:
 Putting that in J console:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     ((4!6)*!4)%6^4
 
 By counting:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     (+/4=+/"1~:"1(6 6 6 6#:i.1296))%6^4 NB. this uses base-6 representation till 6^4
 
@@ -142,7 +142,7 @@ In an election, candidate A receives n votes, and candidate B receives m votes w
 Here's a simulation to see that it may be true:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     n=:55
     m=:45
@@ -168,7 +168,7 @@ Finding the answer is quite easy, which is
 and a simulation can back up our claim, e.g. for :math:`k=5`:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     pos=: 5
     a=:(4#1),48#0
@@ -178,6 +178,6 @@ and a simulation can back up our claim, e.g. for :math:`k=5`:
 and the probabilities for first five positions:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     (((48 !~ 1 -~ ]) % 52 !~ 1 -~ ]) * 4 % 52 - 1 -~ ]) 1+i.5

@@ -13,7 +13,7 @@ Here is an example program for \*nix systems which generates fractal like tiling
 We use tga format, which is simple but uncompressed. For compression, we may use imagemagick suit's convert command.
 
 .. code-block:: C
-    :number-lines: 0
+    :number-lines: 1
 
     #include <stdio.h>
     #include <fcntl.h>

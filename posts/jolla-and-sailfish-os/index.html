@@ -147,24 +147,24 @@ Most of the reviews scattered on the net miss the fact that it i">
 <li>
 <p class="first">The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_997889bd0f794af5ae2bfdfee74a7891-0">0</a></pre></div></td>
-<td class="code"><pre class="code sh"><a name="rest_code_997889bd0f794af5ae2bfdfee74a7891-0"></a>sqlite3 .local/share/commhistory/commhistory.db
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f2ed86b8e8ff4e8580fac7bf45666dbb-1">1</a></pre></div></td>
+<td class="code"><pre class="code sh"><a name="rest_code_f2ed86b8e8ff4e8580fac7bf45666dbb-1"></a>sqlite3 .local/share/commhistory/commhistory.db
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">Then, to display all the sms messages, run commands like</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f306facd19ec4d37b8b3b60048eeb351-0">0</a></pre></div></td>
-<td class="code"><pre class="code sql"><a name="rest_code_f306facd19ec4d37b8b3b60048eeb351-0"></a><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">events</span> <span class="k">where</span> <span class="k">type</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_bef283b817f74a9a8ed02da2f7921b9a-1">1</a></pre></div></td>
+<td class="code"><pre class="code sql"><a name="rest_code_bef283b817f74a9a8ed02da2f7921b9a-1"></a><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">events</span> <span class="k">where</span> <span class="k">type</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
 </pre></td>
 </tr></table>
 </li>
 <li>
 <p class="first">If we want to know what each column is about, run</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_648d73ba788a48bf9a8972755d36cab0-0">0</a></pre></div></td>
-<td class="code"><pre class="code sql"><a name="rest_code_648d73ba788a48bf9a8972755d36cab0-0"></a><span class="p">.</span><span class="n">headers</span> <span class="k">ON</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c70dd54e93224d999918fec8c729cb3e-1">1</a></pre></div></td>
+<td class="code"><pre class="code sql"><a name="rest_code_c70dd54e93224d999918fec8c729cb3e-1"></a><span class="p">.</span><span class="n">headers</span> <span class="k">ON</span>
 </pre></td>
 </tr></table>
 </li>

@@ -12,7 +12,7 @@ Think of a simple figure. Now, think how it may look like if you repeat the same
 Here are some snippets of code in Sage to use the idea using circles, experiment with it by changing the parameters/shape.
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     var('y')
     plt=Graphics()
@@ -35,7 +35,7 @@ Here are some snippets of code in Sage to use the idea using circles, experiment
     A saturn-like fractal
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     plt=Graphics()
     a=22
@@ -57,7 +57,7 @@ Here are some snippets of code in Sage to use the idea using circles, experiment
     Another fractal using circles
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     plt=Graphics()
     a=16*golden_ratio
@@ -78,7 +78,7 @@ Here are some snippets of code in Sage to use the idea using circles, experiment
 The below two are from Knuth's TAOCP vol 2 -- a little bit of randomness is good!
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     plt=Graphics()
     for a in range(-20,20,2):
@@ -91,7 +91,7 @@ The below two are from Knuth's TAOCP vol 2 -- a little bit of randomness is good
     Regular tiles
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     plt=Graphics()
     def ran(): return random()*0.2-0.1

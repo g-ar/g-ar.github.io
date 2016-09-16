@@ -24,7 +24,7 @@ We'll start with a generalized formula for 5 distinct objects, each with :math:`
 and for our problem, we need to find :math:`N(2,2,1,1,1)`. Putting that in Sage:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     var('x1 x2 x3 x4 x5')
     n1,n2,n3,n4,n5 = 2,2,1,1,1
@@ -48,7 +48,7 @@ The coefficient of :math:`v^2 w^2 x y z` is the answer (evidently 660).
 In Sage:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     var('v w x y z')
     a = matrix([v, w, x, y, z])
@@ -76,7 +76,7 @@ where
 In Sage (python will also do), to print out the number of arrangements and its probability of occuring:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     import numpy as np
     def f(p,q,r,s,t) :
@@ -104,7 +104,7 @@ The recurrence is too slow if used for higher values. This can be sped up by cac
 We may back up our analytical results with a simulation (always a good thing to do, when possible)
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     a=.1 1 2 2 3 4 5
     sim=: 3 : '0=+/0=2-/\(7?7){a'
@@ -138,7 +138,7 @@ For our example, the list of :math:`n_i` can be written as [2,2,1,1,1]
 Hence, in Sage:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     var('i')
     def q(n): return sum((-1)^(i-n)/factorial(i)*binomial(SR(n)-1,SR(i)-1)*x^i, i, 1, n)

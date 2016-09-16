@@ -24,7 +24,7 @@ The following problems are taken from `Brilliant <https://brilliant.org>`_
    (Only the relevent output is shown after command executions)
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        integrate[x*log[2*sin[x/2]]^2,{x,0,pi/3}]
        -- snip --
@@ -52,7 +52,7 @@ The following problems are taken from `Brilliant <https://brilliant.org>`_
        \displaystyle \int_0^{2\log{\phi}} \log{\left(2\, \sinh{\frac{x}{2}}\right)} = -\frac{\pi^a}{b}
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        epsilon=-100
        integrate[log[2*(exp[x/2]-exp[-x/2])/2],{x,1e-100,2*log[(1+sqrt[5])/2]}]
@@ -79,7 +79,7 @@ The following problems are taken from `Brilliant <https://brilliant.org>`_
        \displaystyle \int_{-\infty}^{\infty} \dfrac{\log{\left(1 + e^{2x}\right)}}{1 + e^{3\, x}} = \frac{a \pi^b}{c}
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        epsilon=-100
        Integrate[Log[1 + Exp[2*x]]/(1 + Exp[3* x]), {x, -Infinity, Infinity}]
@@ -87,7 +87,7 @@ The following problems are taken from `Brilliant <https://brilliant.org>`_
    If we try to execute it directly, it complains "argument too large". So, we transform it by substituting :math:`e^x=y`
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        Integrate[Log[1 + y^2]/(1 + y^3)/y, {y, 0, Infinity}]
        > 0.59400396858408176872614992128884242944017635321356610251561824949472
@@ -115,7 +115,7 @@ The following problems are taken from `Brilliant <https://brilliant.org>`_
        \displaystyle \int_0^1 \log{x}\log{\left(1-x\right)} dx = \frac{a}{b}-\frac{\pi^c}{d}
 
    .. code-block:: text
-       :number-lines: 0
+       :number-lines: 1
 
        epsilon=-100
        integrate[log[x]*log[1-x],{x,0,1}]

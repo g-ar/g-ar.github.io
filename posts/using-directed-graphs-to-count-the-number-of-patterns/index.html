@@ -116,24 +116,24 @@ We can write a directed graph to solve that, the weighted adjacency matrix for w
 <p>There, the hard work is done. Leave the remaining to Sage!</p>
 <p>Obtain the characteristic polynomial of the matrix, which also is the characteristic equation of the required recurrence equation.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-0">0</a>
-<a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-1">1</a>
-<a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-2">2</a>
-<a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-3">3</a>
-<a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-4">4</a>
-<a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-5">5</a>
-<a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-6">6</a>
-<a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-7">7</a>
-<a href="#rest_code_76a64a2c878047e2bf067001c7ecf7e1-8">8</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-0"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">([</span>
-<a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-1"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-2"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-3"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-4"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-5"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-6"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-7"></a><span class="p">])</span>
-<a name="rest_code_76a64a2c878047e2bf067001c7ecf7e1-8"></a><span class="k">print</span> <span class="n">am</span><span class="o">.</span><span class="n">characteristic_polynomial</span><span class="p">()</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7c517451b06c449e9f836911fd816758-1">1</a>
+<a href="#rest_code_7c517451b06c449e9f836911fd816758-2">2</a>
+<a href="#rest_code_7c517451b06c449e9f836911fd816758-3">3</a>
+<a href="#rest_code_7c517451b06c449e9f836911fd816758-4">4</a>
+<a href="#rest_code_7c517451b06c449e9f836911fd816758-5">5</a>
+<a href="#rest_code_7c517451b06c449e9f836911fd816758-6">6</a>
+<a href="#rest_code_7c517451b06c449e9f836911fd816758-7">7</a>
+<a href="#rest_code_7c517451b06c449e9f836911fd816758-8">8</a>
+<a href="#rest_code_7c517451b06c449e9f836911fd816758-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_7c517451b06c449e9f836911fd816758-1"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">([</span>
+<a name="rest_code_7c517451b06c449e9f836911fd816758-2"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a name="rest_code_7c517451b06c449e9f836911fd816758-3"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a name="rest_code_7c517451b06c449e9f836911fd816758-4"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a name="rest_code_7c517451b06c449e9f836911fd816758-5"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<a name="rest_code_7c517451b06c449e9f836911fd816758-6"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<a name="rest_code_7c517451b06c449e9f836911fd816758-7"></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a name="rest_code_7c517451b06c449e9f836911fd816758-8"></a><span class="p">])</span>
+<a name="rest_code_7c517451b06c449e9f836911fd816758-9"></a><span class="k">print</span> <span class="n">am</span><span class="o">.</span><span class="n">characteristic_polynomial</span><span class="p">()</span>
 </pre></td>
 </tr></table>
 <p>The characteristic equation is:</p>
@@ -156,38 +156,38 @@ a_{4}&amp;= 8962\\
 <p>Wonder if anyone can come up with a combinatorial argument for that equation?!</p>
 <p>Initial conditions can be easily obtained by matrix exponentiation or using a program to iterate through the sequences, e.g.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_e1f4d7cde7a14c5fad06587af1abf082-0">0</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_e1f4d7cde7a14c5fad06587af1abf082-0"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">am</span><span class="o">^</span><span class="mi">4</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_9224fe433531408292d019a08b726810-1">1</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_9224fe433531408292d019a08b726810-1"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">am</span><span class="o">^</span><span class="mi">4</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
 </pre></td>
 </tr></table>
 <p>or</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ec47dbe0b04944b4802bf75420d3db63-0">0</a>
-<a href="#rest_code_ec47dbe0b04944b4802bf75420d3db63-1">1</a>
-<a href="#rest_code_ec47dbe0b04944b4802bf75420d3db63-2">2</a>
-<a href="#rest_code_ec47dbe0b04944b4802bf75420d3db63-3">3</a>
-<a href="#rest_code_ec47dbe0b04944b4802bf75420d3db63-4">4</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_ec47dbe0b04944b4802bf75420d3db63-0"></a><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_ec47dbe0b04944b4802bf75420d3db63-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">):</span>
-<a name="rest_code_ec47dbe0b04944b4802bf75420d3db63-2"></a>    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'122'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'213'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span>
-<a name="rest_code_ec47dbe0b04944b4802bf75420d3db63-3"></a>        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-<a name="rest_code_ec47dbe0b04944b4802bf75420d3db63-4"></a><span class="k">print</span> <span class="n">cnt</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_e39a0e03604b43aebee8f542c3009052-1">1</a>
+<a href="#rest_code_e39a0e03604b43aebee8f542c3009052-2">2</a>
+<a href="#rest_code_e39a0e03604b43aebee8f542c3009052-3">3</a>
+<a href="#rest_code_e39a0e03604b43aebee8f542c3009052-4">4</a>
+<a href="#rest_code_e39a0e03604b43aebee8f542c3009052-5">5</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_e39a0e03604b43aebee8f542c3009052-1"></a><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_e39a0e03604b43aebee8f542c3009052-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">):</span>
+<a name="rest_code_e39a0e03604b43aebee8f542c3009052-3"></a>    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'122'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'213'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span>
+<a name="rest_code_e39a0e03604b43aebee8f542c3009052-4"></a>        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+<a name="rest_code_e39a0e03604b43aebee8f542c3009052-5"></a><span class="k">print</span> <span class="n">cnt</span>
 </pre></td>
 </tr></table>
 <p>We can also automatically get the generating function of the obtained recurrence by using a small program (method is given in "Lectures on generating functions" by S. K. Lando):</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c2e22e56c6874f90b484d700a5b60a5f-0">0</a>
-<a href="#rest_code_c2e22e56c6874f90b484d700a5b60a5f-1">1</a>
-<a href="#rest_code_c2e22e56c6874f90b484d700a5b60a5f-2">2</a>
-<a href="#rest_code_c2e22e56c6874f90b484d700a5b60a5f-3">3</a>
-<a href="#rest_code_c2e22e56c6874f90b484d700a5b60a5f-4">4</a>
-<a href="#rest_code_c2e22e56c6874f90b484d700a5b60a5f-5">5</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_c2e22e56c6874f90b484d700a5b60a5f-0"></a><span class="k">def</span> <span class="nf">get_gf</span><span class="p">(</span><span class="n">alst</span><span class="p">,</span><span class="n">initvals</span><span class="p">):</span>
-<a name="rest_code_c2e22e56c6874f90b484d700a5b60a5f-1"></a>    <span class="n">nn</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">alst</span><span class="p">)</span>
-<a name="rest_code_c2e22e56c6874f90b484d700a5b60a5f-2"></a>    <span class="n">Am</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">alst</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<a name="rest_code_c2e22e56c6874f90b484d700a5b60a5f-3"></a>    <span class="n">Bm</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">initvals</span><span class="p">)</span>
-<a name="rest_code_c2e22e56c6874f90b484d700a5b60a5f-4"></a>    <span class="k">return</span> <span class="p">(((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">Am</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">*</span><span class="n">Bm</span><span class="o">.</span><span class="n">transpose</span><span class="p">())[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">full_simplify</span><span class="p">()</span>
-<a name="rest_code_c2e22e56c6874f90b484d700a5b60a5f-5"></a><span class="k">print</span> <span class="n">get_gf</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">898</span><span class="p">,</span><span class="mi">8962</span><span class="p">])</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_4633a608b8ab4bbabe0192f8529bfa96-1">1</a>
+<a href="#rest_code_4633a608b8ab4bbabe0192f8529bfa96-2">2</a>
+<a href="#rest_code_4633a608b8ab4bbabe0192f8529bfa96-3">3</a>
+<a href="#rest_code_4633a608b8ab4bbabe0192f8529bfa96-4">4</a>
+<a href="#rest_code_4633a608b8ab4bbabe0192f8529bfa96-5">5</a>
+<a href="#rest_code_4633a608b8ab4bbabe0192f8529bfa96-6">6</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_4633a608b8ab4bbabe0192f8529bfa96-1"></a><span class="k">def</span> <span class="nf">get_gf</span><span class="p">(</span><span class="n">alst</span><span class="p">,</span><span class="n">initvals</span><span class="p">):</span>
+<a name="rest_code_4633a608b8ab4bbabe0192f8529bfa96-2"></a>    <span class="n">nn</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">alst</span><span class="p">)</span>
+<a name="rest_code_4633a608b8ab4bbabe0192f8529bfa96-3"></a>    <span class="n">Am</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">alst</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<a name="rest_code_4633a608b8ab4bbabe0192f8529bfa96-4"></a>    <span class="n">Bm</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span><span class="n">initvals</span><span class="p">)</span>
+<a name="rest_code_4633a608b8ab4bbabe0192f8529bfa96-5"></a>    <span class="k">return</span> <span class="p">(((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">Am</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">*</span><span class="n">Bm</span><span class="o">.</span><span class="n">transpose</span><span class="p">())[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">full_simplify</span><span class="p">()</span>
+<a name="rest_code_4633a608b8ab4bbabe0192f8529bfa96-6"></a><span class="k">print</span> <span class="n">get_gf</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">898</span><span class="p">,</span><span class="mi">8962</span><span class="p">])</span>
 </pre></td>
 </tr></table>
 <p>which gives the g.f.</p>
@@ -207,8 +207,8 @@ a_{4}&amp;= 8962\\
 </div>
 <p>We will visually inspect where the roots lie, to get an idea about the closest root to the origin</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_fd916905ecc74fa5849e18f5971d5585-0">0</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_fd916905ecc74fa5849e18f5971d5585-0"></a><span class="n">complex_plot</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_da9ed170efeb4e3baa8094ec5fce3848-1">1</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_da9ed170efeb4e3baa8094ec5fce3848-1"></a><span class="n">complex_plot</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></td>
 </tr></table>
 <div class="figure">
@@ -217,14 +217,14 @@ a_{4}&amp;= 8962\\
 <p>and we see that there is only one real root (also the nearest to origin) and other four are complex.</p>
 <p>We can proceed with the following steps in Sage:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_0852fbedecbd4f018cb6ce6fc210fdf3-0">0</a>
-<a href="#rest_code_0852fbedecbd4f018cb6ce6fc210fdf3-1">1</a>
-<a href="#rest_code_0852fbedecbd4f018cb6ce6fc210fdf3-2">2</a>
-<a href="#rest_code_0852fbedecbd4f018cb6ce6fc210fdf3-3">3</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_0852fbedecbd4f018cb6ce6fc210fdf3-0"></a><span class="n">s1</span><span class="o">=</span><span class="n">find_root</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<a name="rest_code_0852fbedecbd4f018cb6ce6fc210fdf3-1"></a><span class="n">rho1</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">s1</span><span class="p">)</span><span class="o">/</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span>
-<a name="rest_code_0852fbedecbd4f018cb6ce6fc210fdf3-2"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="n">rho1</span><span class="o">/</span><span class="n">s1</span><span class="o">^</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<a name="rest_code_0852fbedecbd4f018cb6ce6fc210fdf3-3"></a><span class="k">print</span> <span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">15</span><span class="p">)),</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a31136e03e874dba9490b81f373d242a-1">1</a>
+<a href="#rest_code_a31136e03e874dba9490b81f373d242a-2">2</a>
+<a href="#rest_code_a31136e03e874dba9490b81f373d242a-3">3</a>
+<a href="#rest_code_a31136e03e874dba9490b81f373d242a-4">4</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_a31136e03e874dba9490b81f373d242a-1"></a><span class="n">s1</span><span class="o">=</span><span class="n">find_root</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<a name="rest_code_a31136e03e874dba9490b81f373d242a-2"></a><span class="n">rho1</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">s1</span><span class="p">)</span><span class="o">/</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span>
+<a name="rest_code_a31136e03e874dba9490b81f373d242a-3"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="n">rho1</span><span class="o">/</span><span class="n">s1</span><span class="o">^</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_a31136e03e874dba9490b81f373d242a-4"></a><span class="k">print</span> <span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">15</span><span class="p">)),</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>We find the approximation to be</p>

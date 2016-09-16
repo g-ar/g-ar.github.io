@@ -51,7 +51,7 @@ The answer divided by :math:`n!` gives the probability.
 Both ways are described in the following Sage code:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     var('k')
     def rp(m,n): return sum(binomial(SR(m),SR(k))*factorial(n)/factorial(n-k)*x^k,k,0,n)
@@ -71,7 +71,7 @@ Both ways are described in the following Sage code:
 which agrees with a simulation:
 
 .. code-block:: text
-    :number-lines: 0
+    :number-lines: 1
 
     lst=.10$1 2 3 4
     a=.2#1+i.5
@@ -83,7 +83,7 @@ which is about :math:`0.112101`
 If we now turn our attention to the classic derangement problem, e.g. 10 bins and balls, each numbered 1 to 10, we change the variables accordingly:
 
 .. code-block:: python
-    :number-lines: 0
+    :number-lines: 1
 
     balls = range(1,11) 
     bins = balls
