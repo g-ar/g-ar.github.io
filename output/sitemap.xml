@@ -27,11 +27,11 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2016-09-14T06:26:00Z</lastmod>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/arm/</loc>
@@ -146,6 +146,10 @@
   <lastmod>2016-09-15T17:51:00Z</lastmod>
  </url>
  <url>
+  <loc>https://g-ar.github.io/categories/mypaint/</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://g-ar.github.io/categories/pppoe/</loc>
   <lastmod>2016-09-15T17:18:00Z</lastmod>
  </url>
@@ -156,6 +160,10 @@
  <url>
   <loc>https://g-ar.github.io/categories/pslq/</loc>
   <lastmod>2016-09-15T17:51:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/categories/python/</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/r/</loc>
@@ -198,6 +206,14 @@
   <lastmod>2016-09-15T17:51:00Z</lastmod>
  </url>
  <url>
+  <loc>https://g-ar.github.io/categories/xdotool/</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/categories/xorg/</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://g-ar.github.io/galleries/</loc>
   <lastmod>2016-09-10T18:13:00Z</lastmod>
  </url>
@@ -227,7 +243,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-6.html</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/listings/</loc>
@@ -328,6 +344,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/simulating-buffons-needle-problem/</loc>
   <lastmod>2016-09-11T15:07:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/simulating-mouse-movement-to-draw-in-mypaint/</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/using-directed-graphs-to-count-the-number-of-patterns/</loc>
