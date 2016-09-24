@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulating mouse movement to draw in mypaint | Gopinath A R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/posts/simulating-mouse-movement-to-draw-in-mypaint/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Gopinath">
+<link rel="prev" href="../using-integer-relation-algorithms-to-guess-closed-forms/" title="Using integer relation algorithms to guess closed forms" type="text/html">
+<meta property="og:site_name" content="Gopinath A R">
+<meta property="og:title" content="Simulating mouse movement to draw in mypaint">
+<meta property="og:url" content="https://g-ar.github.io/posts/simulating-mouse-movement-to-draw-in-mypaint/">
+<meta property="og:description" content="Wouldn't it be nice if we can command where to move the mouse pointer and press buttons, and then use the functionality to draw in a painting program? We can do exactly that in systems running xorg di">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-09-24T15:38:43+05:30">
+<meta property="article:tag" content="computer art">
+<meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="mypaint">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="xdotool">
+<meta property="article:tag" content="xorg">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="../../stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Simulating mouse movement to draw in mypaint</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Gopinath
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2016-09-24T15:38:43+05:30" itemprop="datePublished" title="2016-09-24 15:38">2016-09-24 15:38</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Wouldn't it be nice if we can command where to move the mouse pointer and press buttons, and then use the functionality to draw in a painting program? We can do exactly that in systems running <tt class="docutils literal">xorg</tt> display server, by using <tt class="docutils literal">xdotool</tt> to simulate mouse and keyboard.</p>
+<p>E.g. to draw a simple 5 petal rose, <span class="math">\(r = \cos \left(5 \theta\right)\)</span>,</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-1"> 1</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-2"> 2</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-3"> 3</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-4"> 4</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-5"> 5</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-6"> 6</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-7"> 7</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-8"> 8</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-9"> 9</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-10">10</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-11">11</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-12">12</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-13">13</a>
+<a href="#rest_code_607e2aa29eb14d5e8691e23e7125ed14-14">14</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-3"></a>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-6"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-7"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-8"></a>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-9"></a><span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-10"></a>    <span class="n">th</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-11"></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">th</span><span class="p">)</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-12"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<p>Below is the result of running the script with <tt class="docutils literal">mypaint</tt> opened in fullscreen mode. Various effects can be achieved by selecting one among the hundreds of brushes available.</p>
+<div class="figure">
+<img alt="../../images/mypaint1.png" src="../../images/mypaint1.png"><p class="caption">Result of 08-micro felt pen and glow pen by running the script twice</p>
+</div>
+<p>Next is another example with a pencil style chosen for the brush.</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-1"> 1</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-2"> 2</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-3"> 3</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-4"> 4</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-5"> 5</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-6"> 6</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-7"> 7</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-8"> 8</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-9"> 9</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-10">10</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-11">11</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-12">12</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-13">13</a>
+<a href="#rest_code_64ebd25d9c76478191ea25d38d520e42-14">14</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_64ebd25d9c76478191ea25d38d520e42-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-3"></a>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">640</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-6"></a><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">61</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-7"></a><span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-8"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-9"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-10"></a>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-11"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-12"></a>    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/mypaint2.png" src="../../images/mypaint2.png"><p class="caption">Result of running the script with pencil</p>
+</div>
+<p>Interesting, yes?</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/computer-art/" rel="tag">computer art</a></li>
+            <li><a class="tag p-category" href="../../categories/mypaint/" rel="tag">mypaint</a></li>
+            <li><a class="tag p-category" href="../../categories/python/" rel="tag">python</a></li>
+            <li><a class="tag p-category" href="../../categories/xdotool/" rel="tag">xdotool</a></li>
+            <li><a class="tag p-category" href="../../categories/xorg/" rel="tag">xorg</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../using-integer-relation-algorithms-to-guess-closed-forms/" rel="prev" title="Using integer relation algorithms to guess closed forms">Previous post</a>
+            </li>
+        </ul></nav></aside><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer"></footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

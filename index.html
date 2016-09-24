@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/using-integer-relation-algorithms-to-guess-closed-forms/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/simulating-mouse-movement-to-draw-in-mypaint/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,91 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/" class="u-url">Using integer relation algorithms to guess closed forms</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/" class="u-url">Simulating mouse movement to draw in mypaint</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/" rel="bookmark"><time class="published dt-published" datetime="2016-09-24T15:38:43+05:30" title="2016-09-24 15:38">2016-09-24 15:38</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Wouldn't it be nice if we can command where to move the mouse pointer and press buttons, and then use the functionality to draw in a painting program? We can do exactly that in systems running <tt class="docutils literal">xorg</tt> display server, by using <tt class="docutils literal">xdotool</tt> to simulate mouse and keyboard.</p>
+<p>E.g. to draw a simple 5 petal rose, <span class="math">\(r = \cos \left(5 \theta\right)\)</span>,</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-1"> 1</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-2"> 2</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-3"> 3</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-4"> 4</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-5"> 5</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-6"> 6</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-7"> 7</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-8"> 8</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-9"> 9</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-10">10</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-11">11</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-12">12</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-13">13</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-14">14</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-3"></a>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-6"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-7"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-8"></a>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-9"></a><span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-10"></a>    <span class="n">th</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-11"></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">th</span><span class="p">)</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-12"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
+<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<p>Below is the result of running the script with <tt class="docutils literal">mypaint</tt> opened in fullscreen mode. Various effects can be achieved by selecting one among the hundreds of brushes available.</p>
+<div class="figure">
+<img alt="../../images/mypaint1.png" src="images/mypaint1.png"><p class="caption">Result of 08-micro felt pen and glow pen by running the script twice</p>
+</div>
+<p>Next is another example with a pencil style chosen for the brush.</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-1"> 1</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-2"> 2</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-3"> 3</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-4"> 4</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-5"> 5</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-6"> 6</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-7"> 7</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-8"> 8</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-9"> 9</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-10">10</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-11">11</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-12">12</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-13">13</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-14">14</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_64ebd25d9c76478191ea25d38d520e42-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-3"></a>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">640</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-6"></a><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">61</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-7"></a><span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-8"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-9"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-10"></a>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-11"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-12"></a>    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
+<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<div class="figure">
+<img alt="../../images/mypaint2.png" src="images/mypaint2.png"><p class="caption">Result of running the script with pencil</p>
+</div>
+<p>Interesting, yes?</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/using-integer-relation-algorithms-to-guess-closed-forms/" class="u-url">Using integer relation algorithms to guess closed forms</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Gopinath
@@ -373,60 +457,6 @@ To compile on a single core, use<ul>
 <li>And that's it, no need of a virtualbox, which wastes more time and space than to run a docker image</li>
 <li>Check an example program from the tutorial, like plotting mandelbrot set</li>
 </ul>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/deriving-explicit-formulas-from-markov-chains/" class="u-url">Deriving Explicit Formulas from Markov Chains</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Gopinath
-            </span></p>
-            <p class="dateline"><a href="posts/deriving-explicit-formulas-from-markov-chains/" rel="bookmark"><time class="published dt-published" datetime="2015-08-09T17:11:29+05:30" title="2015-08-09 17:11">2015-08-09 17:11</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Once we formulate the markov model correctly, we can obtain the generating function for each entry in the matrix, where there's a possibility of getting the explicit formula. Let's take a look at one such problem:</p>
-<p><em>A six faced unbiased die is rolled :math:`n` times. What is the probability that we get to see all the six numbers in the sequence?</em></p>
-<p>Setting up a markov chain is easy:</p>
-<div class="math">
-\begin{equation*}
-\displaystyle A= \begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; \frac{1}{3} &amp; \frac{2}{3} &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{2}{3} &amp; \frac{1}{3} &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{5}{6} &amp; \frac{1}{6}\\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}
-\end{equation*}
-</div>
-<p>The states indicate the number of faces shown up. E.g. the row above the last row indicates that when 5 faces are seen, there's a probability of <span class="math">\(5/6\)</span> remaining in the same state and <span class="math">\(1/6\)</span> moving to the final state.</p>
-<p>So, <span class="math">\(A^n[0,6]\)</span>, gives the required answer. But we can also find the generating function for that entry by computing <span class="math">\((I-x\, A)^{-1}\)</span>, which is</p>
-<div class="math">
-\begin{equation*}
-\displaystyle G(x) = \frac{10 \, x^{6}}{{\left(5 \, x - 6\right)} {\left(2 \, x - 3\right)} {\left(x - 1\right)} {\left(x - 2\right)} {\left(x - 3\right)} {\left(x - 6\right)}}
-\end{equation*}
-</div>
-<p>and on partial fractions it's</p>
-<div class="math">
-\begin{equation*}
-\displaystyle G(x) = \frac{36}{5 \, x - 6} - \frac{45}{2 \, x - 3} - \frac{1}{x - 1} + \frac{40}{x - 2} - \frac{45}{x - 3} + \frac{36}{x - 6} + 1
-\end{equation*}
-</div>
-<p>and the probability can be written by extracting <span class="math">\([x^n]G(x)\)</span> as</p>
-<div class="math">
-\begin{equation*}
-\displaystyle \mathbb{P}(n) = 1-\frac{6}{6^n}+\frac{15}{3^n}-\frac{20}{2^n}+15\left(\frac{2}{3}\right)^n-6\left(\frac{5}{6}\right)^n
-\end{equation*}
-</div>
-<p>which can be verified by a simulation in J:</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/deriving-explicit-formulas-from-markov-chains/#rest_code_e3ddfcd0c5bc4c549310a51a9c747362-1">1</a>
-<a href="posts/deriving-explicit-formulas-from-markov-chains/#rest_code_e3ddfcd0c5bc4c549310a51a9c747362-2">2</a>
-<a href="posts/deriving-explicit-formulas-from-markov-chains/#rest_code_e3ddfcd0c5bc4c549310a51a9c747362-3">3</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_e3ddfcd0c5bc4c549310a51a9c747362-1"></a>n=:10
-<a name="rest_code_e3ddfcd0c5bc4c549310a51a9c747362-2"></a>sim=: 3 : '6=+/~:?n#6'
-<a name="rest_code_e3ddfcd0c5bc4c549310a51a9c747362-3"></a>(+/%#)(sim"0)1e5#0 NB. about 0.27
-</pre></td>
-</tr></table>
-<p>and</p>
-<div class="math">
-\begin{equation*}
-\mathbb{P}(10) = \dfrac{38045}{139968} \approx 0.271812128486511
-\end{equation*}
-</div>
 </div>
     </div>
     </article>

@@ -27,7 +27,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/computer-art.xml</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/context-free-art.xml</loc>
@@ -111,11 +111,15 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/mathjax.xml</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/multiset.xml</loc>
   <lastmod>2016-09-16T08:36:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://g-ar.github.io/categories/mypaint.xml</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/pppoe.xml</loc>
@@ -128,6 +132,10 @@
  <sitemap>
   <loc>https://g-ar.github.io/categories/pslq.xml</loc>
   <lastmod>2016-09-16T08:36:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://g-ar.github.io/categories/python.xml</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/r.xml</loc>
@@ -170,6 +178,14 @@
   <lastmod>2016-09-15T17:51:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://g-ar.github.io/categories/xdotool.xml</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://g-ar.github.io/categories/xorg.xml</loc>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://g-ar.github.io/galleries/img/rss.xml</loc>
   <lastmod>2016-09-14T06:26:00Z</lastmod>
  </sitemap>
@@ -179,10 +195,10 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/rss.xml</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/sitemap.xml</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2016-09-23T18:14:00Z</lastmod>
  </sitemap>
 </sitemapindex>
