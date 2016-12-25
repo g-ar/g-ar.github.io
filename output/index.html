@@ -9,7 +9,7 @@
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://g-ar.github.io/">
-<link rel="next" href="index-6.html" type="text/html">
+<link rel="next" href="index-7.html" type="text/html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/simulating-mouse-movement-to-draw-in-mypaint/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/getting-started-with-emacs/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,230 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/" class="u-url">Simulating mouse movement to draw in mypaint</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/getting-started-with-emacs/" class="u-url">Getting Started With Emacs</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/getting-started-with-emacs/" rel="bookmark"><time class="published dt-published" datetime="2016-12-25T11:52:17+05:30" title="2016-12-25 11:52">2016-12-25 11:52</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Emacs is an editor that lets us to edit quickly, avoid boring repetitive typing, define custom commands and bind them to desired keys etc. Plus many of its key bindings work in bash too, so, it's really worth to have some time familiarizing with this ancient editor. Let's take a look about the various key bindings and modes --</p>
+<div class="section" id="a-little-cheat-sheet">
+<h2>A little cheat sheet</h2>
+<p>First, some of the common commands. C means ctrl key, and M means alt key:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%">
+<col width="83%">
+</colgroup>
+<thead valign="bottom"><tr>
+<th class="head"><strong>Key</strong></th>
+<th class="head"><strong>Function</strong></th>
+</tr></thead>
+<tbody valign="top">
+<tr>
+<td>C-e</td>
+<td>Go to end of line</td>
+</tr>
+<tr>
+<td>C-a</td>
+<td>Go to beginning of line</td>
+</tr>
+<tr>
+<td>C-t</td>
+<td>Swap adjacent characters</td>
+</tr>
+<tr>
+<td>M-t</td>
+<td>Swap adjacent words</td>
+</tr>
+<tr>
+<td>C-x t</td>
+<td>transpose two lines</td>
+</tr>
+<tr>
+<td>C-x k</td>
+<td>kill current buffer</td>
+</tr>
+<tr>
+<td>C-&lt;space&gt;</td>
+<td>Mark beginning of region, move cursor to highlight</td>
+</tr>
+<tr>
+<td>M-%</td>
+<td>replace in region</td>
+</tr>
+<tr>
+<td>C-s</td>
+<td>forward search</td>
+</tr>
+<tr>
+<td>C-r</td>
+<td>reverse search</td>
+</tr>
+<tr>
+<td>M-&lt;</td>
+<td>Go to beginning of buffer</td>
+</tr>
+<tr>
+<td>M-&gt;</td>
+<td>Go to end</td>
+</tr>
+<tr>
+<td>C-x h</td>
+<td>Whole buffer's selected as region</td>
+</tr>
+<tr>
+<td>f3</td>
+<td>Start recording macro</td>
+</tr>
+<tr>
+<td>f4</td>
+<td>stop recording macro (press f4 to play that macro)</td>
+</tr>
+<tr>
+<td>M-u</td>
+<td>Convert the word after the cursor to uppercase</td>
+</tr>
+<tr>
+<td>M-l</td>
+<td>Convert to lower case</td>
+</tr>
+<tr>
+<td>M-c</td>
+<td>Capitalize word</td>
+</tr>
+<tr>
+<td>M-=</td>
+<td>Count lines, words, and characters in region</td>
+</tr>
+</tbody>
+</table>
+<p>There are thousands of commands, which can be invoked by M-x and entering the command name, in case we don't remember the key binding for the command. C-h can be used to find help.</p>
+</div>
+<div class="section" id="org-mode">
+<h2>Org-mode</h2>
+<p>If anybody has to be instantly impressed by Emacs, this will do it! It's more like a markup language, which can export to several formats like html, LaTeX, rst, plaintext etc., and it's much easier to use than formats like rst. We can even use it to create tables, and apply formulas on them like a spreadsheet. How cool is that, spreadsheet without any of its associated bloat?!</p>
+<p>See org-mode's site for its excellent documentation.</p>
+</div>
+<div class="section" id="ido-mode">
+<h2>Ido-mode</h2>
+<p>This provides suggestions when entering the command after M-x, which is quite helpful in discovering commands when we vaguely remember the command, or even a new command. And it searches for substrings which needn't be continuous, e.g. pressing <tt class="docutils literal"><span class="pre">M-x</span> areg</tt> will highlight align-regexp</p>
+</div>
+<div class="section" id="yasnippet">
+<h2>Yasnippet</h2>
+<p>This is a mode where for a given minor-mode and a keyword in that mode, on pressing tab, it expands to the code snippet as stored. E.g. Open a blank C file, type <tt class="docutils literal">main</tt>, then hit TAB, it gets expanded to</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-1">1</a>
+<a href="posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-2">2</a>
+<a href="posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-3">3</a>
+<a href="posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-4">4</a>
+<a href="posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-5">5</a>
+<a href="posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-6">6</a>
+<a href="posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-7">7</a></pre></div></td>
+<td class="code"><pre class="code C"><a name="rest_code_1113482c79fa48da924ff775d7908266-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_1113482c79fa48da924ff775d7908266-2"></a>
+<a name="rest_code_1113482c79fa48da924ff775d7908266-3"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<a name="rest_code_1113482c79fa48da924ff775d7908266-4"></a><span class="p">{</span>
+<a name="rest_code_1113482c79fa48da924ff775d7908266-5"></a>
+<a name="rest_code_1113482c79fa48da924ff775d7908266-6"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_1113482c79fa48da924ff775d7908266-7"></a><span class="p">}</span>
+</pre></td>
+</tr></table>
+</div>
+<div class="section" id="auto-complete-mode">
+<h2>Auto-complete mode</h2>
+<p>Provides suggestions to complete the words, showing frequently typed words on top.</p>
+</div>
+<div class="section" id="jedi-with-python-mode">
+<h2>Jedi with python mode</h2>
+<p>With python mode, jedi is useful for autocompletion and code navigation.</p>
+</div>
+<div class="section" id="restclient-mode">
+<h2>Restclient-mode</h2>
+<p>This is indispensable when developing web APIs.
+Type the method, endpoint, headers, message, and C-c C-c, and a nicely formatted response will be shown in an adjacent window! The requests can be stored in a file, separted by <tt class="docutils literal">#</tt> as a delimiter.</p>
+</div>
+<div class="section" id="expand-region">
+<h2>Expand-region</h2>
+<p>Expands the region based on semantic units
+E.g. in a word "a-string", when the cursor is at 'a', when <tt class="docutils literal"><span class="pre">C-=</span></tt> is pressed once, 'a' is selected, on pressing again 'a-string' is selected, pressing again selects '"a-string"'. Very useful when we need to copy or delete a block of code.</p>
+</div>
+<div class="section" id="tiny">
+<h2>Tiny</h2>
+<p>Tiny is not yasnippet, is another one, which can expand a given sentence with required numerical range.
+E.g. Construct the ascii table! Press <tt class="docutils literal"><span class="pre">M-x</span> <span class="pre">tiny-expand</span></tt> after entering
+<tt class="docutils literal"><span class="pre">m97\n122|%03d</span> %(string x)</tt></p>
+<pre class="code text"><a name="rest_code_e5354e64d031422bacc24385300ff089-1"></a>097 a
+<a name="rest_code_e5354e64d031422bacc24385300ff089-2"></a>098 b
+<a name="rest_code_e5354e64d031422bacc24385300ff089-3"></a>099 c
+<a name="rest_code_e5354e64d031422bacc24385300ff089-4"></a>100 d
+<a name="rest_code_e5354e64d031422bacc24385300ff089-5"></a>101 e
+<a name="rest_code_e5354e64d031422bacc24385300ff089-6"></a>102 f
+<a name="rest_code_e5354e64d031422bacc24385300ff089-7"></a>103 g
+<a name="rest_code_e5354e64d031422bacc24385300ff089-8"></a>104 h
+<a name="rest_code_e5354e64d031422bacc24385300ff089-9"></a>105 i
+<a name="rest_code_e5354e64d031422bacc24385300ff089-10"></a>106 j
+<a name="rest_code_e5354e64d031422bacc24385300ff089-11"></a>107 k
+<a name="rest_code_e5354e64d031422bacc24385300ff089-12"></a>108 l
+<a name="rest_code_e5354e64d031422bacc24385300ff089-13"></a>109 m
+<a name="rest_code_e5354e64d031422bacc24385300ff089-14"></a>110 n
+<a name="rest_code_e5354e64d031422bacc24385300ff089-15"></a>111 o
+<a name="rest_code_e5354e64d031422bacc24385300ff089-16"></a>112 p
+<a name="rest_code_e5354e64d031422bacc24385300ff089-17"></a>113 q
+<a name="rest_code_e5354e64d031422bacc24385300ff089-18"></a>114 r
+<a name="rest_code_e5354e64d031422bacc24385300ff089-19"></a>115 s
+<a name="rest_code_e5354e64d031422bacc24385300ff089-20"></a>116 t
+<a name="rest_code_e5354e64d031422bacc24385300ff089-21"></a>117 u
+<a name="rest_code_e5354e64d031422bacc24385300ff089-22"></a>118 v
+<a name="rest_code_e5354e64d031422bacc24385300ff089-23"></a>119 w
+<a name="rest_code_e5354e64d031422bacc24385300ff089-24"></a>120 x
+<a name="rest_code_e5354e64d031422bacc24385300ff089-25"></a>121 y
+<a name="rest_code_e5354e64d031422bacc24385300ff089-26"></a>122 z
+</pre>
+</div>
+<div class="section" id="rainbow-delimiters-mode">
+<h2>Rainbow-delimiters-mode</h2>
+<p>This is useful for languages where brackets are used to identify blocks, like lisp, C etc. This mode marks each block level's parentheses with  different colors, so that it becomes easy to figure out any missing parenthesis.</p>
+</div>
+<div class="section" id="artist-mode">
+<h2>Artist-mode</h2>
+<p>Want to make some ascii-art? There's a mode for that as well!
+Enter <tt class="docutils literal"><span class="pre">M-x</span> <span class="pre">artist-mode</span></tt>, and then we can easily create rectangle, ellipse, polygons etc. in the text file.
+If we want to draw with a mouse in the emacs GUI, press <tt class="docutils literal"><span class="pre">shift-&lt;mouse-2&gt;</span></tt> (middle click), which shows the menu of options to draw like rectangle, ellipse, pen, spray-can etc. Very handy if we want to draw simple block diagrams.</p>
+</div>
+<div class="section" id="calc-mode">
+<h2>Calc-mode</h2>
+<p>This is a stack-based scientific calculator which performs many of the calculations. It's a mini CAS!
+To start it, enter <tt class="docutils literal"><span class="pre">M-x</span> calc</tt>, and as an example, we can do unit conversions, by typing in the calc window:</p>
+<pre class="code text"><a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-1"></a>1
+<a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-2"></a>u c
+<a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-3"></a>day
+<a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-4"></a>s
+</pre>
+<p>will return 86400, which means 86400 seconds are there in a day.</p>
+<p>And there are many more modes and commands, which make editing fun!</p>
+<p>For a detailed reference:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.gnu.org/software/emacs/refcards/ps/refcard.ps.gz">Emacs reference card</a></li>
+<li><a class="reference external" href="http://orgmode.org/">Org mode</a></li>
+<li><a class="reference external" href="https://masteringemacs.org/article/introduction-to-ido-mode">Ido mode</a></li>
+<li><a class="reference external" href="https://www.emacswiki.org/emacs/Yasnippet">yasnippet</a></li>
+<li><a class="reference external" href="https://github.com/auto-complete/auto-complete">auto-complete</a></li>
+<li><a class="reference external" href="https://tkf.github.io/emacs-jedi/latest/">Jedi</a></li>
+<li><a class="reference external" href="https://github.com/pashky/restclient.el">Restclient-mode</a></li>
+<li><a class="reference external" href="https://github.com/magnars/expand-region.el">Expand-region</a></li>
+<li><a class="reference external" href="https://elpa.gnu.org/packages/tiny.html">Tiny</a></li>
+<li><a class="reference external" href="https://github.com/Fanael/rainbow-delimiters">Rainbow-delimiters-mode</a></li>
+<li><a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_mono/calc.html">Calc</a></li>
+</ul>
+<p>or get help within emacs, by pressing <tt class="docutils literal"><span class="pre">C-h</span> m</tt></p>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/" class="u-url">Simulating mouse movement to draw in mypaint</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Gopinath
@@ -427,44 +650,12 @@ To compile on a single core, use<ul>
 <p>and <tt class="docutils literal">chmod +x cfdg</tt>, and have fun with the software!</p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/installing-and-running-tensorflow-in-debian-wheezy/" class="u-url">Installing and Running TensorFlow in Debian Wheezy</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Gopinath
-            </span></p>
-            <p class="dateline"><a href="posts/installing-and-running-tensorflow-in-debian-wheezy/" rel="bookmark"><time class="published dt-published" datetime="2015-11-11T17:16:08+05:30" title="2015-11-11 17:16">2015-11-11 17:16</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>A couple of days ago google released what they term it as the second generation deep learning neural network software system, called TensorFlow. Google has been taking much interest in deep learning since two or three years (perhaps having surplus computation power?), and they are using it for all sorts of softwares they develop <span class="math">\(-\)</span> maps, translation, spying on you for targeted ads etc. So, I thought of trying out their newly released tool.</p>
-<p>First, I tried to install it using their "easy way" using <tt class="docutils literal">virtualenv</tt> and <tt class="docutils literal">pip</tt>. Getting into the virtual environment is easy, and pip install command also worked, but when importing tensorflow, it spit an ugly ImportError <span class="math">\(-\)</span> <tt class="docutils literal"><span class="pre">/lib/x86_64-linux-gnu/libc.so.6:</span> version `GLIBC_2.17' not found</tt>. Now, for the other option.</p>
-<p>Next, I thought installing from sources would definitely go well. Downloaded all the source codes and dependencies required by the project, and bazel was one of them. Downloaded bazel as well, but when the installation script was run, that method also went kaput with some error complaining about the kernel version or something. Running from a virtual machine or installing some latest distro was my only option, I thought. But no! There's another method using docker image, which I overlooked even though that was mentioned at the top of the installation page.</p>
-<p>Here are the steps:</p>
-<ul class="simple">
-<li>Docker runs only on 64-bit OS with kernel version 3.10 or higher. So, the first step must be to install the latest kernel available from wheezy backports. Follow the backport instructions</li>
-<li>Then reboot the machine selecting the latest kernel version</li>
-<li>Follow the docker installation steps</li>
-<li>Now, we are all set to install TensorFlow. Simply run<ul>
-<li><tt class="docutils literal">sudo docker run <span class="pre">-it</span> b.gcr.io/tensorflow/tensorflow</tt></li>
-</ul>
-</li>
-<li>That will pull all the required dependencies and set the docker image (which was about 300MiB to download)</li>
-<li>Wouldn't it be convenient if we could add some data persistance, to save data so that the host could use it? There's an option for that as well<ul>
-<li><tt class="docutils literal">sudo docker run <span class="pre">-it</span> <span class="pre">-v</span> <span class="pre">/host/dir:/docker/dir</span> b.gcr.io/tensorflow/tensorflow</tt></li>
-</ul>
-</li>
-<li>Now the <tt class="docutils literal">/host/dir</tt> is mounted to the <tt class="docutils literal">/docker/dir</tt> when the image is run</li>
-<li>And that's it, no need of a virtualbox, which wastes more time and space than to run a docker image</li>
-<li>Check an example program from the tutorial, like plotting mandelbrot set</li>
-</ul>
-</div>
-    </div>
     </article>
 </div>
 
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
-                <a href="index-6.html" rel="next">Older posts</a>
+                <a href="index-7.html" rel="next">Older posts</a>
             </li>
         </ul></nav><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
 MathJax.Hub.Config({
