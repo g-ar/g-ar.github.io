@@ -1,5 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R (emacs)</title><link>https://g-ar.github.io/</link><description></description><atom:link href="https://g-ar.github.io/categories/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Fri, 16 Sep 2016 08:36:35 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>FriCAS -- an introduction</title><link>https://g-ar.github.io/posts/fricas-an-introduction/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;There are quite a few different free computer algebra systems around &lt;span class="math"&gt;\(-\)&lt;/span&gt; Sage, maxima, sympy, FriCAS/Axiom etc. &lt;span class="math"&gt;\(-\)&lt;/span&gt; each having its strengths and lack of something. Having choices and access to source code are good, since we are not at mercy of vendors like those big M developers for bug fixes and feature additions (along with outrageous licence costs).&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Gopinath A R (emacs)</title><link>https://g-ar.github.io/</link><description></description><atom:link rel="self" href="https://g-ar.github.io/categories/emacs.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 25 Dec 2016 06:23:39 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Getting Started With Emacs</title><link>https://g-ar.github.io/posts/getting-started-with-emacs/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Emacs is an editor that lets us to edit quickly, avoid boring repetitive typing, define custom commands and bind them to desired keys etc. Plus many of its key bindings work in bash too, so, it's really worth to have some time familiarizing with this ancient editor. Let's take a look about the various key bindings and modes --&lt;/p&gt;
+&lt;div class="section" id="a-little-cheat-sheet"&gt;
+&lt;h2&gt;A little cheat sheet&lt;/h2&gt;
+&lt;p&gt;First, some of the common commands. C means ctrl key, and M means alt key:&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="17%"&gt;
+&lt;col width="83%"&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;&lt;strong&gt;Key&lt;/strong&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;strong&gt;Function&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;C-e&lt;/td&gt;
+&lt;td&gt;Go to end of line&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;C-a&lt;/td&gt;
+&lt;td&gt;Go to beginning of line&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;C-t&lt;/td&gt;
+&lt;td&gt;Swap adjacent characters&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;M-t&lt;/td&gt;
+&lt;td&gt;Swap adjacent words&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;C-x t&lt;/td&gt;
+&lt;td&gt;transpose two lines&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;C-x k&lt;/td&gt;
+&lt;td&gt;kill current buffer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;C-&amp;lt;space&amp;gt;&lt;/td&gt;
+&lt;td&gt;Mark beginning of region, move cursor to highlight&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;M-%&lt;/td&gt;
+&lt;td&gt;replace in region&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;C-s&lt;/td&gt;
+&lt;td&gt;forward search&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;C-r&lt;/td&gt;
+&lt;td&gt;reverse search&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;M-&amp;lt;&lt;/td&gt;
+&lt;td&gt;Go to beginning of buffer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;M-&amp;gt;&lt;/td&gt;
+&lt;td&gt;Go to end&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;C-x h&lt;/td&gt;
+&lt;td&gt;Whole buffer's selected as region&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;f3&lt;/td&gt;
+&lt;td&gt;Start recording macro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;f4&lt;/td&gt;
+&lt;td&gt;stop recording macro (press f4 to play that macro)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;M-u&lt;/td&gt;
+&lt;td&gt;Convert the word after the cursor to uppercase&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;M-l&lt;/td&gt;
+&lt;td&gt;Convert to lower case&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;M-c&lt;/td&gt;
+&lt;td&gt;Capitalize word&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;M-=&lt;/td&gt;
+&lt;td&gt;Count lines, words, and characters in region&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;There are thousands of commands, which can be invoked by M-x and entering the command name, in case we don't remember the key binding for the command. C-h can be used to find help.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="org-mode"&gt;
+&lt;h2&gt;Org-mode&lt;/h2&gt;
+&lt;p&gt;If anybody has to be instantly impressed by Emacs, this will do it! It's more like a markup language, which can export to several formats like html, LaTeX, rst, plaintext etc., and it's much easier to use than formats like rst. We can even use it to create tables, and apply formulas on them like a spreadsheet. How cool is that, spreadsheet without any of its associated bloat?!&lt;/p&gt;
+&lt;p&gt;See org-mode's site for its excellent documentation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ido-mode"&gt;
+&lt;h2&gt;Ido-mode&lt;/h2&gt;
+&lt;p&gt;This provides suggestions when entering the command after M-x, which is quite helpful in discovering commands when we vaguely remember the command, or even a new command. And it searches for substrings which needn't be continuous, e.g. pressing &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; areg&lt;/tt&gt; will highlight align-regexp&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="yasnippet"&gt;
+&lt;h2&gt;Yasnippet&lt;/h2&gt;
+&lt;p&gt;This is a mode where for a given minor-mode and a keyword in that mode, on pressing tab, it expands to the code snippet as stored. E.g. Open a blank C file, type &lt;tt class="docutils literal"&gt;main&lt;/tt&gt;, then hit TAB, it gets expanded to&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-1"&gt;1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-2"&gt;2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-3"&gt;3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-4"&gt;4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-5"&gt;5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-6"&gt;6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/getting-started-with-emacs/#rest_code_1113482c79fa48da924ff775d7908266-7"&gt;7&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code C"&gt;&lt;a name="rest_code_1113482c79fa48da924ff775d7908266-1"&gt;&lt;/a&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;a name="rest_code_1113482c79fa48da924ff775d7908266-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_1113482c79fa48da924ff775d7908266-3"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt;
+&lt;a name="rest_code_1113482c79fa48da924ff775d7908266-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_1113482c79fa48da924ff775d7908266-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_1113482c79fa48da924ff775d7908266-6"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_1113482c79fa48da924ff775d7908266-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="section" id="auto-complete-mode"&gt;
+&lt;h2&gt;Auto-complete mode&lt;/h2&gt;
+&lt;p&gt;Provides suggestions to complete the words, showing frequently typed words on top.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="jedi-with-python-mode"&gt;
+&lt;h2&gt;Jedi with python mode&lt;/h2&gt;
+&lt;p&gt;With python mode, jedi is useful for autocompletion and code navigation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="restclient-mode"&gt;
+&lt;h2&gt;Restclient-mode&lt;/h2&gt;
+&lt;p&gt;This is indispensable when developing web APIs.
+Type the method, endpoint, headers, message, and C-c C-c, and a nicely formatted response will be shown in an adjacent window! The requests can be stored in a file, separted by &lt;tt class="docutils literal"&gt;#&lt;/tt&gt; as a delimiter.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="expand-region"&gt;
+&lt;h2&gt;Expand-region&lt;/h2&gt;
+&lt;p&gt;Expands the region based on semantic units
+E.g. in a word "a-string", when the cursor is at 'a', when &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;C-=&lt;/span&gt;&lt;/tt&gt; is pressed once, 'a' is selected, on pressing again 'a-string' is selected, pressing again selects '"a-string"'. Very useful when we need to copy or delete a block of code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="tiny"&gt;
+&lt;h2&gt;Tiny&lt;/h2&gt;
+&lt;p&gt;Tiny is not yasnippet, is another one, which can expand a given sentence with required numerical range.
+E.g. Construct the ascii table! Press &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; &lt;span class="pre"&gt;tiny-expand&lt;/span&gt;&lt;/tt&gt; after entering
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;m97\n122|%03d&lt;/span&gt; %(string x)&lt;/tt&gt;&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-1"&gt;&lt;/a&gt;097 a
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-2"&gt;&lt;/a&gt;098 b
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-3"&gt;&lt;/a&gt;099 c
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-4"&gt;&lt;/a&gt;100 d
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-5"&gt;&lt;/a&gt;101 e
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-6"&gt;&lt;/a&gt;102 f
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-7"&gt;&lt;/a&gt;103 g
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-8"&gt;&lt;/a&gt;104 h
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-9"&gt;&lt;/a&gt;105 i
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-10"&gt;&lt;/a&gt;106 j
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-11"&gt;&lt;/a&gt;107 k
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-12"&gt;&lt;/a&gt;108 l
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-13"&gt;&lt;/a&gt;109 m
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-14"&gt;&lt;/a&gt;110 n
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-15"&gt;&lt;/a&gt;111 o
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-16"&gt;&lt;/a&gt;112 p
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-17"&gt;&lt;/a&gt;113 q
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-18"&gt;&lt;/a&gt;114 r
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-19"&gt;&lt;/a&gt;115 s
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-20"&gt;&lt;/a&gt;116 t
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-21"&gt;&lt;/a&gt;117 u
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-22"&gt;&lt;/a&gt;118 v
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-23"&gt;&lt;/a&gt;119 w
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-24"&gt;&lt;/a&gt;120 x
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-25"&gt;&lt;/a&gt;121 y
+&lt;a name="rest_code_e5354e64d031422bacc24385300ff089-26"&gt;&lt;/a&gt;122 z
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="rainbow-delimiters-mode"&gt;
+&lt;h2&gt;Rainbow-delimiters-mode&lt;/h2&gt;
+&lt;p&gt;This is useful for languages where brackets are used to identify blocks, like lisp, C etc. This mode marks each block level's parentheses with  different colors, so that it becomes easy to figure out any missing parenthesis.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="artist-mode"&gt;
+&lt;h2&gt;Artist-mode&lt;/h2&gt;
+&lt;p&gt;Want to make some ascii-art? There's a mode for that as well!
+Enter &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; &lt;span class="pre"&gt;artist-mode&lt;/span&gt;&lt;/tt&gt;, and then we can easily create rectangle, ellipse, polygons etc. in the text file.
+If we want to draw with a mouse in the emacs GUI, press &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;shift-&amp;lt;mouse-2&amp;gt;&lt;/span&gt;&lt;/tt&gt; (middle click), which shows the menu of options to draw like rectangle, ellipse, pen, spray-can etc. Very handy if we want to draw simple block diagrams.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="calc-mode"&gt;
+&lt;h2&gt;Calc-mode&lt;/h2&gt;
+&lt;p&gt;This is a stack-based scientific calculator which performs many of the calculations. It's a mini CAS!
+To start it, enter &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; calc&lt;/tt&gt;, and as an example, we can do unit conversions, by typing in the calc window:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-1"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-2"&gt;&lt;/a&gt;u c
+&lt;a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-3"&gt;&lt;/a&gt;day
+&lt;a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-4"&gt;&lt;/a&gt;s
+&lt;/pre&gt;&lt;p&gt;will return 86400, which means 86400 seconds are there in a day.&lt;/p&gt;
+&lt;p&gt;And there are many more modes and commands, which make editing fun!&lt;/p&gt;
+&lt;p&gt;For a detailed reference:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.gnu.org/software/emacs/refcards/ps/refcard.ps.gz"&gt;Emacs reference card&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://orgmode.org/"&gt;Org mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://masteringemacs.org/article/introduction-to-ido-mode"&gt;Ido mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.emacswiki.org/emacs/Yasnippet"&gt;yasnippet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/auto-complete/auto-complete"&gt;auto-complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://tkf.github.io/emacs-jedi/latest/"&gt;Jedi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/pashky/restclient.el"&gt;Restclient-mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/magnars/expand-region.el"&gt;Expand-region&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://elpa.gnu.org/packages/tiny.html"&gt;Tiny&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/Fanael/rainbow-delimiters"&gt;Rainbow-delimiters-mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_mono/calc.html"&gt;Calc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;or get help within emacs, by pressing &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;C-h&lt;/span&gt; m&lt;/tt&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><guid>https://g-ar.github.io/posts/getting-started-with-emacs/</guid><pubDate>Sun, 25 Dec 2016 06:22:17 GMT</pubDate></item><item><title>FriCAS -- an introduction</title><link>https://g-ar.github.io/posts/fricas-an-introduction/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;There are quite a few different free computer algebra systems around &lt;span class="math"&gt;\(-\)&lt;/span&gt; Sage, maxima, sympy, FriCAS/Axiom etc. &lt;span class="math"&gt;\(-\)&lt;/span&gt; each having its strengths and lack of something. Having choices and access to source code are good, since we are not at mercy of vendors like those big M developers for bug fixes and feature additions (along with outrageous licence costs).&lt;/p&gt;
 &lt;p&gt;I have been using FriCAS for a while mainly for its number sequence guessing routines, an indispensable part when working on enumeration problems. But recently, when I tried other operations which I mostly do in Sage or maxima, like integration and solving equations, I was surprised to see it could give simpler and more complete answers than Sage/maxima.&lt;/p&gt;
 &lt;p&gt;One more good thing is that it comes with a fricas mode for emacs, which has many more features compared to running from a terminal. E.g. it gives features like auto-completion, matched-parenthesis highlighting, shortcut keys for navigating through the input, yanking text etc., and of course, we can define our own shortcuts since it's emacs! Let us see how to set FriCAS up and run from emacs in linux. The latest version at the time is 1.2.3, and I have only tried amd64 binary version.&lt;/p&gt;
 &lt;p&gt;Make a directory &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; if not already there, and add to the &lt;tt class="docutils literal"&gt;$PATH&lt;/tt&gt; environment variable. Extract the components to &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt;. To run it, we need to modify a few paths in its files. Go to &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin&lt;/tt&gt;, in fricas file, update the variable &lt;tt class="docutils literal"&gt;exec_prefix&lt;/tt&gt; to&lt;/p&gt;
