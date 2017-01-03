@@ -205,23 +205,14 @@ MathJax.Hub.Config({
 <div class="section" id="yasnippet">
 <h2>Yasnippet</h2>
 <p>This is a mode where for a given minor-mode and a keyword in that mode, on pressing tab, it expands to the code snippet as stored. E.g. Open a blank C file, type <tt class="docutils literal">main</tt>, then hit TAB, it gets expanded to</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1113482c79fa48da924ff775d7908266-1">1</a>
-<a href="#rest_code_1113482c79fa48da924ff775d7908266-2">2</a>
-<a href="#rest_code_1113482c79fa48da924ff775d7908266-3">3</a>
-<a href="#rest_code_1113482c79fa48da924ff775d7908266-4">4</a>
-<a href="#rest_code_1113482c79fa48da924ff775d7908266-5">5</a>
-<a href="#rest_code_1113482c79fa48da924ff775d7908266-6">6</a>
-<a href="#rest_code_1113482c79fa48da924ff775d7908266-7">7</a></pre></div></td>
-<td class="code"><pre class="code C"><a name="rest_code_1113482c79fa48da924ff775d7908266-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<a name="rest_code_1113482c79fa48da924ff775d7908266-2"></a>
-<a name="rest_code_1113482c79fa48da924ff775d7908266-3"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<a name="rest_code_1113482c79fa48da924ff775d7908266-4"></a><span class="p">{</span>
-<a name="rest_code_1113482c79fa48da924ff775d7908266-5"></a>
-<a name="rest_code_1113482c79fa48da924ff775d7908266-6"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_1113482c79fa48da924ff775d7908266-7"></a><span class="p">}</span>
-</pre></td>
-</tr></table>
+<pre class="code C"><a name="rest_code_e9880f7ec60b49ec8a061a66304f0905-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_e9880f7ec60b49ec8a061a66304f0905-2"></a>
+<a name="rest_code_e9880f7ec60b49ec8a061a66304f0905-3"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<a name="rest_code_e9880f7ec60b49ec8a061a66304f0905-4"></a><span class="p">{</span>
+<a name="rest_code_e9880f7ec60b49ec8a061a66304f0905-5"></a>
+<a name="rest_code_e9880f7ec60b49ec8a061a66304f0905-6"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_e9880f7ec60b49ec8a061a66304f0905-7"></a><span class="p">}</span>
+</pre>
 </div>
 <div class="section" id="auto-complete-mode">
 <h2>Auto-complete mode</h2>
@@ -246,32 +237,32 @@ E.g. in a word "a-string", when the cursor is at 'a', when <tt class="docutils l
 <p>Tiny is not yasnippet, is another one, which can expand a given sentence with required numerical range.
 E.g. Construct the ascii table! Press <tt class="docutils literal"><span class="pre">M-x</span> <span class="pre">tiny-expand</span></tt> after entering
 <tt class="docutils literal"><span class="pre">m97\n122|%03d</span> %(string x)</tt></p>
-<pre class="code text"><a name="rest_code_e5354e64d031422bacc24385300ff089-1"></a>097 a
-<a name="rest_code_e5354e64d031422bacc24385300ff089-2"></a>098 b
-<a name="rest_code_e5354e64d031422bacc24385300ff089-3"></a>099 c
-<a name="rest_code_e5354e64d031422bacc24385300ff089-4"></a>100 d
-<a name="rest_code_e5354e64d031422bacc24385300ff089-5"></a>101 e
-<a name="rest_code_e5354e64d031422bacc24385300ff089-6"></a>102 f
-<a name="rest_code_e5354e64d031422bacc24385300ff089-7"></a>103 g
-<a name="rest_code_e5354e64d031422bacc24385300ff089-8"></a>104 h
-<a name="rest_code_e5354e64d031422bacc24385300ff089-9"></a>105 i
-<a name="rest_code_e5354e64d031422bacc24385300ff089-10"></a>106 j
-<a name="rest_code_e5354e64d031422bacc24385300ff089-11"></a>107 k
-<a name="rest_code_e5354e64d031422bacc24385300ff089-12"></a>108 l
-<a name="rest_code_e5354e64d031422bacc24385300ff089-13"></a>109 m
-<a name="rest_code_e5354e64d031422bacc24385300ff089-14"></a>110 n
-<a name="rest_code_e5354e64d031422bacc24385300ff089-15"></a>111 o
-<a name="rest_code_e5354e64d031422bacc24385300ff089-16"></a>112 p
-<a name="rest_code_e5354e64d031422bacc24385300ff089-17"></a>113 q
-<a name="rest_code_e5354e64d031422bacc24385300ff089-18"></a>114 r
-<a name="rest_code_e5354e64d031422bacc24385300ff089-19"></a>115 s
-<a name="rest_code_e5354e64d031422bacc24385300ff089-20"></a>116 t
-<a name="rest_code_e5354e64d031422bacc24385300ff089-21"></a>117 u
-<a name="rest_code_e5354e64d031422bacc24385300ff089-22"></a>118 v
-<a name="rest_code_e5354e64d031422bacc24385300ff089-23"></a>119 w
-<a name="rest_code_e5354e64d031422bacc24385300ff089-24"></a>120 x
-<a name="rest_code_e5354e64d031422bacc24385300ff089-25"></a>121 y
-<a name="rest_code_e5354e64d031422bacc24385300ff089-26"></a>122 z
+<pre class="code text"><a name="rest_code_109a48ad3a31479baef2125d06b8ef59-1"></a>097 a
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-2"></a>098 b
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-3"></a>099 c
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-4"></a>100 d
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-5"></a>101 e
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-6"></a>102 f
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-7"></a>103 g
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-8"></a>104 h
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-9"></a>105 i
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-10"></a>106 j
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-11"></a>107 k
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-12"></a>108 l
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-13"></a>109 m
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-14"></a>110 n
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-15"></a>111 o
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-16"></a>112 p
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-17"></a>113 q
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-18"></a>114 r
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-19"></a>115 s
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-20"></a>116 t
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-21"></a>117 u
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-22"></a>118 v
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-23"></a>119 w
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-24"></a>120 x
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-25"></a>121 y
+<a name="rest_code_109a48ad3a31479baef2125d06b8ef59-26"></a>122 z
 </pre>
 </div>
 <div class="section" id="rainbow-delimiters-mode">
@@ -288,12 +279,46 @@ If we want to draw with a mouse in the emacs GUI, press <tt class="docutils lite
 <h2>Calc-mode</h2>
 <p>This is a stack-based scientific calculator which performs many of the calculations. It's a mini CAS!
 To start it, enter <tt class="docutils literal"><span class="pre">M-x</span> calc</tt>, and as an example, we can do unit conversions, by typing in the calc window:</p>
-<pre class="code text"><a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-1"></a>1
-<a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-2"></a>u c
-<a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-3"></a>day
-<a name="rest_code_5fae4ab0cbc24e88b012af8cb3f0a47c-4"></a>s
+<pre class="code text"><a name="rest_code_de320874114244d0a3623627f354f40d-1"></a>1
+<a name="rest_code_de320874114244d0a3623627f354f40d-2"></a>u c
+<a name="rest_code_de320874114244d0a3623627f354f40d-3"></a>day
+<a name="rest_code_de320874114244d0a3623627f354f40d-4"></a>s
 </pre>
 <p>will return 86400, which means 86400 seconds are there in a day.</p>
+</div>
+<div class="section" id="replace-regexp">
+<h2>Replace-Regexp</h2>
+<p>This is a function, which can be used to replace words using regular expressions. E.g. consider a text file consisting of comma delimited values like</p>
+<pre class="code text"><a name="rest_code_4e79ce4a4f724ec3a7dbc317bcbaf3a1-1"></a>12,11
+<a name="rest_code_4e79ce4a4f724ec3a7dbc317bcbaf3a1-2"></a>1,33
+<a name="rest_code_4e79ce4a4f724ec3a7dbc317bcbaf3a1-3"></a>54,77
+<a name="rest_code_4e79ce4a4f724ec3a7dbc317bcbaf3a1-4"></a>99,101
+</pre>
+<p>Now, we can use regular expressions to swap the numbers in each row using the following steps:</p>
+<pre class="code text"><a name="rest_code_b5bdf68ef9bd477592910692f34cef5c-1"></a>- Select the region
+<a name="rest_code_b5bdf68ef9bd477592910692f34cef5c-2"></a>- M-x replace-regexp
+<a name="rest_code_b5bdf68ef9bd477592910692f34cef5c-3"></a>- Replace regexp:\([0-9]+\),\([0-9]+\)
+<a name="rest_code_b5bdf68ef9bd477592910692f34cef5c-4"></a>- Replace regexp \([0-9]+\),\([0-9]+\) with:\2,\1
+</pre>
+<p>And we get the result</p>
+<pre class="code text"><a name="rest_code_01e25938f00e4176a412ad1321698fc9-1"></a>11,12
+<a name="rest_code_01e25938f00e4176a412ad1321698fc9-2"></a>33,1
+<a name="rest_code_01e25938f00e4176a412ad1321698fc9-3"></a>77,54
+<a name="rest_code_01e25938f00e4176a412ad1321698fc9-4"></a>101,99
+</pre>
+</div>
+<div class="section" id="align-regexp">
+<h2>Align-Regexp</h2>
+<p>This is another useful function to beautify our text. E.g. if we have the following snippet:</p>
+<pre class="code C"><a name="rest_code_01027d5394eb41e9ac6d629561c8532e-1"></a><span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<a name="rest_code_01027d5394eb41e9ac6d629561c8532e-2"></a><span class="kt">int</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="p">;</span>
+<a name="rest_code_01027d5394eb41e9ac6d629561c8532e-3"></a><span class="kt">int</span> <span class="n">cubed</span> <span class="o">=</span> <span class="n">squared</span> <span class="o">*</span> <span class="n">num</span><span class="p">;</span>
+</pre>
+<p>Running <tt class="docutils literal"><span class="pre">M-x</span> <span class="pre">align-regexp</span> =</tt> aligns with <tt class="docutils literal">=</tt></p>
+<pre class="code C"><a name="rest_code_5b324c0a7a484264ac82dd4bd5762ea4-1"></a><span class="kt">int</span> <span class="n">num</span>     <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<a name="rest_code_5b324c0a7a484264ac82dd4bd5762ea4-2"></a><span class="kt">int</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="p">;</span>
+<a name="rest_code_5b324c0a7a484264ac82dd4bd5762ea4-3"></a><span class="kt">int</span> <span class="n">cubed</span>   <span class="o">=</span> <span class="n">squared</span> <span class="o">*</span> <span class="n">num</span><span class="p">;</span>
+</pre>
 <p>And there are many more modes and commands, which make editing fun!</p>
 <p>For a detailed reference:</p>
 <ul class="simple">
