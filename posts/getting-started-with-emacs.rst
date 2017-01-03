@@ -78,7 +78,7 @@ Yasnippet
 This is a mode where for a given minor-mode and a keyword in that mode, on pressing tab, it expands to the code snippet as stored. E.g. Open a blank C file, type ``main``, then hit TAB, it gets expanded to
 
 .. code:: C
-    :number-lines: 1
+    
 
     #include <stdio.h>
 
@@ -118,6 +118,7 @@ E.g. Construct the ascii table! Press ``M-x tiny-expand`` after entering
 ``m97\n122|%03d %(string x)``
 
 .. code:: text
+    
 
     097 a
     098 b
@@ -165,6 +166,7 @@ This is a stack-based scientific calculator which performs many of the calculati
 To start it, enter ``M-x calc``, and as an example, we can do unit conversions, by typing in the calc window:
 
 .. code:: text
+    
 
     1 
     u c
@@ -172,6 +174,60 @@ To start it, enter ``M-x calc``, and as an example, we can do unit conversions, 
     s
 
 will return 86400, which means 86400 seconds are there in a day.
+
+Replace-Regexp
+--------------
+
+This is a function, which can be used to replace words using regular expressions. E.g. consider a text file consisting of comma delimited values like
+
+.. code:: text
+    
+
+    12,11
+    1,33
+    54,77
+    99,101
+
+Now, we can use regular expressions to swap the numbers in each row using the following steps:
+
+.. code:: text
+    
+
+    - Select the region
+    - M-x replace-regexp
+    - Replace regexp:\([0-9]+\),\([0-9]+\)
+    - Replace regexp \([0-9]+\),\([0-9]+\) with:\2,\1
+
+And we get the result
+
+.. code:: text
+    
+
+    11,12
+    33,1
+    77,54
+    101,99
+
+Align-Regexp
+------------
+
+This is another useful function to beautify our text. E.g. if we have the following snippet:
+
+.. code:: C
+    
+
+    int num = 5;
+    int squared = num * num;
+    int cubed = squared * num;
+
+Running ``M-x align-regexp =`` aligns with ``=``
+
+.. code:: C
+    
+
+    int num     = 5;
+    int squared = num * num;
+    int cubed   = squared * num;
 
 And there are many more modes and commands, which make editing fun!
 
