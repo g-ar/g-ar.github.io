@@ -1,7 +1,7 @@
-.. title: Generating image patterns
+.. title: Generating Image Patterns
 .. slug: generating-image-patterns
 .. date: 2014-02-07 20:11:32 UTC+05:30
-.. tags: mathjax, computer art, C, GCC
+.. tags: mathjax, computer art, C, GCC, python
 .. category: 
 .. link: 
 .. description: 
@@ -12,7 +12,7 @@ Computer and art mix very nicely. We can algorithmically generate patterns, be i
 Here is an example program for \*nix systems which generates fractal like tiling.
 We use tga format, which is simple but uncompressed. For compression, we may use imagemagick suit's convert command.
 
-.. code-block:: C
+.. code:: C
     :number-lines: 1
 
     #include <stdio.h>
@@ -61,6 +61,43 @@ We use tga format, which is simple but uncompressed. For compression, we may use
       close(fd);
       return 0;
     } 
+
+The same program can be written in python too, easier to write, but slower in execution
+
+.. code:: python
+    :number-lines: 1
+
+    WIDTH = 1366
+    HEIGHT = 768
+
+    header = [0]*18
+    header[0] = 0
+    header[1] = 0
+    header[2] = 2
+    header[8] = 0
+    header[9] = 0
+    header[10] = 0
+    header[11] = 0
+    header[12] = (WIDTH & 0x00FF)
+    header[13] = (WIDTH & 0xFF00) >> 8
+    header[14] = (HEIGHT & 0x00FF)
+    header[15] = (HEIGHT & 0xFF00) >> 8
+    header[16] = 24
+    header[17] = 0
+
+    if __name__ == "__main__":
+        ba = bytearray()
+
+        for i in xrange(HEIGHT):
+            for j in xrange(WIDTH):
+                blue = 0
+                green = 0
+                red = (((i ^ (~j)) & ((~i - 350) >> 3))) & 255
+                ba.extend(bytearray([blue, green, red]))
+
+        with open("imagepy.tga", "w") as fd:
+            fd.write(bytearray(header))
+            fd.write(ba)
 
 .. figure:: ../../images/pattern.png
 
