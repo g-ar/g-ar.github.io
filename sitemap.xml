@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://g-ar.github.io/</loc>
-  <lastmod>2016-12-14T18:10:00Z</lastmod>
+  <lastmod>2017-01-17T07:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/2012/</loc>
@@ -26,8 +26,12 @@
   <lastmod>2016-08-29T22:58:00Z</lastmod>
  </url>
  <url>
+  <loc>https://g-ar.github.io/2017/</loc>
+  <lastmod>2017-01-17T07:16:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2016-12-14T18:10:00Z</lastmod>
+  <lastmod>2017-01-17T07:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
@@ -223,7 +227,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-1.html</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2017-01-17T12:25:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-2.html</loc>
@@ -247,7 +251,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-7.html</loc>
-  <lastmod>2016-12-14T18:10:00Z</lastmod>
+  <lastmod>2017-01-17T07:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/listings/</loc>
@@ -348,6 +352,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</loc>
   <lastmod>2016-09-11T10:03:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/profiling-python-programs/</loc>
+  <lastmod>2017-01-17T07:15:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/simulating-buffons-needle-problem/</loc>

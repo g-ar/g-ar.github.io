@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/getting-started-with-emacs/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/profiling-python-programs/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,105 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/getting-started-with-emacs/" class="u-url">Getting Started With Emacs</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/profiling-python-programs/" class="u-url">Profiling Python Programs</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/profiling-python-programs/" rel="bookmark"><time class="published dt-published" datetime="2017-01-17T17:56:38+05:30" title="2017-01-17 17:56">2017-01-17 17:56</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Last week, when I was looking up for some info on list comprehensions, one of the pages listed a code something like this</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-1"> 1</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-2"> 2</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-3"> 3</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-4"> 4</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-5"> 5</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-6"> 6</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-7"> 7</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-8"> 8</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-9"> 9</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-10">10</a>
+<a href="posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-11">11</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-1"></a><span class="c1"># Access every 3rd element in a list</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-2"></a><span class="c1"># filename: access.py</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-3"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-4"></a>    <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-5"></a>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-6"></a>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-7"></a>        <span class="k">print</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-8"></a>        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-9"></a>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-10"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-11"></a>    <span class="n">main</span><span class="p">()</span>
+</pre></td>
+</tr></table>
+<p>and I thought for a moment whether the length will be calculated for each iteration, or will it be called only once? I also thought of an answer that since python code is interpreted, it may not do any peephole optimization, and hence <tt class="docutils literal">len</tt> will be called five times. Anyway, wanted to know the command that would quantify every call in the program and found about cProfile module. We simply run the following:</p>
+<pre class="code bash"><a name="rest_code_4476dcb1deb74fe39f5835c9485294e0-1"></a>python -mcProfile -sncalls access.py
+</pre>
+<p>which will do the profiling and order by the number of calls</p>
+<pre class="code text"><a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-1"></a>1
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-2"></a>1
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-3"></a>1
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-4"></a>1
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-5"></a>         8 function calls in 0.000 seconds
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-6"></a>
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-7"></a>   Ordered by: call count
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-8"></a>
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-9"></a>   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-10"></a>        5    0.000    0.000    0.000    0.000 {len}
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-11"></a>        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-12"></a>        1    0.000    0.000    0.000    0.000 access.py:2(&lt;module&gt;)
+<a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-13"></a>        1    0.000    0.000    0.000    0.000 access.py:2(main)
+</pre>
+<p>So, will the optimization flag do anything for that?</p>
+<pre class="code python"><a name="rest_code_a2e4c88099da452699fc7f20823e5833-1"></a><span class="c1"># filename: call_access.py</span>
+<a name="rest_code_a2e4c88099da452699fc7f20823e5833-2"></a><span class="kn">import</span> <span class="nn">access</span>
+<a name="rest_code_a2e4c88099da452699fc7f20823e5833-3"></a>
+<a name="rest_code_a2e4c88099da452699fc7f20823e5833-4"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a name="rest_code_a2e4c88099da452699fc7f20823e5833-5"></a>    <span class="n">access</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre>
+<p>and run</p>
+<pre class="code bash"><a name="rest_code_32d6c83b1e3140cbab30f4f0e5cc839a-1"></a>python -OO -mcProfile -sncalls call_access.py
+</pre>
+<p>but the output doesn't change much!</p>
+<pre class="code text"><a name="rest_code_71918a42a027471fa767edd30dff9a4e-1"></a>1
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-2"></a>1
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-3"></a>1
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-4"></a>1
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-5"></a>         9 function calls in 0.000 seconds
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-6"></a>
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-7"></a>   Ordered by: call count
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-8"></a>
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-9"></a>   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-10"></a>        5    0.000    0.000    0.000    0.000 {len}
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-11"></a>        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-12"></a>        1    0.000    0.000    0.000    0.000 access.py:2(&lt;module&gt;)
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-13"></a>        1    0.000    0.000    0.000    0.000 access.py:2(main)
+<a name="rest_code_71918a42a027471fa767edd30dff9a4e-14"></a>        1    0.000    0.000    0.000    0.000 call_access.py:1(&lt;module&gt;)
+</pre>
+<p>So, even with the optimization flag, number of calls to <tt class="docutils literal">len</tt> remains the same.</p>
+<p>We can verify that the bytecode is executed when we run it by using <tt class="docutils literal">strace</tt>. For instance, when I ran command the second time, the relevent part of the <tt class="docutils literal">strace</tt> output is below</p>
+<pre class="code text"><a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-1"></a>open("access.py", O_RDONLY)             = 3
+<a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-2"></a>fstat(3, {st_mode=S_IFREG|0644, st_size=172, ...}) = 0
+<a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-3"></a>open("access.pyo", O_RDONLY)            = 4
+<a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-4"></a>fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
+<a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-5"></a>read(4, "\3\363\r\nC\252}Xc\0\0\0\0\0\0\0\0\2\0\0\0@\0\0\0s#\0\0\0d\0"..., 4096) = 389
+<a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-6"></a>fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
+<a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-7"></a>read(4, "", 4096)                       = 0
+<a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-8"></a>close(4)                                = 0
+<a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-9"></a>close(3)
+</pre>
+<p>It did not read access.py again, but it read access.pyo instead. As long as the source is not modified, python reads the bytecode to execute instead of the source (the bytecode stores the modification time of its source code)</p>
+<p>Anyway, we need not do any of these analyses to know whether the bytecode has any code optimization in it. The python docs straight away answers with the following point</p>
+<ul class="simple">
+<li>A program doesn't run any faster when it is read from a .pyc or .pyo file than when it is read from a .py file; the only thing that's faster about .pyc or .pyo files is the speed with which they are loaded. (<a class="reference external" href="https://docs.python.org/2/tutorial/modules.html">docs</a>)</li>
+</ul>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/getting-started-with-emacs/" class="u-url">Getting Started With Emacs</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Gopinath
@@ -323,7 +421,7 @@ To start it, enter <tt class="docutils literal"><span class="pre">M-x</span> cal
 </div>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/" class="u-url">Simulating mouse movement to draw in mypaint</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/" class="u-url">Simulating Mouse Movement To Draw In Mypaint</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Gopinath
@@ -335,34 +433,34 @@ To start it, enter <tt class="docutils literal"><span class="pre">M-x</span> cal
 <p>Wouldn't it be nice if we can command where to move the mouse pointer and press buttons, and then use the functionality to draw in a painting program? We can do exactly that in systems running <tt class="docutils literal">xorg</tt> display server, by using <tt class="docutils literal">xdotool</tt> to simulate mouse and keyboard.</p>
 <p>E.g. to draw a simple 5 petal rose, <span class="math">\(r = \cos \left(5 \theta\right)\)</span>,</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-1"> 1</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-2"> 2</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-3"> 3</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-4"> 4</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-5"> 5</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-6"> 6</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-7"> 7</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-8"> 8</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-9"> 9</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-10">10</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-11">11</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-12">12</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-13">13</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_607e2aa29eb14d5e8691e23e7125ed14-14">14</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-3"></a>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-6"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-7"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-8"></a>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-9"></a><span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-10"></a>    <span class="n">th</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-11"></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">th</span><span class="p">)</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-12"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
-<a name="rest_code_607e2aa29eb14d5e8691e23e7125ed14-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-1"> 1</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-2"> 2</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-3"> 3</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-4"> 4</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-5"> 5</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-6"> 6</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-7"> 7</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-8"> 8</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-9"> 9</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-10">10</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-11">11</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-12">12</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-13">13</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_a7219c2148364b30a0222101e8f7f5ba-14">14</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-3"></a>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-6"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-7"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-8"></a>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-9"></a><span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-10"></a>    <span class="n">th</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-11"></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">th</span><span class="p">)</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-12"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
+<a name="rest_code_a7219c2148364b30a0222101e8f7f5ba-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>Below is the result of running the script with <tt class="docutils literal">mypaint</tt> opened in fullscreen mode. Various effects can be achieved by selecting one among the hundreds of brushes available.</p>
@@ -371,34 +469,34 @@ To start it, enter <tt class="docutils literal"><span class="pre">M-x</span> cal
 </div>
 <p>Next is another example with a pencil style chosen for the brush.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-1"> 1</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-2"> 2</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-3"> 3</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-4"> 4</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-5"> 5</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-6"> 6</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-7"> 7</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-8"> 8</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-9"> 9</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-10">10</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-11">11</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-12">12</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-13">13</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_64ebd25d9c76478191ea25d38d520e42-14">14</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_64ebd25d9c76478191ea25d38d520e42-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-3"></a>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">640</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-6"></a><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">61</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-7"></a><span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-8"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-9"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-10"></a>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-11"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-12"></a>    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
-<a name="rest_code_64ebd25d9c76478191ea25d38d520e42-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-1"> 1</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-2"> 2</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-3"> 3</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-4"> 4</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-5"> 5</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-6"> 6</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-7"> 7</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-8"> 8</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-9"> 9</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-10">10</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-11">11</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-12">12</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-13">13</a>
+<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_acf6eb426fb4406e84bb85bb34e675c4-14">14</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-3"></a>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">640</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-6"></a><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">61</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-7"></a><span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-8"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-9"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-10"></a>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-11"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-12"></a>    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
+<a name="rest_code_acf6eb426fb4406e84bb85bb34e675c4-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <div class="figure">
@@ -622,57 +720,6 @@ Compile and run mathtool.</p>
 <p>Therefore, <span class="math">\(a=2, b=1, c=2, d=6\)</span></p>
 </li>
 </ol>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/compiling-softwares-that-require-later-versions-of-gcc/" class="u-url">Compiling softwares that require later versions of GCC</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Gopinath
-            </span></p>
-            <p class="dateline"><a href="posts/compiling-softwares-that-require-later-versions-of-gcc/" rel="bookmark"><time class="published dt-published" datetime="2015-12-20T19:40:01+05:30" title="2015-12-20 19:40">2015-12-20 19:40</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Suppose we require to install the latest version of a software, but the repository doesn't have it, we usually either get the latest source code and compile, or download the compiled binary if available, and run it. But if we are running some old distro, latest binary refuse to run complaining that it requires GLIBC 2.16 to run etc. When the binary file refuses to run, we can then try to compile the source, which usually works fine. But sometimes it happens that the source requires a language standard, which is unsupported by the GCC version installed. In such cases, we can download the latest GCC, compile it, and then compile the required software using the latest GCC. We'll see an example to compile "Context Free" -- a program which generates art from a context free grammar, and requires C++11 standard to compile. The steps mentioned below were done on debian wheezy, whose software repository contains version 2 of cfdg whereas the latest version is 3.</p>
-<p>In order to compile the latest version of contextfree in debian wheezy:</p>
-<ul class="simple">
-<li>Download the latest GCC</li>
-<li>Extract and configure with a prefix path, so that we can avoid installing it to a directory which requires root privilege</li>
-<li><tt class="docutils literal">./configure <span class="pre">--prefix=$HOME/bin/custom_gcc</span></tt></li>
-<li>The compile and install to that path, the whole process takes much time anywhere between 10 mins to a couple of hours or more, depending on the speed of the machine and the number of cores used.
-To compile on a single core, use<ul>
-<li><tt class="docutils literal">make</tt></li>
-<li><tt class="docutils literal">make install</tt></li>
-</ul>
-</li>
-</ul>
-<p>After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install <tt class="docutils literal"><span class="pre">libpng12-dev</span></tt> and compile.</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_6063225bb5c94aeb90ef37bcdf280529-1">1</a>
-<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_6063225bb5c94aeb90ef37bcdf280529-2">2</a>
-<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_6063225bb5c94aeb90ef37bcdf280529-3">3</a>
-<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_6063225bb5c94aeb90ef37bcdf280529-4">4</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-1"></a><span class="nv">CC</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-2"></a><span class="nv">LD</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-3"></a><span class="nv">CPP</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
-<a name="rest_code_6063225bb5c94aeb90ef37bcdf280529-4"></a><span class="nv">CXX</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/bin/gcc_custom/bin/g++
-</pre></td>
-</tr></table>
-<p>The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in <tt class="docutils literal">$HOME/bin</tt> named cfdg with following contents</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-1">1</a>
-<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-2">2</a>
-<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-3">3</a>
-<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-4">4</a>
-<a href="posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_d437fedb898f4b1a847dfafb7f3d959e-5">5</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-1"></a><span class="ch">#!/bin/bash</span>
-<a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-2"></a><span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/gcc
-<a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-3"></a><span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/bin/g++
-<a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-4"></a><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/bin/gcc_custom/lib64
-<a name="rest_code_d437fedb898f4b1a847dfafb7f3d959e-5"></a><span class="nv">$HOME</span>/bin/context-free-3.0.9/cfdg <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
-</pre></td>
-</tr></table>
-<p>and <tt class="docutils literal">chmod +x cfdg</tt>, and have fun with the software!</p>
 </div>
     </div>
     </article>

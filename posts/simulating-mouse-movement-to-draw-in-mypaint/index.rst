@@ -1,4 +1,4 @@
-.. title: Simulating mouse movement to draw in mypaint
+.. title: Simulating Mouse Movement To Draw In Mypaint
 .. slug: simulating-mouse-movement-to-draw-in-mypaint
 .. date: 2016-09-24 15:38:43 UTC+05:30
 .. tags: mathjax, computer art, mypaint, xdotool, xorg, python

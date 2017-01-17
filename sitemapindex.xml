@@ -23,11 +23,11 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/c.xml</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2017-01-17T12:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/computer-art.xml</loc>
-  <lastmod>2016-09-24T10:41:00Z</lastmod>
+  <lastmod>2017-01-17T12:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/context-free-art.xml</loc>
@@ -51,7 +51,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/emacs.xml</loc>
-  <lastmod>2016-12-14T18:10:00Z</lastmod>
+  <lastmod>2017-01-03T17:55:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/expected-value.xml</loc>
@@ -75,7 +75,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/gcc.xml</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2017-01-17T12:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/gdb.xml</loc>
@@ -111,7 +111,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/mathjax.xml</loc>
-  <lastmod>2016-09-24T10:41:00Z</lastmod>
+  <lastmod>2017-01-17T12:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/multiset.xml</loc>
@@ -119,7 +119,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/mypaint.xml</loc>
-  <lastmod>2016-09-24T10:41:00Z</lastmod>
+  <lastmod>2017-01-17T07:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/pppoe.xml</loc>
@@ -135,7 +135,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/python.xml</loc>
-  <lastmod>2016-09-24T10:41:00Z</lastmod>
+  <lastmod>2017-01-17T12:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/r.xml</loc>
@@ -167,7 +167,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/strace.xml</loc>
-  <lastmod>2016-09-15T17:18:00Z</lastmod>
+  <lastmod>2017-01-17T07:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/summation.xml</loc>
@@ -179,11 +179,11 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/xdotool.xml</loc>
-  <lastmod>2016-09-24T10:41:00Z</lastmod>
+  <lastmod>2017-01-17T07:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/xorg.xml</loc>
-  <lastmod>2016-09-24T10:41:00Z</lastmod>
+  <lastmod>2017-01-17T07:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/galleries/img/rss.xml</loc>
@@ -195,10 +195,10 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/rss.xml</loc>
-  <lastmod>2016-12-14T18:10:00Z</lastmod>
+  <lastmod>2017-01-17T07:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/sitemap.xml</loc>
-  <lastmod>2016-12-14T18:10:00Z</lastmod>
+  <lastmod>2017-01-17T12:25:00Z</lastmod>
  </sitemap>
 </sitemapindex>
