@@ -7,378 +7,366 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://g-ar.github.io/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/2012/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:52:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/2014/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:52:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/2015/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:52:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/2016/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:52:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/2017/</loc>
-  <lastmod>2017-01-17T07:16:00Z</lastmod>
+  <lastmod>2017-09-10T17:52:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2017-09-10T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:52:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/arm/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/assembly/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/axiom/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/broadband/</loc>
-  <lastmod>2016-09-15T17:18:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/c/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/computer-art/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/context-free-art/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/debian/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/derangement/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/diophantine-equations/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/docker/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/emacs/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/expected-value/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/experiment-math/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/experimental-mathematics/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/fasm/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/fricas/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/gcc/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/gdb/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/generating-function/</loc>
-  <lastmod>2016-09-15T17:22:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/infinite-series/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/integration/</loc>
-  <lastmod>2016-09-15T17:22:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/j/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/jolla/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/linux/</loc>
-  <lastmod>2016-09-15T17:18:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/markov-chain/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/mathjax/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/multiset/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/mypaint/</loc>
-  <lastmod>2016-09-23T18:14:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/pppoe/</loc>
-  <lastmod>2016-09-15T17:18:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/probability/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/pslq/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/python/</loc>
-  <lastmod>2016-09-23T18:14:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/r/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/recurrence/</loc>
-  <lastmod>2016-09-15T17:22:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/restricted-permutation/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/rook-polynomial/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/sage/</loc>
-  <lastmod>2016-09-15T17:22:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/sailfish-os/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/simulation/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/strace/</loc>
-  <lastmod>2016-09-15T17:18:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/summation/</loc>
-  <lastmod>2016-09-15T17:22:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/tensorflow/</loc>
-  <lastmod>2016-09-15T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/xdotool/</loc>
-  <lastmod>2016-09-23T18:14:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/xorg/</loc>
-  <lastmod>2016-09-23T18:14:00Z</lastmod>
- </url>
- <url>
-  <loc>https://g-ar.github.io/galleries/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://g-ar.github.io/galleries/img/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-1.html</loc>
-  <lastmod>2017-09-10T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-2.html</loc>
-  <lastmod>2017-09-10T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-3.html</loc>
-  <lastmod>2017-09-10T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-4.html</loc>
-  <lastmod>2017-09-10T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-5.html</loc>
-  <lastmod>2017-09-10T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-6.html</loc>
-  <lastmod>2017-09-10T17:51:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-7.html</loc>
-  <lastmod>2017-09-10T17:51:00Z</lastmod>
- </url>
- <url>
-  <loc>https://g-ar.github.io/listings/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/a-restricted-arrangement-of-letters-in-a-word/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/applications-of-generating-functions/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/c-code-to-assembly-using-gcc-and-gdb/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/configuring-broadband-connection-using-pppoeconf/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/differentiation-under-the-integral-sign-and-a-sum/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/expected-number-of-marbles-to-be-picked-till-one-of-the-colours-are-repeated/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/fricas-an-introduction/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/generalized-derangements/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/generating-image-patterns/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/getting-started-with-emacs/</loc>
-  <lastmod>2016-12-14T18:10:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/getting-started-with-experimental-mathematics/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/interesting-definite-integrals/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/interesting-images-2/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/interesting-images-using-recurrencesiterations/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/jolla-and-sailfish-os/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/josephus-problem-c-versus-j/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/monte-carlo-simulation-for-an-expected-value-of-cards/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/monte-carlo-simulations-in-j/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/profiling-python-programs/</loc>
-  <lastmod>2017-01-17T07:15:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/simulating-buffons-needle-problem/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/simulating-mouse-movement-to-draw-in-mypaint/</loc>
-  <lastmod>2016-09-23T18:14:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/using-directed-graphs-to-count-the-number-of-patterns/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/stories/about-me/</loc>
-  <lastmod>2017-09-10T17:50:00Z</lastmod>
+  <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
 </urlset>

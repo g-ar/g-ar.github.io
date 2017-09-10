@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Gopinath A R (strace)</title><link>https://g-ar.github.io/</link><description></description><atom:link rel="self" type="application/rss+xml" href="https://g-ar.github.io/categories/strace.xml"></atom:link><language>en</language><lastBuildDate>Tue, 17 Jan 2017 12:27:30 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Profiling Python Programs</title><link>https://g-ar.github.io/posts/profiling-python-programs/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Last week, when I was looking up for some info on list comprehensions, one of the pages listed a code something like this&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_e448ba5259a7442f911fcd5aaa0f04bc-11"&gt;11&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Access every 3rd element in a list&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# filename: access.py&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-4"&gt;&lt;/a&gt;    &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-6"&gt;&lt;/a&gt;    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-7"&gt;&lt;/a&gt;        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-8"&gt;&lt;/a&gt;        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-9"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-10"&gt;&lt;/a&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_e448ba5259a7442f911fcd5aaa0f04bc-11"&gt;&lt;/a&gt;    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Gopinath A R (strace)</title><link>https://g-ar.github.io/</link><description></description><atom:link rel="self" href="https://g-ar.github.io/categories/strace.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 10 Sep 2017 17:53:04 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Profiling Python Programs</title><link>https://g-ar.github.io/posts/profiling-python-programs/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Last week, when I was looking up for some info on list comprehensions, one of the pages listed a code something like this&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-11"&gt;11&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Access every 3rd element in a list&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# filename: access.py&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-4"&gt;&lt;/a&gt;    &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-6"&gt;&lt;/a&gt;    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-7"&gt;&lt;/a&gt;        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-8"&gt;&lt;/a&gt;        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-10"&gt;&lt;/a&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-11"&gt;&lt;/a&gt;    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and I thought for a moment whether the length will be calculated for each iteration, or will it be called only once? I also thought of an answer that since python code is interpreted, it may not do any peephole optimization, and hence &lt;tt class="docutils literal"&gt;len&lt;/tt&gt; will be called five times. Anyway, wanted to know the command that would quantify every call in the program and found about cProfile module. We simply run the following:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_4476dcb1deb74fe39f5835c9485294e0-1"&gt;&lt;/a&gt;python -mcProfile -sncalls access.py
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_b0185e34db7941a0a0b346a71d70acc5-1"&gt;&lt;/a&gt;python -mcProfile -sncalls access.py
 &lt;/pre&gt;&lt;p&gt;which will do the profiling and order by the number of calls&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-1"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-2"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-3"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-4"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-5"&gt;&lt;/a&gt;         8 function calls in 0.000 seconds
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-7"&gt;&lt;/a&gt;   Ordered by: call count
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-9"&gt;&lt;/a&gt;   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-10"&gt;&lt;/a&gt;        5    0.000    0.000    0.000    0.000 {len}
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-11"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-12"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(&amp;lt;module&amp;gt;)
-&lt;a name="rest_code_e3bcc6794ee34f26949ff9109dfbeeb2-13"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(main)
+&lt;pre class="code text"&gt;&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-1"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-2"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-3"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-4"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-5"&gt;&lt;/a&gt;         8 function calls in 0.000 seconds
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-7"&gt;&lt;/a&gt;   Ordered by: call count
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-9"&gt;&lt;/a&gt;   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-10"&gt;&lt;/a&gt;        5    0.000    0.000    0.000    0.000 {len}
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-11"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-12"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(&amp;lt;module&amp;gt;)
+&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-13"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(main)
 &lt;/pre&gt;&lt;p&gt;So, will the optimization flag do anything for that?&lt;/p&gt;
-&lt;pre class="code python"&gt;&lt;a name="rest_code_a2e4c88099da452699fc7f20823e5833-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# filename: call_access.py&lt;/span&gt;
-&lt;a name="rest_code_a2e4c88099da452699fc7f20823e5833-2"&gt;&lt;/a&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;access&lt;/span&gt;
-&lt;a name="rest_code_a2e4c88099da452699fc7f20823e5833-3"&gt;&lt;/a&gt;
-&lt;a name="rest_code_a2e4c88099da452699fc7f20823e5833-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_a2e4c88099da452699fc7f20823e5833-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# filename: call_access.py&lt;/span&gt;
+&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-2"&gt;&lt;/a&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;access&lt;/span&gt;
+&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;and run&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_32d6c83b1e3140cbab30f4f0e5cc839a-1"&gt;&lt;/a&gt;python -OO -mcProfile -sncalls call_access.py
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_8d2859ed9d5f41b196dc096a5cdff87c-1"&gt;&lt;/a&gt;python -OO -mcProfile -sncalls call_access.py
 &lt;/pre&gt;&lt;p&gt;but the output doesn't change much!&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-1"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-2"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-3"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-4"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-5"&gt;&lt;/a&gt;         9 function calls in 0.000 seconds
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-7"&gt;&lt;/a&gt;   Ordered by: call count
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-9"&gt;&lt;/a&gt;   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-10"&gt;&lt;/a&gt;        5    0.000    0.000    0.000    0.000 {len}
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-11"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-12"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(&amp;lt;module&amp;gt;)
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-13"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(main)
-&lt;a name="rest_code_71918a42a027471fa767edd30dff9a4e-14"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 call_access.py:1(&amp;lt;module&amp;gt;)
+&lt;pre class="code text"&gt;&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-1"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-2"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-3"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-4"&gt;&lt;/a&gt;1
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-5"&gt;&lt;/a&gt;         9 function calls in 0.000 seconds
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-7"&gt;&lt;/a&gt;   Ordered by: call count
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-9"&gt;&lt;/a&gt;   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-10"&gt;&lt;/a&gt;        5    0.000    0.000    0.000    0.000 {len}
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-11"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-12"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(&amp;lt;module&amp;gt;)
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-13"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(main)
+&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-14"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 call_access.py:1(&amp;lt;module&amp;gt;)
 &lt;/pre&gt;&lt;p&gt;So, even with the optimization flag, number of calls to &lt;tt class="docutils literal"&gt;len&lt;/tt&gt; remains the same.&lt;/p&gt;
 &lt;p&gt;We can verify that the bytecode is executed when we run it by using &lt;tt class="docutils literal"&gt;strace&lt;/tt&gt;. For instance, when I ran command the second time, the relevent part of the &lt;tt class="docutils literal"&gt;strace&lt;/tt&gt; output is below&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-1"&gt;&lt;/a&gt;open("access.py", O_RDONLY)             = 3
-&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-2"&gt;&lt;/a&gt;fstat(3, {st_mode=S_IFREG|0644, st_size=172, ...}) = 0
-&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-3"&gt;&lt;/a&gt;open("access.pyo", O_RDONLY)            = 4
-&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-4"&gt;&lt;/a&gt;fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
-&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-5"&gt;&lt;/a&gt;read(4, "\3\363\r\nC\252}Xc\0\0\0\0\0\0\0\0\2\0\0\0@\0\0\0s#\0\0\0d\0"..., 4096) = 389
-&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-6"&gt;&lt;/a&gt;fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
-&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-7"&gt;&lt;/a&gt;read(4, "", 4096)                       = 0
-&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-8"&gt;&lt;/a&gt;close(4)                                = 0
-&lt;a name="rest_code_05b9b4eb600a413c97afa040cc6e2c37-9"&gt;&lt;/a&gt;close(3)
+&lt;pre class="code text"&gt;&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-1"&gt;&lt;/a&gt;open("access.py", O_RDONLY)             = 3
+&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-2"&gt;&lt;/a&gt;fstat(3, {st_mode=S_IFREG|0644, st_size=172, ...}) = 0
+&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-3"&gt;&lt;/a&gt;open("access.pyo", O_RDONLY)            = 4
+&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-4"&gt;&lt;/a&gt;fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
+&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-5"&gt;&lt;/a&gt;read(4, "\3\363\r\nC\252}Xc\0\0\0\0\0\0\0\0\2\0\0\0@\0\0\0s#\0\0\0d\0"..., 4096) = 389
+&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-6"&gt;&lt;/a&gt;fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
+&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-7"&gt;&lt;/a&gt;read(4, "", 4096)                       = 0
+&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-8"&gt;&lt;/a&gt;close(4)                                = 0
+&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-9"&gt;&lt;/a&gt;close(3)
 &lt;/pre&gt;&lt;p&gt;It did not read access.py again, but it read access.pyo instead. As long as the source is not modified, python reads the bytecode to execute instead of the source (the bytecode stores the modification time of its source code)&lt;/p&gt;
 &lt;p&gt;Anyway, we need not do any of these analyses to know whether the bytecode has any code optimization in it. The python docs straight away answers with the following point&lt;/p&gt;
 &lt;ul class="simple"&gt;

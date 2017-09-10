@@ -88,164 +88,164 @@ MathJax.Hub.Config({
 <p>Here is an example program for *nix systems which generates fractal like tiling.
 We use tga format, which is simple but uncompressed. For compression, we may use imagemagick suit's convert command.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-1"> 1</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-2"> 2</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-3"> 3</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-4"> 4</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-5"> 5</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-6"> 6</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-7"> 7</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-8"> 8</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-9"> 9</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-10">10</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-11">11</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-12">12</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-13">13</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-14">14</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-15">15</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-16">16</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-17">17</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-18">18</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-19">19</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-20">20</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-21">21</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-22">22</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-23">23</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-24">24</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-25">25</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-26">26</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-27">27</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-28">28</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-29">29</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-30">30</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-31">31</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-32">32</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-33">33</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-34">34</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-35">35</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-36">36</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-37">37</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-38">38</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-39">39</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-40">40</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-41">41</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-42">42</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-43">43</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-44">44</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-45">45</a>
-<a href="posts/generating-image-patterns/#rest_code_027b4c9423f942d5b4432e0e8f8d8855-46">46</a></pre></div></td>
-<td class="code"><pre class="code C"><a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-2"></a><span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-3"></a><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-4"></a><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-5"></a><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-6"></a>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-7"></a><span class="cp">#define width 1366</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-8"></a><span class="cp">#define height 768</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-9"></a>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-10"></a><span class="kt">char</span> <span class="n">pic</span><span class="p">[</span><span class="n">height</span><span class="p">][</span><span class="n">width</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-11"></a>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-12"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-13"></a>  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-14"></a>  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-15"></a>  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-16"></a>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-17"></a>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">height</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-18"></a>    <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">width</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-19"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-20"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-21"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(((</span><span class="n">i</span><span class="o">^</span><span class="p">(</span><span class="o">~</span><span class="n">j</span><span class="p">))</span><span class="o">&amp;</span><span class="p">((</span><span class="o">~</span><span class="n">i</span><span class="o">-</span><span class="mi">350</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">3</span><span class="p">)))</span><span class="o">&amp;</span><span class="mi">255</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-22"></a>    <span class="p">}</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-23"></a>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-24"></a>  <span class="k">if</span> <span class="p">((</span><span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">"image.tga"</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">+</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="n">S_IRUSR</span> <span class="o">|</span> <span class="n">S_IWUSR</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-25"></a>  <span class="p">{</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-26"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"error opening file</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-27"></a>    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-28"></a>  <span class="p">}</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-29"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-30"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-31"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-32"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-33"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-34"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-35"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-36"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-37"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-38"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-39"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-40"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-41"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-42"></a>  <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-43"></a>  <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">pic</span><span class="p">,</span> <span class="n">width</span><span class="o">*</span><span class="n">height</span><span class="o">*</span><span class="mi">3</span><span class="p">);</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-44"></a>  <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-45"></a>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_027b4c9423f942d5b4432e0e8f8d8855-46"></a><span class="p">}</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-1"> 1</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-2"> 2</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-3"> 3</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-4"> 4</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-5"> 5</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-6"> 6</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-7"> 7</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-8"> 8</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-9"> 9</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-10">10</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-11">11</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-12">12</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-13">13</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-14">14</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-15">15</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-16">16</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-17">17</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-18">18</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-19">19</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-20">20</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-21">21</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-22">22</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-23">23</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-24">24</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-25">25</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-26">26</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-27">27</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-28">28</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-29">29</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-30">30</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-31">31</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-32">32</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-33">33</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-34">34</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-35">35</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-36">36</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-37">37</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-38">38</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-39">39</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-40">40</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-41">41</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-42">42</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-43">43</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-44">44</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-45">45</a>
+<a href="posts/generating-image-patterns/#rest_code_f02eb5e0570740e78afc0de078aacc08-46">46</a></pre></div></td>
+<td class="code"><pre class="code C"><a name="rest_code_f02eb5e0570740e78afc0de078aacc08-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-2"></a><span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-3"></a><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-4"></a><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-5"></a><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-6"></a>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-7"></a><span class="cp">#define width 1366</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-8"></a><span class="cp">#define height 768</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-9"></a>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-10"></a><span class="kt">char</span> <span class="n">pic</span><span class="p">[</span><span class="n">height</span><span class="p">][</span><span class="n">width</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-11"></a>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-12"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-13"></a>  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-14"></a>  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-15"></a>  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-16"></a>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-17"></a>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">height</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-18"></a>    <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">width</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-19"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-20"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-21"></a>    <span class="n">pic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(((</span><span class="n">i</span><span class="o">^</span><span class="p">(</span><span class="o">~</span><span class="n">j</span><span class="p">))</span><span class="o">&amp;</span><span class="p">((</span><span class="o">~</span><span class="n">i</span><span class="o">-</span><span class="mi">350</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">3</span><span class="p">)))</span><span class="o">&amp;</span><span class="mi">255</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-22"></a>    <span class="p">}</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-23"></a>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-24"></a>  <span class="k">if</span> <span class="p">((</span><span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">"image.tga"</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">+</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="n">S_IRUSR</span> <span class="o">|</span> <span class="n">S_IWUSR</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-25"></a>  <span class="p">{</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-26"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"error opening file</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-27"></a>    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-28"></a>  <span class="p">}</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-29"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-30"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-31"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-32"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-33"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-34"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-35"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-36"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-37"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-38"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-39"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-40"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-41"></a>  <span class="n">buffer</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-42"></a>  <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-43"></a>  <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">pic</span><span class="p">,</span> <span class="n">width</span><span class="o">*</span><span class="n">height</span><span class="o">*</span><span class="mi">3</span><span class="p">);</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-44"></a>  <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-45"></a>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_f02eb5e0570740e78afc0de078aacc08-46"></a><span class="p">}</span>
 </pre></td>
 </tr></table>
 <p>The same program can be written in python too, easier to write, but slower in execution</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-1"> 1</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-2"> 2</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-3"> 3</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-4"> 4</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-5"> 5</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-6"> 6</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-7"> 7</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-8"> 8</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-9"> 9</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-10">10</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-11">11</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-12">12</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-13">13</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-14">14</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-15">15</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-16">16</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-17">17</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-18">18</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-19">19</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-20">20</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-21">21</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-22">22</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-23">23</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-24">24</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-25">25</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-26">26</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-27">27</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-28">28</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-29">29</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-30">30</a>
-<a href="posts/generating-image-patterns/#rest_code_b3d5488255d643f292a928c6cb4b724d-31">31</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_b3d5488255d643f292a928c6cb4b724d-1"></a><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">1366</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-2"></a><span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">768</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-3"></a>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-4"></a><span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">18</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-5"></a><span class="n">header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-6"></a><span class="n">header</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-7"></a><span class="n">header</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-8"></a><span class="n">header</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-9"></a><span class="n">header</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-10"></a><span class="n">header</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-11"></a><span class="n">header</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-12"></a><span class="n">header</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">WIDTH</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">)</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-13"></a><span class="n">header</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">WIDTH</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-14"></a><span class="n">header</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HEIGHT</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">)</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-15"></a><span class="n">header</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HEIGHT</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-16"></a><span class="n">header</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-17"></a><span class="n">header</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-18"></a>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-19"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-20"></a>    <span class="n">ba</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-21"></a>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-22"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">HEIGHT</span><span class="p">):</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-23"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">):</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-24"></a>            <span class="n">blue</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-25"></a>            <span class="n">green</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-26"></a>            <span class="n">red</span> <span class="o">=</span> <span class="p">(((</span><span class="n">i</span> <span class="o">^</span> <span class="p">(</span><span class="o">~</span><span class="n">j</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">((</span><span class="o">~</span><span class="n">i</span> <span class="o">-</span> <span class="mi">350</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)))</span> <span class="o">&amp;</span> <span class="mi">255</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-27"></a>            <span class="n">ba</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="n">blue</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">red</span><span class="p">]))</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-28"></a>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-29"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"imagepy.tga"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-30"></a>        <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
-<a name="rest_code_b3d5488255d643f292a928c6cb4b724d-31"></a>        <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ba</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-1"> 1</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-2"> 2</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-3"> 3</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-4"> 4</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-5"> 5</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-6"> 6</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-7"> 7</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-8"> 8</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-9"> 9</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-10">10</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-11">11</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-12">12</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-13">13</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-14">14</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-15">15</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-16">16</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-17">17</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-18">18</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-19">19</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-20">20</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-21">21</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-22">22</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-23">23</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-24">24</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-25">25</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-26">26</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-27">27</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-28">28</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-29">29</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-30">30</a>
+<a href="posts/generating-image-patterns/#rest_code_ef73da0da7eb456f8ad5a544ac511446-31">31</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-1"></a><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">1366</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-2"></a><span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">768</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-3"></a>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-4"></a><span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">18</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-5"></a><span class="n">header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-6"></a><span class="n">header</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-7"></a><span class="n">header</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-8"></a><span class="n">header</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-9"></a><span class="n">header</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-10"></a><span class="n">header</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-11"></a><span class="n">header</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-12"></a><span class="n">header</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">WIDTH</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">)</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-13"></a><span class="n">header</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">WIDTH</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-14"></a><span class="n">header</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HEIGHT</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">)</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-15"></a><span class="n">header</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HEIGHT</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-16"></a><span class="n">header</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-17"></a><span class="n">header</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-18"></a>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-19"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-20"></a>    <span class="n">ba</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-21"></a>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-22"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">HEIGHT</span><span class="p">):</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-23"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">):</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-24"></a>            <span class="n">blue</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-25"></a>            <span class="n">green</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-26"></a>            <span class="n">red</span> <span class="o">=</span> <span class="p">(((</span><span class="n">i</span> <span class="o">^</span> <span class="p">(</span><span class="o">~</span><span class="n">j</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">((</span><span class="o">~</span><span class="n">i</span> <span class="o">-</span> <span class="mi">350</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)))</span> <span class="o">&amp;</span> <span class="mi">255</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-27"></a>            <span class="n">ba</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="n">blue</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">red</span><span class="p">]))</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-28"></a>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-29"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"imagepy.tga"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-30"></a>        <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+<a name="rest_code_ef73da0da7eb456f8ad5a544ac511446-31"></a>        <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ba</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <div class="figure">
@@ -266,140 +266,140 @@ We use tga format, which is simple but uncompressed. For compression, we may use
 <p>In this post, we will see how to translate a small C program to assembly (using flat assembler).</p>
 <p>Consider the following, where the code for gcd is taken from rosetta code:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-1"> 1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-2"> 2</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-3"> 3</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-4"> 4</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-5"> 5</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-6"> 6</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-7"> 7</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-8"> 8</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-9"> 9</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-10">10</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-11">11</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_4512c7075cf04903a066b9b0f038aeb9-12">12</a></pre></div></td>
-<td class="code"><pre class="code C"><a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-2"></a>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-3"></a><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-4"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="n">gcd</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="o">%</span><span class="n">v</span><span class="p">)</span><span class="o">:</span><span class="n">u</span><span class="p">;</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-5"></a><span class="p">}</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-6"></a>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-7"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-8"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">;</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-9"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-10"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">gcd</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">));</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-11"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-12"></a><span class="p">}</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-1"> 1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-2"> 2</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-3"> 3</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-4"> 4</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-5"> 5</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-6"> 6</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-7"> 7</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-8"> 8</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-9"> 9</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-10">10</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-11">11</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_952715c7d67f4564acaed7b2ee09dd70-12">12</a></pre></div></td>
+<td class="code"><pre class="code C"><a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-2"></a>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-3"></a><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-4"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="n">gcd</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="o">%</span><span class="n">v</span><span class="p">)</span><span class="o">:</span><span class="n">u</span><span class="p">;</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-5"></a><span class="p">}</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-6"></a>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-7"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-8"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">;</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-9"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-10"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">gcd</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">));</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-11"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-12"></a><span class="p">}</span>
 </pre></td>
 </tr></table>
 <p>Compile to 32 bit code as</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c51b8e9001084a8aa9f58f9363f51ac5-1">1</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_c51b8e9001084a8aa9f58f9363f51ac5-1"></a>gcc -o gcd gcd.c -m32
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_45a71eb63f174505ad768cb323b9cc5f-1">1</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_45a71eb63f174505ad768cb323b9cc5f-1"></a>gcc -o gcd gcd.c -m32
 </pre></td>
 </tr></table>
 <p>and disassemble:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_5ce305cb20af4e74b15b6d787be6997a-1">1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_5ce305cb20af4e74b15b6d787be6997a-2">2</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_5ce305cb20af4e74b15b6d787be6997a-1"></a>gdb ./gcd
-<a name="rest_code_5ce305cb20af4e74b15b6d787be6997a-2"></a><span class="o">(</span>gdb<span class="o">)</span> disas gcd
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_06967b60f6ed4beb8534c2a6c7134878-1">1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_06967b60f6ed4beb8534c2a6c7134878-2">2</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_06967b60f6ed4beb8534c2a6c7134878-1"></a>gdb ./gcd
+<a name="rest_code_06967b60f6ed4beb8534c2a6c7134878-2"></a><span class="o">(</span>gdb<span class="o">)</span> disas gcd
 </pre></td>
 </tr></table>
 <p>We will see something like this:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-1"> 1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-2"> 2</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-3"> 3</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-4"> 4</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-5"> 5</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-6"> 6</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-7"> 7</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-8"> 8</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-9"> 9</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-10">10</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-11">11</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-12">12</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-13">13</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-14">14</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-15">15</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-16">16</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-17">17</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_302fb972bc1d45089a61691cd04454c3-18">18</a></pre></div></td>
-<td class="code"><pre class="code S"><a name="rest_code_302fb972bc1d45089a61691cd04454c3-1"></a><span class="mh">0x08048454</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-2"></a><span class="mh">0x08048455</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-3"></a><span class="mh">0x08048457</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-4"></a><span class="mh">0x0804845a</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    cmp    DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-5"></a><span class="mh">0x0804845e</span> <span class="o">&lt;</span><span class="m">+10</span><span class="o">&gt;</span> <span class="o">:</span>    je     <span class="mh">0x804847e</span> <span class="o">&lt;</span>gcd<span class="m">+42</span><span class="o">&gt;</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-6"></a><span class="mh">0x08048460</span> <span class="o">&lt;</span><span class="m">+12</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-7"></a><span class="mh">0x08048463</span> <span class="o">&lt;</span><span class="m">+15</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>eax
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-8"></a><span class="mh">0x08048465</span> <span class="o">&lt;</span><span class="m">+17</span><span class="o">&gt;</span> <span class="o">:</span>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-9"></a><span class="mh">0x08048468</span> <span class="o">&lt;</span><span class="m">+20</span><span class="o">&gt;</span> <span class="o">:</span>    idiv   DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-10"></a><span class="mh">0x0804846b</span> <span class="o">&lt;</span><span class="m">+23</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>edx
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-11"></a><span class="mh">0x0804846d</span> <span class="o">&lt;</span><span class="m">+25</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-12"></a><span class="mh">0x08048471</span> <span class="o">&lt;</span><span class="m">+29</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-13"></a><span class="mh">0x08048474</span> <span class="o">&lt;</span><span class="m">+32</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-14"></a><span class="mh">0x08048477</span> <span class="o">&lt;</span><span class="m">+35</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-15"></a><span class="mh">0x0804847c</span> <span class="o">&lt;</span><span class="m">+40</span><span class="o">&gt;</span> <span class="o">:</span>    jmp    <span class="mh">0x8048481</span> <span class="o">&lt;</span>gcd<span class="m">+45</span><span class="o">&gt;</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-16"></a><span class="mh">0x0804847e</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-17"></a><span class="mh">0x08048481</span> <span class="o">&lt;</span><span class="m">+45</span><span class="o">&gt;</span> <span class="o">:</span>    leave
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-18"></a><span class="mh">0x08048482</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    ret
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-1"> 1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-2"> 2</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-3"> 3</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-4"> 4</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-5"> 5</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-6"> 6</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-7"> 7</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-8"> 8</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-9"> 9</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-10">10</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-11">11</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-12">12</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-13">13</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-14">14</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-15">15</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-16">16</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-17">17</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_3cfb727e3b1c4f5784b87e310374fa62-18">18</a></pre></div></td>
+<td class="code"><pre class="code S"><a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-1"></a><span class="mh">0x08048454</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-2"></a><span class="mh">0x08048455</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-3"></a><span class="mh">0x08048457</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-4"></a><span class="mh">0x0804845a</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    cmp    DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-5"></a><span class="mh">0x0804845e</span> <span class="o">&lt;</span><span class="m">+10</span><span class="o">&gt;</span> <span class="o">:</span>    je     <span class="mh">0x804847e</span> <span class="o">&lt;</span>gcd<span class="m">+42</span><span class="o">&gt;</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-6"></a><span class="mh">0x08048460</span> <span class="o">&lt;</span><span class="m">+12</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-7"></a><span class="mh">0x08048463</span> <span class="o">&lt;</span><span class="m">+15</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>eax
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-8"></a><span class="mh">0x08048465</span> <span class="o">&lt;</span><span class="m">+17</span><span class="o">&gt;</span> <span class="o">:</span>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-9"></a><span class="mh">0x08048468</span> <span class="o">&lt;</span><span class="m">+20</span><span class="o">&gt;</span> <span class="o">:</span>    idiv   DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-10"></a><span class="mh">0x0804846b</span> <span class="o">&lt;</span><span class="m">+23</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>edx
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-11"></a><span class="mh">0x0804846d</span> <span class="o">&lt;</span><span class="m">+25</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-12"></a><span class="mh">0x08048471</span> <span class="o">&lt;</span><span class="m">+29</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-13"></a><span class="mh">0x08048474</span> <span class="o">&lt;</span><span class="m">+32</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-14"></a><span class="mh">0x08048477</span> <span class="o">&lt;</span><span class="m">+35</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-15"></a><span class="mh">0x0804847c</span> <span class="o">&lt;</span><span class="m">+40</span><span class="o">&gt;</span> <span class="o">:</span>    jmp    <span class="mh">0x8048481</span> <span class="o">&lt;</span>gcd<span class="m">+45</span><span class="o">&gt;</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-16"></a><span class="mh">0x0804847e</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-17"></a><span class="mh">0x08048481</span> <span class="o">&lt;</span><span class="m">+45</span><span class="o">&gt;</span> <span class="o">:</span>    leave
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-18"></a><span class="mh">0x08048482</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    ret
 </pre></td>
 </tr></table>
 <p>and</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_77b966f9f95847d5b1c8c45aa79fb95f-1">1</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_77b966f9f95847d5b1c8c45aa79fb95f-1"></a><span class="o">(</span>gdb<span class="o">)</span> disas main
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_bdd19bedf5a743b398b63e408ab79058-1">1</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_bdd19bedf5a743b398b63e408ab79058-1"></a><span class="o">(</span>gdb<span class="o">)</span> disas main
 </pre></td>
 </tr></table>
 <p>shows like this:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-1"> 1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-2"> 2</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-3"> 3</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-4"> 4</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-5"> 5</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-6"> 6</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-7"> 7</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-8"> 8</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-9"> 9</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-10">10</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-11">11</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-12">12</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-13">13</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-14">14</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-15">15</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-16">16</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-17">17</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-18">18</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-19">19</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-20">20</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-21">21</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-22">22</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_903ba9bb20514658be1f2dcdb7570bf1-23">23</a></pre></div></td>
-<td class="code"><pre class="code S"><a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-1"></a><span class="mh">0x08048483</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-2"></a><span class="mh">0x08048484</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-3"></a><span class="mh">0x08048486</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    and    esp<span class="p">,</span><span class="mh">0xfffffff0</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-4"></a><span class="mh">0x08048489</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x20</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-5"></a><span class="mh">0x0804848c</span> <span class="o">&lt;</span><span class="m">+9</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x80485b0</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-6"></a><span class="mh">0x08048491</span> <span class="o">&lt;</span><span class="m">+14</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-7"></a><span class="mh">0x08048495</span> <span class="o">&lt;</span><span class="m">+18</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x8<span class="p">],</span>edx
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-8"></a><span class="mh">0x08048499</span> <span class="o">&lt;</span><span class="m">+22</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-9"></a><span class="mh">0x0804849d</span> <span class="o">&lt;</span><span class="m">+26</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-10"></a><span class="mh">0x080484a1</span> <span class="o">&lt;</span><span class="m">+30</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-11"></a><span class="mh">0x080484a4</span> <span class="o">&lt;</span><span class="m">+33</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048380</span> <span class="o">&lt;</span>__isoc99_scanf<span class="o">@</span>plt<span class="o">&gt;</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-12"></a><span class="mh">0x080484a9</span> <span class="o">&lt;</span><span class="m">+38</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-13"></a><span class="mh">0x080484ad</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-14"></a><span class="mh">0x080484b1</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-15"></a><span class="mh">0x080484b5</span> <span class="o">&lt;</span><span class="m">+50</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-16"></a><span class="mh">0x080484b8</span> <span class="o">&lt;</span><span class="m">+53</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-17"></a><span class="mh">0x080484bd</span> <span class="o">&lt;</span><span class="m">+58</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span><span class="mh">0x80485b5</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-18"></a><span class="mh">0x080484c2</span> <span class="o">&lt;</span><span class="m">+63</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-19"></a><span class="mh">0x080484c6</span> <span class="o">&lt;</span><span class="m">+67</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>edx
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-20"></a><span class="mh">0x080484c9</span> <span class="o">&lt;</span><span class="m">+70</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048390</span> <span class="o">&lt;</span>printf<span class="o">@</span>plt<span class="o">&gt;</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-21"></a><span class="mh">0x080484ce</span> <span class="o">&lt;</span><span class="m">+75</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x0</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-22"></a><span class="mh">0x080484d3</span> <span class="o">&lt;</span><span class="m">+80</span><span class="o">&gt;</span> <span class="o">:</span>    leave
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-23"></a><span class="mh">0x080484d4</span> <span class="o">&lt;</span><span class="m">+81</span><span class="o">&gt;</span> <span class="o">:</span>    ret
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-1"> 1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-2"> 2</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-3"> 3</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-4"> 4</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-5"> 5</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-6"> 6</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-7"> 7</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-8"> 8</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-9"> 9</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-10">10</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-11">11</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-12">12</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-13">13</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-14">14</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-15">15</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-16">16</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-17">17</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-18">18</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-19">19</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-20">20</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-21">21</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-22">22</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_230d17e3f01b472286cec9578a2bc88e-23">23</a></pre></div></td>
+<td class="code"><pre class="code S"><a name="rest_code_230d17e3f01b472286cec9578a2bc88e-1"></a><span class="mh">0x08048483</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-2"></a><span class="mh">0x08048484</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-3"></a><span class="mh">0x08048486</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    and    esp<span class="p">,</span><span class="mh">0xfffffff0</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-4"></a><span class="mh">0x08048489</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x20</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-5"></a><span class="mh">0x0804848c</span> <span class="o">&lt;</span><span class="m">+9</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x80485b0</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-6"></a><span class="mh">0x08048491</span> <span class="o">&lt;</span><span class="m">+14</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-7"></a><span class="mh">0x08048495</span> <span class="o">&lt;</span><span class="m">+18</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x8<span class="p">],</span>edx
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-8"></a><span class="mh">0x08048499</span> <span class="o">&lt;</span><span class="m">+22</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-9"></a><span class="mh">0x0804849d</span> <span class="o">&lt;</span><span class="m">+26</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-10"></a><span class="mh">0x080484a1</span> <span class="o">&lt;</span><span class="m">+30</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-11"></a><span class="mh">0x080484a4</span> <span class="o">&lt;</span><span class="m">+33</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048380</span> <span class="o">&lt;</span>__isoc99_scanf<span class="o">@</span>plt<span class="o">&gt;</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-12"></a><span class="mh">0x080484a9</span> <span class="o">&lt;</span><span class="m">+38</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-13"></a><span class="mh">0x080484ad</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-14"></a><span class="mh">0x080484b1</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-15"></a><span class="mh">0x080484b5</span> <span class="o">&lt;</span><span class="m">+50</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-16"></a><span class="mh">0x080484b8</span> <span class="o">&lt;</span><span class="m">+53</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-17"></a><span class="mh">0x080484bd</span> <span class="o">&lt;</span><span class="m">+58</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span><span class="mh">0x80485b5</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-18"></a><span class="mh">0x080484c2</span> <span class="o">&lt;</span><span class="m">+63</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-19"></a><span class="mh">0x080484c6</span> <span class="o">&lt;</span><span class="m">+67</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>edx
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-20"></a><span class="mh">0x080484c9</span> <span class="o">&lt;</span><span class="m">+70</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048390</span> <span class="o">&lt;</span>printf<span class="o">@</span>plt<span class="o">&gt;</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-21"></a><span class="mh">0x080484ce</span> <span class="o">&lt;</span><span class="m">+75</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x0</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-22"></a><span class="mh">0x080484d3</span> <span class="o">&lt;</span><span class="m">+80</span><span class="o">&gt;</span> <span class="o">:</span>    leave
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-23"></a><span class="mh">0x080484d4</span> <span class="o">&lt;</span><span class="m">+81</span><span class="o">&gt;</span> <span class="o">:</span>    ret
 </pre></td>
 </tr></table>
 <p>From the disassembly, we can see that the function arguments are pushed from right to left.
@@ -407,120 +407,120 @@ We can also see that the local variables are allocated space in the stack.</p>
 <p>We need to replace all the relative references by labels, memory references by names and remove all "PTR" keywords.
 Using the example to produce dynamically linked executable from fasm for linux (doing it in 1.70.03), we may write it as:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-1"> 1</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-2"> 2</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-3"> 3</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-4"> 4</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-5"> 5</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-6"> 6</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-7"> 7</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-8"> 8</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-9"> 9</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-10">10</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-11">11</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-12">12</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-13">13</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-14">14</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-15">15</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-16">16</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-17">17</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-18">18</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-19">19</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-20">20</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-21">21</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-22">22</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-23">23</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-24">24</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-25">25</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-26">26</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-27">27</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-28">28</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-29">29</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-30">30</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-31">31</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-32">32</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-33">33</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-34">34</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-35">35</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-36">36</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-37">37</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-38">38</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-39">39</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-40">40</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-41">41</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-42">42</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-43">43</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-44">44</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-45">45</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-46">46</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-47">47</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-48">48</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-49">49</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-50">50</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-51">51</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-52">52</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-53">53</a>
-<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_a7364fb4492c4e3193abc912ce0053ca-54">54</a></pre></div></td>
-<td class="code"><pre class="code S"><a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-1"></a>format ELF executable <span class="m">3</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-2"></a>entry start
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-3"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-4"></a>include      <span class="s">'examples/elfexe/dynamic/import32.inc'</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-5"></a>include      <span class="s">'examples/elfexe/dynamic/proc32.inc'</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-6"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-7"></a>interpreter  <span class="s">'/lib/ld-linux.so.2'</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-8"></a>needed       <span class="s">'libc.so.6'</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-9"></a>import       printf<span class="p">,</span>scanf<span class="p">,</span>exit
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-10"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-11"></a>segment readable executable
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-12"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-13"></a>gcd<span class="o">:</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-14"></a>    push   ebp
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-15"></a>    mov    ebp<span class="p">,</span>esp
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-16"></a>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-17"></a>    cmp    DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-18"></a>    je     l1
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-19"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-20"></a>    mov    edx<span class="p">,</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-21"></a>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-22"></a>    idiv   DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-23"></a>    mov    eax<span class="p">,</span>edx
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-24"></a>    mov    DWORD <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-25"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-26"></a>    mov    DWORD <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-27"></a>    call   gcd
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-28"></a>    jmp    l2
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-29"></a>l1<span class="o">:</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-30"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-31"></a>l2<span class="o">:</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-32"></a>    leave
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-33"></a>    ret
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-34"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-35"></a>start<span class="o">:</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-36"></a>    push     ebp
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-37"></a>    mov      ebp<span class="p">,</span>esp
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-38"></a>    and      esp<span class="p">,</span><span class="mh">0xfffffff0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-39"></a>    sub      esp<span class="p">,</span><span class="mh">0x20</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-40"></a>    cinvoke  scanf<span class="p">,</span>pars<span class="p">,</span>n<span class="p">,</span>m
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-41"></a>    mov      edx<span class="p">,[</span>n<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-42"></a>    mov      eax<span class="p">,[</span>m<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-43"></a>    mov      DWORD  <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-44"></a>    mov      DWORD  <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-45"></a>    call     gcd
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-46"></a>    cinvoke  printf<span class="p">,</span>parspf<span class="p">,</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-47"></a>    mov      eax<span class="p">,</span><span class="mh">0x0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-48"></a>    cinvoke  exit
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-49"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-50"></a>segment readable writeable
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-51"></a>    pars    db <span class="s">'%d%d'</span><span class="p">,</span><span class="m">0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-52"></a>    parspf  db <span class="s">'%d'</span><span class="p">,</span><span class="mh">0xa</span><span class="p">,</span><span class="m">0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-53"></a>    n       dd <span class="m">0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-54"></a>    m       dd <span class="m">0</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-1"> 1</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-2"> 2</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-3"> 3</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-4"> 4</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-5"> 5</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-6"> 6</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-7"> 7</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-8"> 8</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-9"> 9</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-10">10</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-11">11</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-12">12</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-13">13</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-14">14</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-15">15</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-16">16</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-17">17</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-18">18</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-19">19</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-20">20</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-21">21</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-22">22</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-23">23</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-24">24</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-25">25</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-26">26</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-27">27</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-28">28</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-29">29</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-30">30</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-31">31</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-32">32</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-33">33</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-34">34</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-35">35</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-36">36</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-37">37</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-38">38</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-39">39</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-40">40</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-41">41</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-42">42</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-43">43</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-44">44</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-45">45</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-46">46</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-47">47</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-48">48</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-49">49</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-50">50</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-51">51</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-52">52</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-53">53</a>
+<a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-54">54</a></pre></div></td>
+<td class="code"><pre class="code S"><a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-1"></a>format ELF executable <span class="m">3</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-2"></a>entry start
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-3"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-4"></a>include      <span class="s">'examples/elfexe/dynamic/import32.inc'</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-5"></a>include      <span class="s">'examples/elfexe/dynamic/proc32.inc'</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-6"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-7"></a>interpreter  <span class="s">'/lib/ld-linux.so.2'</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-8"></a>needed       <span class="s">'libc.so.6'</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-9"></a>import       printf<span class="p">,</span>scanf<span class="p">,</span>exit
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-10"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-11"></a>segment readable executable
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-12"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-13"></a>gcd<span class="o">:</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-14"></a>    push   ebp
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-15"></a>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-16"></a>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-17"></a>    cmp    DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-18"></a>    je     l1
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-19"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-20"></a>    mov    edx<span class="p">,</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-21"></a>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-22"></a>    idiv   DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-23"></a>    mov    eax<span class="p">,</span>edx
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-24"></a>    mov    DWORD <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-25"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-26"></a>    mov    DWORD <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-27"></a>    call   gcd
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-28"></a>    jmp    l2
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-29"></a>l1<span class="o">:</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-30"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-31"></a>l2<span class="o">:</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-32"></a>    leave
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-33"></a>    ret
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-34"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-35"></a>start<span class="o">:</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-36"></a>    push     ebp
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-37"></a>    mov      ebp<span class="p">,</span>esp
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-38"></a>    and      esp<span class="p">,</span><span class="mh">0xfffffff0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-39"></a>    sub      esp<span class="p">,</span><span class="mh">0x20</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-40"></a>    cinvoke  scanf<span class="p">,</span>pars<span class="p">,</span>n<span class="p">,</span>m
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-41"></a>    mov      edx<span class="p">,[</span>n<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-42"></a>    mov      eax<span class="p">,[</span>m<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-43"></a>    mov      DWORD  <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-44"></a>    mov      DWORD  <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-45"></a>    call     gcd
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-46"></a>    cinvoke  printf<span class="p">,</span>parspf<span class="p">,</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-47"></a>    mov      eax<span class="p">,</span><span class="mh">0x0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-48"></a>    cinvoke  exit
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-49"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-50"></a>segment readable writeable
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-51"></a>    pars    db <span class="s">'%d%d'</span><span class="p">,</span><span class="m">0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-52"></a>    parspf  db <span class="s">'%d'</span><span class="p">,</span><span class="mh">0xa</span><span class="p">,</span><span class="m">0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-53"></a>    n       dd <span class="m">0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-54"></a>    m       dd <span class="m">0</span>
 </pre></td>
 </tr></table>
 <p>and assemble:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_93c6a0adb8704bb890c11db45ca83943-1">1</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_93c6a0adb8704bb890c11db45ca83943-1"></a>./fasm gcd.asm
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_f27a1c8d9dd44bf68cc06e56f9bf42cc-1">1</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_f27a1c8d9dd44bf68cc06e56f9bf42cc-1"></a>./fasm gcd.asm
 </pre></td>
 </tr></table>
 <p>The assembled code will perform the same way, but the executable produced is about 10 times smaller! With the assembly code, we will have more liberty to use architecture specific instructions. And, if we see that there are unnecessary register spills happening, we may modify the code to avoid it. (using "register" keyword and <tt class="docutils literal"><span class="pre">-O3</span></tt> option in gcc makes good use of registers)</p>
@@ -529,8 +529,8 @@ Using the example to produce dynamically linked executable from fasm for linux (
 <li>
 <p class="first">By default, disassembly syntax is not intel. To change it, use</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_896167f4ea1a42988343c6ad8f67f9db-1">1</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_896167f4ea1a42988343c6ad8f67f9db-1"></a><span class="nb">set</span> disassembly-flavor intel
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/c-code-to-assembly-using-gcc-and-gdb/#rest_code_88802e18f5484da69a984b7271710efa-1">1</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_88802e18f5484da69a984b7271710efa-1"></a><span class="nb">set</span> disassembly-flavor intel
 </pre></td>
 </tr></table>
 <p>You may consider placing it in <tt class="docutils literal"><span class="pre">$HOME/.gdbinit</span></tt> to use intel syntax everytime.</p>
@@ -619,24 +619,24 @@ A^8=\left(\begin{array}{rrrrrrr}
 <p>Answer is <span class="math">\(A^8[0,6] = \dfrac{215}{5832}\)</span></p>
 <p>We can construct the markov chain and calculate the expected value in Sagemath (a very promising free CAS) as follows:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-1">1</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-2">2</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-3">3</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-4">4</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-5">5</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-6">6</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-7">7</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-8">8</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_ee2fdf52232a4a879329c8b8385c3220-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-1"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
-<a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-2"></a><span class="n">mx</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
-<a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-3"></a><span class="n">mx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-<a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-4"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-<a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-5"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
-<a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-6"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
-<a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-7"></a><span class="n">mx</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-<a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-8"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
-<a name="rest_code_ee2fdf52232a4a879329c8b8385c3220-9"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">am</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">inverse</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-1">1</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-2">2</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-3">3</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-4">4</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-5">5</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-6">6</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-7">7</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-8">8</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_5b266ae6971345068cd508a27468b73f-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_5b266ae6971345068cd508a27468b73f-1"></a><span class="n">n</span><span class="o">=</span><span class="mi">6</span>
+<a name="rest_code_5b266ae6971345068cd508a27468b73f-2"></a><span class="n">mx</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<a name="rest_code_5b266ae6971345068cd508a27468b73f-3"></a><span class="n">mx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_5b266ae6971345068cd508a27468b73f-4"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_5b266ae6971345068cd508a27468b73f-5"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_5b266ae6971345068cd508a27468b73f-6"></a>    <span class="n">mx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="n">n</span>
+<a name="rest_code_5b266ae6971345068cd508a27468b73f-7"></a><span class="n">mx</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_5b266ae6971345068cd508a27468b73f-8"></a><span class="n">am</span><span class="o">=</span><span class="n">matrix</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
+<a name="rest_code_5b266ae6971345068cd508a27468b73f-9"></a><span class="k">print</span> <span class="nb">sum</span><span class="p">((</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">am</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">inverse</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
 </pre></td>
 </tr></table>
 <p>If we want to know only the expected value, we can use the tree method:</p>
@@ -654,24 +654,24 @@ E_{n-1} &amp;= \dfrac{n-1}{n}\cdot(1+E_{n-2})+\left(1-\dfrac{n-1}{n}\right)\cdot
 </div>
 <p>From the above set of equations, we can derive the following algorithm to calculate the expected value in Sage:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-1">1</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-2">2</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-3">3</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-4">4</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-5">5</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-6">6</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-7">7</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-8">8</a>
-<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_86ceabe212004aea981a9ced92531450-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_86ceabe212004aea981a9ced92531450-1"></a><span class="n">ax</span> <span class="o">=</span> <span class="mi">1</span>
-<a name="rest_code_86ceabe212004aea981a9ced92531450-2"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
-<a name="rest_code_86ceabe212004aea981a9ced92531450-3"></a><span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_86ceabe212004aea981a9ced92531450-4"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_86ceabe212004aea981a9ced92531450-5"></a><span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
-<a name="rest_code_86ceabe212004aea981a9ced92531450-6"></a>    <span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">ax</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
-<a name="rest_code_86ceabe212004aea981a9ced92531450-7"></a>    <span class="n">summ</span> <span class="o">+=</span> <span class="n">ax</span>
-<a name="rest_code_86ceabe212004aea981a9ced92531450-8"></a>    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-<a name="rest_code_86ceabe212004aea981a9ced92531450-9"></a><span class="k">print</span> <span class="n">summ</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-1">1</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-2">2</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-3">3</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-4">4</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-5">5</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-6">6</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-7">7</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-8">8</a>
+<a href="posts/average-number-of-switch-flips-required-to-turn-on-all-the-lights/#rest_code_53fb65f78af2487f811404825ca4cabc-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_53fb65f78af2487f811404825ca4cabc-1"></a><span class="n">ax</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_53fb65f78af2487f811404825ca4cabc-2"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<a name="rest_code_53fb65f78af2487f811404825ca4cabc-3"></a><span class="n">summ</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_53fb65f78af2487f811404825ca4cabc-4"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_53fb65f78af2487f811404825ca4cabc-5"></a><span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+<a name="rest_code_53fb65f78af2487f811404825ca4cabc-6"></a>    <span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">ax</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+<a name="rest_code_53fb65f78af2487f811404825ca4cabc-7"></a>    <span class="n">summ</span> <span class="o">+=</span> <span class="n">ax</span>
+<a name="rest_code_53fb65f78af2487f811404825ca4cabc-8"></a>    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+<a name="rest_code_53fb65f78af2487f811404825ca4cabc-9"></a><span class="k">print</span> <span class="n">summ</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>As we see, the n is taken to be <span class="math">\(6\)</span>, and the answer returned is <span class="math">\(416/5\)</span>. The variable name is chosen as 'summ', since sum is a function's name. And, ax indicates a function of x.</p>
