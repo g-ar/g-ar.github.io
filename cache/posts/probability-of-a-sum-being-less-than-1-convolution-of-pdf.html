@@ -51,44 +51,44 @@
 </div>
 <p>That's some formula!</p>
 <p>In Sage, it can be written as</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_99a68855542e4facb2385cfb0996c732-1"> 1</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-2"> 2</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-3"> 3</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-4"> 4</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-5"> 5</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-6"> 6</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-7"> 7</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-8"> 8</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-9"> 9</a>
-<a href="#rest_code_99a68855542e4facb2385cfb0996c732-10">10</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_99a68855542e4facb2385cfb0996c732-1"></a><span class="n">var</span><span class="p">(</span><span class="s1">&#39;k y z&#39;</span><span class="p">)</span>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-2"></a><span class="n">assume</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-3"></a><span class="n">assume</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-4"></a><span class="n">f1</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="n">k</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-5"></a><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-6"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-7"></a>    <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">f1</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-8"></a>    <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-9"></a>
-<a name="rest_code_99a68855542e4facb2385cfb0996c732-10"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">gamma</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="o">/</span><span class="n">gamma</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-1"> 1</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-2"> 2</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-3"> 3</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-4"> 4</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-5"> 5</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-6"> 6</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-7"> 7</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-8"> 8</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-9"> 9</a>
+<a href="#rest_code_25c94ab47f1e4fa3a18918386318e1d8-10">10</a></pre></div></td><td class="code"><pre class="code python"><a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-1"></a><span class="n">var</span><span class="p">(</span><span class="s1">&#39;k y z&#39;</span><span class="p">)</span>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-2"></a><span class="n">assume</span><span class="p">(</span><span class="n">k</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-3"></a><span class="n">assume</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-4"></a><span class="n">f1</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="n">k</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-5"></a><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-6"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-7"></a>    <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">f1</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-8"></a>    <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-9"></a>
+<a name="rest_code_25c94ab47f1e4fa3a18918386318e1d8-10"></a><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">gamma</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="o">/</span><span class="n">gamma</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 </pre></td></tr></table><p>To verify our answer, we can perform a simulation:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_76857048cbe84412b66d3ba76897a393-1">1</a>
-<a href="#rest_code_76857048cbe84412b66d3ba76897a393-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_76857048cbe84412b66d3ba76897a393-1"></a>sim=: 3 : &#39;1&gt;+/(?6#0)^6&#39;
-<a name="rest_code_76857048cbe84412b66d3ba76897a393-2"></a>(+/%#)(sim&quot;0)100000#0 NB. = 0.63926
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ae4062d400ea47039fcabff815d52e2c-1">1</a>
+<a href="#rest_code_ae4062d400ea47039fcabff815d52e2c-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_ae4062d400ea47039fcabff815d52e2c-1"></a>sim=: 3 : &#39;1&gt;+/(?6#0)^6&#39;
+<a name="rest_code_ae4062d400ea47039fcabff815d52e2c-2"></a>(+/%#)(sim&quot;0)100000#0 NB. = 0.63926
 </pre></td></tr></table><p>If we want to perform a simulation in a more verbose language, R is a good candidate.</p>
 <p>The code in R looks like:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_329aecfbb6b44ea589dc8e953799c477-1">1</a>
-<a href="#rest_code_329aecfbb6b44ea589dc8e953799c477-2">2</a>
-<a href="#rest_code_329aecfbb6b44ea589dc8e953799c477-3">3</a>
-<a href="#rest_code_329aecfbb6b44ea589dc8e953799c477-4">4</a></pre></div></td><td class="code"><pre class="code R"><a name="rest_code_329aecfbb6b44ea589dc8e953799c477-1"></a>n <span class="o">=</span> <span class="m">6</span>
-<a name="rest_code_329aecfbb6b44ea589dc8e953799c477-2"></a>k <span class="o">=</span> <span class="m">6</span>
-<a name="rest_code_329aecfbb6b44ea589dc8e953799c477-3"></a>b <span class="o">=</span> <span class="kt">array</span><span class="p">(</span>runif<span class="p">(</span>n<span class="o">*</span><span class="m">1e6</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span>n<span class="p">,</span><span class="m">1e6</span><span class="p">))</span>
-<a name="rest_code_329aecfbb6b44ea589dc8e953799c477-4"></a><span class="kp">mean</span><span class="p">(</span><span class="kp">apply</span><span class="p">(</span>b<span class="o">^</span>k<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="kp">sum</span><span class="p">)</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_3d53e3a6c58b4b13b6ddf201a0dbeff5-1">1</a>
+<a href="#rest_code_3d53e3a6c58b4b13b6ddf201a0dbeff5-2">2</a>
+<a href="#rest_code_3d53e3a6c58b4b13b6ddf201a0dbeff5-3">3</a>
+<a href="#rest_code_3d53e3a6c58b4b13b6ddf201a0dbeff5-4">4</a></pre></div></td><td class="code"><pre class="code R"><a name="rest_code_3d53e3a6c58b4b13b6ddf201a0dbeff5-1"></a>n <span class="o">=</span> <span class="m">6</span>
+<a name="rest_code_3d53e3a6c58b4b13b6ddf201a0dbeff5-2"></a>k <span class="o">=</span> <span class="m">6</span>
+<a name="rest_code_3d53e3a6c58b4b13b6ddf201a0dbeff5-3"></a>b <span class="o">=</span> <span class="kt">array</span><span class="p">(</span>runif<span class="p">(</span>n<span class="o">*</span><span class="m">1e6</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span>n<span class="p">,</span><span class="m">1e6</span><span class="p">))</span>
+<a name="rest_code_3d53e3a6c58b4b13b6ddf201a0dbeff5-4"></a><span class="kp">mean</span><span class="p">(</span><span class="kp">apply</span><span class="p">(</span>b<span class="o">^</span>k<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="kp">sum</span><span class="p">)</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
 </pre></td></tr></table><p>and if we want to perform using two dimensional arrays in J also, the equivalent code can be written as:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1d9de261ca2e46dd82df332f805b0518-1">1</a>
-<a href="#rest_code_1d9de261ca2e46dd82df332f805b0518-2">2</a>
-<a href="#rest_code_1d9de261ca2e46dd82df332f805b0518-3">3</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_1d9de261ca2e46dd82df332f805b0518-1"></a>&#39;n k&#39;=: 6 6
-<a name="rest_code_1d9de261ca2e46dd82df332f805b0518-2"></a>a=:(n, 1e6) $ ?(n*1e6)#0
-<a name="rest_code_1d9de261ca2e46dd82df332f805b0518-3"></a>(+/%#)1&gt;+/a^k NB. = 0.637572
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_864407210aa4468ebbd255a88d581ada-1">1</a>
+<a href="#rest_code_864407210aa4468ebbd255a88d581ada-2">2</a>
+<a href="#rest_code_864407210aa4468ebbd255a88d581ada-3">3</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_864407210aa4468ebbd255a88d581ada-1"></a>&#39;n k&#39;=: 6 6
+<a name="rest_code_864407210aa4468ebbd255a88d581ada-2"></a>a=:(n, 1e6) $ ?(n*1e6)#0
+<a name="rest_code_864407210aa4468ebbd255a88d581ada-3"></a>(+/%#)1&gt;+/a^k NB. = 0.637572
 </pre></td></tr></table><p>The corresponding probability derived analytically is:</p>
 <div class="math">
 \begin{align*}

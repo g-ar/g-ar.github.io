@@ -3,11 +3,11 @@
 <h1>1 Derangement problem</h1>
 <p><em>There are 30 boxes numbered 1 to 30, and 30 balls numbered 1 to 30. If the balls are put into the boxes (one in each) randomly, what's the probability that none of the balls are put in the boxes with matching number?</em></p>
 <p>By simulation:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f33e947b846349bbb5d9dbad758e18e3-1">1</a>
-<a href="#rest_code_f33e947b846349bbb5d9dbad758e18e3-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_f33e947b846349bbb5d9dbad758e18e3-1"></a>sim=: 3 : &#39;0=+/(i.30)=30?30&#39;
-<a name="rest_code_f33e947b846349bbb5d9dbad758e18e3-2"></a>(+/%#)(sim&quot;0)100000#0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5ae8c8cdcc6c48969a386e13d021d86d-1">1</a>
+<a href="#rest_code_5ae8c8cdcc6c48969a386e13d021d86d-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_5ae8c8cdcc6c48969a386e13d021d86d-1"></a>sim=: 3 : &#39;0=+/(i.30)=30?30&#39;
+<a name="rest_code_5ae8c8cdcc6c48969a386e13d021d86d-2"></a>(+/%#)(sim&quot;0)100000#0
 </pre></td></tr></table><p>The analytical answer:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_624c05f42fb2493d92f7baa4d4650f37-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_624c05f42fb2493d92f7baa4d4650f37-1"></a>+/((30$(1 _1))*(%!i.30))
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f02598ffa100401c99e8517df9749795-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_f02598ffa100401c99e8517df9749795-1"></a>+/((30$(1 _1))*(%!i.30))
 </pre></td></tr></table></div>
 <div class="section" id="urns-balls-and-a-gamble">
 <h1>2 Urns, balls and a gamble.</h1>
@@ -22,11 +22,11 @@
 </ol>
 <p>What's your expected amount?</p>
 <p>Simulation answer:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2759fc8d1a8b41a2af6fd4baea2244bb-1">1</a>
-<a href="#rest_code_2759fc8d1a8b41a2af6fd4baea2244bb-2">2</a>
-<a href="#rest_code_2759fc8d1a8b41a2af6fd4baea2244bb-3">3</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_2759fc8d1a8b41a2af6fd4baea2244bb-1"></a>a=: 10#0 1
-<a name="rest_code_2759fc8d1a8b41a2af6fd4baea2244bb-2"></a>sim=: 3 : &#39;((_5 * 5 = ]) + ([: +/ 4 6 =/ ]) + (2 * [: +/ 3 7 =/ ]) + (3 * [: +/ 2 8 =/ ]) + (30 * [: +/ 1 9 =/ ]) + 300 * [: +/ 10 0 =/ ])+/(10?20){a&#39;
-<a name="rest_code_2759fc8d1a8b41a2af6fd4baea2244bb-3"></a>(+/%#)(sim&quot;0)1000000#0  NB. = _0.826702
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_e2cee21283b941dbb515cdd22fa74b42-1">1</a>
+<a href="#rest_code_e2cee21283b941dbb515cdd22fa74b42-2">2</a>
+<a href="#rest_code_e2cee21283b941dbb515cdd22fa74b42-3">3</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_e2cee21283b941dbb515cdd22fa74b42-1"></a>a=: 10#0 1
+<a name="rest_code_e2cee21283b941dbb515cdd22fa74b42-2"></a>sim=: 3 : &#39;((_5 * 5 = ]) + ([: +/ 4 6 =/ ]) + (2 * [: +/ 3 7 =/ ]) + (3 * [: +/ 2 8 =/ ]) + (30 * [: +/ 1 9 =/ ]) + 300 * [: +/ 10 0 =/ ])+/(10?20){a&#39;
+<a name="rest_code_e2cee21283b941dbb515cdd22fa74b42-3"></a>(+/%#)(sim&quot;0)1000000#0  NB. = _0.826702
 </pre></td></tr></table><p>Analytical answer (hypergeometric distribution):</p>
 <p><span class="math">\(A=\{1, 2, 3, 30, 300, -5\}\)</span></p>
 <div class="math">
@@ -34,27 +34,27 @@
 \displaystyle \sum_{i=0}^{4}\dfrac{A_i\cdot 2\, \dbinom{10}{i}\dbinom{10}{10-i}}{\dbinom{20}{10}}+\dfrac{A_5\cdot \dbinom{10}{5}^2}{\dbinom{20}{10}} =-\dfrac{76485}{92378}=-0.827956872848514
 \end{equation*}
 </div>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ee176169d76b40a8afaff7a0fa541c21-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_ee176169d76b40a8afaff7a0fa541c21-1"></a>_5 1 2 3 30 300)*(((5!10)^2), (2 * (10 !~ ]) * 10 !~ 10 - ]) 6+i.5)%10!20
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2244dda96cd74dffb158b9994c8b8e67-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_2244dda96cd74dffb158b9994c8b8e67-1"></a>_5 1 2 3 30 300)*(((5!10)^2), (2 * (10 !~ ]) * 10 !~ 10 - ]) 6+i.5)%10!20
 </pre></td></tr></table></div>
 <div class="section" id="birthday-problem">
 <h1>3 Birthday problem</h1>
 <p>How many people should be in a room such that the probability of at least two of them sharing the same birthday is more than 0.5? (Assume 365 days in an year)</p>
 <p>By Simulation:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5569d131fca54f43a9e4c55ca68a37a9-1">1</a>
-<a href="#rest_code_5569d131fca54f43a9e4c55ca68a37a9-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_5569d131fca54f43a9e4c55ca68a37a9-1"></a>sim=: 3 : &#39;23&gt;+/~:?23#365&#39;
-<a name="rest_code_5569d131fca54f43a9e4c55ca68a37a9-2"></a>(+/%#)(sim&quot;0)100000#0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_3392c0366b40460183430ac69e697c74-1">1</a>
+<a href="#rest_code_3392c0366b40460183430ac69e697c74-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_3392c0366b40460183430ac69e697c74-1"></a>sim=: 3 : &#39;23&gt;+/~:?23#365&#39;
+<a name="rest_code_3392c0366b40460183430ac69e697c74-2"></a>(+/%#)(sim&quot;0)100000#0
 </pre></td></tr></table><p>Analytically:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_543d346dfa3c4c9185fd86a913c52ebf-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_543d346dfa3c4c9185fd86a913c52ebf-1"></a>1-*/((365-i.23)%(365)) NB. = 0.507297234323985
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_4542185e83ee4934bd7effd0ab47dae3-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_4542185e83ee4934bd7effd0ab47dae3-1"></a>1-*/((365-i.23)%(365)) NB. = 0.507297234323985
 </pre></td></tr></table><p>To see a plot of the probabilities, up to 100 people in a room:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ca62290ff27c4630ac0152be569c7098-1">1</a>
-<a href="#rest_code_ca62290ff27c4630ac0152be569c7098-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_ca62290ff27c4630ac0152be569c7098-1"></a>load&#39;plot&#39;
-<a name="rest_code_ca62290ff27c4630ac0152be569c7098-2"></a>&#39;marker&#39; plot (1+i.100);((1 - [: */ 365 %~ 365 - i.)&quot;0) 1+i.100
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_7302acf2431b4b539a31268a9fe6480f-1">1</a>
+<a href="#rest_code_7302acf2431b4b539a31268a9fe6480f-2">2</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_7302acf2431b4b539a31268a9fe6480f-1"></a>load&#39;plot&#39;
+<a name="rest_code_7302acf2431b4b539a31268a9fe6480f-2"></a>&#39;marker&#39; plot (1+i.100);((1 - [: */ 365 %~ 365 - i.)&quot;0) 1+i.100
 </pre></td></tr></table></div>
 <div class="section" id="dice">
 <h1>4 4 dice</h1>
 <p>Four dice are rolled, what's the probability that no two faces are repeated? (E.g. 6 4 2 5 is okay, but 3 6 5 6 is forbidden)</p>
 <p>By simulation:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a83e43f5a016434a9b109fbb04b48c36-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_a83e43f5a016434a9b109fbb04b48c36-1"></a>sim=: 3 : &#39;(4 = [: +/ [: +/ =/~)?4#6&#39;
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5e18e40e033949399cc4b42a89f34222-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_5e18e40e033949399cc4b42a89f34222-1"></a>sim=: 3 : &#39;(4 = [: +/ [: +/ =/~)?4#6&#39;
 </pre></td></tr></table><p>By permutation:</p>
 <div class="math">
 \begin{equation*}
@@ -62,23 +62,23 @@
 \end{equation*}
 </div>
 <p>Putting that in J console:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_db79f17e34cb42fb9d2daea130d60620-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_db79f17e34cb42fb9d2daea130d60620-1"></a>((4!6)*!4)%6^4
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f989d6676fd8496fae9b4d199ef11365-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_f989d6676fd8496fae9b4d199ef11365-1"></a>((4!6)*!4)%6^4
 </pre></td></tr></table><p>By counting:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_79c2abbc69c54f18be6bef1ce78e3f21-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_79c2abbc69c54f18be6bef1ce78e3f21-1"></a>(+/4=+/&quot;1~:&quot;1(6 6 6 6#:i.1296))%6^4 NB. this uses base-6 representation till 6^4
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ffefe8fbeb9c4cb2abf995fc1cc667bb-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_ffefe8fbeb9c4cb2abf995fc1cc667bb-1"></a>(+/4=+/&quot;1~:&quot;1(6 6 6 6#:i.1296))%6^4 NB. this uses base-6 representation till 6^4
 </pre></td></tr></table></div>
 <div class="section" id="the-ballot-problem">
 <h1>5 The ballot problem</h1>
 <p>In an election, candidate A receives n votes, and candidate B receives m votes where <span class="math">\(n &gt; m\)</span>. Assuming that all orderings are equally likely, show that the probability that A is always ahead in the count of votes is <span class="math">\(\dfrac{n - m}{n + m}\)</span>.</p>
 <p>Here's a simulation to see that it may be true:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_2574c195d4354d9792368a03e4725719-1">1</a>
-<a href="#rest_code_2574c195d4354d9792368a03e4725719-2">2</a>
-<a href="#rest_code_2574c195d4354d9792368a03e4725719-3">3</a>
-<a href="#rest_code_2574c195d4354d9792368a03e4725719-4">4</a>
-<a href="#rest_code_2574c195d4354d9792368a03e4725719-5">5</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_2574c195d4354d9792368a03e4725719-1"></a>n=:55
-<a name="rest_code_2574c195d4354d9792368a03e4725719-2"></a>m=:45
-<a name="rest_code_2574c195d4354d9792368a03e4725719-3"></a>a=:(m#_1),n#1
-<a name="rest_code_2574c195d4354d9792368a03e4725719-4"></a>sim=: 3 : &#39;100=+/0&lt;+/\(100?100){a&#39;
-<a name="rest_code_2574c195d4354d9792368a03e4725719-5"></a>(+/%#)(sim&quot;0)100000#0 NB. = 0.0993
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5037837d32f7417fa1cd820ed799e1a4-1">1</a>
+<a href="#rest_code_5037837d32f7417fa1cd820ed799e1a4-2">2</a>
+<a href="#rest_code_5037837d32f7417fa1cd820ed799e1a4-3">3</a>
+<a href="#rest_code_5037837d32f7417fa1cd820ed799e1a4-4">4</a>
+<a href="#rest_code_5037837d32f7417fa1cd820ed799e1a4-5">5</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_5037837d32f7417fa1cd820ed799e1a4-1"></a>n=:55
+<a name="rest_code_5037837d32f7417fa1cd820ed799e1a4-2"></a>m=:45
+<a name="rest_code_5037837d32f7417fa1cd820ed799e1a4-3"></a>a=:(m#_1),n#1
+<a name="rest_code_5037837d32f7417fa1cd820ed799e1a4-4"></a>sim=: 3 : &#39;100=+/0&lt;+/\(100?100){a&#39;
+<a name="rest_code_5037837d32f7417fa1cd820ed799e1a4-5"></a>(+/%#)(sim&quot;0)100000#0 NB. = 0.0993
 </pre></td></tr></table><p>which is close to 0.1 computed from the formula.</p>
 </div>
 <div class="section" id="an-ace-from-a-regular-deck-of-52-cards">
@@ -91,13 +91,13 @@
 \end{equation*}
 </div>
 <p>and a simulation can back up our claim, e.g. for <span class="math">\(k=5\)</span>:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_cd6034131d0f4f29b6bfa25335b4fbdd-1">1</a>
-<a href="#rest_code_cd6034131d0f4f29b6bfa25335b4fbdd-2">2</a>
-<a href="#rest_code_cd6034131d0f4f29b6bfa25335b4fbdd-3">3</a>
-<a href="#rest_code_cd6034131d0f4f29b6bfa25335b4fbdd-4">4</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_cd6034131d0f4f29b6bfa25335b4fbdd-1"></a>pos=: 5
-<a name="rest_code_cd6034131d0f4f29b6bfa25335b4fbdd-2"></a>a=:(4#1),48#0
-<a name="rest_code_cd6034131d0f4f29b6bfa25335b4fbdd-3"></a>sim=: 3 : &#39;pos=1+{.I.(52?52){a&#39;
-<a name="rest_code_cd6034131d0f4f29b6bfa25335b4fbdd-4"></a>(+/%#)(sim&quot;0)100000#0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_51e0421dfd0e4fb28e6abf0058142d57-1">1</a>
+<a href="#rest_code_51e0421dfd0e4fb28e6abf0058142d57-2">2</a>
+<a href="#rest_code_51e0421dfd0e4fb28e6abf0058142d57-3">3</a>
+<a href="#rest_code_51e0421dfd0e4fb28e6abf0058142d57-4">4</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_51e0421dfd0e4fb28e6abf0058142d57-1"></a>pos=: 5
+<a name="rest_code_51e0421dfd0e4fb28e6abf0058142d57-2"></a>a=:(4#1),48#0
+<a name="rest_code_51e0421dfd0e4fb28e6abf0058142d57-3"></a>sim=: 3 : &#39;pos=1+{.I.(52?52){a&#39;
+<a name="rest_code_51e0421dfd0e4fb28e6abf0058142d57-4"></a>(+/%#)(sim&quot;0)100000#0
 </pre></td></tr></table><p>and the probabilities for first five positions:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_9aaf6e2d7852467ea40c3ae41595bb71-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_9aaf6e2d7852467ea40c3ae41595bb71-1"></a>(((48 !~ 1 -~ ]) % 52 !~ 1 -~ ]) * 4 % 52 - 1 -~ ]) 1+i.5
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_8456b43550674f26b459f2572b629bd1-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_8456b43550674f26b459f2572b629bd1-1"></a>(((48 !~ 1 -~ ]) % 52 !~ 1 -~ ]) * 4 % 52 - 1 -~ ]) 1+i.5
 </pre></td></tr></table></div>

@@ -1,237 +1,237 @@
 <p>Reading the disassembled code from the C programs which we can comfortably write is a great way to learn assembly language, do some archtecture specific optimizations and also to know what's happening under the hood.</p>
 <p>In this post, we will see how to translate a small C program to assembly (using flat assembler).</p>
 <p>Consider the following, where the code for gcd is taken from rosetta code:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-1"> 1</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-2"> 2</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-3"> 3</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-4"> 4</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-5"> 5</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-6"> 6</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-7"> 7</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-8"> 8</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-9"> 9</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-10">10</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-11">11</a>
-<a href="#rest_code_4512c7075cf04903a066b9b0f038aeb9-12">12</a></pre></div></td><td class="code"><pre class="code C"><a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-2"></a>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-3"></a><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-4"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="n">gcd</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="o">%</span><span class="n">v</span><span class="p">)</span><span class="o">:</span><span class="n">u</span><span class="p">;</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-5"></a><span class="p">}</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-6"></a>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-7"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-8"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">;</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-9"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-10"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">gcd</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">));</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-11"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<a name="rest_code_4512c7075cf04903a066b9b0f038aeb9-12"></a><span class="p">}</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-1"> 1</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-2"> 2</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-3"> 3</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-4"> 4</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-5"> 5</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-6"> 6</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-7"> 7</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-8"> 8</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-9"> 9</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-10">10</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-11">11</a>
+<a href="#rest_code_952715c7d67f4564acaed7b2ee09dd70-12">12</a></pre></div></td><td class="code"><pre class="code C"><a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-1"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-2"></a>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-3"></a><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-4"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="n">gcd</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="o">%</span><span class="n">v</span><span class="p">)</span><span class="o">:</span><span class="n">u</span><span class="p">;</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-5"></a><span class="p">}</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-6"></a>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-7"></a><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-8"></a>    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">;</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-9"></a>    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-10"></a>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">gcd</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">));</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-11"></a>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_952715c7d67f4564acaed7b2ee09dd70-12"></a><span class="p">}</span>
 </pre></td></tr></table><p>Compile to 32 bit code as</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c51b8e9001084a8aa9f58f9363f51ac5-1">1</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_c51b8e9001084a8aa9f58f9363f51ac5-1"></a>gcc -o gcd gcd.c -m32
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_45a71eb63f174505ad768cb323b9cc5f-1">1</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_45a71eb63f174505ad768cb323b9cc5f-1"></a>gcc -o gcd gcd.c -m32
 </pre></td></tr></table><p>and disassemble:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5ce305cb20af4e74b15b6d787be6997a-1">1</a>
-<a href="#rest_code_5ce305cb20af4e74b15b6d787be6997a-2">2</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_5ce305cb20af4e74b15b6d787be6997a-1"></a>gdb ./gcd
-<a name="rest_code_5ce305cb20af4e74b15b6d787be6997a-2"></a><span class="o">(</span>gdb<span class="o">)</span> disas gcd
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_06967b60f6ed4beb8534c2a6c7134878-1">1</a>
+<a href="#rest_code_06967b60f6ed4beb8534c2a6c7134878-2">2</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_06967b60f6ed4beb8534c2a6c7134878-1"></a>gdb ./gcd
+<a name="rest_code_06967b60f6ed4beb8534c2a6c7134878-2"></a><span class="o">(</span>gdb<span class="o">)</span> disas gcd
 </pre></td></tr></table><p>We will see something like this:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_302fb972bc1d45089a61691cd04454c3-1"> 1</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-2"> 2</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-3"> 3</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-4"> 4</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-5"> 5</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-6"> 6</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-7"> 7</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-8"> 8</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-9"> 9</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-10">10</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-11">11</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-12">12</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-13">13</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-14">14</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-15">15</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-16">16</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-17">17</a>
-<a href="#rest_code_302fb972bc1d45089a61691cd04454c3-18">18</a></pre></div></td><td class="code"><pre class="code S"><a name="rest_code_302fb972bc1d45089a61691cd04454c3-1"></a><span class="mh">0x08048454</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-2"></a><span class="mh">0x08048455</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-3"></a><span class="mh">0x08048457</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-4"></a><span class="mh">0x0804845a</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    cmp    DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-5"></a><span class="mh">0x0804845e</span> <span class="o">&lt;</span><span class="m">+10</span><span class="o">&gt;</span> <span class="o">:</span>    je     <span class="mh">0x804847e</span> <span class="o">&lt;</span>gcd<span class="m">+42</span><span class="o">&gt;</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-6"></a><span class="mh">0x08048460</span> <span class="o">&lt;</span><span class="m">+12</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-7"></a><span class="mh">0x08048463</span> <span class="o">&lt;</span><span class="m">+15</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>eax
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-8"></a><span class="mh">0x08048465</span> <span class="o">&lt;</span><span class="m">+17</span><span class="o">&gt;</span> <span class="o">:</span>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-9"></a><span class="mh">0x08048468</span> <span class="o">&lt;</span><span class="m">+20</span><span class="o">&gt;</span> <span class="o">:</span>    idiv   DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-10"></a><span class="mh">0x0804846b</span> <span class="o">&lt;</span><span class="m">+23</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>edx
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-11"></a><span class="mh">0x0804846d</span> <span class="o">&lt;</span><span class="m">+25</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-12"></a><span class="mh">0x08048471</span> <span class="o">&lt;</span><span class="m">+29</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-13"></a><span class="mh">0x08048474</span> <span class="o">&lt;</span><span class="m">+32</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-14"></a><span class="mh">0x08048477</span> <span class="o">&lt;</span><span class="m">+35</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-15"></a><span class="mh">0x0804847c</span> <span class="o">&lt;</span><span class="m">+40</span><span class="o">&gt;</span> <span class="o">:</span>    jmp    <span class="mh">0x8048481</span> <span class="o">&lt;</span>gcd<span class="m">+45</span><span class="o">&gt;</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-16"></a><span class="mh">0x0804847e</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-17"></a><span class="mh">0x08048481</span> <span class="o">&lt;</span><span class="m">+45</span><span class="o">&gt;</span> <span class="o">:</span>    leave
-<a name="rest_code_302fb972bc1d45089a61691cd04454c3-18"></a><span class="mh">0x08048482</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    ret
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-1"> 1</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-2"> 2</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-3"> 3</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-4"> 4</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-5"> 5</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-6"> 6</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-7"> 7</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-8"> 8</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-9"> 9</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-10">10</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-11">11</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-12">12</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-13">13</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-14">14</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-15">15</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-16">16</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-17">17</a>
+<a href="#rest_code_3cfb727e3b1c4f5784b87e310374fa62-18">18</a></pre></div></td><td class="code"><pre class="code S"><a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-1"></a><span class="mh">0x08048454</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-2"></a><span class="mh">0x08048455</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-3"></a><span class="mh">0x08048457</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-4"></a><span class="mh">0x0804845a</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    cmp    DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-5"></a><span class="mh">0x0804845e</span> <span class="o">&lt;</span><span class="m">+10</span><span class="o">&gt;</span> <span class="o">:</span>    je     <span class="mh">0x804847e</span> <span class="o">&lt;</span>gcd<span class="m">+42</span><span class="o">&gt;</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-6"></a><span class="mh">0x08048460</span> <span class="o">&lt;</span><span class="m">+12</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-7"></a><span class="mh">0x08048463</span> <span class="o">&lt;</span><span class="m">+15</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>eax
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-8"></a><span class="mh">0x08048465</span> <span class="o">&lt;</span><span class="m">+17</span><span class="o">&gt;</span> <span class="o">:</span>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-9"></a><span class="mh">0x08048468</span> <span class="o">&lt;</span><span class="m">+20</span><span class="o">&gt;</span> <span class="o">:</span>    idiv   DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-10"></a><span class="mh">0x0804846b</span> <span class="o">&lt;</span><span class="m">+23</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>edx
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-11"></a><span class="mh">0x0804846d</span> <span class="o">&lt;</span><span class="m">+25</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-12"></a><span class="mh">0x08048471</span> <span class="o">&lt;</span><span class="m">+29</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-13"></a><span class="mh">0x08048474</span> <span class="o">&lt;</span><span class="m">+32</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-14"></a><span class="mh">0x08048477</span> <span class="o">&lt;</span><span class="m">+35</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-15"></a><span class="mh">0x0804847c</span> <span class="o">&lt;</span><span class="m">+40</span><span class="o">&gt;</span> <span class="o">:</span>    jmp    <span class="mh">0x8048481</span> <span class="o">&lt;</span>gcd<span class="m">+45</span><span class="o">&gt;</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-16"></a><span class="mh">0x0804847e</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-17"></a><span class="mh">0x08048481</span> <span class="o">&lt;</span><span class="m">+45</span><span class="o">&gt;</span> <span class="o">:</span>    leave
+<a name="rest_code_3cfb727e3b1c4f5784b87e310374fa62-18"></a><span class="mh">0x08048482</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    ret
 </pre></td></tr></table><p>and</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_77b966f9f95847d5b1c8c45aa79fb95f-1">1</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_77b966f9f95847d5b1c8c45aa79fb95f-1"></a><span class="o">(</span>gdb<span class="o">)</span> disas main
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_bdd19bedf5a743b398b63e408ab79058-1">1</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_bdd19bedf5a743b398b63e408ab79058-1"></a><span class="o">(</span>gdb<span class="o">)</span> disas main
 </pre></td></tr></table><p>shows like this:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-1"> 1</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-2"> 2</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-3"> 3</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-4"> 4</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-5"> 5</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-6"> 6</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-7"> 7</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-8"> 8</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-9"> 9</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-10">10</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-11">11</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-12">12</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-13">13</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-14">14</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-15">15</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-16">16</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-17">17</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-18">18</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-19">19</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-20">20</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-21">21</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-22">22</a>
-<a href="#rest_code_903ba9bb20514658be1f2dcdb7570bf1-23">23</a></pre></div></td><td class="code"><pre class="code S"><a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-1"></a><span class="mh">0x08048483</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-2"></a><span class="mh">0x08048484</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-3"></a><span class="mh">0x08048486</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    and    esp<span class="p">,</span><span class="mh">0xfffffff0</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-4"></a><span class="mh">0x08048489</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x20</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-5"></a><span class="mh">0x0804848c</span> <span class="o">&lt;</span><span class="m">+9</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x80485b0</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-6"></a><span class="mh">0x08048491</span> <span class="o">&lt;</span><span class="m">+14</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-7"></a><span class="mh">0x08048495</span> <span class="o">&lt;</span><span class="m">+18</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x8<span class="p">],</span>edx
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-8"></a><span class="mh">0x08048499</span> <span class="o">&lt;</span><span class="m">+22</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-9"></a><span class="mh">0x0804849d</span> <span class="o">&lt;</span><span class="m">+26</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-10"></a><span class="mh">0x080484a1</span> <span class="o">&lt;</span><span class="m">+30</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-11"></a><span class="mh">0x080484a4</span> <span class="o">&lt;</span><span class="m">+33</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048380</span> <span class="o">&lt;</span>__isoc99_scanf<span class="o">@</span>plt<span class="o">&gt;</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-12"></a><span class="mh">0x080484a9</span> <span class="o">&lt;</span><span class="m">+38</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-13"></a><span class="mh">0x080484ad</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-14"></a><span class="mh">0x080484b1</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-15"></a><span class="mh">0x080484b5</span> <span class="o">&lt;</span><span class="m">+50</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-16"></a><span class="mh">0x080484b8</span> <span class="o">&lt;</span><span class="m">+53</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-17"></a><span class="mh">0x080484bd</span> <span class="o">&lt;</span><span class="m">+58</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span><span class="mh">0x80485b5</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-18"></a><span class="mh">0x080484c2</span> <span class="o">&lt;</span><span class="m">+63</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-19"></a><span class="mh">0x080484c6</span> <span class="o">&lt;</span><span class="m">+67</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>edx
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-20"></a><span class="mh">0x080484c9</span> <span class="o">&lt;</span><span class="m">+70</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048390</span> <span class="o">&lt;</span>printf<span class="o">@</span>plt<span class="o">&gt;</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-21"></a><span class="mh">0x080484ce</span> <span class="o">&lt;</span><span class="m">+75</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x0</span>
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-22"></a><span class="mh">0x080484d3</span> <span class="o">&lt;</span><span class="m">+80</span><span class="o">&gt;</span> <span class="o">:</span>    leave
-<a name="rest_code_903ba9bb20514658be1f2dcdb7570bf1-23"></a><span class="mh">0x080484d4</span> <span class="o">&lt;</span><span class="m">+81</span><span class="o">&gt;</span> <span class="o">:</span>    ret
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-1"> 1</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-2"> 2</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-3"> 3</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-4"> 4</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-5"> 5</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-6"> 6</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-7"> 7</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-8"> 8</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-9"> 9</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-10">10</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-11">11</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-12">12</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-13">13</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-14">14</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-15">15</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-16">16</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-17">17</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-18">18</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-19">19</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-20">20</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-21">21</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-22">22</a>
+<a href="#rest_code_230d17e3f01b472286cec9578a2bc88e-23">23</a></pre></div></td><td class="code"><pre class="code S"><a name="rest_code_230d17e3f01b472286cec9578a2bc88e-1"></a><span class="mh">0x08048483</span> <span class="o">&lt;</span><span class="m">+0</span><span class="o">&gt;</span>  <span class="o">:</span>    push   ebp
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-2"></a><span class="mh">0x08048484</span> <span class="o">&lt;</span><span class="m">+1</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-3"></a><span class="mh">0x08048486</span> <span class="o">&lt;</span><span class="m">+3</span><span class="o">&gt;</span>  <span class="o">:</span>    and    esp<span class="p">,</span><span class="mh">0xfffffff0</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-4"></a><span class="mh">0x08048489</span> <span class="o">&lt;</span><span class="m">+6</span><span class="o">&gt;</span>  <span class="o">:</span>    sub    esp<span class="p">,</span><span class="mh">0x20</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-5"></a><span class="mh">0x0804848c</span> <span class="o">&lt;</span><span class="m">+9</span><span class="o">&gt;</span>  <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x80485b0</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-6"></a><span class="mh">0x08048491</span> <span class="o">&lt;</span><span class="m">+14</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-7"></a><span class="mh">0x08048495</span> <span class="o">&lt;</span><span class="m">+18</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x8<span class="p">],</span>edx
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-8"></a><span class="mh">0x08048499</span> <span class="o">&lt;</span><span class="m">+22</span><span class="o">&gt;</span> <span class="o">:</span>    lea    edx<span class="p">,[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-9"></a><span class="mh">0x0804849d</span> <span class="o">&lt;</span><span class="m">+26</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-10"></a><span class="mh">0x080484a1</span> <span class="o">&lt;</span><span class="m">+30</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-11"></a><span class="mh">0x080484a4</span> <span class="o">&lt;</span><span class="m">+33</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048380</span> <span class="o">&lt;</span>__isoc99_scanf<span class="o">@</span>plt<span class="o">&gt;</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-12"></a><span class="mh">0x080484a9</span> <span class="o">&lt;</span><span class="m">+38</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x1c<span class="p">]</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-13"></a><span class="mh">0x080484ad</span> <span class="o">&lt;</span><span class="m">+42</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span>DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x18<span class="p">]</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-14"></a><span class="mh">0x080484b1</span> <span class="o">&lt;</span><span class="m">+46</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-15"></a><span class="mh">0x080484b5</span> <span class="o">&lt;</span><span class="m">+50</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-16"></a><span class="mh">0x080484b8</span> <span class="o">&lt;</span><span class="m">+53</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048454</span> <span class="o">&lt;</span>gcd<span class="o">&gt;</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-17"></a><span class="mh">0x080484bd</span> <span class="o">&lt;</span><span class="m">+58</span><span class="o">&gt;</span> <span class="o">:</span>    mov    edx<span class="p">,</span><span class="mh">0x80485b5</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-18"></a><span class="mh">0x080484c2</span> <span class="o">&lt;</span><span class="m">+63</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-19"></a><span class="mh">0x080484c6</span> <span class="o">&lt;</span><span class="m">+67</span><span class="o">&gt;</span> <span class="o">:</span>    mov    DWORD PTR <span class="p">[</span>esp<span class="p">],</span>edx
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-20"></a><span class="mh">0x080484c9</span> <span class="o">&lt;</span><span class="m">+70</span><span class="o">&gt;</span> <span class="o">:</span>    call   <span class="mh">0x8048390</span> <span class="o">&lt;</span>printf<span class="o">@</span>plt<span class="o">&gt;</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-21"></a><span class="mh">0x080484ce</span> <span class="o">&lt;</span><span class="m">+75</span><span class="o">&gt;</span> <span class="o">:</span>    mov    eax<span class="p">,</span><span class="mh">0x0</span>
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-22"></a><span class="mh">0x080484d3</span> <span class="o">&lt;</span><span class="m">+80</span><span class="o">&gt;</span> <span class="o">:</span>    leave
+<a name="rest_code_230d17e3f01b472286cec9578a2bc88e-23"></a><span class="mh">0x080484d4</span> <span class="o">&lt;</span><span class="m">+81</span><span class="o">&gt;</span> <span class="o">:</span>    ret
 </pre></td></tr></table><p>From the disassembly, we can see that the function arguments are pushed from right to left.
 We can also see that the local variables are allocated space in the stack.</p>
 <p>We need to replace all the relative references by labels, memory references by names and remove all &quot;PTR&quot; keywords.
 Using the example to produce dynamically linked executable from fasm for linux (doing it in 1.70.03), we may write it as:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-1"> 1</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-2"> 2</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-3"> 3</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-4"> 4</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-5"> 5</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-6"> 6</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-7"> 7</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-8"> 8</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-9"> 9</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-10">10</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-11">11</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-12">12</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-13">13</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-14">14</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-15">15</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-16">16</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-17">17</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-18">18</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-19">19</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-20">20</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-21">21</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-22">22</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-23">23</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-24">24</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-25">25</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-26">26</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-27">27</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-28">28</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-29">29</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-30">30</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-31">31</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-32">32</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-33">33</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-34">34</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-35">35</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-36">36</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-37">37</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-38">38</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-39">39</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-40">40</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-41">41</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-42">42</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-43">43</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-44">44</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-45">45</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-46">46</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-47">47</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-48">48</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-49">49</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-50">50</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-51">51</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-52">52</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-53">53</a>
-<a href="#rest_code_a7364fb4492c4e3193abc912ce0053ca-54">54</a></pre></div></td><td class="code"><pre class="code S"><a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-1"></a>format ELF executable <span class="m">3</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-2"></a>entry start
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-3"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-4"></a>include      <span class="s">&#39;examples/elfexe/dynamic/import32.inc&#39;</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-5"></a>include      <span class="s">&#39;examples/elfexe/dynamic/proc32.inc&#39;</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-6"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-7"></a>interpreter  <span class="s">&#39;/lib/ld-linux.so.2&#39;</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-8"></a>needed       <span class="s">&#39;libc.so.6&#39;</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-9"></a>import       printf<span class="p">,</span>scanf<span class="p">,</span>exit
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-10"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-11"></a>segment readable executable
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-12"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-13"></a>gcd<span class="o">:</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-14"></a>    push   ebp
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-15"></a>    mov    ebp<span class="p">,</span>esp
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-16"></a>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-17"></a>    cmp    DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-18"></a>    je     l1
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-19"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-20"></a>    mov    edx<span class="p">,</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-21"></a>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-22"></a>    idiv   DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-23"></a>    mov    eax<span class="p">,</span>edx
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-24"></a>    mov    DWORD <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-25"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-26"></a>    mov    DWORD <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-27"></a>    call   gcd
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-28"></a>    jmp    l2
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-29"></a>l1<span class="o">:</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-30"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-31"></a>l2<span class="o">:</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-32"></a>    leave
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-33"></a>    ret
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-34"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-35"></a>start<span class="o">:</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-36"></a>    push     ebp
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-37"></a>    mov      ebp<span class="p">,</span>esp
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-38"></a>    and      esp<span class="p">,</span><span class="mh">0xfffffff0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-39"></a>    sub      esp<span class="p">,</span><span class="mh">0x20</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-40"></a>    cinvoke  scanf<span class="p">,</span>pars<span class="p">,</span>n<span class="p">,</span>m
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-41"></a>    mov      edx<span class="p">,[</span>n<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-42"></a>    mov      eax<span class="p">,[</span>m<span class="p">]</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-43"></a>    mov      DWORD  <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-44"></a>    mov      DWORD  <span class="p">[</span>esp<span class="p">],</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-45"></a>    call     gcd
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-46"></a>    cinvoke  printf<span class="p">,</span>parspf<span class="p">,</span>eax
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-47"></a>    mov      eax<span class="p">,</span><span class="mh">0x0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-48"></a>    cinvoke  exit
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-49"></a>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-50"></a>segment readable writeable
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-51"></a>    pars    db <span class="s">&#39;%d%d&#39;</span><span class="p">,</span><span class="m">0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-52"></a>    parspf  db <span class="s">&#39;%d&#39;</span><span class="p">,</span><span class="mh">0xa</span><span class="p">,</span><span class="m">0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-53"></a>    n       dd <span class="m">0</span>
-<a name="rest_code_a7364fb4492c4e3193abc912ce0053ca-54"></a>    m       dd <span class="m">0</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-1"> 1</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-2"> 2</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-3"> 3</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-4"> 4</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-5"> 5</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-6"> 6</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-7"> 7</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-8"> 8</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-9"> 9</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-10">10</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-11">11</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-12">12</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-13">13</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-14">14</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-15">15</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-16">16</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-17">17</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-18">18</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-19">19</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-20">20</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-21">21</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-22">22</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-23">23</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-24">24</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-25">25</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-26">26</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-27">27</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-28">28</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-29">29</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-30">30</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-31">31</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-32">32</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-33">33</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-34">34</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-35">35</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-36">36</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-37">37</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-38">38</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-39">39</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-40">40</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-41">41</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-42">42</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-43">43</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-44">44</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-45">45</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-46">46</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-47">47</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-48">48</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-49">49</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-50">50</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-51">51</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-52">52</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-53">53</a>
+<a href="#rest_code_c1617d1116b74486ae9a7bd4ab5f8129-54">54</a></pre></div></td><td class="code"><pre class="code S"><a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-1"></a>format ELF executable <span class="m">3</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-2"></a>entry start
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-3"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-4"></a>include      <span class="s">&#39;examples/elfexe/dynamic/import32.inc&#39;</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-5"></a>include      <span class="s">&#39;examples/elfexe/dynamic/proc32.inc&#39;</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-6"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-7"></a>interpreter  <span class="s">&#39;/lib/ld-linux.so.2&#39;</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-8"></a>needed       <span class="s">&#39;libc.so.6&#39;</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-9"></a>import       printf<span class="p">,</span>scanf<span class="p">,</span>exit
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-10"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-11"></a>segment readable executable
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-12"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-13"></a>gcd<span class="o">:</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-14"></a>    push   ebp
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-15"></a>    mov    ebp<span class="p">,</span>esp
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-16"></a>    sub    esp<span class="p">,</span><span class="mh">0x18</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-17"></a>    cmp    DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">],</span><span class="mh">0x0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-18"></a>    je     l1
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-19"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-20"></a>    mov    edx<span class="p">,</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-21"></a>    sar    edx<span class="p">,</span><span class="mh">0x1f</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-22"></a>    idiv   DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-23"></a>    mov    eax<span class="p">,</span>edx
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-24"></a>    mov    DWORD <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-25"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>xc<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-26"></a>    mov    DWORD <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-27"></a>    call   gcd
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-28"></a>    jmp    l2
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-29"></a>l1<span class="o">:</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-30"></a>    mov    eax<span class="p">,</span>DWORD <span class="p">[</span>ebp<span class="m">+0</span>x8<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-31"></a>l2<span class="o">:</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-32"></a>    leave
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-33"></a>    ret
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-34"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-35"></a>start<span class="o">:</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-36"></a>    push     ebp
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-37"></a>    mov      ebp<span class="p">,</span>esp
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-38"></a>    and      esp<span class="p">,</span><span class="mh">0xfffffff0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-39"></a>    sub      esp<span class="p">,</span><span class="mh">0x20</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-40"></a>    cinvoke  scanf<span class="p">,</span>pars<span class="p">,</span>n<span class="p">,</span>m
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-41"></a>    mov      edx<span class="p">,[</span>n<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-42"></a>    mov      eax<span class="p">,[</span>m<span class="p">]</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-43"></a>    mov      DWORD  <span class="p">[</span>esp<span class="m">+0</span>x4<span class="p">],</span>edx
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-44"></a>    mov      DWORD  <span class="p">[</span>esp<span class="p">],</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-45"></a>    call     gcd
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-46"></a>    cinvoke  printf<span class="p">,</span>parspf<span class="p">,</span>eax
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-47"></a>    mov      eax<span class="p">,</span><span class="mh">0x0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-48"></a>    cinvoke  exit
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-49"></a>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-50"></a>segment readable writeable
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-51"></a>    pars    db <span class="s">&#39;%d%d&#39;</span><span class="p">,</span><span class="m">0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-52"></a>    parspf  db <span class="s">&#39;%d&#39;</span><span class="p">,</span><span class="mh">0xa</span><span class="p">,</span><span class="m">0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-53"></a>    n       dd <span class="m">0</span>
+<a name="rest_code_c1617d1116b74486ae9a7bd4ab5f8129-54"></a>    m       dd <span class="m">0</span>
 </pre></td></tr></table><p>and assemble:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_93c6a0adb8704bb890c11db45ca83943-1">1</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_93c6a0adb8704bb890c11db45ca83943-1"></a>./fasm gcd.asm
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f27a1c8d9dd44bf68cc06e56f9bf42cc-1">1</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_f27a1c8d9dd44bf68cc06e56f9bf42cc-1"></a>./fasm gcd.asm
 </pre></td></tr></table><p>The assembled code will perform the same way, but the executable produced is about 10 times smaller! With the assembly code, we will have more liberty to use architecture specific instructions. And, if we see that there are unnecessary register spills happening, we may modify the code to avoid it. (using &quot;register&quot; keyword and <tt class="docutils literal"><span class="pre">-O3</span></tt> option in gcc makes good use of registers)</p>
 <p>p.s.</p>
 <ul>
 <li><p class="first">By default, disassembly syntax is not intel. To change it, use</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_896167f4ea1a42988343c6ad8f67f9db-1">1</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_896167f4ea1a42988343c6ad8f67f9db-1"></a><span class="nb">set</span> disassembly-flavor intel
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_88802e18f5484da69a984b7271710efa-1">1</a></pre></div></td><td class="code"><pre class="code bash"><a name="rest_code_88802e18f5484da69a984b7271710efa-1"></a><span class="nb">set</span> disassembly-flavor intel
 </pre></td></tr></table><p>You may consider placing it in <tt class="docutils literal"><span class="pre">$HOME/.gdbinit</span></tt> to use intel syntax everytime.</p>
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">-m32</span></tt> option in gcc is not required if 32 bit linux distro is used.</p>

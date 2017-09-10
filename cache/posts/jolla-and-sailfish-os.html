@@ -27,13 +27,13 @@
 <li><p class="first">We can also install several useful softwares like emacs, system monitor, cpufrequtils etc. from openrepos.net. Hence, we can have the tools we need with us all the time! (Emacs calc mode itself can serve as a mini CAS!)</p>
 </li>
 <li><p class="first">The history of events like sms and calls are stored in a database. We can use SQL commands to extract the event of interest. E.g.</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f2ed86b8e8ff4e8580fac7bf45666dbb-1">1</a></pre></div></td><td class="code"><pre class="code sh"><a name="rest_code_f2ed86b8e8ff4e8580fac7bf45666dbb-1"></a>sqlite3 .local/share/commhistory/commhistory.db
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_567024636e864e39b07237ca698813b9-1">1</a></pre></div></td><td class="code"><pre class="code sh"><a name="rest_code_567024636e864e39b07237ca698813b9-1"></a>sqlite3 .local/share/commhistory/commhistory.db
 </pre></td></tr></table></li>
 <li><p class="first">Then, to display all the sms messages, run commands like</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_bef283b817f74a9a8ed02da2f7921b9a-1">1</a></pre></div></td><td class="code"><pre class="code sql"><a name="rest_code_bef283b817f74a9a8ed02da2f7921b9a-1"></a><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">events</span> <span class="k">where</span> <span class="k">type</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_5584193d0d454752afc8980cf9d6e2bb-1">1</a></pre></div></td><td class="code"><pre class="code sql"><a name="rest_code_5584193d0d454752afc8980cf9d6e2bb-1"></a><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">events</span> <span class="k">where</span> <span class="k">type</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
 </pre></td></tr></table></li>
 <li><p class="first">If we want to know what each column is about, run</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c70dd54e93224d999918fec8c729cb3e-1">1</a></pre></div></td><td class="code"><pre class="code sql"><a name="rest_code_c70dd54e93224d999918fec8c729cb3e-1"></a><span class="p">.</span><span class="n">headers</span> <span class="k">ON</span>
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_cce547a0e0a34092806f7600156bba47-1">1</a></pre></div></td><td class="code"><pre class="code sql"><a name="rest_code_cce547a0e0a34092806f7600156bba47-1"></a><span class="p">.</span><span class="n">headers</span> <span class="k">ON</span>
 </pre></td></tr></table></li>
 <li><p class="first">And to top it all, though an ARM binary is not available, we can easily compile J to run it from the console! I think it's perfectly suitable language that can be used on a phone. (J download for RPi works too)</p>
 </li>

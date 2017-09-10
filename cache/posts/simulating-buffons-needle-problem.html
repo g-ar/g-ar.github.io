@@ -8,21 +8,21 @@
 <p>The answer is to use the parametric representation of the points. If the needle of length <span class="math">\(l\)</span> is dropped, then it makes an angle <span class="math">\(\theta\)</span> with the horizontal. For simulating, take one end of the needle as a reference, and it must be randomly and uniformly distributed in <span class="math">\([0,d)\)</span>. Call the random number as <span class="math">\(h\)</span>. The other end of the needle will then be at a distance <span class="math">\(h+l\cdot sin(\theta)\)</span>.</p>
 <p>Now, for the condition that the needle touches the line, the other end must be either higher than <span class="math">\(d\)</span> or less than zero. Hence, we can simulate the experiment by picking <span class="math">\(h\)</span> in <span class="math">\(U(0,d)\)</span> and <span class="math">\(\theta \in U(0,2\, \theta)\)</span>.</p>
 <p>Following is the code in J:</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-1">1</a>
-<a href="#rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-2">2</a>
-<a href="#rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-3">3</a>
-<a href="#rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-4">4</a>
-<a href="#rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-5">5</a>
-<a href="#rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-6">6</a>
-<a href="#rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-7">7</a>
-<a href="#rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-8">8</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-1"></a>load &#39;trig&#39;
-<a name="rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-2"></a>&#39;l d&#39;=:4 1
-<a name="rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-3"></a>    sim =: 3 : 0
-<a name="rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-4"></a>h=:d*?1000000#0
-<a name="rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-5"></a>th=:2p1*?1000000#0
-<a name="rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-6"></a>(+/%#)((h+l*sin th)&gt;d)+.((h+l*sin th)&lt;0)
-<a name="rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-7"></a>)
-<a name="rest_code_f1a0bd60d0dc479a9ecd41fecaa06adb-8"></a>    sim 0
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_d88daa9fac16427ba6bf32f6a7525ed4-1">1</a>
+<a href="#rest_code_d88daa9fac16427ba6bf32f6a7525ed4-2">2</a>
+<a href="#rest_code_d88daa9fac16427ba6bf32f6a7525ed4-3">3</a>
+<a href="#rest_code_d88daa9fac16427ba6bf32f6a7525ed4-4">4</a>
+<a href="#rest_code_d88daa9fac16427ba6bf32f6a7525ed4-5">5</a>
+<a href="#rest_code_d88daa9fac16427ba6bf32f6a7525ed4-6">6</a>
+<a href="#rest_code_d88daa9fac16427ba6bf32f6a7525ed4-7">7</a>
+<a href="#rest_code_d88daa9fac16427ba6bf32f6a7525ed4-8">8</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_d88daa9fac16427ba6bf32f6a7525ed4-1"></a>load &#39;trig&#39;
+<a name="rest_code_d88daa9fac16427ba6bf32f6a7525ed4-2"></a>&#39;l d&#39;=:4 1
+<a name="rest_code_d88daa9fac16427ba6bf32f6a7525ed4-3"></a>    sim =: 3 : 0
+<a name="rest_code_d88daa9fac16427ba6bf32f6a7525ed4-4"></a>h=:d*?1000000#0
+<a name="rest_code_d88daa9fac16427ba6bf32f6a7525ed4-5"></a>th=:2p1*?1000000#0
+<a name="rest_code_d88daa9fac16427ba6bf32f6a7525ed4-6"></a>(+/%#)((h+l*sin th)&gt;d)+.((h+l*sin th)&lt;0)
+<a name="rest_code_d88daa9fac16427ba6bf32f6a7525ed4-7"></a>)
+<a name="rest_code_d88daa9fac16427ba6bf32f6a7525ed4-8"></a>    sim 0
 </pre></td></tr></table><p>It gives an answer about <span class="math">\(0.919978\)</span>, and changing <span class="math">\(l\)</span> and <span class="math">\(d\)</span> to</p>
-<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c7c1fe04e67b49bf883fdf00616cd66d-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_c7c1fe04e67b49bf883fdf00616cd66d-1"></a>&#39;l d&#39;=:1 4
+<table class="codetable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_c6ec0b95e65f46b3b9f77af97cce716f-1">1</a></pre></div></td><td class="code"><pre class="code text"><a name="rest_code_c6ec0b95e65f46b3b9f77af97cce716f-1"></a>&#39;l d&#39;=:1 4
 </pre></td></tr></table><p>gives about <span class="math">\(0.15907\)</span>, which are close to actual answers <span class="math">\(0.920000066713994\)</span> and <span class="math">\(0.159154943091895\)</span>, respectively.</p>
