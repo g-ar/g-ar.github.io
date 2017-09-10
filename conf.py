@@ -135,7 +135,8 @@ NAVIGATION_LINKS = {
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
         ("/rss.xml", "RSS feed"),
-        ("/stories/about-me/", "About"),
+        ("/stories/about-me/", "About"), 
+        ("/stories/demo/", "Demo"),
     ),
 }
 
