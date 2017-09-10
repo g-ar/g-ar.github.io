@@ -136,7 +136,6 @@ NAVIGATION_LINKS = {
         ("/categories/", "Tags"),
         ("/rss.xml", "RSS feed"),
         ("/stories/about-me/", "About"), 
-        ("/stories/demo/", "Demo"),
     ),
 }
 
