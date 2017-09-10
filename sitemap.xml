@@ -31,7 +31,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2017-01-17T07:16:00Z</lastmod>
+  <lastmod>2017-09-10T17:32:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
@@ -227,31 +227,31 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-1.html</loc>
-  <lastmod>2017-01-17T12:25:00Z</lastmod>
+  <lastmod>2017-09-10T17:32:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-2.html</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2017-09-10T17:32:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-3.html</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2017-09-10T17:32:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-4.html</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2017-09-10T17:32:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-5.html</loc>
-  <lastmod>2016-09-16T08:36:00Z</lastmod>
+  <lastmod>2017-09-10T17:32:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-6.html</loc>
-  <lastmod>2016-12-14T18:10:00Z</lastmod>
+  <lastmod>2017-09-10T17:32:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/index-7.html</loc>
-  <lastmod>2017-01-17T07:16:00Z</lastmod>
+  <lastmod>2017-09-10T17:32:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/listings/</loc>
@@ -380,5 +380,9 @@
  <url>
   <loc>https://g-ar.github.io/stories/about-me/</loc>
   <lastmod>2016-09-12T17:54:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/stories/demo/</loc>
+  <lastmod>2017-09-10T17:43:00Z</lastmod>
  </url>
 </urlset>
