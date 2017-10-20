@@ -31,11 +31,11 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2017-09-10T17:52:00Z</lastmod>
+  <lastmod>2017-10-20T10:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
-  <lastmod>2017-09-10T17:53:00Z</lastmod>
+  <lastmod>2017-10-20T10:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/arm/</loc>
@@ -154,6 +154,10 @@
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
+  <loc>https://g-ar.github.io/categories/osc/</loc>
+  <lastmod>2017-10-20T10:02:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://g-ar.github.io/categories/pppoe/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
@@ -196,6 +200,10 @@
  <url>
   <loc>https://g-ar.github.io/categories/simulation/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/categories/sonic-pi/</loc>
+  <lastmod>2017-10-20T10:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/strace/</loc>
@@ -243,7 +251,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-7.html</loc>
-  <lastmod>2017-09-10T17:53:00Z</lastmod>
+  <lastmod>2017-10-20T10:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/a-restricted-arrangement-of-letters-in-a-word/</loc>
@@ -292,6 +300,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/generating-image-patterns/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/generating-music-with-sagemath-and-sonic-pi/</loc>
+  <lastmod>2017-10-20T10:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/getting-started-with-emacs/</loc>
