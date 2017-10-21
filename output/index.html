@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/generating-music-with-sagemath-and-sonic-pi/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/generating-music-with-sagemath-and-sonic-pi-examples/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,224 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/generating-music-with-sagemath-and-sonic-pi/" class="u-url">Generating Music With SageMath And Sonic Pi</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/" class="u-url">Generating Music With SageMath And Sonic Pi - Examples</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/" rel="bookmark"><time class="published dt-published" datetime="2017-10-21T16:05:16+05:30" title="2017-10-21 16:05">2017-10-21 16:05</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>We will explore some examples to make music using the libraries included in Sage and python data structures</p>
+<div class="section" id="bach-s-prelude-in-c">
+<h2>1 Bach's Prelude in C</h2>
+<p>Here's a translation of the Mathematica code at <a class="reference external" href="https://mathematica.stackexchange.com/questions/156061/manipulate-a-list-representing-bachs-prelude-in-c">mathematica.SE</a>, which is quite nice.</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-1"> 1</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-2"> 2</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-3"> 3</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-4"> 4</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-5"> 5</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-6"> 6</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-7"> 7</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-8"> 8</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-9"> 9</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-10">10</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-11">11</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-12">12</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-13">13</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-14">14</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-15">15</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-16">16</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-17">17</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-18">18</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-19">19</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-20">20</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-21">21</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-22">22</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-23">23</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-24">24</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-25">25</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-26">26</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-27">27</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-28">28</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-29">29</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-30">30</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-31">31</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-32">32</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-33">33</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-34">34</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-35">35</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-36">36</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-37">37</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-38">38</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-39">39</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-40">40</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-41">41</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-42">42</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-43">43</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-44">44</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-45">45</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_8cf77eaae794469c82e5fe12b8f69fe6-46">46</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-1"></a><span class="n">bwv846</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"C5"</span><span class="p">,</span> <span class="s2">"E5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-2"></a>          <span class="p">[</span><span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"D5"</span><span class="p">,</span> <span class="s2">"F5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-3"></a>          <span class="p">[</span><span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"D5"</span><span class="p">,</span> <span class="s2">"F5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-4"></a>          <span class="p">[</span><span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"C5"</span><span class="p">,</span> <span class="s2">"E5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-5"></a>          <span class="p">[</span><span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"E5"</span><span class="p">,</span> <span class="s2">"A5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-6"></a>          <span class="p">[</span><span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"Fs"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"D5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-7"></a>          <span class="p">[</span><span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"D5"</span><span class="p">,</span> <span class="s2">"G5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-8"></a>          <span class="p">[</span><span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"C5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-9"></a>          <span class="p">[</span><span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"C5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-10"></a>          <span class="p">[</span><span class="s2">"D3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"Fs"</span><span class="p">,</span> <span class="s2">"C5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-11"></a>          <span class="p">[</span><span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-12"></a>          <span class="p">[</span><span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"Bb3"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"Cs5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-13"></a>          <span class="p">[</span><span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"D5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-14"></a>          <span class="p">[</span><span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"Ab3"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-15"></a>          <span class="p">[</span><span class="s2">"E3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"C5"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-16"></a>          <span class="p">[</span><span class="s2">"E3"</span><span class="p">,</span> <span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-17"></a>          <span class="p">[</span><span class="s2">"D3"</span><span class="p">,</span> <span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-18"></a>          <span class="p">[</span><span class="s2">"G1"</span><span class="p">,</span> <span class="s2">"D3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-19"></a>          <span class="p">[</span><span class="s2">"C3"</span><span class="p">,</span> <span class="s2">"E3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-20"></a>          <span class="p">[</span><span class="s2">"C3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"Bb3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-21"></a>          <span class="p">[</span><span class="s2">"F2"</span><span class="p">,</span> <span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-22"></a>          <span class="p">[</span><span class="s2">"Fs2"</span><span class="p">,</span> <span class="s2">"C3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"Eb"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-23"></a>          <span class="p">[</span><span class="s2">"Ab2"</span><span class="p">,</span> <span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-24"></a>          <span class="p">[</span><span class="s2">"G2"</span><span class="p">,</span> <span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-25"></a>          <span class="p">[</span><span class="s2">"G2"</span><span class="p">,</span> <span class="s2">"E3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-26"></a>          <span class="p">[</span><span class="s2">"G2"</span><span class="p">,</span> <span class="s2">"D3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-27"></a>          <span class="p">[</span><span class="s2">"G2"</span><span class="p">,</span> <span class="s2">"D3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-28"></a>          <span class="p">[</span><span class="s2">"G2"</span><span class="p">,</span> <span class="s2">"Eb3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"Fs"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-29"></a>          <span class="p">[</span><span class="s2">"G2"</span><span class="p">,</span> <span class="s2">"E3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-30"></a>          <span class="p">[</span><span class="s2">"G2"</span><span class="p">,</span> <span class="s2">"D3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-31"></a>          <span class="p">[</span><span class="s2">"G2"</span><span class="p">,</span> <span class="s2">"D3"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">],</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-32"></a>          <span class="p">[</span><span class="s2">"C1"</span><span class="p">,</span> <span class="s2">"C2"</span><span class="p">,</span> <span class="s2">"G3"</span><span class="p">,</span> <span class="s2">"Bb3"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">]]</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-33"></a>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-34"></a><span class="n">finale</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"C1"</span><span class="p">,</span> <span class="s2">"C2"</span><span class="p">,</span> <span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-35"></a>   <span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"A3"</span><span class="p">,</span> <span class="s2">"F3"</span><span class="p">,</span> <span class="s2">"D3"</span><span class="p">,</span> <span class="s2">"C1"</span><span class="p">,</span> <span class="s2">"B1"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D5"</span><span class="p">,</span> <span class="s2">"F5"</span><span class="p">,</span> <span class="s2">"D5"</span><span class="p">,</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-36"></a>   <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D5"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"C1"</span><span class="p">,</span> <span class="s2">"C2"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"C5"</span><span class="p">]]</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-37"></a>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-38"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bwv846</span><span class="p">:</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-39"></a>    <span class="n">note</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span><span class="o">*</span><span class="mi">2</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-40"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">note</span><span class="p">:</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-41"></a>        <span class="n">send_message</span><span class="p">(</span><span class="s2">"/trigger/play"</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-42"></a>        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-43"></a>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-44"></a><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">finale</span><span class="p">:</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-45"></a>    <span class="n">send_message</span><span class="p">(</span><span class="s2">"/trigger/play"</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<a name="rest_code_8cf77eaae794469c82e5fe12b8f69fe6-46"></a>    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+</div>
+<div class="section" id="sound-of-cellular-automaton">
+<h2>2 Sound of Cellular Automaton</h2>
+<p>Using the idea of <a class="reference external" href="https://stackoverflow.com/a/7592876">mathematica code</a> using Cellular Automata, we modify the <a class="reference external" href="https://wiki.sagemath.org/interact/misc#Cellular_Automata">Cellular Automata's interactive example</a></p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-1"> 1</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-2"> 2</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-3"> 3</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-4"> 4</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-5"> 5</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-6"> 6</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-7"> 7</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-8"> 8</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-9"> 9</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-10">10</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-11">11</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-12">12</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-13">13</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-14">14</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-15">15</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-16">16</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-17">17</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-18">18</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-19">19</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-20">20</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-21">21</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-22">22</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-23">23</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-24">24</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-25">25</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-26">26</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-27">27</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-28">28</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-29">29</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-30">30</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-31">31</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-32">32</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-33">33</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-34">34</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-35">35</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-36">36</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-37">37</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-38">38</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-39">39</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-40">40</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-41">41</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_50967b0d16ca4f51ac7ed3107570e6fc-42">42</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-1"></a><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-2"></a><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-3"></a>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-4"></a><span class="k">def</span> <span class="nf">cellular</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="s1">'Single-cell'</span><span class="p">):</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-5"></a>    <span class="sd">'''Yields a matrix showing the evolution of a Wolfram's cellular automaton</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-6"></a>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-7"></a><span class="sd">    rule:     determines how a cell's value is updated, depending on its neighbors</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-8"></a><span class="sd">    N:        number of iterations</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-9"></a><span class="sd">    initial:  starting condition; can be either single-cell or a random binary row</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-10"></a><span class="sd">    '''</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-11"></a>    <span class="n">M</span><span class="o">=</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-12"></a>    <span class="k">if</span> <span class="n">initial</span><span class="o">==</span><span class="s1">'Single-cell'</span><span class="p">:</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-13"></a>        <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-14"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-15"></a>        <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)]</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-16"></a>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-17"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-18"></a>        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">):</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-19"></a>            <span class="n">l</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">M</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">M</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">M</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-20"></a>            <span class="n">M</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">rule</span><span class="p">[</span> <span class="n">l</span> <span class="p">]</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-21"></a>    <span class="k">return</span> <span class="n">M</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-22"></a>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-23"></a><span class="k">def</span> <span class="nf">num2rule</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-24"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">255</span><span class="p">:</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-25"></a>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Invalid rule number'</span><span class="p">)</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-26"></a>    <span class="n">binary_digits</span> <span class="o">=</span> <span class="n">number</span><span class="o">.</span><span class="n">digits</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-27"></a>    <span class="k">return</span> <span class="n">binary_digits</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">8</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">binary_digits</span><span class="p">))</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-28"></a>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-29"></a><span class="nd">@interact</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-30"></a><span class="k">def</span> <span class="nf">_</span><span class="p">(</span> <span class="n">initial</span><span class="o">=</span><span class="n">selector</span><span class="p">([</span><span class="s1">'Single-cell'</span><span class="p">,</span> <span class="s1">'Random'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Starting condition'</span><span class="p">),</span> <span class="n">N</span><span class="o">=</span><span class="n">input_box</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">'Number of iterations'</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mi">31</span><span class="p">),</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-31"></a>       <span class="n">rule_number</span><span class="o">=</span><span class="n">input_box</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">'Rule number'</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mi">90</span><span class="p">),</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-32"></a>       <span class="n">size</span> <span class="o">=</span> <span class="n">slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span> <span class="s1">'Size'</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">6</span> <span class="p">),</span> <span class="n">auto_update</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-33"></a>    <span class="n">rule</span> <span class="o">=</span> <span class="n">num2rule</span><span class="p">(</span><span class="n">rule_number</span><span class="p">)</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-34"></a>    <span class="n">M</span> <span class="o">=</span> <span class="n">cellular</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">initial</span><span class="p">)</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-35"></a>    <span class="n">part</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-36"></a>    <span class="n">plot_M</span> <span class="o">=</span> <span class="n">matrix_plot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'binary'</span><span class="p">)</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-37"></a>    <span class="n">plot_M</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="n">size</span><span class="p">,</span><span class="n">size</span><span class="p">])</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-38"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">part</span><span class="p">:</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-39"></a>        <span class="n">k</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">j</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-40"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-41"></a>            <span class="n">send_message</span><span class="p">(</span><span class="s2">"/trigger/play"</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<a name="rest_code_50967b0d16ca4f51ac7ed3107570e6fc-42"></a>            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+</div>
+<div class="section" id="hmm-emitting-notes">
+<h2>3 HMM Emitting Notes</h2>
+<p>We may even use the notes of pleasant compositions to train Markov Models, which can later keep producing notes probabilistically. E.g. a 3 symbol model looks like</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_c2418aedcfe547e1bd1a6aff5f8cc16c-1">1</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_c2418aedcfe547e1bd1a6aff5f8cc16c-2">2</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_c2418aedcfe547e1bd1a6aff5f8cc16c-3">3</a>
+<a href="posts/generating-music-with-sagemath-and-sonic-pi-examples/#rest_code_c2418aedcfe547e1bd1a6aff5f8cc16c-4">4</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_c2418aedcfe547e1bd1a6aff5f8cc16c-1"></a><span class="n">m</span> <span class="o">=</span> <span class="n">hmm</span><span class="o">.</span><span class="n">DiscreteHiddenMarkovModel</span><span class="p">([[</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="o">/</span><span class="mi">7</span><span class="p">],[</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="s2">"F"</span><span class="p">,</span> <span class="s2">"Fs"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">])</span>
+<a name="rest_code_c2418aedcfe547e1bd1a6aff5f8cc16c-2"></a><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
+<a name="rest_code_c2418aedcfe547e1bd1a6aff5f8cc16c-3"></a>    <span class="n">send_message</span><span class="p">(</span><span class="s2">"/trigger/play"</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<a name="rest_code_c2418aedcfe547e1bd1a6aff5f8cc16c-4"></a>    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/generating-music-with-sagemath-and-sonic-pi/" class="u-url">Generating Music With SageMath And Sonic Pi</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Gopinath
@@ -514,90 +731,6 @@ To start it, enter <tt class="docutils literal"><span class="pre">M-x</span> cal
 </div>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/" class="u-url">Simulating Mouse Movement To Draw In Mypaint</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Gopinath
-            </span></p>
-            <p class="dateline"><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/" rel="bookmark"><time class="published dt-published" datetime="2016-09-24T15:38:43+05:30" title="2016-09-24 15:38">2016-09-24 15:38</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Wouldn't it be nice if we can command where to move the mouse pointer and press buttons, and then use the functionality to draw in a painting program? We can do exactly that in systems running <tt class="docutils literal">xorg</tt> display server, by using <tt class="docutils literal">xdotool</tt> to simulate mouse and keyboard.</p>
-<p>E.g. to draw a simple 5 petal rose, <span class="math">\(r = \cos \left(5 \theta\right)\)</span>,</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-1"> 1</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-2"> 2</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-3"> 3</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-4"> 4</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-5"> 5</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-6"> 6</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-7"> 7</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-8"> 8</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-9"> 9</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-10">10</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-11">11</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-12">12</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-13">13</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-14">14</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_f49d0909586549cfa3879b2151903b11-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-3"></a>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-6"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-7"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-8"></a>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-9"></a><span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-10"></a>    <span class="n">th</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-11"></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">th</span><span class="p">)</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-12"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
-<a name="rest_code_f49d0909586549cfa3879b2151903b11-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
-</pre></td>
-</tr></table>
-<p>Below is the result of running the script with <tt class="docutils literal">mypaint</tt> opened in fullscreen mode. Various effects can be achieved by selecting one among the hundreds of brushes available.</p>
-<div class="figure">
-<img alt="../../images/mypaint1.png" src="images/mypaint1.png"><p class="caption">Result of 08-micro felt pen and glow pen by running the script twice</p>
-</div>
-<p>Next is another example with a pencil style chosen for the brush.</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-1"> 1</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-2"> 2</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-3"> 3</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-4"> 4</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-5"> 5</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-6"> 6</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-7"> 7</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-8"> 8</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-9"> 9</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-10">10</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-11">11</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-12">12</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-13">13</a>
-<a href="posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_23393107d5314ce8baf1dffb181315e8-14">14</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_23393107d5314ce8baf1dffb181315e8-1"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-2"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-3"></a>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-4"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">640</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-5"></a><span class="n">xh</span><span class="p">,</span> <span class="n">yh</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">2</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-6"></a><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">61</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-7"></a><span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-8"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-9"></a><span class="n">system</span><span class="p">(</span><span class="s1">'sleep 2; xdotool mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xh</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">yh</span><span class="p">))</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-10"></a>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-11"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-12"></a>    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">xh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">),</span> <span class="n">yh</span><span class="o">+</span><span class="n">yh</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">i</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-13"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'xdotool mousedown 1 mousemove '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">' mouseup 1'</span><span class="p">)</span>
-<a name="rest_code_23393107d5314ce8baf1dffb181315e8-14"></a>    <span class="n">system</span><span class="p">(</span><span class="s1">'sleep 0.01'</span><span class="p">)</span>
-</pre></td>
-</tr></table>
-<div class="figure">
-<img alt="../../images/mypaint2.png" src="images/mypaint2.png"><p class="caption">Result of running the script with pencil</p>
-</div>
-<p>Interesting, yes?</p>
-</div>
-    </div>
     </article>
 </div>
 
@@ -605,19 +738,7 @@ To start it, enter <tt class="docutils literal"><span class="pre">M-x</span> cal
 <li class="next">
                 <a href="index-7.html" rel="next">Older posts</a>
             </li>
-        </ul></nav><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-        processEscapes: true
-    },
-    displayAlign: 'center', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
+        </ul></nav>
 </div>
         <!--End of body content-->
 
