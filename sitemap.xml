@@ -31,7 +31,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2017-10-20T10:02:00Z</lastmod>
+  <lastmod>2017-10-21T10:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
@@ -251,7 +251,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-7.html</loc>
-  <lastmod>2017-10-20T10:02:00Z</lastmod>
+  <lastmod>2017-10-21T10:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/a-restricted-arrangement-of-letters-in-a-word/</loc>
@@ -300,6 +300,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/generating-image-patterns/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/generating-music-with-sagemath-and-sonic-pi-examples/</loc>
+  <lastmod>2017-10-21T10:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/generating-music-with-sagemath-and-sonic-pi/</loc>
