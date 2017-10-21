@@ -12,7 +12,7 @@ We will explore some examples to make music using the libraries included in Sage
 1 Bach's Prelude in C
 ---------------------
 
-Here's a translation of the Mathematica code at `mathematica.SE <https://mathematica.stackexchange.com/questions/156061/manipulate-a-list-representing-bachs-prelude-in-c>`_, which is quite nice.
+Here's a translation of the Mathematica code at `mathematica.SE <https://mathematica.stackexchange.com/questions/156061/manipulate-a-list-representing-bachs-prelude-in-c>`_, which is quite nice. (`Listen to Bach <https://soundcloud.com/user-591836524/bach-prelude>`_)
 
 .. code:: python
     :number-lines: 1
@@ -67,7 +67,7 @@ Here's a translation of the Mathematica code at `mathematica.SE <https://mathema
 2 Sound of Cellular Automaton
 -----------------------------
 
-Using the idea of `mathematica code <https://stackoverflow.com/a/7592876>`_ using Cellular Automata, we modify the `Cellular Automata's interactive example <https://wiki.sagemath.org/interact/misc#Cellular_Automata>`_
+Using the idea of `mathematica code <https://stackoverflow.com/a/7592876>`_ using Cellular Automata, we modify the `Cellular Automata's interactive example <https://wiki.sagemath.org/interact/misc#Cellular_Automata>`_ (`Listen to CA <https://soundcloud.com/user-591836524/cellular-automata>`_: 61 iterations, Rule 90)
 
 .. code:: python
     :number-lines: 1
@@ -118,13 +118,12 @@ Using the idea of `mathematica code <https://stackoverflow.com/a/7592876>`_ usin
 3 HMM Emitting Notes
 --------------------
 
-We may even use the notes of pleasant compositions to train Markov Models, which can later keep producing notes probabilistically. E.g. a 3 symbol model looks like
+We may even use the notes of pleasant compositions to train Markov Models, which can later keep producing notes probabilistically. E.g. a 3 symbol model looks like: (`Listen to HMM <https://soundcloud.com/user-591836524/hidden-markov-model-emitting-notes>`_)
 
 .. code:: python
     :number-lines: 1
 
     m = hmm.DiscreteHiddenMarkovModel([[1/3,1/2,1/6],[1/7,3/7,3/7],[1/4,1/4,1/2]], [[1,0,0],[0,1,0],[0,0,1]], [0,1,0], ["F", "Fs", "G"])
-    for j in m.sample(500):
+    for j in m.sample(100):
         send_message("/trigger/play", j)
         sleep(0.1)
-
