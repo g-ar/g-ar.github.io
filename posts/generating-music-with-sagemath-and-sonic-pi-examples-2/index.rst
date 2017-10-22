@@ -7,8 +7,8 @@
 .. description: 
 .. type: text
 
-Blues Loop
-----------
+1 Blues Loop
+------------
 
 An approximate translation of the Blues Loop illustrated at `mathematica.SE <https://mathematica.stackexchange.com/questions/100876/more-elegant-function-construction-for-blues-loop>`_. `(Listen to the Blues Loop <https://soundcloud.com/user-591836524/blues-loop>`_)
 
@@ -65,3 +65,87 @@ And send the notes from Sage
 
     for l in li2:
         bld(l[0], l[1])
+
+2 Morse Code
+------------
+
+Let's make a dynamic worksheet to generate morse code beeps.
+Only alpha-numeric symbols are used here, and timings are taken from a `Sonic Pi example <https://github.com/rbnpi/SonicPi-Tutorials/blob/master/Morse.md>`_
+
+In Sonic Pi,
+
+.. code:: ruby
+    :number-lines: 1
+
+    live_loop :foo do
+      use_synth :saw
+      use_real_time
+      t1, t2 = sync "/osc/trigger/morse"
+      cue t1, t2
+      play :C6, sustain: t1*0.9, release: t2*0.1
+      sleep t1
+    end
+
+and in SageMath,
+
+.. code:: python
+    :number-lines: 1
+
+    %python
+    import numpy as np
+    import OSC
+    from time import sleep
+
+    addr = ('localhost', 4559)
+    cl = OSC.OSCClient()
+    cl.connect(addr)
+
+    def send_message(url, *args):
+        msg = OSC.OSCMessage()
+        msg.setAddress(url)
+        for l in args:
+            msg.append(l)
+        cl.send(msg)
+
+    codes = {
+        'A': '.-',     'B': '-...',   'C': '-.-.', 
+        'D': '-..',    'E': '.',      'F': '..-.',
+        'G': '--.',    'H': '....',   'I': '..',
+        'J': '.---',   'K': '-.-',    'L': '.-..',
+        'M': '--',     'N': '-.',     'O': '---',
+        'P': '.--.',   'Q': '--.-',   'R': '.-.',
+        'S': '...',    'T': '-',      'U': '..-',
+        'V': '...-',   'W': '.--',    'X': '-..-',
+        'Y': '-.--',   'Z': '--..',   '0': '-----',
+        '1': '.----',  '2': '..---',  '3': '...--',
+        '4': '....-',  '5': '.....',  '6': '-....',
+        '7': '--...',  '8': '---..',  '9': '----.' 
+    }
+
+    speed = 0.08
+    code_timing = {'.': 1*speed, '-': 3*speed}
+    element_gap = 1*speed
+    char_gap = 3*speed
+    word_gap = 7*speed - char_gap
+
+    def to_morse_code(s):
+        spl = s.split(' ')
+        for l in spl:
+            if l == '': continue # if multiple spaces are input
+            mc = ' '.join(codes.get(i.upper()) for i in l)
+            print l + ": " + mc
+
+        for c in s:
+            if c == ' ':
+                sleep(word_gap)
+                continue
+            mc = codes.get(c.upper())
+            for i in mc:
+                send_message("/trigger/morse", code_timing[i], code_timing[i])
+                sleep(element_gap + code_timing[i])
+            sleep(char_gap + element_gap)
+
+
+    @interact
+    def _( msg=input_box(label='Enter Message', type=str, default='Hi'), auto_update=True):
+        to_morse_code(msg)
