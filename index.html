@@ -91,114 +91,114 @@ When image data is involved, the results can be engrossing even if there are bug
 <p>A parity pattern is a binary matrix where each entry is the xor of its adjacent neighbors (horizontal or vertical). It's called perfect when there's no row or column consisting of entirely zeroes.</p>
 <p>We can build bigger parity patterns from smaller ones, which reveals nice fractals when they are plotted as a bitmap.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-1"> 1</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-2"> 2</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-3"> 3</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-4"> 4</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-5"> 5</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-6"> 6</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-7"> 7</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-8"> 8</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-9"> 9</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-10">10</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-11">11</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-12">12</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-13">13</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-14">14</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-15">15</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-16">16</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-17">17</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-18">18</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-19">19</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-20">20</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-21">21</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-22">22</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-23">23</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-24">24</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-25">25</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-26">26</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-27">27</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-28">28</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-29">29</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-30">30</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-31">31</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-32">32</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-33">33</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-34">34</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-35">35</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-36">36</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-37">37</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-38">38</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-39">39</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-40">40</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-41">41</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-42">42</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-43">43</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-44">44</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-45">45</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-46">46</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-47">47</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-48">48</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-49">49</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-50">50</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-51">51</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-52">52</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-53">53</a>
-<a href="posts/perfect-parity-patterns/#rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-54">54</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-1"></a><span class="k">def</span> <span class="nf">build_matrix</span><span class="p">(</span><span class="n">nbits</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-2"></a>    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-3"></a>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="n">nbits</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-4"></a>        <span class="n">con</span> <span class="o">=</span> <span class="n">true</span>                    <span class="c1"># continue with the plotting process</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-5"></a>        <span class="n">nn</span> <span class="o">=</span> <span class="n">nbits</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-6"></a>        <span class="n">b</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-7"></a>        <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">bits</span><span class="p">()</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-8"></a>        <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">nbits</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-9"></a>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-10"></a>        <span class="n">am</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="p">[</span><span class="n">c</span><span class="p">[:</span><span class="n">nbits</span><span class="p">]])</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">zero_matrix</span><span class="p">(</span><span class="n">nbits</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">nbits</span><span class="p">))</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-11"></a>        <span class="n">zmv</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-12"></a>        <span class="n">zmh</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nn</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-13"></a>        <span class="n">am</span> <span class="o">=</span> <span class="n">zmv</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">am</span><span class="p">)</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">zmv</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-14"></a>        <span class="n">am</span> <span class="o">=</span> <span class="n">zmh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">am</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">zmh</span><span class="p">)</span> <span class="c1"># consider values outside matrix as 0</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-15"></a>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-16"></a>        <span class="k">if</span> <span class="n">am</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="n">ceil</span><span class="p">(</span><span class="n">am</span><span class="o">.</span><span class="n">ncols</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> <span class="o">!=</span> <span class="n">am</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">floor</span><span class="p">(</span><span class="n">am</span><span class="o">.</span><span class="n">ncols</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">):]</span><span class="o">.</span><span class="n">list</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-17"></a>            <span class="k">continue</span>                  <span class="c1"># Let's have vertical symmetry (palindrome check)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-18"></a>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-19"></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-20"></a>            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-21"></a>                <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-22"></a>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-23"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nn</span><span class="p">):</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-24"></a>            <span class="k">if</span> <span class="n">am</span><span class="p">[</span><span class="n">nn</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">am</span><span class="p">[</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">nn</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">nn</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-25"></a>                <span class="n">con</span> <span class="o">=</span> <span class="n">false</span>           <span class="c1"># is the computed matrix actually a parity pattern?</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-26"></a>                <span class="k">break</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-27"></a>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-28"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">con</span><span class="p">:</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-29"></a>            <span class="k">continue</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-30"></a>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-31"></a>        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-32"></a>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-33"></a>        <span class="n">nn1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">nn</span><span class="o">+</span><span class="mi">2</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-34"></a>        <span class="k">while</span> <span class="n">nn</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>               <span class="c1"># build 383x383 matrices</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-35"></a>            <span class="n">nn1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">nn</span><span class="o">+</span><span class="mi">2</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-36"></a>            <span class="n">bn</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">nn1</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-37"></a>            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-38"></a>                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-39"></a>                    <span class="n">bn</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-40"></a>                    <span class="n">bn</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-41"></a>                    <span class="n">bn</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-42"></a>                    <span class="n">bn</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>  <span class="mi">0</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-43"></a>            <span class="n">bn</span> <span class="o">=</span> <span class="n">bn</span><span class="o">.</span><span class="n">delete_rows</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">delete_columns</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-44"></a>            <span class="n">nn</span> <span class="o">=</span> <span class="n">nn1</span> <span class="o">-</span> <span class="mi">1</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-45"></a>            <span class="n">zmv</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-46"></a>            <span class="n">zmh</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nn</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-47"></a>            <span class="n">am</span> <span class="o">=</span> <span class="n">bn</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-48"></a>            <span class="n">am</span> <span class="o">=</span> <span class="n">zmv</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">am</span><span class="p">)</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">zmv</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-49"></a>            <span class="n">am</span> <span class="o">=</span> <span class="n">zmh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">am</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">zmh</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-50"></a>        <span class="n">mp</span> <span class="o">=</span> <span class="n">matrix_plot</span><span class="p">(</span><span class="n">bn</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-51"></a>        <span class="n">mp</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-52"></a>    <span class="k">print</span> <span class="n">cnt</span>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-53"></a>
-<a name="rest_code_ef041e2a4b6647d7ade08b14d0fb5e4c-54"></a><span class="n">build_matrix</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-1"> 1</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-2"> 2</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-3"> 3</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-4"> 4</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-5"> 5</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-6"> 6</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-7"> 7</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-8"> 8</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-9"> 9</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-10">10</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-11">11</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-12">12</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-13">13</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-14">14</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-15">15</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-16">16</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-17">17</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-18">18</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-19">19</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-20">20</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-21">21</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-22">22</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-23">23</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-24">24</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-25">25</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-26">26</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-27">27</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-28">28</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-29">29</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-30">30</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-31">31</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-32">32</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-33">33</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-34">34</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-35">35</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-36">36</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-37">37</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-38">38</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-39">39</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-40">40</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-41">41</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-42">42</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-43">43</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-44">44</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-45">45</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-46">46</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-47">47</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-48">48</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-49">49</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-50">50</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-51">51</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-52">52</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-53">53</a>
+<a href="posts/perfect-parity-patterns/#rest_code_c9e5f205dd5146d3a915c0fe5c64a313-54">54</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-1"></a><span class="k">def</span> <span class="nf">build_matrix</span><span class="p">(</span><span class="n">nbits</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-2"></a>    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-3"></a>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="n">nbits</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-4"></a>        <span class="n">con</span> <span class="o">=</span> <span class="n">true</span>                    <span class="c1"># continue with the plotting process</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-5"></a>        <span class="n">nn</span> <span class="o">=</span> <span class="n">nbits</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-6"></a>        <span class="n">b</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-7"></a>        <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">bits</span><span class="p">()</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-8"></a>        <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">nbits</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-9"></a>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-10"></a>        <span class="n">am</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="p">[</span><span class="n">c</span><span class="p">[:</span><span class="n">nbits</span><span class="p">]])</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">zero_matrix</span><span class="p">(</span><span class="n">nbits</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">nbits</span><span class="p">))</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-11"></a>        <span class="n">zmv</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-12"></a>        <span class="n">zmh</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nn</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-13"></a>        <span class="n">am</span> <span class="o">=</span> <span class="n">zmv</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">am</span><span class="p">)</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">zmv</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-14"></a>        <span class="n">am</span> <span class="o">=</span> <span class="n">zmh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">am</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">zmh</span><span class="p">)</span> <span class="c1"># consider values outside matrix as 0</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-15"></a>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-16"></a>        <span class="k">if</span> <span class="n">am</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="n">ceil</span><span class="p">(</span><span class="n">am</span><span class="o">.</span><span class="n">ncols</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> <span class="o">!=</span> <span class="n">am</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">floor</span><span class="p">(</span><span class="n">am</span><span class="o">.</span><span class="n">ncols</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">):]</span><span class="o">.</span><span class="n">list</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-17"></a>            <span class="k">continue</span>                  <span class="c1"># Let's have vertical symmetry (palindrome check)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-18"></a>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-19"></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-20"></a>            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-21"></a>                <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-22"></a>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-23"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nn</span><span class="p">):</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-24"></a>            <span class="k">if</span> <span class="n">am</span><span class="p">[</span><span class="n">nn</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">am</span><span class="p">[</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">nn</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">nn</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-25"></a>                <span class="n">con</span> <span class="o">=</span> <span class="n">false</span>           <span class="c1"># is the computed matrix actually a parity pattern?</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-26"></a>                <span class="k">break</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-27"></a>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-28"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">con</span><span class="p">:</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-29"></a>            <span class="k">continue</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-30"></a>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-31"></a>        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-32"></a>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-33"></a>        <span class="n">nn1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">nn</span><span class="o">+</span><span class="mi">2</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-34"></a>        <span class="k">while</span> <span class="n">nn</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>               <span class="c1"># build 383x383 matrices</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-35"></a>            <span class="n">nn1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">nn</span><span class="o">+</span><span class="mi">2</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-36"></a>            <span class="n">bn</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">nn1</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-37"></a>            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-38"></a>                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nn</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-39"></a>                    <span class="n">bn</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-40"></a>                    <span class="n">bn</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-41"></a>                    <span class="n">bn</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">^^</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-42"></a>                    <span class="n">bn</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>  <span class="mi">0</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-43"></a>            <span class="n">bn</span> <span class="o">=</span> <span class="n">bn</span><span class="o">.</span><span class="n">delete_rows</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">delete_columns</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-44"></a>            <span class="n">nn</span> <span class="o">=</span> <span class="n">nn1</span> <span class="o">-</span> <span class="mi">1</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-45"></a>            <span class="n">zmv</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-46"></a>            <span class="n">zmh</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nn</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-47"></a>            <span class="n">am</span> <span class="o">=</span> <span class="n">bn</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-48"></a>            <span class="n">am</span> <span class="o">=</span> <span class="n">zmv</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">am</span><span class="p">)</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">zmv</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-49"></a>            <span class="n">am</span> <span class="o">=</span> <span class="n">zmh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">am</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">zmh</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-50"></a>        <span class="n">mp</span> <span class="o">=</span> <span class="n">matrix_plot</span><span class="p">(</span><span class="n">bn</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-51"></a>        <span class="n">mp</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-52"></a>    <span class="k">print</span> <span class="n">cnt</span>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-53"></a>
+<a name="rest_code_c9e5f205dd5146d3a915c0fe5c64a313-54"></a><span class="n">build_matrix</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>And we get a bunch of fractals</p>
@@ -206,7 +206,7 @@ When image data is involved, the results can be engrossing even if there are bug
 <img alt="../../images/sageR.jpg" src="images/sageR.jpg"><p class="caption">Patterns</p>
 </div>
 <p>Source:</p>
-<p>Exercises 190 &amp; 193, Donald E. Knuth, The Art of Computer Programming, Vol. 4A</p>
+<p>Exercises 190 &amp; 193, 7.1.3, Donald E. Knuth, The Art of Computer Programming, Vol. 4A</p>
 </div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/generating-music-with-sagemath-and-sonic-pi-examples-2/" class="u-url">Generating Music With SageMath And Sonic Pi - Examples - 2</a></h1>
