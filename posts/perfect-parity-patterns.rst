@@ -82,4 +82,4 @@ And we get a bunch of fractals
 
 Source:
 
-Exercises 190 & 193, Donald E. Knuth, The Art of Computer Programming, Vol. 4A
+Exercises 190 & 193, 7.1.3, Donald E. Knuth, The Art of Computer Programming, Vol. 4A
