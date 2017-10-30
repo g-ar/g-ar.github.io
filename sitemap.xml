@@ -31,11 +31,11 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2017-10-22T10:37:00Z</lastmod>
+  <lastmod>2017-10-30T12:18:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
-  <lastmod>2017-10-20T10:02:00Z</lastmod>
+  <lastmod>2017-10-30T10:17:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/arm/</loc>
@@ -100,6 +100,10 @@
  <url>
   <loc>https://g-ar.github.io/categories/fasm/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/categories/fractals/</loc>
+  <lastmod>2017-10-30T10:17:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/fricas/</loc>
@@ -255,7 +259,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-8.html</loc>
-  <lastmod>2017-10-22T10:37:00Z</lastmod>
+  <lastmod>2017-10-30T12:18:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/a-restricted-arrangement-of-letters-in-a-word/</loc>
@@ -360,6 +364,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/multisets-and-multivariate-generating-functions/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/perfect-parity-patterns/</loc>
+  <lastmod>2017-10-30T10:17:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/probability-of-a-sum-being-less-than-1-convolution-of-pdf/</loc>

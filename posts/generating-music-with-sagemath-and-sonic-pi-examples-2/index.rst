@@ -1,7 +1,7 @@
 .. title: Generating Music With SageMath And Sonic Pi - Examples - 2
 .. slug: generating-music-with-sagemath-and-sonic-pi-examples-2
 .. date: 2017-10-22 16:10:26 UTC+05:30
-.. tags: python, sage, OSC, Sonic Pi
+.. tags: python, sage, OSC, Sonic Pi, computer art
 .. category: 
 .. link: 
 .. description: 

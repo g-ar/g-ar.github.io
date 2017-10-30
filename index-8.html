@@ -76,7 +76,105 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/getting-started-with-emacs/" class="u-url">Getting Started With Emacs</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/profiling-python-programs/" class="u-url">Profiling Python Programs</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Gopinath
+            </span></p>
+            <p class="dateline"><a href="posts/profiling-python-programs/" rel="bookmark"><time class="published dt-published" datetime="2017-01-17T17:56:38+05:30" title="2017-01-17 17:56">2017-01-17 17:56</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Last week, when I was looking up for some info on list comprehensions, one of the pages listed a code something like this</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-1"> 1</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-2"> 2</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-3"> 3</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-4"> 4</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-5"> 5</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-6"> 6</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-7"> 7</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-8"> 8</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-9"> 9</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-10">10</a>
+<a href="posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-11">11</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_689dfec236a54340a10edf79b0d7267a-1"></a><span class="c1"># Access every 3rd element in a list</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-2"></a><span class="c1"># filename: access.py</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-3"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-4"></a>    <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-5"></a>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-6"></a>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-7"></a>        <span class="k">print</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-8"></a>        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-9"></a>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-10"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a name="rest_code_689dfec236a54340a10edf79b0d7267a-11"></a>    <span class="n">main</span><span class="p">()</span>
+</pre></td>
+</tr></table>
+<p>and I thought for a moment whether the length will be calculated for each iteration, or will it be called only once? I also thought of an answer that since python code is interpreted, it may not do any peephole optimization, and hence <tt class="docutils literal">len</tt> will be called five times. Anyway, wanted to know the command that would quantify every call in the program and found about cProfile module. We simply run the following:</p>
+<pre class="code bash"><a name="rest_code_b0185e34db7941a0a0b346a71d70acc5-1"></a>python -mcProfile -sncalls access.py
+</pre>
+<p>which will do the profiling and order by the number of calls</p>
+<pre class="code text"><a name="rest_code_529e8ca7907141f69d643ce3587233ab-1"></a>1
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-2"></a>1
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-3"></a>1
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-4"></a>1
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-5"></a>         8 function calls in 0.000 seconds
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-6"></a>
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-7"></a>   Ordered by: call count
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-8"></a>
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-9"></a>   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-10"></a>        5    0.000    0.000    0.000    0.000 {len}
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-11"></a>        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-12"></a>        1    0.000    0.000    0.000    0.000 access.py:2(&lt;module&gt;)
+<a name="rest_code_529e8ca7907141f69d643ce3587233ab-13"></a>        1    0.000    0.000    0.000    0.000 access.py:2(main)
+</pre>
+<p>So, will the optimization flag do anything for that?</p>
+<pre class="code python"><a name="rest_code_31489ba9944c4dc6b6544245a0617469-1"></a><span class="c1"># filename: call_access.py</span>
+<a name="rest_code_31489ba9944c4dc6b6544245a0617469-2"></a><span class="kn">import</span> <span class="nn">access</span>
+<a name="rest_code_31489ba9944c4dc6b6544245a0617469-3"></a>
+<a name="rest_code_31489ba9944c4dc6b6544245a0617469-4"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a name="rest_code_31489ba9944c4dc6b6544245a0617469-5"></a>    <span class="n">access</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre>
+<p>and run</p>
+<pre class="code bash"><a name="rest_code_8d2859ed9d5f41b196dc096a5cdff87c-1"></a>python -OO -mcProfile -sncalls call_access.py
+</pre>
+<p>but the output doesn't change much!</p>
+<pre class="code text"><a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-1"></a>1
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-2"></a>1
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-3"></a>1
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-4"></a>1
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-5"></a>         9 function calls in 0.000 seconds
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-6"></a>
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-7"></a>   Ordered by: call count
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-8"></a>
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-9"></a>   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-10"></a>        5    0.000    0.000    0.000    0.000 {len}
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-11"></a>        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-12"></a>        1    0.000    0.000    0.000    0.000 access.py:2(&lt;module&gt;)
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-13"></a>        1    0.000    0.000    0.000    0.000 access.py:2(main)
+<a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-14"></a>        1    0.000    0.000    0.000    0.000 call_access.py:1(&lt;module&gt;)
+</pre>
+<p>So, even with the optimization flag, number of calls to <tt class="docutils literal">len</tt> remains the same.</p>
+<p>We can verify that the bytecode is executed when we run it by using <tt class="docutils literal">strace</tt>. For instance, when I ran command the second time, the relevent part of the <tt class="docutils literal">strace</tt> output is below</p>
+<pre class="code text"><a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-1"></a>open("access.py", O_RDONLY)             = 3
+<a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-2"></a>fstat(3, {st_mode=S_IFREG|0644, st_size=172, ...}) = 0
+<a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-3"></a>open("access.pyo", O_RDONLY)            = 4
+<a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-4"></a>fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
+<a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-5"></a>read(4, "\3\363\r\nC\252}Xc\0\0\0\0\0\0\0\0\2\0\0\0@\0\0\0s#\0\0\0d\0"..., 4096) = 389
+<a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-6"></a>fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
+<a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-7"></a>read(4, "", 4096)                       = 0
+<a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-8"></a>close(4)                                = 0
+<a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-9"></a>close(3)
+</pre>
+<p>It did not read access.py again, but it read access.pyo instead. As long as the source is not modified, python reads the bytecode to execute instead of the source (the bytecode stores the modification time of its source code)</p>
+<p>Anyway, we need not do any of these analyses to know whether the bytecode has any code optimization in it. The python docs straight away answers with the following point</p>
+<ul class="simple">
+<li>A program doesn't run any faster when it is read from a .pyc or .pyo file than when it is read from a .py file; the only thing that's faster about .pyc or .pyo files is the speed with which they are loaded. (<a class="reference external" href="https://docs.python.org/2/tutorial/modules.html">docs</a>)</li>
+</ul>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/getting-started-with-emacs/" class="u-url">Getting Started With Emacs</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Gopinath
