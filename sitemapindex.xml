@@ -27,11 +27,11 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/computer-art.xml</loc>
-  <lastmod>2017-10-30T12:18:00Z</lastmod>
+  <lastmod>2017-11-05T12:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/context-free-art.xml</loc>
-  <lastmod>2017-09-10T17:53:00Z</lastmod>
+  <lastmod>2017-11-05T12:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/debian.xml</loc>
@@ -71,7 +71,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/fractals.xml</loc>
-  <lastmod>2017-10-30T12:18:00Z</lastmod>
+  <lastmod>2017-10-30T15:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/fricas.xml</loc>
@@ -126,6 +126,10 @@
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://g-ar.github.io/categories/optical-illusion.xml</loc>
+  <lastmod>2017-11-05T12:31:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://g-ar.github.io/categories/osc.xml</loc>
   <lastmod>2017-10-30T12:16:00Z</lastmod>
  </sitemap>
@@ -163,7 +167,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/sage.xml</loc>
-  <lastmod>2017-10-30T12:18:00Z</lastmod>
+  <lastmod>2017-10-30T15:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/sailfish-os.xml</loc>
@@ -199,10 +203,10 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/rss.xml</loc>
-  <lastmod>2017-10-30T12:18:00Z</lastmod>
+  <lastmod>2017-11-05T12:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/sitemap.xml</loc>
-  <lastmod>2017-10-30T12:18:00Z</lastmod>
+  <lastmod>2017-11-05T12:31:00Z</lastmod>
  </sitemap>
 </sitemapindex>
