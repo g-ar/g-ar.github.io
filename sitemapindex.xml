@@ -27,11 +27,11 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/computer-art.xml</loc>
-  <lastmod>2017-11-05T12:31:00Z</lastmod>
+  <lastmod>2017-11-11T16:05:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/context-free-art.xml</loc>
-  <lastmod>2017-11-05T12:31:00Z</lastmod>
+  <lastmod>2017-11-11T16:05:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/debian.xml</loc>
@@ -118,6 +118,10 @@
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://g-ar.github.io/categories/moire-patterns.xml</loc>
+  <lastmod>2017-11-11T16:05:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://g-ar.github.io/categories/multiset.xml</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </sitemap>
@@ -127,7 +131,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/optical-illusion.xml</loc>
-  <lastmod>2017-11-05T12:31:00Z</lastmod>
+  <lastmod>2017-11-05T13:32:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/osc.xml</loc>
@@ -203,10 +207,10 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/rss.xml</loc>
-  <lastmod>2017-11-05T12:31:00Z</lastmod>
+  <lastmod>2017-11-11T16:05:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/sitemap.xml</loc>
-  <lastmod>2017-11-05T12:31:00Z</lastmod>
+  <lastmod>2017-11-11T16:05:00Z</lastmod>
  </sitemap>
 </sitemapindex>
