@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Gopinath A R</title><link>https://g-ar.github.io/</link><description>Some random stuffs -- Programming and Mathematics</description><atom:link href="https://g-ar.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 05 Nov 2017 13:32:58 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Optical Illusions with Context Free Art</title><link>https://g-ar.github.io/posts/optical-illusions-with-context-free-art/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.contextfreeart.org"&gt;Context Free Art&lt;/a&gt; is a program to generate images using context free grammar. We can obtain beautiful images by writing a few tens of lines of code.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R</title><link>https://g-ar.github.io/</link><description>Some random stuffs -- Programming and Mathematics</description><atom:link type="application/rss+xml" rel="self" href="https://g-ar.github.io/rss.xml"></atom:link><language>en</language><lastBuildDate>Sat, 11 Nov 2017 16:06:31 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Animations with Context Free Art</title><link>https://g-ar.github.io/posts/animations-with-context-free-art/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Context Free Art can also be used to create animations, and here let's see how to generate some moire patterns.&lt;/p&gt;
+&lt;p&gt;To generate each frame, cfdg uses the &lt;tt class="docutils literal"&gt;time&lt;/tt&gt; parameter, and the &lt;tt class="docutils literal"&gt;ftime()&lt;/tt&gt; function gets the value for that frame. For our first example, we generate moire patterns with circles.&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-1"&gt; 1&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-2"&gt; 2&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-3"&gt; 3&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-4"&gt; 4&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-5"&gt; 5&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-6"&gt; 6&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-7"&gt; 7&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-8"&gt; 8&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-9"&gt; 9&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-10"&gt;10&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-11"&gt;11&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-12"&gt;12&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-13"&gt;13&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-14"&gt;14&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-15"&gt;15&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-16"&gt;16&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-17"&gt;17&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-18"&gt;18&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-19"&gt;19&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-20"&gt;20&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-21"&gt;21&lt;/a&gt;
+&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-22"&gt;22&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-1"&gt;&lt;/a&gt;startshape start
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-3"&gt;&lt;/a&gt;CF::Time = [time -2 2]
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-4"&gt;&lt;/a&gt;CF::Background = [b 1]
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-5"&gt;&lt;/a&gt;CF::Size = [s 3]
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-7"&gt;&lt;/a&gt;path circ(number rad) {
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-8"&gt;&lt;/a&gt;    MOVETO(rad,0)
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-9"&gt;&lt;/a&gt;    ARCTO(-rad,0,rad, CF::ArcCW)
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-10"&gt;&lt;/a&gt;    ARCTO(rad,0,rad, CF::ArcCW)
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-11"&gt;&lt;/a&gt;    STROKE(0.01)[]
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-12"&gt;&lt;/a&gt;}
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-13"&gt;&lt;/a&gt;
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-14"&gt;&lt;/a&gt;shape moire {
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-15"&gt;&lt;/a&gt;    loop 70 [s 0.98]
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-16"&gt;&lt;/a&gt;        circ(1)[]
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-17"&gt;&lt;/a&gt;}
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-18"&gt;&lt;/a&gt;
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-19"&gt;&lt;/a&gt;shape start {
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-20"&gt;&lt;/a&gt;    moire[x ftime() time -2 2 s 1]
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-21"&gt;&lt;/a&gt;    moire[x -ftime() time -2 2 s 1]
+&lt;a name="rest_code_211b4918c74e4637a959502614cc036b-22"&gt;&lt;/a&gt;}
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To compile and generate the video of the animations&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_06a3fd4f841a4dcaa03bec3549e756ca-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_06a3fd4f841a4dcaa03bec3549e756ca-1"&gt;&lt;/a&gt;cfdg moire_circles.cfdg -s &lt;span class="m"&gt;1080&lt;/span&gt; -a 15x25 -o ta%f.png
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;generates 375 images (15 seconds, 25 fps) for the animation&lt;/p&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/animations-with-context-free-art/#rest_code_7ea16f47dff74821a8909b5410ff7d60-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_7ea16f47dff74821a8909b5410ff7d60-1"&gt;&lt;/a&gt;ffmpeg -r &lt;span class="m"&gt;25&lt;/span&gt; -i ./ta%3d.png -c:v libx264 out.mp4
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;creates the HD video having a frame rate of 25.&lt;/p&gt;
+&lt;p&gt;And here's the final output&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="youtube-video align-center"&gt;
+&lt;iframe width="425" height="344" src="https://www.youtube.com/embed/nPbH9a-jz2w?rel=0&amp;amp;hd=1&amp;amp;wmode=transparent"&gt;&lt;/iframe&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;Similarly, we can create a couple more animations like moire patterns by &lt;a class="reference external" href="https://github.com/g-ar/CFreeArt/blob/master/v3/moire_lines.cfdg"&gt;rotating grates&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/g-ar/CFreeArt/blob/master/v3/moire_graphene.cfdg"&gt;rotating two graphene layers&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="youtube-video align-center"&gt;
+&lt;iframe width="425" height="344" src="https://www.youtube.com/embed/GNHMPBs9Ozo?rel=0&amp;amp;hd=1&amp;amp;wmode=transparent"&gt;&lt;/iframe&gt;
+&lt;/div&gt;&lt;div class="youtube-video align-center"&gt;
+&lt;iframe width="425" height="344" src="https://www.youtube.com/embed/uEw5a-Quk6Q?rel=0&amp;amp;hd=1&amp;amp;wmode=transparent"&gt;&lt;/iframe&gt;
+&lt;/div&gt;&lt;/blockquote&gt;&lt;/div&gt;</description><category>computer art</category><category>context free art</category><category>moire patterns</category><guid>https://g-ar.github.io/posts/animations-with-context-free-art/</guid><pubDate>Sat, 11 Nov 2017 14:58:56 GMT</pubDate></item><item><title>Optical Illusions with Context Free Art</title><link>https://g-ar.github.io/posts/optical-illusions-with-context-free-art/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.contextfreeart.org"&gt;Context Free Art&lt;/a&gt; is a program to generate images using context free grammar. We can obtain beautiful images by writing a few tens of lines of code.&lt;/p&gt;
 &lt;p&gt;To make it more interesting, let's write code for Optical Illusions. There's a &lt;a class="reference external" href="https://tex.stackexchange.com/questions/129274/showcase-of-optical-illusions-made-with-tex-latex-luatex-context/"&gt;nice list&lt;/a&gt; already done using LaTeX, below are translations and output of some of those.&lt;/p&gt;
 &lt;p&gt;CFDG uses &lt;tt class="docutils literal"&gt;startshape&lt;/tt&gt; to know which shape to call first. Then the startshape can use other shapes or paths (primitive symbols, user defined).&lt;/p&gt;
 &lt;p&gt;Read the &lt;a class="reference external" href="https://github.com/MtnViewJohn/context-free/wiki"&gt;documentation&lt;/a&gt; for details and examples.&lt;/p&gt;
@@ -1262,35 +1323,4 @@ Compile and run mathtool.&lt;/p&gt;
 &lt;a name="rest_code_bcab2efc52204729b877f4821c05f2b6-21"&gt;&lt;/a&gt;&amp;gt;       0.00000000000000000000000000000000000000000000000000000000000000000000e0
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Therefore, &lt;span class="math"&gt;\(a=2, b=1, c=2, d=6\)&lt;/span&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;&lt;/div&gt;</description><category>experiment math</category><category>integration</category><category>mathjax</category><category>pslq</category><guid>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</guid><pubDate>Sat, 02 Jul 2016 14:21:29 GMT</pubDate></item><item><title>Compiling softwares that require later versions of GCC</title><link>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Suppose we require to install the latest version of a software, but the repository doesn't have it, we usually either get the latest source code and compile, or download the compiled binary if available, and run it. But if we are running some old distro, latest binary refuse to run complaining that it requires GLIBC 2.16 to run etc. When the binary file refuses to run, we can then try to compile the source, which usually works fine. But sometimes it happens that the source requires a language standard, which is unsupported by the GCC version installed. In such cases, we can download the latest GCC, compile it, and then compile the required software using the latest GCC. We'll see an example to compile "Context Free" -- a program which generates art from a context free grammar, and requires C++11 standard to compile. The steps mentioned below were done on debian wheezy, whose software repository contains version 2 of cfdg whereas the latest version is 3.&lt;/p&gt;
-&lt;p&gt;In order to compile the latest version of contextfree in debian wheezy:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Download the latest GCC&lt;/li&gt;
-&lt;li&gt;Extract and configure with a prefix path, so that we can avoid installing it to a directory which requires root privilege&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;./configure &lt;span class="pre"&gt;--prefix=$HOME/bin/custom_gcc&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;The compile and install to that path, the whole process takes much time anywhere between 10 mins to a couple of hours or more, depending on the speed of the machine and the number of cores used.
-To compile on a single core, use&lt;ul&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;make&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;make install&lt;/tt&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;After GCC is installed, we need to indicate in the makefile of contextfree to use that version of GCC. So, add the following lines to the makefile, install &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;libpng12-dev&lt;/span&gt;&lt;/tt&gt; and compile.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_4a439989ed3f40cba91b70f6aba9eec3-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_4a439989ed3f40cba91b70f6aba9eec3-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_4a439989ed3f40cba91b70f6aba9eec3-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_4a439989ed3f40cba91b70f6aba9eec3-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_4a439989ed3f40cba91b70f6aba9eec3-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_4a439989ed3f40cba91b70f6aba9eec3-2"&gt;&lt;/a&gt;&lt;span class="nv"&gt;LD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_4a439989ed3f40cba91b70f6aba9eec3-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CPP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
-&lt;a name="rest_code_4a439989ed3f40cba91b70f6aba9eec3-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;CXX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;HOME&lt;span class="k"&gt;)&lt;/span&gt;/bin/gcc_custom/bin/g++
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;The output cfdg can then be used as a standalone file. But we need to export some paths to run it, otherwise it'll complain about the older libraries. To get around that, we can create a small bash script to export the compiler and library paths and then run cfdg. E.g. create a script in &lt;tt class="docutils literal"&gt;$HOME/bin&lt;/tt&gt; named cfdg with following contents&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_771aa223acc64cedbd2edfb738af2fd8-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_771aa223acc64cedbd2edfb738af2fd8-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_771aa223acc64cedbd2edfb738af2fd8-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_771aa223acc64cedbd2edfb738af2fd8-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/#rest_code_771aa223acc64cedbd2edfb738af2fd8-5"&gt;5&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code bash"&gt;&lt;a name="rest_code_771aa223acc64cedbd2edfb738af2fd8-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-&lt;a name="rest_code_771aa223acc64cedbd2edfb738af2fd8-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/gcc
-&lt;a name="rest_code_771aa223acc64cedbd2edfb738af2fd8-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CXX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/bin/g++
-&lt;a name="rest_code_771aa223acc64cedbd2edfb738af2fd8-4"&gt;&lt;/a&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/gcc_custom/lib64
-&lt;a name="rest_code_771aa223acc64cedbd2edfb738af2fd8-5"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/bin/context-free-3.0.9/cfdg &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and &lt;tt class="docutils literal"&gt;chmod +x cfdg&lt;/tt&gt;, and have fun with the software!&lt;/p&gt;&lt;/div&gt;</description><category>computer art</category><category>context free art</category><category>debian</category><category>GCC</category><category>linux</category><category>mathjax</category><guid>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</guid><pubDate>Sun, 20 Dec 2015 14:10:01 GMT</pubDate></item></channel></rss>
+&lt;/ol&gt;&lt;/div&gt;</description><category>experiment math</category><category>integration</category><category>mathjax</category><category>pslq</category><guid>https://g-ar.github.io/posts/using-integer-relation-algorithms-to-guess-closed-forms/</guid><pubDate>Sat, 02 Jul 2016 14:21:29 GMT</pubDate></item></channel></rss>
