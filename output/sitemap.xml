@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://g-ar.github.io/</loc>
-  <lastmod>2017-10-22T10:37:00Z</lastmod>
+  <lastmod>2017-12-31T17:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/2012/</loc>
@@ -31,11 +31,11 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2017-11-11T15:18:00Z</lastmod>
+  <lastmod>2017-12-31T17:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
-  <lastmod>2017-11-11T16:05:00Z</lastmod>
+  <lastmod>2017-12-31T17:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/arm/</loc>
@@ -210,6 +210,10 @@
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
+  <loc>https://g-ar.github.io/categories/serial-port/</loc>
+  <lastmod>2017-12-31T17:28:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://g-ar.github.io/categories/simulation/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
@@ -267,7 +271,11 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-8.html</loc>
-  <lastmod>2017-11-11T15:18:00Z</lastmod>
+  <lastmod>2017-12-31T17:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/index-9.html</loc>
+  <lastmod>2017-12-31T17:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/a-restricted-arrangement-of-letters-in-a-word/</loc>
@@ -288,6 +296,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/c-code-to-assembly-using-gcc-and-gdb/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/communicating-with-serial-ports-using-emacs/</loc>
+  <lastmod>2017-12-31T17:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/compiling-softwares-that-require-later-versions-of-gcc/</loc>
