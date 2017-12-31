@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Gopinath A R (serial port)</title><link>https://g-ar.github.io/</link><description></description><atom:link rel="self" type="application/rss+xml" href="https://g-ar.github.io/categories/serial-port.xml"></atom:link><language>en</language><lastBuildDate>Sun, 31 Dec 2017 17:28:51 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Communicating With Serial Ports Using Emacs</title><link>https://g-ar.github.io/posts/communicating-with-serial-ports-using-emacs/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Emacs can even be used to communicate with serial ports! Hence, it can replace softwares like minicom, hyperterminal, putty etc. that are used for serial port communication.&lt;/p&gt;
+&lt;p&gt;Making a connection is simple,&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_6386439fabd84729a6bc37c526150621-1"&gt;&lt;/a&gt;M-x serial-term
+&lt;/pre&gt;&lt;p&gt;enter port name and baud rate, and it's connected!&lt;/p&gt;
+&lt;p&gt;E.g. In Linux based systems, if we need to connect to a GSM modem, find its port name by listing &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/dev/serial/by-id/&lt;/span&gt;&lt;/tt&gt;&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_cf48c2ef2dbb476aa8711fbaf4146d0c-1"&gt;&lt;/a&gt;ls -l /dev/serial/by-id/
+&lt;/pre&gt;&lt;p&gt;which will show the symbolic link to the serial port to be used. Suppose the name is &lt;tt class="docutils literal"&gt;/dev/ttyUSB3&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;Then, using that name with the default baud rate (9600 bps) connects to the modem. The settings can be changed at runtime without requiring to reconnect to the serial port.&lt;/p&gt;
+&lt;p&gt;And we may issue the standard AT commands&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-1"&gt;&lt;/a&gt;at
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-2"&gt;&lt;/a&gt;OK
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-3"&gt;&lt;/a&gt;at+cpin?
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-4"&gt;&lt;/a&gt;+CPIN: READY
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-6"&gt;&lt;/a&gt;OK
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-7"&gt;&lt;/a&gt;at+csq
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-8"&gt;&lt;/a&gt;+CSQ: 14,99
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-10"&gt;&lt;/a&gt;OK
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-11"&gt;&lt;/a&gt;at+cmgf=1
+&lt;a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-12"&gt;&lt;/a&gt;OK
+&lt;/pre&gt;&lt;/div&gt;</description><category>emacs</category><category>linux</category><category>serial port</category><guid>https://g-ar.github.io/posts/communicating-with-serial-ports-using-emacs/</guid><pubDate>Sun, 31 Dec 2017 16:30:37 GMT</pubDate></item></channel></rss>
