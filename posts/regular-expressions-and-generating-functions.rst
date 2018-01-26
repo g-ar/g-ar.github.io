@@ -11,7 +11,7 @@ We'll discuss about the number of ways to generate a string of length n, matchin
 
 This can be easily achieved deriving an unambiguous regular expression (RE) by constructing a minimal Deterministic Finite Automaton (DFA), and then the ordinary Generating Function (GF) whose coefficients are the number of n-letter strings having the pattern.
 
-Let's look at a few examples, for the strings constructed over the set of symbols :math:`{0, 1}` such that
+Let's look at a few examples, for the strings constructed over the set of symbols :math:`\{0, 1\}` such that
 
 
 .. raw:: html
