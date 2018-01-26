@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link rel="self" href="https://g-ar.github.io/categories/mathjax.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 10 Sep 2017 17:53:02 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Simulating Mouse Movement To Draw In Mypaint</title><link>https://g-ar.github.io/posts/simulating-mouse-movement-to-draw-in-mypaint/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Wouldn't it be nice if we can command where to move the mouse pointer and press buttons, and then use the functionality to draw in a painting program? We can do exactly that in systems running &lt;tt class="docutils literal"&gt;xorg&lt;/tt&gt; display server, by using &lt;tt class="docutils literal"&gt;xdotool&lt;/tt&gt; to simulate mouse and keyboard.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/mathjax.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Fri, 26 Jan 2018 12:32:06 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Regular Expressions And Generating Functions</title><link>https://g-ar.github.io/posts/regular-expressions-and-generating-functions/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;We'll discuss about the number of ways to generate a string of length n, matching or avoiding certain patterns as its substring.&lt;/p&gt;
+&lt;p&gt;This can be easily achieved deriving an unambiguous regular expression (RE) by constructing a minimal Deterministic Finite Automaton (DFA), and then the ordinary Generating Function (GF) whose coefficients are the number of n-letter strings having the pattern.&lt;/p&gt;
+&lt;p&gt;Let's look at a few examples, for the strings constructed over the set of symbols &lt;span class="math"&gt;\({0, 1}\)&lt;/span&gt; such that&lt;/p&gt;
+&lt;font size="+1"&gt;1. There are no two consecutive 1's&lt;/font&gt;&lt;p&gt;The RE is: &lt;span class="math"&gt;\((0+10)^*(1+\epsilon)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then, to get its GF, replace each symbol with &lt;span class="math"&gt;\(x\)&lt;/span&gt;, and &lt;span class="math"&gt;\(\epsilon\)&lt;/span&gt; with 1. Hence, the GF for the RE is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+G_1(x) &amp;amp;= \frac{1}{1-x-x^2}\cdot (1+x)\\
+&amp;amp;= \sum_{n\ge 0} \frac{ \left(\left(\sqrt{5}-3\right)
+   \left(1-\sqrt{5}\right)^n+\left(\sqrt{5}+3\right)
+   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}} x^n\\
+&amp;amp;= \sum_{n\ge 0} F_{n+2} x^n
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(F_{n}\)&lt;/span&gt; is the fibonacci number&lt;/p&gt;
+&lt;font size="+1"&gt;2. At least one pair of consecutive 1's as its substring&lt;/font&gt;&lt;p&gt;RE: &lt;span class="math"&gt;\((0+10)^*11(0+1)^*\)&lt;/span&gt;&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+G_2(x) &amp;amp;= \frac{1}{1-x-x^2} \cdot x^2\cdot \frac{1}{1-2\, x}\\
+&amp;amp;= \sum_{n\ge 0} \frac{ \left(\left(\sqrt{5}-3\right)
+   \left(-\left(1-\sqrt{5}\right)^n\right)-\left(3+\sqrt{5}\right)
+   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\\
+&amp;amp;= \sum_{n\ge 0}\left(2^{n} - F_{n+2}\right) x^n
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;which can also be confirmed from the first example by taking its complement, since the number of possible words are &lt;span class="math"&gt;\(2^n\)&lt;/span&gt;&lt;/p&gt;
+&lt;font size="+1"&gt;3. At least one 01 as its substring&lt;/font&gt;&lt;p&gt;RE: &lt;span class="math"&gt;\(1^*00^*1(0+1)^*\)&lt;/span&gt;&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+G_3(x) &amp;amp;= \frac{x^2}{(1-2 x) (1-x)^2}\\
+&amp;amp;= \sum_{n\ge 0} \left(2^n-n-1\right) x^n
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;For more, refer &lt;a class="reference external" href="http://algo.inria.fr/flajolet/Publications/book.pdf"&gt;Analytic Combinatorics&lt;/a&gt;, which is a treatise on Generating Functions.&lt;/p&gt;&lt;/div&gt;</description><category>generating function</category><category>mathjax</category><category>regular expression</category><guid>https://g-ar.github.io/posts/regular-expressions-and-generating-functions/</guid><pubDate>Fri, 26 Jan 2018 10:07:34 GMT</pubDate></item><item><title>Simulating Mouse Movement To Draw In Mypaint</title><link>https://g-ar.github.io/posts/simulating-mouse-movement-to-draw-in-mypaint/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;Wouldn't it be nice if we can command where to move the mouse pointer and press buttons, and then use the functionality to draw in a painting program? We can do exactly that in systems running &lt;tt class="docutils literal"&gt;xorg&lt;/tt&gt; display server, by using &lt;tt class="docutils literal"&gt;xdotool&lt;/tt&gt; to simulate mouse and keyboard.&lt;/p&gt;
 &lt;p&gt;E.g. to draw a simple 5 petal rose, &lt;span class="math"&gt;\(r = \cos \left(5 \theta\right)\)&lt;/span&gt;,&lt;/p&gt;
 &lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-1"&gt; 1&lt;/a&gt;
 &lt;a href="https://g-ar.github.io/posts/simulating-mouse-movement-to-draw-in-mypaint/#rest_code_f49d0909586549cfa3879b2151903b11-2"&gt; 2&lt;/a&gt;
@@ -605,134 +638,4 @@ relation:&lt;/p&gt;
 \end{equation*}
 &lt;/div&gt;
 &lt;p&gt;Reference:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://math.stackexchange.com/questions/866503/putting-objects-in-a-line"&gt;Putting objects in a line&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><category>recurrence</category><category>restricted permutation</category><category>sage</category><guid>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</guid><pubDate>Sat, 26 Jul 2014 10:56:48 GMT</pubDate></item><item><title>FriCAS -- an introduction</title><link>https://g-ar.github.io/posts/fricas-an-introduction/</link><dc:creator>Gopinath</dc:creator><description>&lt;div&gt;&lt;p&gt;There are quite a few different free computer algebra systems around &lt;span class="math"&gt;\(-\)&lt;/span&gt; Sage, maxima, sympy, FriCAS/Axiom etc. &lt;span class="math"&gt;\(-\)&lt;/span&gt; each having its strengths and lack of something. Having choices and access to source code are good, since we are not at mercy of vendors like those big M developers for bug fixes and feature additions (along with outrageous licence costs).&lt;/p&gt;
-&lt;p&gt;I have been using FriCAS for a while mainly for its number sequence guessing routines, an indispensable part when working on enumeration problems. But recently, when I tried other operations which I mostly do in Sage or maxima, like integration and solving equations, I was surprised to see it could give simpler and more complete answers than Sage/maxima.&lt;/p&gt;
-&lt;p&gt;One more good thing is that it comes with a fricas mode for emacs, which has many more features compared to running from a terminal. E.g. it gives features like auto-completion, matched-parenthesis highlighting, shortcut keys for navigating through the input, yanking text etc., and of course, we can define our own shortcuts since it's emacs! Let us see how to set FriCAS up and run from emacs in linux. The latest version at the time is 1.2.3, and I have only tried amd64 binary version.&lt;/p&gt;
-&lt;p&gt;Make a directory &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; if not already there, and add to the &lt;tt class="docutils literal"&gt;$PATH&lt;/tt&gt; environment variable. Extract the components to &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt;. To run it, we need to modify a few paths in its files. Go to &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin&lt;/tt&gt;, in fricas file, update the variable &lt;tt class="docutils literal"&gt;exec_prefix&lt;/tt&gt; to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ecbffe55010f45229edf66b44249f872-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_ecbffe55010f45229edf66b44249f872-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;exec_prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;FRICAS_PREFIX&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="p"&gt;/home/bin/usr/local&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;In file efricas, update FRICASCMD to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_a585e13bd0be449aa1859083f04a4150-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code sh"&gt;&lt;a name="rest_code_a585e13bd0be449aa1859083f04a4150-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FRICASCMD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'/home/bin/fricas'&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and also update the line which calls emacs.&lt;/p&gt;
-&lt;p&gt;Update the function fricas &lt;span class="math"&gt;\(-\)&lt;/span&gt; run in &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/lib/fricas/emacs/fricas.el&lt;/tt&gt; to&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7494219a8c46474a880f3c5496b31f80-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7494219a8c46474a880f3c5496b31f80-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7494219a8c46474a880f3c5496b31f80-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7494219a8c46474a880f3c5496b31f80-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7494219a8c46474a880f3c5496b31f80-5"&gt;5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_7494219a8c46474a880f3c5496b31f80-6"&gt;6&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a name="rest_code_7494219a8c46474a880f3c5496b31f80-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;fricas-run&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
-&lt;a name="rest_code_7494219a8c46474a880f3c5496b31f80-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Run FriCAS in the current BUFFER."&lt;/span&gt;
-&lt;a name="rest_code_7494219a8c46474a880f3c5496b31f80-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Starting FriCAS..."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_7494219a8c46474a880f3c5496b31f80-4"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;start-process-shell-command&lt;/span&gt; &lt;span class="s"&gt;"fricas"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;current-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_7494219a8c46474a880f3c5496b31f80-5"&gt;&lt;/a&gt;                               &lt;span class="nv"&gt;fricas-run-command&lt;/span&gt;
-&lt;a name="rest_code_7494219a8c46474a880f3c5496b31f80-6"&gt;&lt;/a&gt;                               &lt;span class="s"&gt;"-noclef"&lt;/span&gt; &lt;span class="s"&gt;"2&amp;gt;/dev/null"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Otherwise, FriCAS won't start within emacs.&lt;/p&gt;
-&lt;p&gt;Next, create two bash scripts within &lt;tt class="docutils literal"&gt;$HOME/bin/&lt;/tt&gt; with filenames "fricas" &lt;span class="math"&gt;\(-\)&lt;/span&gt; which is to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/fricas&lt;/tt&gt;, and "efricas" to execute &lt;tt class="docutils literal"&gt;$HOME/bin/usr/local/bin/efricas&lt;/tt&gt;. Make those two newly created files as executable. There, we are all set now. Simply open the terminal, and enter "efricas" to run fricas within emacs. If everything goes well, we will have fricas running within emacs.&lt;/p&gt;
-&lt;p&gt;Now, let us have a brief overview of its commands (some are examples taken from the axiom book),
-and its advantages to other free CAS, and probably even the paid ones.&lt;/p&gt;
-&lt;ol class="arabic"&gt;
-&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;INTEGRATION&lt;/strong&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_6a3c04be6bfd4aeca0c93d1c4f90bd38-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_6a3c04be6bfd4aeca0c93d1c4f90bd38-1"&gt;&lt;/a&gt;integrate(tan(atan(x)/3),x)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This integral is an example mentioned in their document, which is instantly solved by fricas, but Sage/maxima fails after trying for a long time.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_0a1a3d5c4f68471f92d91fc0086f4c8f-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_0a1a3d5c4f68471f92d91fc0086f4c8f-1"&gt;&lt;/a&gt;integrate((x+a)^(1/2)/x,x)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This gives two results, for negative and non-negative a.&lt;/p&gt;
-&lt;p&gt;Hence, besides having a good capability, another advantage over Sage and maxima is that we need not declare the symbols which will be used in operations. It also computes the results for all possible cases, and doesn't nag us to make assumptions like in the case of Sage/maxima. (sometimes it keeps asking for the same assumption even if we have already done so!)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SOLVING EQUATIONS&lt;/strong&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_330c4fb6bc454735b30562f9d46cc67e-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_330c4fb6bc454735b30562f9d46cc67e-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_330c4fb6bc454735b30562f9d46cc67e-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_330c4fb6bc454735b30562f9d46cc67e-4"&gt;4&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_330c4fb6bc454735b30562f9d46cc67e-1"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000)
-&lt;a name="rest_code_330c4fb6bc454735b30562f9d46cc67e-2"&gt;&lt;/a&gt;solve(x^3+x+1,1/1000.0)
-&lt;a name="rest_code_330c4fb6bc454735b30562f9d46cc67e-3"&gt;&lt;/a&gt;radicalSolve(x^3+x+1)
-&lt;a name="rest_code_330c4fb6bc454735b30562f9d46cc67e-4"&gt;&lt;/a&gt;complexSolve(x^3+x+1,1/1000.0)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;etc. All of the above call the same algorithm to compute the roots, but the result is returned depending on the data type.&lt;/p&gt;
-&lt;p&gt;It can also solve non-linear simultaneous equations.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcb99913639e430e8083c732f3f35162-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcb99913639e430e8083c732f3f35162-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dcb99913639e430e8083c732f3f35162-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_dcb99913639e430e8083c732f3f35162-1"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1.E-10)
-&lt;a name="rest_code_dcb99913639e430e8083c732f3f35162-2"&gt;&lt;/a&gt;solve([x+y^2-4,x^2+y-2],1/10^10)
-&lt;a name="rest_code_dcb99913639e430e8083c732f3f35162-3"&gt;&lt;/a&gt;radicalSolve([x+y^2-4,x^2+y-2])
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;We can see that it can give all the exact results also effortlessly. In Sage/maxima, there is currently no way of making itto output all results in form of radicals.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;RECURRENCE RELATIONS&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The recursions are transformed into iterated code and compiled! And since it can also symbolically compute, this proves very useful to examine sequences.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_963b336169584f929b5ac42b019651cc-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_963b336169584f929b5ac42b019651cc-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_963b336169584f929b5ac42b019651cc-3"&gt;3&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_963b336169584f929b5ac42b019651cc-1"&gt;&lt;/a&gt;fib(0)==0
-&lt;a name="rest_code_963b336169584f929b5ac42b019651cc-2"&gt;&lt;/a&gt;fib(1)==1
-&lt;a name="rest_code_963b336169584f929b5ac42b019651cc-3"&gt;&lt;/a&gt;fib(n)==fib(n-1)+fib(n-2)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This automatically compiles and computes the fibonacci numbers as an iterated code.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-2"&gt;2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-3"&gt;3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-4"&gt;4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-5"&gt;5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-6"&gt;6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-7"&gt;7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-8"&gt;8&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-1"&gt;&lt;/a&gt;a(0)==1
-&lt;a name="rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-2"&gt;&lt;/a&gt;a(1)==1
-&lt;a name="rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-3"&gt;&lt;/a&gt;a(2)==1
-&lt;a name="rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-4"&gt;&lt;/a&gt;b(0)==0
-&lt;a name="rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-5"&gt;&lt;/a&gt;b(1)==0
-&lt;a name="rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-6"&gt;&lt;/a&gt;b(2)==0
-&lt;a name="rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-7"&gt;&lt;/a&gt;a(n)==a(n-1)+b(n-1)
-&lt;a name="rest_code_94b8e8a60e354fcd86a575e2dcb7ed82-8"&gt;&lt;/a&gt;b(n)==a(n-3)+b(n-3)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This simultaneous recurrence is actually narayana's cows sequence, and this kind of recurrence is compiled as well!
-Using this, we will make use of the guessing routines.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;GUESS&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The guessing routine in FriCAS can give us the likely generating function, recurrence relation, functional equation etc.&lt;/p&gt;
-&lt;p&gt;Using the above simultaneous recurrence, the generating function can be obtained as:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_cc44f080c3f94c9bb84ab673557304e5-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_cc44f080c3f94c9bb84ab673557304e5-1"&gt;&lt;/a&gt;guessAlg [a(i)+b(i) for i in 0..20]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Try for the recurrence relation.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_b78d9e783194494d9559b615ae776eec-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_b78d9e783194494d9559b615ae776eec-1"&gt;&lt;/a&gt;guessPRec [a(i)+b(i) for i in 0..20]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;This command gives a single recurrence relation! Hence, we may solve a problem our way and use the guessing routines for simplification.
-Series expansion&lt;/p&gt;
-&lt;p&gt;Working with series is also in a way different and easy.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;div class="first"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_112b3d7afa154dd3973427fbaea3bb42-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_112b3d7afa154dd3973427fbaea3bb42-1"&gt;&lt;/a&gt;series(x/(1-x-x^2),x=0)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;or like this&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dc31574dbe92414aaa0805b9492aa742-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_dc31574dbe92414aaa0805b9492aa742-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_dc31574dbe92414aaa0805b9492aa742-1"&gt;&lt;/a&gt;x:=series 'x
-&lt;a name="rest_code_dc31574dbe92414aaa0805b9492aa742-2"&gt;&lt;/a&gt;x/(1-x-x^2)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;If we require only the list of coefficients of the series&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_f5351b8d357d46a0ac7b20f29d0dcb4f-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_f5351b8d357d46a0ac7b20f29d0dcb4f-1"&gt;&lt;/a&gt;cf:=coefficients x/(1-x-x^2)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;If we want the &lt;span class="math"&gt;\([x^{100}]\)&lt;/span&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_c373e3dbf4934aa196c7a0922ba00914-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_c373e3dbf4934aa196c7a0922ba00914-1"&gt;&lt;/a&gt;coefficient(x/(1-x-x^2),100)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;or&lt;/p&gt;
-&lt;p&gt;&lt;tt class="docutils literal"&gt;cf.200&lt;/tt&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SOME MISCELLANEOUS INFO&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Since the output is always pretty-printed and does not provide a way to turn it off (though there are options to output different formats like TeX, fortran, html etc.), we can obtain an unparsed output the following way:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ecb9d65834694e0ea59e5355dec6372a-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_ecb9d65834694e0ea59e5355dec6372a-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_ecb9d65834694e0ea59e5355dec6372a-1"&gt;&lt;/a&gt;k:=(-b)^(1/3)/(1+b)
-&lt;a name="rest_code_ecb9d65834694e0ea59e5355dec6372a-2"&gt;&lt;/a&gt;unparse(k :: InputForm)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Shell commands can be executed within it:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_2f7e3ed8ac074fad871d0b84120bb02f-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_2f7e3ed8ac074fad871d0b84120bb02f-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_2f7e3ed8ac074fad871d0b84120bb02f-1"&gt;&lt;/a&gt;)system pwd
-&lt;a name="rest_code_2f7e3ed8ac074fad871d0b84120bb02f-2"&gt;&lt;/a&gt;)system date
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;etc.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;CHANGE OUTPUT FORMAT&lt;/strong&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_93a7bcd8ec2143eab390086fb402ac4e-1"&gt;1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_93a7bcd8ec2143eab390086fb402ac4e-2"&gt;2&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_93a7bcd8ec2143eab390086fb402ac4e-1"&gt;&lt;/a&gt;)set output tex on
-&lt;a name="rest_code_93a7bcd8ec2143eab390086fb402ac4e-2"&gt;&lt;/a&gt;)set output tex abc.tex
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;SHOW TIME FOR EXECUTION&lt;/strong&gt;&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_a244b47a3aa24c4382afbba71fc26f77-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_a244b47a3aa24c4382afbba71fc26f77-1"&gt;&lt;/a&gt;)set messages time on
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Sage provides an interface to FriCAS, so we may even run it within Sage.&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/fricas-an-introduction/#rest_code_bc69e69d31104242a627bec6dcf728ee-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_bc69e69d31104242a627bec6dcf728ee-1"&gt;&lt;/a&gt;fricas('series(1/sqrt(1-x),x=0)')
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;and there are many more. It even has its own language &lt;span class="math"&gt;\(-\)&lt;/span&gt; SPAD.&lt;/p&gt;
-&lt;p&gt;For more details, see&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://fricas.sourceforge.net/doc/book.pdf"&gt;1. Axiom book&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://axiom-wiki.newsynthesis.org/SandBoxFriCAS"&gt;2. FriCAS sandbox&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;and of course, the source code is available to know "everything" about it!&lt;/p&gt;&lt;/div&gt;</description><category>axiom</category><category>emacs</category><category>fricas</category><category>integration</category><category>linux</category><category>mathjax</category><category>recurrence</category><category>summation</category><guid>https://g-ar.github.io/posts/fricas-an-introduction/</guid><pubDate>Wed, 18 Jun 2014 10:05:29 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a class="reference external" href="https://math.stackexchange.com/questions/866503/putting-objects-in-a-line"&gt;Putting objects in a line&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><category>recurrence</category><category>restricted permutation</category><category>sage</category><guid>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</guid><pubDate>Sat, 26 Jul 2014 10:56:48 GMT</pubDate></item></channel></rss>
