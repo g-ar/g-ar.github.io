@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R</title><link>https://g-ar.github.io/</link><description>Some random stuffs -- Programming and Mathematics</description><atom:link type="application/rss+xml" rel="self" href="https://g-ar.github.io/rss.xml"></atom:link><language>en</language><lastBuildDate>Fri, 26 Jan 2018 12:45:56 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Regular Expressions And Generating Functions</title><link>https://g-ar.github.io/posts/regular-expressions-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We'll discuss about the number of ways to generate a string of length n, matching or avoiding certain patterns as its substring.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R</title><link>https://g-ar.github.io/</link><description>Some random stuffs -- Programming and Mathematics</description><atom:link href="https://g-ar.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sat, 27 Jan 2018 09:24:33 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Context Free Grammars And Generating Functions</title><link>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We saw how to get the number of ways to generate a string of length n, matching or avoiding certain patterns, from Regular Expressions (RE).&lt;/p&gt;
+&lt;p&gt;But it can't help when more expressive power is required. We'll see examples on how to use Context Free Grammars (CFG) to obtain the generating functions (GF), whose coefficients in the formal power series indicate the number of parse trees possible for n-letter string for the given CFG.&lt;/p&gt;
+&lt;p&gt;So, in a way, it can be used to know whether the grammar is ambiguous or not.&lt;/p&gt;
+&lt;p&gt;Let's look at relatively simple examples, for the strings constructed over the set of symbols &lt;span class="math"&gt;\(\left\{\left(, \right)\right\}\)&lt;/span&gt;&lt;/p&gt;
+&lt;font size="+1"&gt;1. Find the number of ways of constructing balanced parentheses&lt;/font&gt;&lt;p&gt;The grammar is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+S \to (S)S\; \big| \; \epsilon
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Then, to get its GF, replace each symbol with &lt;span class="math"&gt;\(x\)&lt;/span&gt;, and &lt;span class="math"&gt;\(\epsilon\)&lt;/span&gt; with 1. Hence, the GF for the RE is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+S(x) &amp;amp;= x^2\, S(x)^2 + 1\\
+\implies S(x)&amp;amp;= \frac{1-\sqrt{1-4 x^2}}{2 x^2}\\
+&amp;amp;= \sum_{n\ge 0} \frac{1}{n+1}\binom{2\, n}{n} x^{2 n}
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;and the series is the well known Catalan numbers.&lt;/p&gt;
+&lt;font size="+1"&gt;2. Find the number of ways of constructing balanced parentheses, which can have more opening parentheses&lt;/font&gt;&lt;p&gt;e.g. for &lt;span class="math"&gt;\(n=3\)&lt;/span&gt;, &lt;span class="math"&gt;\((((, ((), ()(\)&lt;/span&gt; are valid&lt;/p&gt;
+&lt;p&gt;We may obtain the CFG as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+S \to (S)S \; \big|\; (S \; \big| \; \epsilon
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Even though the grammar describes the language, it's actually ambiguous, and the GF obtained from this counts all the extra parse trees.&lt;/p&gt;
+&lt;p&gt;The right CFG is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+S &amp;amp;\to B \;\big|\; U \\
+  B &amp;amp;\to (\, B\, )\, B\; \big|\; \epsilon \\
+  U &amp;amp;\to (\,  S \;\big| \;(\, B\, )\, U \\
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;and we derive the GF&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+S(x) &amp;amp;= B(x) + U(x)\\
+  B(x) &amp;amp;= B(x)^2 x^2  + 1\\
+  U(x) &amp;amp;= S(x) x + B(x) U(x) x^2\\
+  \implies S(x) &amp;amp;= \frac{-1+2\,x+\sqrt{1-4\,x^2}}{2\,x-4\,x^2}\\
+  &amp;amp;= \sum_{n\ge 0} \binom{n}{\lfloor n/2 \rfloor} x^{n}
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Read &lt;a class="reference external" href="https://arxiv.org/abs/1204.4982"&gt;Gruber, Lee &amp;amp; Shallit&lt;/a&gt; for the theory.&lt;/p&gt;&lt;/div&gt;</description><category>context free grammar</category><category>generating function</category><category>mathjax</category><guid>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</guid><pubDate>Sat, 27 Jan 2018 09:13:04 GMT</pubDate></item><item><title>Regular Expressions And Generating Functions</title><link>https://g-ar.github.io/posts/regular-expressions-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We'll discuss about the number of ways to generate a string of length n, matching or avoiding certain patterns as its substring.&lt;/p&gt;
 &lt;p&gt;This can be easily achieved deriving an unambiguous regular expression (RE) by constructing a minimal Deterministic Finite Automaton (DFA), and then the ordinary Generating Function (GF) whose coefficients are the number of n-letter strings having the pattern.&lt;/p&gt;
 &lt;p&gt;Let's look at a few examples, for the strings constructed over the set of symbols &lt;span class="math"&gt;\(\{0, 1\}\)&lt;/span&gt; such that&lt;/p&gt;
 &lt;font size="+1"&gt;1. There are no two consecutive 1's&lt;/font&gt;&lt;p&gt;The RE is: &lt;span class="math"&gt;\((0+10)^*(1+\epsilon)\)&lt;/span&gt;&lt;/p&gt;
@@ -920,214 +965,4 @@ So, here are the steps:&lt;/p&gt;
 &lt;p&gt;Anyway, we need not do any of these analyses to know whether the bytecode has any code optimization in it. The python docs straight away answers with the following point&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;A program doesn't run any faster when it is read from a .pyc or .pyo file than when it is read from a .py file; the only thing that's faster about .pyc or .pyo files is the speed with which they are loaded. (&lt;a class="reference external" href="https://docs.python.org/2/tutorial/modules.html"&gt;docs&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</description><category>python</category><category>strace</category><guid>https://g-ar.github.io/posts/profiling-python-programs/</guid><pubDate>Tue, 17 Jan 2017 12:26:38 GMT</pubDate></item><item><title>Getting Started With Emacs</title><link>https://g-ar.github.io/posts/getting-started-with-emacs/</link><description>&lt;div&gt;&lt;p&gt;Emacs is an editor that lets us to edit quickly, avoid boring repetitive typing, define custom commands and bind them to desired keys etc. Plus many of its key bindings work in bash too, so, it's really worth to have some time familiarizing with this ancient editor. Let's take a look about the various key bindings and modes --&lt;/p&gt;
-&lt;div class="section" id="a-little-cheat-sheet"&gt;
-&lt;h2&gt;A little cheat sheet&lt;/h2&gt;
-&lt;p&gt;First, some of the common commands. C means ctrl key, and M means alt key:&lt;/p&gt;
-&lt;table border="1" class="docutils"&gt;
-&lt;colgroup&gt;
-&lt;col width="17%"&gt;
-&lt;col width="83%"&gt;
-&lt;/colgroup&gt;
-&lt;thead valign="bottom"&gt;
-&lt;tr&gt;&lt;th class="head"&gt;&lt;strong&gt;Key&lt;/strong&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;strong&gt;Function&lt;/strong&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td&gt;C-e&lt;/td&gt;
-&lt;td&gt;Go to end of line&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;C-a&lt;/td&gt;
-&lt;td&gt;Go to beginning of line&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;C-t&lt;/td&gt;
-&lt;td&gt;Swap adjacent characters&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;M-t&lt;/td&gt;
-&lt;td&gt;Swap adjacent words&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;C-x t&lt;/td&gt;
-&lt;td&gt;transpose two lines&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;C-x k&lt;/td&gt;
-&lt;td&gt;kill current buffer&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;C-&amp;lt;space&amp;gt;&lt;/td&gt;
-&lt;td&gt;Mark beginning of region, move cursor to highlight&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;M-%&lt;/td&gt;
-&lt;td&gt;replace in region&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;C-s&lt;/td&gt;
-&lt;td&gt;forward search&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;C-r&lt;/td&gt;
-&lt;td&gt;reverse search&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;M-&amp;lt;&lt;/td&gt;
-&lt;td&gt;Go to beginning of buffer&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;M-&amp;gt;&lt;/td&gt;
-&lt;td&gt;Go to end&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;C-x h&lt;/td&gt;
-&lt;td&gt;Whole buffer's selected as region&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;f3&lt;/td&gt;
-&lt;td&gt;Start recording macro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;f4&lt;/td&gt;
-&lt;td&gt;stop recording macro (press f4 to play that macro)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;M-u&lt;/td&gt;
-&lt;td&gt;Convert the word after the cursor to uppercase&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;M-l&lt;/td&gt;
-&lt;td&gt;Convert to lower case&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;M-c&lt;/td&gt;
-&lt;td&gt;Capitalize word&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;M-=&lt;/td&gt;
-&lt;td&gt;Count lines, words, and characters in region&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;There are thousands of commands, which can be invoked by M-x and entering the command name, in case we don't remember the key binding for the command. C-h can be used to find help.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="org-mode"&gt;
-&lt;h2&gt;Org-mode&lt;/h2&gt;
-&lt;p&gt;If anybody has to be instantly impressed by Emacs, this will do it! It's more like a markup language, which can export to several formats like html, LaTeX, rst, plaintext etc., and it's much easier to use than formats like rst. We can even use it to create tables, and apply formulas on them like a spreadsheet. How cool is that, spreadsheet without any of its associated bloat?!&lt;/p&gt;
-&lt;p&gt;See org-mode's site for its excellent documentation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="ido-mode"&gt;
-&lt;h2&gt;Ido-mode&lt;/h2&gt;
-&lt;p&gt;This provides suggestions when entering the command after M-x, which is quite helpful in discovering commands when we vaguely remember the command, or even a new command. And it searches for substrings which needn't be continuous, e.g. pressing &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; areg&lt;/tt&gt; will highlight align-regexp&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="yasnippet"&gt;
-&lt;h2&gt;Yasnippet&lt;/h2&gt;
-&lt;p&gt;This is a mode where for a given minor-mode and a keyword in that mode, on pressing tab, it expands to the code snippet as stored. E.g. Open a blank C file, type &lt;tt class="docutils literal"&gt;main&lt;/tt&gt;, then hit TAB, it gets expanded to&lt;/p&gt;
-&lt;pre class="code C"&gt;&lt;a name="rest_code_e96a1b5cf8724f4f80e4274d9eb553a7-1"&gt;&lt;/a&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
-&lt;a name="rest_code_e96a1b5cf8724f4f80e4274d9eb553a7-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e96a1b5cf8724f4f80e4274d9eb553a7-3"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt;
-&lt;a name="rest_code_e96a1b5cf8724f4f80e4274d9eb553a7-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_e96a1b5cf8724f4f80e4274d9eb553a7-5"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e96a1b5cf8724f4f80e4274d9eb553a7-6"&gt;&lt;/a&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_e96a1b5cf8724f4f80e4274d9eb553a7-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;div class="section" id="auto-complete-mode"&gt;
-&lt;h2&gt;Auto-complete mode&lt;/h2&gt;
-&lt;p&gt;Provides suggestions to complete the words, showing frequently typed words on top.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="jedi-with-python-mode"&gt;
-&lt;h2&gt;Jedi with python mode&lt;/h2&gt;
-&lt;p&gt;With python mode, jedi is useful for autocompletion and code navigation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="restclient-mode"&gt;
-&lt;h2&gt;Restclient-mode&lt;/h2&gt;
-&lt;p&gt;This is indispensable when developing web APIs.
-Type the method, endpoint, headers, message, and C-c C-c, and a nicely formatted response will be shown in an adjacent window! The requests can be stored in a file, separted by &lt;tt class="docutils literal"&gt;#&lt;/tt&gt; as a delimiter.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="expand-region"&gt;
-&lt;h2&gt;Expand-region&lt;/h2&gt;
-&lt;p&gt;Expands the region based on semantic units
-E.g. in a word "a-string", when the cursor is at 'a', when &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;C-=&lt;/span&gt;&lt;/tt&gt; is pressed once, 'a' is selected, on pressing again 'a-string' is selected, pressing again selects '"a-string"'. Very useful when we need to copy or delete a block of code.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="tiny"&gt;
-&lt;h2&gt;Tiny&lt;/h2&gt;
-&lt;p&gt;Tiny is not yasnippet, is another one, which can expand a given sentence with required numerical range.
-E.g. Construct the ascii table! Press &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; &lt;span class="pre"&gt;tiny-expand&lt;/span&gt;&lt;/tt&gt; after entering
-&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;m97\n122|%03d&lt;/span&gt; %(string x)&lt;/tt&gt;&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-1"&gt;&lt;/a&gt;097 a
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-2"&gt;&lt;/a&gt;098 b
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-3"&gt;&lt;/a&gt;099 c
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-4"&gt;&lt;/a&gt;100 d
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-5"&gt;&lt;/a&gt;101 e
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-6"&gt;&lt;/a&gt;102 f
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-7"&gt;&lt;/a&gt;103 g
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-8"&gt;&lt;/a&gt;104 h
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-9"&gt;&lt;/a&gt;105 i
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-10"&gt;&lt;/a&gt;106 j
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-11"&gt;&lt;/a&gt;107 k
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-12"&gt;&lt;/a&gt;108 l
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-13"&gt;&lt;/a&gt;109 m
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-14"&gt;&lt;/a&gt;110 n
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-15"&gt;&lt;/a&gt;111 o
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-16"&gt;&lt;/a&gt;112 p
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-17"&gt;&lt;/a&gt;113 q
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-18"&gt;&lt;/a&gt;114 r
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-19"&gt;&lt;/a&gt;115 s
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-20"&gt;&lt;/a&gt;116 t
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-21"&gt;&lt;/a&gt;117 u
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-22"&gt;&lt;/a&gt;118 v
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-23"&gt;&lt;/a&gt;119 w
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-24"&gt;&lt;/a&gt;120 x
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-25"&gt;&lt;/a&gt;121 y
-&lt;a name="rest_code_2101ff9b8d3a467598782accde823fda-26"&gt;&lt;/a&gt;122 z
-&lt;/pre&gt;&lt;/div&gt;
-&lt;div class="section" id="rainbow-delimiters-mode"&gt;
-&lt;h2&gt;Rainbow-delimiters-mode&lt;/h2&gt;
-&lt;p&gt;This is useful for languages where brackets are used to identify blocks, like lisp, C etc. This mode marks each block level's parentheses with  different colors, so that it becomes easy to figure out any missing parenthesis.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="artist-mode"&gt;
-&lt;h2&gt;Artist-mode&lt;/h2&gt;
-&lt;p&gt;Want to make some ascii-art? There's a mode for that as well!
-Enter &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; &lt;span class="pre"&gt;artist-mode&lt;/span&gt;&lt;/tt&gt;, and then we can easily create rectangle, ellipse, polygons etc. in the text file.
-If we want to draw with a mouse in the emacs GUI, press &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;shift-&amp;lt;mouse-2&amp;gt;&lt;/span&gt;&lt;/tt&gt; (middle click), which shows the menu of options to draw like rectangle, ellipse, pen, spray-can etc. Very handy if we want to draw simple block diagrams.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="calc-mode"&gt;
-&lt;h2&gt;Calc-mode&lt;/h2&gt;
-&lt;p&gt;This is a stack-based scientific calculator which performs many of the calculations. It's a mini CAS!
-To start it, enter &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; calc&lt;/tt&gt;, and as an example, we can do unit conversions, by typing in the calc window:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_9358c08583eb4f0d95865d48e0cdced8-1"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_9358c08583eb4f0d95865d48e0cdced8-2"&gt;&lt;/a&gt;u c
-&lt;a name="rest_code_9358c08583eb4f0d95865d48e0cdced8-3"&gt;&lt;/a&gt;day
-&lt;a name="rest_code_9358c08583eb4f0d95865d48e0cdced8-4"&gt;&lt;/a&gt;s
-&lt;/pre&gt;&lt;p&gt;will return 86400, which means 86400 seconds are there in a day.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="replace-regexp"&gt;
-&lt;h2&gt;Replace-Regexp&lt;/h2&gt;
-&lt;p&gt;This is a function, which can be used to replace words using regular expressions. E.g. consider a text file consisting of comma delimited values like&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_38be84b8b4e0427db1e615b2faa80d23-1"&gt;&lt;/a&gt;12,11
-&lt;a name="rest_code_38be84b8b4e0427db1e615b2faa80d23-2"&gt;&lt;/a&gt;1,33
-&lt;a name="rest_code_38be84b8b4e0427db1e615b2faa80d23-3"&gt;&lt;/a&gt;54,77
-&lt;a name="rest_code_38be84b8b4e0427db1e615b2faa80d23-4"&gt;&lt;/a&gt;99,101
-&lt;/pre&gt;&lt;p&gt;Now, we can use regular expressions to swap the numbers in each row using the following steps:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_61ff2b45503446f69516e044c58ed43a-1"&gt;&lt;/a&gt;- Select the region
-&lt;a name="rest_code_61ff2b45503446f69516e044c58ed43a-2"&gt;&lt;/a&gt;- M-x replace-regexp
-&lt;a name="rest_code_61ff2b45503446f69516e044c58ed43a-3"&gt;&lt;/a&gt;- Replace regexp:\([0-9]+\),\([0-9]+\)
-&lt;a name="rest_code_61ff2b45503446f69516e044c58ed43a-4"&gt;&lt;/a&gt;- Replace regexp \([0-9]+\),\([0-9]+\) with:\2,\1
-&lt;/pre&gt;&lt;p&gt;And we get the result&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_40ffe5e4b4144563b3b4c4a527957ff8-1"&gt;&lt;/a&gt;11,12
-&lt;a name="rest_code_40ffe5e4b4144563b3b4c4a527957ff8-2"&gt;&lt;/a&gt;33,1
-&lt;a name="rest_code_40ffe5e4b4144563b3b4c4a527957ff8-3"&gt;&lt;/a&gt;77,54
-&lt;a name="rest_code_40ffe5e4b4144563b3b4c4a527957ff8-4"&gt;&lt;/a&gt;101,99
-&lt;/pre&gt;&lt;/div&gt;
-&lt;div class="section" id="align-regexp"&gt;
-&lt;h2&gt;Align-Regexp&lt;/h2&gt;
-&lt;p&gt;This is another useful function to beautify our text. E.g. if we have the following snippet:&lt;/p&gt;
-&lt;pre class="code C"&gt;&lt;a name="rest_code_00acfea00e614390a61ae2c4a235a47a-1"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_00acfea00e614390a61ae2c4a235a47a-2"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;squared&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_00acfea00e614390a61ae2c4a235a47a-3"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;cubed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;squared&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Running &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; &lt;span class="pre"&gt;align-regexp&lt;/span&gt; =&lt;/tt&gt; aligns with &lt;tt class="docutils literal"&gt;=&lt;/tt&gt;&lt;/p&gt;
-&lt;pre class="code C"&gt;&lt;a name="rest_code_3774d34298924253bf00ede110c01874-1"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;     &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_3774d34298924253bf00ede110c01874-2"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;squared&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_3774d34298924253bf00ede110c01874-3"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;cubed&lt;/span&gt;   &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;squared&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;And there are many more modes and commands, which make editing fun!&lt;/p&gt;
-&lt;p&gt;For a detailed reference:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://www.gnu.org/software/emacs/refcards/ps/refcard.ps.gz"&gt;Emacs reference card&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://orgmode.org/"&gt;Org mode&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://masteringemacs.org/article/introduction-to-ido-mode"&gt;Ido mode&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://www.emacswiki.org/emacs/Yasnippet"&gt;yasnippet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://github.com/auto-complete/auto-complete"&gt;auto-complete&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://tkf.github.io/emacs-jedi/latest/"&gt;Jedi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://github.com/pashky/restclient.el"&gt;Restclient-mode&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://github.com/magnars/expand-region.el"&gt;Expand-region&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://elpa.gnu.org/packages/tiny.html"&gt;Tiny&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://github.com/Fanael/rainbow-delimiters"&gt;Rainbow-delimiters-mode&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_mono/calc.html"&gt;Calc&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;or get help within emacs, by pressing &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;C-h&lt;/span&gt; m&lt;/tt&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><guid>https://g-ar.github.io/posts/getting-started-with-emacs/</guid><pubDate>Sun, 25 Dec 2016 06:22:17 GMT</pubDate></item></channel></rss>
+&lt;/ul&gt;&lt;/div&gt;</description><category>python</category><category>strace</category><guid>https://g-ar.github.io/posts/profiling-python-programs/</guid><pubDate>Tue, 17 Jan 2017 12:26:38 GMT</pubDate></item></channel></rss>

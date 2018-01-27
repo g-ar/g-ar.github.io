@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" rel="self" href="https://g-ar.github.io/categories/mathjax.xml"></atom:link><language>en</language><lastBuildDate>Fri, 26 Jan 2018 12:45:56 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Regular Expressions And Generating Functions</title><link>https://g-ar.github.io/posts/regular-expressions-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We'll discuss about the number of ways to generate a string of length n, matching or avoiding certain patterns as its substring.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R (mathjax)</title><link>https://g-ar.github.io/</link><description></description><atom:link href="https://g-ar.github.io/categories/mathjax.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sat, 27 Jan 2018 09:24:33 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Context Free Grammars And Generating Functions</title><link>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We saw how to get the number of ways to generate a string of length n, matching or avoiding certain patterns, from Regular Expressions (RE).&lt;/p&gt;
+&lt;p&gt;But it can't help when more expressive power is required. We'll see examples on how to use Context Free Grammars (CFG) to obtain the generating functions (GF), whose coefficients in the formal power series indicate the number of parse trees possible for n-letter string for the given CFG.&lt;/p&gt;
+&lt;p&gt;So, in a way, it can be used to know whether the grammar is ambiguous or not.&lt;/p&gt;
+&lt;p&gt;Let's look at relatively simple examples, for the strings constructed over the set of symbols &lt;span class="math"&gt;\(\left\{\left(, \right)\right\}\)&lt;/span&gt;&lt;/p&gt;
+&lt;font size="+1"&gt;1. Find the number of ways of constructing balanced parentheses&lt;/font&gt;&lt;p&gt;The grammar is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+S \to (S)S\; \big| \; \epsilon
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Then, to get its GF, replace each symbol with &lt;span class="math"&gt;\(x\)&lt;/span&gt;, and &lt;span class="math"&gt;\(\epsilon\)&lt;/span&gt; with 1. Hence, the GF for the RE is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+S(x) &amp;amp;= x^2\, S(x)^2 + 1\\
+\implies S(x)&amp;amp;= \frac{1-\sqrt{1-4 x^2}}{2 x^2}\\
+&amp;amp;= \sum_{n\ge 0} \frac{1}{n+1}\binom{2\, n}{n} x^{2 n}
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;and the series is the well known Catalan numbers.&lt;/p&gt;
+&lt;font size="+1"&gt;2. Find the number of ways of constructing balanced parentheses, which can have more opening parentheses&lt;/font&gt;&lt;p&gt;e.g. for &lt;span class="math"&gt;\(n=3\)&lt;/span&gt;, &lt;span class="math"&gt;\((((, ((), ()(\)&lt;/span&gt; are valid&lt;/p&gt;
+&lt;p&gt;We may obtain the CFG as&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+S \to (S)S \; \big|\; (S \; \big| \; \epsilon
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;Even though the grammar describes the language, it's actually ambiguous, and the GF obtained from this counts all the extra parse trees.&lt;/p&gt;
+&lt;p&gt;The right CFG is&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+S &amp;amp;\to B \;\big|\; U \\
+  B &amp;amp;\to (\, B\, )\, B\; \big|\; \epsilon \\
+  U &amp;amp;\to (\,  S \;\big| \;(\, B\, )\, U \\
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;and we derive the GF&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{align*}
+S(x) &amp;amp;= B(x) + U(x)\\
+  B(x) &amp;amp;= B(x)^2 x^2  + 1\\
+  U(x) &amp;amp;= S(x) x + B(x) U(x) x^2\\
+  \implies S(x) &amp;amp;= \frac{-1+2\,x+\sqrt{1-4\,x^2}}{2\,x-4\,x^2}\\
+  &amp;amp;= \sum_{n\ge 0} \binom{n}{\lfloor n/2 \rfloor} x^{n}
+\end{align*}
+&lt;/div&gt;
+&lt;p&gt;Read &lt;a class="reference external" href="https://arxiv.org/abs/1204.4982"&gt;Gruber, Lee &amp;amp; Shallit&lt;/a&gt; for the theory.&lt;/p&gt;&lt;/div&gt;</description><category>context free grammar</category><category>generating function</category><category>mathjax</category><guid>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</guid><pubDate>Sat, 27 Jan 2018 09:13:04 GMT</pubDate></item><item><title>Regular Expressions And Generating Functions</title><link>https://g-ar.github.io/posts/regular-expressions-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We'll discuss about the number of ways to generate a string of length n, matching or avoiding certain patterns as its substring.&lt;/p&gt;
 &lt;p&gt;This can be easily achieved deriving an unambiguous regular expression (RE) by constructing a minimal Deterministic Finite Automaton (DFA), and then the ordinary Generating Function (GF) whose coefficients are the number of n-letter strings having the pattern.&lt;/p&gt;
 &lt;p&gt;Let's look at a few examples, for the strings constructed over the set of symbols &lt;span class="math"&gt;\(\{0, 1\}\)&lt;/span&gt; such that&lt;/p&gt;
 &lt;font size="+1"&gt;1. There are no two consecutive 1's&lt;/font&gt;&lt;p&gt;The RE is: &lt;span class="math"&gt;\((0+10)^*(1+\epsilon)\)&lt;/span&gt;&lt;/p&gt;
@@ -592,50 +637,4 @@ E_{1,m} &amp;amp;= 1
 &lt;p&gt;I wish Jolla team a big success, but I also wish that they remove the mandatory signing up of a Jolla account for enabling developer mode.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://nims11.wordpress.com/2012/04/27/hostapd-the-linux-way-to-create-virtual-wifi-access-point/"&gt;1. Creating AP using hostapd&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://stackoverflow.com/questions/24490278/run-ipython-notebook-from-a-remote-server"&gt;2. Run IPython remotely&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/ArchimedesPi/SageMathematics-raspi/"&gt;3. Sage 6.0 for RPi download&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>ARM</category><category>jolla</category><category>linux</category><category>mathjax</category><category>sage</category><category>sailfish OS</category><guid>https://g-ar.github.io/posts/jolla-and-sailfish-os/</guid><pubDate>Sun, 09 Nov 2014 11:04:48 GMT</pubDate></item><item><title>Using Directed Graphs to form multivariate recurrence relations</title><link>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</link><description>&lt;div&gt;&lt;p&gt;There are items comprising of red cubes, blue cubes, and balls;
-how many ways can 3 red cubes, 4 blue cubes and 8 balls be arranged in a line so that:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;No three cubes are consecutive&lt;/li&gt;
-&lt;li&gt;No three balls are consecutive&lt;/li&gt;
-&lt;li&gt;No two red cubes are next to one another&lt;/li&gt;
-&lt;li&gt;No two blue cubes are next to one another&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;How do we go about finding a general formula for &lt;span class="math"&gt;\(r\)&lt;/span&gt; red cubes, &lt;span class="math"&gt;\(b\)&lt;/span&gt; blue cubes and &lt;span class="math"&gt;\(c\)&lt;/span&gt; balls ?&lt;/p&gt;
-&lt;p&gt;The answer lies in forming a directed graph / Finite Automaton, as we have seen it in one of the previous posts.&lt;/p&gt;
-&lt;p&gt;Instead of filling in the number of ways, we use the variable names as weights for the valid transitions.&lt;/p&gt;
-&lt;p&gt;Hence, we can directly solve for the general case by using the following adjacency matrix:&lt;/p&gt;
-&lt;div class="math"&gt;
-\begin{equation*}
-\displaystyle \begin{array}{|l|rrrrrr|}\hline &amp;amp; \mathrm{I} &amp;amp; \mathrm{R} &amp;amp; \mathrm{B} &amp;amp; \mathrm{C} &amp;amp; \mathrm{BR} &amp;amp; \mathrm{CC} \\ \hline \mathrm{I} &amp;amp; 0 &amp;amp; r &amp;amp; b &amp;amp; c &amp;amp; 0 &amp;amp; 0 \\ \mathrm{R} &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; b &amp;amp; 0 \\ \mathrm{B} &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; r &amp;amp; 0 \\ \mathrm{C} &amp;amp; 0 &amp;amp; r &amp;amp; b &amp;amp; 0 &amp;amp; 0 &amp;amp; c \\ \mathrm{BR} &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; 0 &amp;amp; 0 \\ \mathrm{CC} &amp;amp; 0 &amp;amp; r &amp;amp; b &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \\ \hline \end{array}
-\end{equation*}
-&lt;/div&gt;
-&lt;p&gt;which is for the constraints that there's no &lt;span class="math"&gt;\(RR, BB, RBR, BRB\)&lt;/span&gt; or &lt;span class="math"&gt;\(CCC\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Therefore, for 15 items, we compute&lt;/p&gt;
-&lt;div class="math"&gt;
-\begin{equation*}
-\displaystyle \left(\begin{array}{rrrrrr} 0 &amp;amp; r &amp;amp; b &amp;amp; c &amp;amp; 0 &amp;amp; 0 \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; b &amp;amp; 0 \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; r &amp;amp; 0 \\ 0 &amp;amp; r &amp;amp; b &amp;amp; 0 &amp;amp; 0 &amp;amp; c \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; c &amp;amp; 0 &amp;amp; 0 \\ 0 &amp;amp; r &amp;amp; b &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \end{array}\right)^{15}
-\end{equation*}
-&lt;/div&gt;
-&lt;p&gt;and extract &lt;span class="math"&gt;\([c^8 b^4 r^3]\)&lt;/span&gt; from the sum of the first row, which is &lt;span class="math"&gt;\(11394\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;We may also compute the characteristic polynomial of the matrix to get the structure of its multivariate recurrence
-relation:&lt;/p&gt;
-&lt;div class="math"&gt;
-\begin{equation*}
-\displaystyle x^6 - (bc + cr)x^4 - (bc^2 + 2bcr + c^2r)x^3 - 2bc^2rx^2 = 0
-\end{equation*}
-&lt;/div&gt;
-&lt;p&gt;which is just like the characteristic equation of a recurrence relation, which is:&lt;/p&gt;
-&lt;div class="math"&gt;
-\begin{equation*}
-\displaystyle f_{b,c,r} = f_{b-1,c-1,r}+f_{b,c-1,r-1}+f_{b-1,c-2,r}+f_{b,c-2,r-1}+2 \left(f_{b-1,c-1,r-1}+f_{b-1,c-2,r-1}\right)
-\end{equation*}
-&lt;/div&gt;
-&lt;p&gt;and set the required boundary conditions.&lt;/p&gt;
-&lt;p&gt;Computing the regular expression from the minimized DFA gives us the following multivariate generating function:&lt;/p&gt;
-&lt;div class="math"&gt;
-\begin{equation*}
-\displaystyle G(r,b,c) = \frac{\left(1+c+c^2\right)\left(1+b+r+2br\right)}{1-c\left(1+c\right)\left(b+r+2br\right)}
-\end{equation*}
-&lt;/div&gt;
-&lt;p&gt;Reference:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://math.stackexchange.com/questions/866503/putting-objects-in-a-line"&gt;Putting objects in a line&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>mathjax</category><category>recurrence</category><category>restricted permutation</category><category>sage</category><guid>https://g-ar.github.io/posts/using-directed-graphs-to-form-multivariate-recurrence-relations/</guid><pubDate>Sat, 26 Jul 2014 10:56:48 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/ArchimedesPi/SageMathematics-raspi/"&gt;3. Sage 6.0 for RPi download&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>ARM</category><category>jolla</category><category>linux</category><category>mathjax</category><category>sage</category><category>sailfish OS</category><guid>https://g-ar.github.io/posts/jolla-and-sailfish-os/</guid><pubDate>Sun, 09 Nov 2014 11:04:48 GMT</pubDate></item></channel></rss>
