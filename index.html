@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/regular-expressions-and-generating-functions/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/context-free-grammars-and-generating-functions/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,64 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/regular-expressions-and-generating-functions/" class="u-url">Regular Expressions And Generating Functions</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/context-free-grammars-and-generating-functions/" class="u-url">Context Free Grammars And Generating Functions</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                
+            </span></p>
+            <p class="dateline"><a href="posts/context-free-grammars-and-generating-functions/" rel="bookmark"><time class="published dt-published" datetime="2018-01-27T14:43:04+05:30" title="2018-01-27 14:43">2018-01-27 14:43</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>We saw how to get the number of ways to generate a string of length n, matching or avoiding certain patterns, from Regular Expressions (RE).</p>
+<p>But it can't help when more expressive power is required. We'll see examples on how to use Context Free Grammars (CFG) to obtain the generating functions (GF), whose coefficients in the formal power series indicate the number of parse trees possible for n-letter string for the given CFG.</p>
+<p>So, in a way, it can be used to know whether the grammar is ambiguous or not.</p>
+<p>Let's look at relatively simple examples, for the strings constructed over the set of symbols <span class="math">\(\left\{\left(, \right)\right\}\)</span></p>
+<font size="+1">1. Find the number of ways of constructing balanced parentheses</font><p>The grammar is</p>
+<div class="math">
+\begin{equation*}
+S \to (S)S\; \big| \; \epsilon
+\end{equation*}
+</div>
+<p>Then, to get its GF, replace each symbol with <span class="math">\(x\)</span>, and <span class="math">\(\epsilon\)</span> with 1. Hence, the GF for the RE is</p>
+<div class="math">
+\begin{align*}
+S(x) &amp;= x^2\, S(x)^2 + 1\\
+\implies S(x)&amp;= \frac{1-\sqrt{1-4 x^2}}{2 x^2}\\
+&amp;= \sum_{n\ge 0} \frac{1}{n+1}\binom{2\, n}{n} x^{2 n}
+\end{align*}
+</div>
+<p>and the series is the well known Catalan numbers.</p>
+<font size="+1">2. Find the number of ways of constructing balanced parentheses, which can have more opening parentheses</font><p>e.g. for <span class="math">\(n=3\)</span>, <span class="math">\((((, ((), ()(\)</span> are valid</p>
+<p>We may obtain the CFG as</p>
+<div class="math">
+\begin{equation*}
+S \to (S)S \; \big|\; (S \; \big| \; \epsilon
+\end{equation*}
+</div>
+<p>Even though the grammar describes the language, it's actually ambiguous, and the GF obtained from this counts all the extra parse trees.</p>
+<p>The right CFG is</p>
+<div class="math">
+\begin{align*}
+S &amp;\to B \;\big|\; U \\
+  B &amp;\to (\, B\, )\, B\; \big|\; \epsilon \\
+  U &amp;\to (\,  S \;\big| \;(\, B\, )\, U \\
+\end{align*}
+</div>
+<p>and we derive the GF</p>
+<div class="math">
+\begin{align*}
+S(x) &amp;= B(x) + U(x)\\
+  B(x) &amp;= B(x)^2 x^2  + 1\\
+  U(x) &amp;= S(x) x + B(x) U(x) x^2\\
+  \implies S(x) &amp;= \frac{-1+2\,x+\sqrt{1-4\,x^2}}{2\,x-4\,x^2}\\
+  &amp;= \sum_{n\ge 0} \binom{n}{\lfloor n/2 \rfloor} x^{n}
+\end{align*}
+</div>
+<p>Read <a class="reference external" href="https://arxiv.org/abs/1204.4982">Gruber, Lee &amp; Shallit</a> for the theory.</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/regular-expressions-and-generating-functions/" class="u-url">Regular Expressions And Generating Functions</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 
@@ -241,150 +298,6 @@ G_3(x) &amp;= \frac{x^2}{(1-2 x) (1-x)^2}\\
 <iframe width="425" height="344" src="https://www.youtube.com/embed/uEw5a-Quk6Q?rel=0&amp;hd=1&amp;wmode=transparent"></iframe>
 </div>
 </blockquote>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/optical-illusions-with-context-free-art/" class="u-url">Optical Illusions with Context Free Art</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                
-            </span></p>
-            <p class="dateline"><a href="posts/optical-illusions-with-context-free-art/" rel="bookmark"><time class="published dt-published" datetime="2017-11-05T17:38:03+05:30" title="2017-11-05 17:38">2017-11-05 17:38</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p><a class="reference external" href="https://www.contextfreeart.org">Context Free Art</a> is a program to generate images using context free grammar. We can obtain beautiful images by writing a few tens of lines of code.</p>
-<p>To make it more interesting, let's write code for Optical Illusions. There's a <a class="reference external" href="https://tex.stackexchange.com/questions/129274/showcase-of-optical-illusions-made-with-tex-latex-luatex-context/">nice list</a> already done using LaTeX, below are translations and output of some of those.</p>
-<p>CFDG uses <tt class="docutils literal">startshape</tt> to know which shape to call first. Then the startshape can use other shapes or paths (primitive symbols, user defined).</p>
-<p>Read the <a class="reference external" href="https://github.com/MtnViewJohn/context-free/wiki">documentation</a> for details and examples.</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-1"> 1</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-2"> 2</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-3"> 3</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-4"> 4</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-5"> 5</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-6"> 6</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-7"> 7</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-8"> 8</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-9"> 9</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-10">10</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-11">11</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-12">12</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-13">13</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-14">14</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-15">15</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-16">16</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-17">17</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-18">18</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-19">19</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-20">20</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-21">21</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-22">22</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-23">23</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-24">24</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-25">25</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-26">26</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-27">27</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-28">28</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-29">29</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_da1b0e77851145f79de840806ac64cfc-30">30</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_da1b0e77851145f79de840806ac64cfc-1"></a>startshape start
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-2"></a>
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-3"></a>CF::Background = [hue 90 sat -0.5 b -0.5]
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-4"></a>CF::Size = [s 15]
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-5"></a>
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-6"></a>shape start {
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-7"></a>    loop j=6 [] {
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-8"></a>    rad = 28 + j*14
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-9"></a>    twist = (-1)^j * 12
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-10"></a>        loop i=rad [] {
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-11"></a>            xs = (j + 2)*cos(i*360/rad)
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-12"></a>            ys = (j + 2)*sin(i*360/rad)
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-13"></a>            rota = i*360/rad + twist
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-14"></a>            if (mod(i, 2) == 1) {
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-15"></a>                sq [b 1 x xs y ys r rota]
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-16"></a>            } else {
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-17"></a>                sq [b -1 x xs y ys r rota]
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-18"></a>            }
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-19"></a>        }
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-20"></a>    }
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-21"></a>}
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-22"></a>
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-23"></a>path sq {
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-24"></a>    MOVETO(0, 0)
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-25"></a>    LINETO(0, 0.3)
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-26"></a>    LINETO(0.3, 0.3)
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-27"></a>    LINETO(0.3, 0)
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-28"></a>    LINETO(0, 0)
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-29"></a>    STROKE(0.03)[]
-<a name="rest_code_da1b0e77851145f79de840806ac64cfc-30"></a>}
-</pre></td>
-</tr></table>
-<div class="figure">
-<img alt="../../images/sqr_circles.png" src="images/sqr_circles.png"><p class="caption">Illusion 1</p>
-</div>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-1"> 1</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-2"> 2</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-3"> 3</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-4"> 4</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-5"> 5</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-6"> 6</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-7"> 7</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-8"> 8</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-9"> 9</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-10">10</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-11">11</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-12">12</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-13">13</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-14">14</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-15">15</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-16">16</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-17">17</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-18">18</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-19">19</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-20">20</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-21">21</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-22">22</a>
-<a href="posts/optical-illusions-with-context-free-art/#rest_code_764bce1964114d739ad9f4a1b9bc1828-23">23</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-1"></a>startshape start
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-2"></a>
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-3"></a>CF::Background = [hue 90 sat -0.5 b -0.5]
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-4"></a>n = 8
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-5"></a>xt = (n - 1)/2
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-6"></a>yt = (n - 1)/2
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-7"></a>scale = n + 2
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-8"></a>CF::Size = [s scale x -xt y -yt]
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-9"></a>sqd = 0.8                 // square size
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-10"></a>circd = sqrt(2)*(1 - sqd) // circle size
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-11"></a>
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-12"></a>shape start {
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-13"></a>    loop j=n [] {
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-14"></a>        loop i=n [] {
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-15"></a>            ys = j + 0.5
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-16"></a>            xs = i + 0.5
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-17"></a>            SQUARE[b -1 s sqd x i y j]
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-18"></a>            if (i &lt; n-1 &amp;&amp; j &lt; n-1) {
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-19"></a>                CIRCLE[z 1 b 1 s circd x xs y ys]
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-20"></a>            }
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-21"></a>        }
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-22"></a>    }
-<a name="rest_code_764bce1964114d739ad9f4a1b9bc1828-23"></a>}
-</pre></td>
-</tr></table>
-<div class="figure">
-<img alt="../../images/grid.png" src="images/grid.png"><p class="caption">Illusion 2</p>
-</div>
-<p>Output of illusions <a class="reference external" href="https://github.com/g-ar/CFreeArt/blob/master/v3/circles_lines.cfdg">three</a>, <a class="reference external" href="https://github.com/g-ar/CFreeArt/blob/master/v3/floor_tiles.cfdg">four</a>, and <a class="reference external" href="https://github.com/g-ar/CFreeArt/blob/master/v3/grid_lines.cfdg">five</a> are shown below</p>
-<div class="figure">
-<img alt="../../images/circles_lines.png" src="images/circles_lines.png"><p class="caption">Illusion 3</p>
-</div>
-<div class="figure">
-<img alt="../../images/floor_tiles.png" src="images/floor_tiles.png"><p class="caption">Illusion 4</p>
-</div>
-<div class="figure">
-<img alt="../../images/grid_lines.png" src="images/grid_lines.png"><p class="caption">Illusion 5</p>
-</div>
-<p>These examples only used simple loops, more complicated shapes can be drawn using recursion. Check out the <a class="reference external" href="https://www.contextfreeart.org/gallery/">CFDG gallery</a> for more examples.</p>
 </div>
     </div>
     </article>

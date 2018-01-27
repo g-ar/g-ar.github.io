@@ -34,6 +34,10 @@
   <lastmod>2017-11-11T16:06:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://g-ar.github.io/categories/context-free-grammar.xml</loc>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://g-ar.github.io/categories/debian.xml</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </sitemap>
@@ -87,7 +91,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/generating-function.xml</loc>
-  <lastmod>2018-01-26T12:32:00Z</lastmod>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/infinite-series.xml</loc>
@@ -115,7 +119,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/mathjax.xml</loc>
-  <lastmod>2018-01-26T12:32:00Z</lastmod>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/moire-patterns.xml</loc>
@@ -163,7 +167,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/regular-expression.xml</loc>
-  <lastmod>2018-01-26T12:32:00Z</lastmod>
+  <lastmod>2018-01-26T12:45:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/restricted-permutation.xml</loc>
@@ -215,10 +219,10 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/rss.xml</loc>
-  <lastmod>2018-01-26T12:32:00Z</lastmod>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/sitemap.xml</loc>
-  <lastmod>2018-01-26T12:41:00Z</lastmod>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </sitemap>
 </sitemapindex>

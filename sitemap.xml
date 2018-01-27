@@ -35,11 +35,11 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2018-01-26T12:41:00Z</lastmod>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
-  <lastmod>2018-01-26T10:09:00Z</lastmod>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/arm/</loc>
@@ -68,6 +68,10 @@
  <url>
   <loc>https://g-ar.github.io/categories/context-free-art/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/categories/context-free-grammar/</loc>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/debian/</loc>
@@ -283,7 +287,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-9.html</loc>
-  <lastmod>2018-01-26T12:41:00Z</lastmod>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/a-restricted-arrangement-of-letters-in-a-word/</loc>
@@ -316,6 +320,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/configuring-broadband-connection-using-pppoeconf/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</loc>
+  <lastmod>2018-01-27T09:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/deriving-explicit-formulas-from-markov-chains/</loc>
