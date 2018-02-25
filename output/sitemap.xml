@@ -35,7 +35,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2018-01-27T09:14:00Z</lastmod>
+  <lastmod>2018-02-25T09:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
@@ -287,7 +287,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-9.html</loc>
-  <lastmod>2018-01-27T09:14:00Z</lastmod>
+  <lastmod>2018-02-25T09:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/a-restricted-arrangement-of-letters-in-a-word/</loc>
@@ -372,6 +372,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/interactive-regexp-and-replacing-regexp-with-emacs/</loc>
+  <lastmod>2018-02-25T09:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/interesting-definite-integrals/</loc>

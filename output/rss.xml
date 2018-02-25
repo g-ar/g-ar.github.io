@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R</title><link>https://g-ar.github.io/</link><description>Some random stuffs -- Programming and Mathematics</description><atom:link href="https://g-ar.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sat, 27 Jan 2018 09:24:33 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Context Free Grammars And Generating Functions</title><link>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We saw how to get the number of ways to generate a string of length n, matching or avoiding certain patterns, from Regular Expressions (RE).&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R</title><link>https://g-ar.github.io/</link><description>Some random stuffs -- Programming and Mathematics</description><atom:link type="application/rss+xml" href="https://g-ar.github.io/rss.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 25 Feb 2018 10:46:19 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Interactive Regexp and Replacing Regexp with Emacs</title><link>https://g-ar.github.io/posts/interactive-regexp-and-replacing-regexp-with-emacs/</link><description>&lt;div&gt;&lt;p&gt;If we need to replace text based on patterns, then &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;replace-regexp&lt;/span&gt;&lt;/tt&gt; is the command.&lt;/p&gt;
+&lt;p&gt;But we may not always be sure that the regular expression (RE) entered does what we wanted. Not to worry, emacs has it covered: with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;re-builder&lt;/span&gt;&lt;/tt&gt;! As we keep entering the text, the editor progressively highlights the text in the buffer that matches. Once we are certain that all the required text has matched, we can move to enter the command to replace it.&lt;/p&gt;
+&lt;p&gt;We'll look at a usecase where we need to uppercase some sql keywords, and cast the output of a function as float&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;script src="https://asciinema.org/a/L6opRuaNH22ZbzdxHmlbDDRoR.js" id="asciicast-L6opRuaNH22ZbzdxHmlbDDRoR" async data-autoplay="true" data-speed="2" width="800"&gt;&lt;/script&gt;&lt;/blockquote&gt;
+&lt;p&gt;In &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;replace-regexp&lt;/span&gt;&lt;/tt&gt;, the matched expressions are grouped using &lt;tt class="docutils literal"&gt;\(&lt;/tt&gt; ... &lt;tt class="docutils literal"&gt;\)&lt;/tt&gt;, and the matched groups can be accessed in the result as &lt;tt class="docutils literal"&gt;\1&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;\2&lt;/tt&gt;, etc.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;script src="https://asciinema.org/a/FPnVQNSBV0obVx2jgyDUJjchd.js" id="asciicast-FPnVQNSBV0obVx2jgyDUJjchd" async data-speed="2" width="800"&gt;&lt;/script&gt;&lt;/blockquote&gt;&lt;/div&gt;</description><category>emacs</category><category>regular expression</category><guid>https://g-ar.github.io/posts/interactive-regexp-and-replacing-regexp-with-emacs/</guid><pubDate>Sun, 25 Feb 2018 09:33:57 GMT</pubDate></item><item><title>Context Free Grammars And Generating Functions</title><link>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We saw how to get the number of ways to generate a string of length n, matching or avoiding certain patterns, from Regular Expressions (RE).&lt;/p&gt;
 &lt;p&gt;But it can't help when more expressive power is required. We'll see examples on how to use Context Free Grammars (CFG) to obtain the generating functions (GF), whose coefficients in the formal power series indicate the number of parse trees possible for n-letter string for the given CFG.&lt;/p&gt;
 &lt;p&gt;So, in a way, it can be used to know whether the grammar is ambiguous or not.&lt;/p&gt;
 &lt;p&gt;Let's look at relatively simple examples, for the strings constructed over the set of symbols &lt;span class="math"&gt;\(\left\{\left(, \right)\right\}\)&lt;/span&gt;&lt;/p&gt;
@@ -63,9 +70,9 @@ G_1(x) &amp;amp;= \frac{1}{1-x-x^2}\cdot (1+x)\\
 &lt;div class="math"&gt;
 \begin{align*}
 G_2(x) &amp;amp;= \frac{1}{1-x-x^2} \cdot x^2\cdot \frac{1}{1-2\, x}\\
-&amp;amp;= \sum_{n\ge 0} \frac{ \left(\left(\sqrt{5}-3\right)
+&amp;amp;= \sum_{n\ge 0} \left(\frac{ \left(\left(\sqrt{5}-3\right)
    \left(-\left(1-\sqrt{5}\right)^n\right)-\left(3+\sqrt{5}\right)
-   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\\
+   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\right)\, x^n\\
 &amp;amp;= \sum_{n\ge 0}\left(2^{n} - F_{n+2}\right) x^n
 \end{align*}
 &lt;/div&gt;
@@ -889,80 +896,4 @@ So, here are the steps:&lt;/p&gt;
 &lt;a name="rest_code_b5b06718fca64796bde3a642f0ccde92-17"&gt;&lt;/a&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;a name="rest_code_b5b06718fca64796bde3a642f0ccde92-18"&gt;&lt;/a&gt;        &lt;span class="n"&gt;send_message&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"/trigger/play"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# float's not required in python, but throws error in Sage without it&lt;/span&gt;
 &lt;a name="rest_code_b5b06718fca64796bde3a642f0ccde92-19"&gt;&lt;/a&gt;        &lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;</description><category>computer art</category><category>OSC</category><category>python</category><category>sage</category><category>Sonic Pi</category><guid>https://g-ar.github.io/posts/generating-music-with-sagemath-and-sonic-pi/</guid><pubDate>Fri, 20 Oct 2017 09:53:44 GMT</pubDate></item><item><title>Profiling Python Programs</title><link>https://g-ar.github.io/posts/profiling-python-programs/</link><description>&lt;div&gt;&lt;p&gt;Last week, when I was looking up for some info on list comprehensions, one of the pages listed a code something like this&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-1"&gt; 1&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-2"&gt; 2&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-3"&gt; 3&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-4"&gt; 4&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-5"&gt; 5&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-6"&gt; 6&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-7"&gt; 7&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-8"&gt; 8&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-9"&gt; 9&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-10"&gt;10&lt;/a&gt;
-&lt;a href="https://g-ar.github.io/posts/profiling-python-programs/#rest_code_689dfec236a54340a10edf79b0d7267a-11"&gt;11&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code python"&gt;&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Access every 3rd element in a list&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# filename: access.py&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-4"&gt;&lt;/a&gt;    &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-6"&gt;&lt;/a&gt;    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-7"&gt;&lt;/a&gt;        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-8"&gt;&lt;/a&gt;        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-9"&gt;&lt;/a&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-10"&gt;&lt;/a&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_689dfec236a54340a10edf79b0d7267a-11"&gt;&lt;/a&gt;    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;and I thought for a moment whether the length will be calculated for each iteration, or will it be called only once? I also thought of an answer that since python code is interpreted, it may not do any peephole optimization, and hence &lt;tt class="docutils literal"&gt;len&lt;/tt&gt; will be called five times. Anyway, wanted to know the command that would quantify every call in the program and found about cProfile module. We simply run the following:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_b0185e34db7941a0a0b346a71d70acc5-1"&gt;&lt;/a&gt;python -mcProfile -sncalls access.py
-&lt;/pre&gt;&lt;p&gt;which will do the profiling and order by the number of calls&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-1"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-2"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-3"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-4"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-5"&gt;&lt;/a&gt;         8 function calls in 0.000 seconds
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-7"&gt;&lt;/a&gt;   Ordered by: call count
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-9"&gt;&lt;/a&gt;   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-10"&gt;&lt;/a&gt;        5    0.000    0.000    0.000    0.000 {len}
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-11"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-12"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(&amp;lt;module&amp;gt;)
-&lt;a name="rest_code_529e8ca7907141f69d643ce3587233ab-13"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(main)
-&lt;/pre&gt;&lt;p&gt;So, will the optimization flag do anything for that?&lt;/p&gt;
-&lt;pre class="code python"&gt;&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# filename: call_access.py&lt;/span&gt;
-&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-2"&gt;&lt;/a&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;access&lt;/span&gt;
-&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-3"&gt;&lt;/a&gt;
-&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_31489ba9944c4dc6b6544245a0617469-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;and run&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_8d2859ed9d5f41b196dc096a5cdff87c-1"&gt;&lt;/a&gt;python -OO -mcProfile -sncalls call_access.py
-&lt;/pre&gt;&lt;p&gt;but the output doesn't change much!&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-1"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-2"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-3"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-4"&gt;&lt;/a&gt;1
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-5"&gt;&lt;/a&gt;         9 function calls in 0.000 seconds
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-7"&gt;&lt;/a&gt;   Ordered by: call count
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-9"&gt;&lt;/a&gt;   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-10"&gt;&lt;/a&gt;        5    0.000    0.000    0.000    0.000 {len}
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-11"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-12"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(&amp;lt;module&amp;gt;)
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-13"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 access.py:2(main)
-&lt;a name="rest_code_90ded5e383f14d05b26bedd880fbf9ed-14"&gt;&lt;/a&gt;        1    0.000    0.000    0.000    0.000 call_access.py:1(&amp;lt;module&amp;gt;)
-&lt;/pre&gt;&lt;p&gt;So, even with the optimization flag, number of calls to &lt;tt class="docutils literal"&gt;len&lt;/tt&gt; remains the same.&lt;/p&gt;
-&lt;p&gt;We can verify that the bytecode is executed when we run it by using &lt;tt class="docutils literal"&gt;strace&lt;/tt&gt;. For instance, when I ran command the second time, the relevent part of the &lt;tt class="docutils literal"&gt;strace&lt;/tt&gt; output is below&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-1"&gt;&lt;/a&gt;open("access.py", O_RDONLY)             = 3
-&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-2"&gt;&lt;/a&gt;fstat(3, {st_mode=S_IFREG|0644, st_size=172, ...}) = 0
-&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-3"&gt;&lt;/a&gt;open("access.pyo", O_RDONLY)            = 4
-&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-4"&gt;&lt;/a&gt;fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
-&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-5"&gt;&lt;/a&gt;read(4, "\3\363\r\nC\252}Xc\0\0\0\0\0\0\0\0\2\0\0\0@\0\0\0s#\0\0\0d\0"..., 4096) = 389
-&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-6"&gt;&lt;/a&gt;fstat(4, {st_mode=S_IFREG|0644, st_size=389, ...}) = 0
-&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-7"&gt;&lt;/a&gt;read(4, "", 4096)                       = 0
-&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-8"&gt;&lt;/a&gt;close(4)                                = 0
-&lt;a name="rest_code_3fa79c9281544a6ea6ccd43a189fd66e-9"&gt;&lt;/a&gt;close(3)
-&lt;/pre&gt;&lt;p&gt;It did not read access.py again, but it read access.pyo instead. As long as the source is not modified, python reads the bytecode to execute instead of the source (the bytecode stores the modification time of its source code)&lt;/p&gt;
-&lt;p&gt;Anyway, we need not do any of these analyses to know whether the bytecode has any code optimization in it. The python docs straight away answers with the following point&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;A program doesn't run any faster when it is read from a .pyc or .pyo file than when it is read from a .py file; the only thing that's faster about .pyc or .pyo files is the speed with which they are loaded. (&lt;a class="reference external" href="https://docs.python.org/2/tutorial/modules.html"&gt;docs&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</description><category>python</category><category>strace</category><guid>https://g-ar.github.io/posts/profiling-python-programs/</guid><pubDate>Tue, 17 Jan 2017 12:26:38 GMT</pubDate></item></channel></rss>
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;</description><category>computer art</category><category>OSC</category><category>python</category><category>sage</category><category>Sonic Pi</category><guid>https://g-ar.github.io/posts/generating-music-with-sagemath-and-sonic-pi/</guid><pubDate>Fri, 20 Oct 2017 09:53:44 GMT</pubDate></item></channel></rss>

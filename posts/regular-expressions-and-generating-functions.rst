@@ -45,9 +45,9 @@ RE: :math:`(0+10)^*11(0+1)^*`
 .. math::
 
     G_2(x) &= \frac{1}{1-x-x^2} \cdot x^2\cdot \frac{1}{1-2\, x}\\
-    &= \sum_{n\ge 0} \frac{ \left(\left(\sqrt{5}-3\right)
+    &= \sum_{n\ge 0} \left(\frac{ \left(\left(\sqrt{5}-3\right)
        \left(-\left(1-\sqrt{5}\right)^n\right)-\left(3+\sqrt{5}\right)
-       \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\\
+       \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\right)\, x^n\\
     &= \sum_{n\ge 0}\left(2^{n} - F_{n+2}\right) x^n
 
 which can also be confirmed from the first example by taking its complement, since the number of possible words are :math:`2^n`
