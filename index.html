@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/context-free-grammars-and-generating-functions/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,28 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/context-free-grammars-and-generating-functions/" class="u-url">Context Free Grammars And Generating Functions</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" class="u-url">Interactive Regexp and Replacing Regexp with Emacs</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                
+            </span></p>
+            <p class="dateline"><a href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" rel="bookmark"><time class="published dt-published" datetime="2018-02-25T15:03:57+05:30" title="2018-02-25 15:03">2018-02-25 15:03</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>If we need to replace text based on patterns, then <tt class="docutils literal"><span class="pre">replace-regexp</span></tt> is the command.</p>
+<p>But we may not always be sure that the regular expression (RE) entered does what we wanted. Not to worry, emacs has it covered: with <tt class="docutils literal"><span class="pre">re-builder</span></tt>! As we keep entering the text, the editor progressively highlights the text in the buffer that matches. Once we are certain that all the required text has matched, we can move to enter the command to replace it.</p>
+<p>We'll look at a usecase where we need to uppercase some sql keywords, and cast the output of a function as float</p>
+<blockquote>
+<script src="https://asciinema.org/a/L6opRuaNH22ZbzdxHmlbDDRoR.js" id="asciicast-L6opRuaNH22ZbzdxHmlbDDRoR" async data-autoplay="true" data-speed="2" width="800"></script>
+</blockquote>
+<p>In <tt class="docutils literal"><span class="pre">replace-regexp</span></tt>, the matched expressions are grouped using <tt class="docutils literal">\(</tt> ... <tt class="docutils literal">\)</tt>, and the matched groups can be accessed in the result as <tt class="docutils literal">\1</tt>, <tt class="docutils literal">\2</tt>, etc.</p>
+<blockquote>
+<script src="https://asciinema.org/a/FPnVQNSBV0obVx2jgyDUJjchd.js" id="asciicast-FPnVQNSBV0obVx2jgyDUJjchd" async data-speed="2" width="800"></script>
+</blockquote>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/context-free-grammars-and-generating-functions/" class="u-url">Context Free Grammars And Generating Functions</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 
@@ -160,9 +181,9 @@ G_1(x) &amp;= \frac{1}{1-x-x^2}\cdot (1+x)\\
 <div class="math">
 \begin{align*}
 G_2(x) &amp;= \frac{1}{1-x-x^2} \cdot x^2\cdot \frac{1}{1-2\, x}\\
-&amp;= \sum_{n\ge 0} \frac{ \left(\left(\sqrt{5}-3\right)
+&amp;= \sum_{n\ge 0} \left(\frac{ \left(\left(\sqrt{5}-3\right)
    \left(-\left(1-\sqrt{5}\right)^n\right)-\left(3+\sqrt{5}\right)
-   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\\
+   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\right)\, x^n\\
 &amp;= \sum_{n\ge 0}\left(2^{n} - F_{n+2}\right) x^n
 \end{align*}
 </div>
@@ -210,94 +231,6 @@ G_3(x) &amp;= \frac{x^2}{(1-2 x) (1-x)^2}\\
 <a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-11"></a>at+cmgf=1
 <a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-12"></a>OK
 </pre>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/animations-with-context-free-art/" class="u-url">Animations with Context Free Art</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                
-            </span></p>
-            <p class="dateline"><a href="posts/animations-with-context-free-art/" rel="bookmark"><time class="published dt-published" datetime="2017-11-11T20:28:56+05:30" title="2017-11-11 20:28">2017-11-11 20:28</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Context Free Art can also be used to create animations, and here let's see how to generate some moire patterns.</p>
-<p>To generate each frame, cfdg uses the <tt class="docutils literal">time</tt> parameter, and the <tt class="docutils literal">ftime()</tt> function gets the value for that frame. For our first example, we generate moire patterns with circles.</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-1"> 1</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-2"> 2</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-3"> 3</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-4"> 4</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-5"> 5</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-6"> 6</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-7"> 7</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-8"> 8</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-9"> 9</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-10">10</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-11">11</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-12">12</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-13">13</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-14">14</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-15">15</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-16">16</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-17">17</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-18">18</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-19">19</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-20">20</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-21">21</a>
-<a href="posts/animations-with-context-free-art/#rest_code_211b4918c74e4637a959502614cc036b-22">22</a></pre></div></td>
-<td class="code"><pre class="code text"><a name="rest_code_211b4918c74e4637a959502614cc036b-1"></a>startshape start
-<a name="rest_code_211b4918c74e4637a959502614cc036b-2"></a>
-<a name="rest_code_211b4918c74e4637a959502614cc036b-3"></a>CF::Time = [time -2 2]
-<a name="rest_code_211b4918c74e4637a959502614cc036b-4"></a>CF::Background = [b 1]
-<a name="rest_code_211b4918c74e4637a959502614cc036b-5"></a>CF::Size = [s 3]
-<a name="rest_code_211b4918c74e4637a959502614cc036b-6"></a>
-<a name="rest_code_211b4918c74e4637a959502614cc036b-7"></a>path circ(number rad) {
-<a name="rest_code_211b4918c74e4637a959502614cc036b-8"></a>    MOVETO(rad,0)
-<a name="rest_code_211b4918c74e4637a959502614cc036b-9"></a>    ARCTO(-rad,0,rad, CF::ArcCW)
-<a name="rest_code_211b4918c74e4637a959502614cc036b-10"></a>    ARCTO(rad,0,rad, CF::ArcCW)
-<a name="rest_code_211b4918c74e4637a959502614cc036b-11"></a>    STROKE(0.01)[]
-<a name="rest_code_211b4918c74e4637a959502614cc036b-12"></a>}
-<a name="rest_code_211b4918c74e4637a959502614cc036b-13"></a>
-<a name="rest_code_211b4918c74e4637a959502614cc036b-14"></a>shape moire {
-<a name="rest_code_211b4918c74e4637a959502614cc036b-15"></a>    loop 70 [s 0.98]
-<a name="rest_code_211b4918c74e4637a959502614cc036b-16"></a>        circ(1)[]
-<a name="rest_code_211b4918c74e4637a959502614cc036b-17"></a>}
-<a name="rest_code_211b4918c74e4637a959502614cc036b-18"></a>
-<a name="rest_code_211b4918c74e4637a959502614cc036b-19"></a>shape start {
-<a name="rest_code_211b4918c74e4637a959502614cc036b-20"></a>    moire[x ftime() time -2 2 s 1]
-<a name="rest_code_211b4918c74e4637a959502614cc036b-21"></a>    moire[x -ftime() time -2 2 s 1]
-<a name="rest_code_211b4918c74e4637a959502614cc036b-22"></a>}
-</pre></td>
-</tr></table>
-<p>To compile and generate the video of the animations</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/animations-with-context-free-art/#rest_code_06a3fd4f841a4dcaa03bec3549e756ca-1">1</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_06a3fd4f841a4dcaa03bec3549e756ca-1"></a>cfdg moire_circles.cfdg -s <span class="m">1080</span> -a 15x25 -o ta%f.png
-</pre></td>
-</tr></table>
-<p>generates 375 images (15 seconds, 25 fps) for the animation</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/animations-with-context-free-art/#rest_code_7ea16f47dff74821a8909b5410ff7d60-1">1</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_7ea16f47dff74821a8909b5410ff7d60-1"></a>ffmpeg -r <span class="m">25</span> -i ./ta%3d.png -c:v libx264 out.mp4
-</pre></td>
-</tr></table>
-<p>creates the HD video having a frame rate of 25.</p>
-<p>And here's the final output</p>
-<blockquote>
-<div class="youtube-video align-center">
-<iframe width="425" height="344" src="https://www.youtube.com/embed/nPbH9a-jz2w?rel=0&amp;hd=1&amp;wmode=transparent"></iframe>
-</div>
-</blockquote>
-<p>Similarly, we can create a couple more animations like moire patterns by <a class="reference external" href="https://github.com/g-ar/CFreeArt/blob/master/v3/moire_lines.cfdg">rotating grates</a> and <a class="reference external" href="https://github.com/g-ar/CFreeArt/blob/master/v3/moire_graphene.cfdg">rotating two graphene layers</a></p>
-<blockquote>
-<div class="youtube-video align-center">
-<iframe width="425" height="344" src="https://www.youtube.com/embed/GNHMPBs9Ozo?rel=0&amp;hd=1&amp;wmode=transparent"></iframe>
-</div>
-<div class="youtube-video align-center">
-<iframe width="425" height="344" src="https://www.youtube.com/embed/uEw5a-Quk6Q?rel=0&amp;hd=1&amp;wmode=transparent"></iframe>
-</div>
-</blockquote>
 </div>
     </div>
     </article>

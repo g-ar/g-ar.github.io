@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R (generating function)</title><link>https://g-ar.github.io/</link><description></description><atom:link href="https://g-ar.github.io/categories/generating-function.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sat, 27 Jan 2018 09:24:33 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Context Free Grammars And Generating Functions</title><link>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We saw how to get the number of ways to generate a string of length n, matching or avoiding certain patterns, from Regular Expressions (RE).&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gopinath A R (generating function)</title><link>https://g-ar.github.io/</link><description></description><atom:link type="application/rss+xml" href="https://g-ar.github.io/categories/generating-function.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 25 Feb 2018 10:46:19 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Context Free Grammars And Generating Functions</title><link>https://g-ar.github.io/posts/context-free-grammars-and-generating-functions/</link><description>&lt;div&gt;&lt;p&gt;We saw how to get the number of ways to generate a string of length n, matching or avoiding certain patterns, from Regular Expressions (RE).&lt;/p&gt;
 &lt;p&gt;But it can't help when more expressive power is required. We'll see examples on how to use Context Free Grammars (CFG) to obtain the generating functions (GF), whose coefficients in the formal power series indicate the number of parse trees possible for n-letter string for the given CFG.&lt;/p&gt;
 &lt;p&gt;So, in a way, it can be used to know whether the grammar is ambiguous or not.&lt;/p&gt;
 &lt;p&gt;Let's look at relatively simple examples, for the strings constructed over the set of symbols &lt;span class="math"&gt;\(\left\{\left(, \right)\right\}\)&lt;/span&gt;&lt;/p&gt;
@@ -63,9 +63,9 @@ G_1(x) &amp;amp;= \frac{1}{1-x-x^2}\cdot (1+x)\\
 &lt;div class="math"&gt;
 \begin{align*}
 G_2(x) &amp;amp;= \frac{1}{1-x-x^2} \cdot x^2\cdot \frac{1}{1-2\, x}\\
-&amp;amp;= \sum_{n\ge 0} \frac{ \left(\left(\sqrt{5}-3\right)
+&amp;amp;= \sum_{n\ge 0} \left(\frac{ \left(\left(\sqrt{5}-3\right)
    \left(-\left(1-\sqrt{5}\right)^n\right)-\left(3+\sqrt{5}\right)
-   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\\
+   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\right)\, x^n\\
 &amp;amp;= \sum_{n\ge 0}\left(2^{n} - F_{n+2}\right) x^n
 \end{align*}
 &lt;/div&gt;
