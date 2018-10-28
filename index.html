@@ -9,7 +9,7 @@
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://g-ar.github.io/">
-<link rel="next" href="index-9.html" type="text/html">
+<link rel="next" href="index-10.html" type="text/html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/interactive-disassembly/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,22 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" class="u-url">Interactive Regexp and Replacing Regexp with Emacs</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interactive-disassembly/" class="u-url">Interactive Disassembly</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                
+            </span></p>
+            <p class="dateline"><a href="posts/interactive-disassembly/" rel="bookmark"><time class="published dt-published" datetime="2018-10-28T21:06:08+05:30" title="2018-10-28 21:06">2018-10-28 21:06</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p><a class="reference external" href="https://godbolt.org/">Godbolt</a> enables us to interactively see the assembly output of the input source code by the selected compiler.</p>
+<p>But it depends on nodejs and there's quite a delay between the modified input and the produced disassembly.</p>
+<p>Enter <a class="reference external" href="https://gitlab.com/jgkamat/rmsbolt">RMSBolt</a>, which is a package for emacs. It's much lighter, more powerful, and more interactive when compared to Godbolt, and perhaps the only alternative to Godbolt. Great way to learn assembly language, and fun too!</p>
+<img alt="../../images/rmsbolt.gif" src="images/rmsbolt.gif">
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" class="u-url">Interactive Regexp and Replacing Regexp with Emacs</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 
@@ -198,47 +213,12 @@ G_3(x) &amp;= \frac{x^2}{(1-2 x) (1-x)^2}\\
 <p>For more, refer <a class="reference external" href="http://algo.inria.fr/flajolet/Publications/book.pdf">Analytic Combinatorics</a>, which is a treatise on Generating Functions.</p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/communicating-with-serial-ports-using-emacs/" class="u-url">Communicating With Serial Ports Using Emacs</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                
-            </span></p>
-            <p class="dateline"><a href="posts/communicating-with-serial-ports-using-emacs/" rel="bookmark"><time class="published dt-published" datetime="2017-12-31T22:00:37+05:30" title="2017-12-31 22:00">2017-12-31 22:00</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Emacs can even be used to communicate with serial ports! Hence, it can replace softwares like minicom, hyperterminal, putty etc. that are used for serial port communication.</p>
-<p>Making a connection is simple,</p>
-<pre class="code text"><a name="rest_code_6386439fabd84729a6bc37c526150621-1"></a>M-x serial-term
-</pre>
-<p>enter port name and baud rate, and it's connected!</p>
-<p>E.g. In Linux based systems, if we need to connect to a GSM modem, find its port name by listing <tt class="docutils literal"><span class="pre">/dev/serial/by-id/</span></tt></p>
-<pre class="code bash"><a name="rest_code_cf48c2ef2dbb476aa8711fbaf4146d0c-1"></a>ls -l /dev/serial/by-id/
-</pre>
-<p>which will show the symbolic link to the serial port to be used. Suppose the name is <tt class="docutils literal">/dev/ttyUSB3</tt></p>
-<p>Then, using that name with the default baud rate (9600 bps) connects to the modem. The settings can be changed at runtime without requiring to reconnect to the serial port.</p>
-<p>And we may issue the standard AT commands</p>
-<pre class="code text"><a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-1"></a>at
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-2"></a>OK
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-3"></a>at+cpin?
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-4"></a>+CPIN: READY
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-5"></a>
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-6"></a>OK
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-7"></a>at+csq
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-8"></a>+CSQ: 14,99
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-9"></a>
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-10"></a>OK
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-11"></a>at+cmgf=1
-<a name="rest_code_8abf1fe919034ca99fd08fce57e22ec2-12"></a>OK
-</pre>
-</div>
-    </div>
     </article>
 </div>
 
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
-                <a href="index-9.html" rel="next">Older posts</a>
+                <a href="index-10.html" rel="next">Older posts</a>
             </li>
         </ul></nav><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
 MathJax.Hub.Config({

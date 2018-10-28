@@ -55,7 +55,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/emacs.xml</loc>
-  <lastmod>2018-02-25T09:55:00Z</lastmod>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/expected-value.xml</loc>
@@ -83,7 +83,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/gcc.xml</loc>
-  <lastmod>2017-09-10T17:53:00Z</lastmod>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/gdb.xml</loc>
@@ -91,7 +91,11 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/generating-function.xml</loc>
-  <lastmod>2018-01-27T09:24:00Z</lastmod>
+  <lastmod>2018-02-25T10:46:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://g-ar.github.io/categories/godbolt.xml</loc>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/infinite-series.xml</loc>
@@ -119,7 +123,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/mathjax.xml</loc>
-  <lastmod>2018-01-27T09:24:00Z</lastmod>
+  <lastmod>2018-02-25T10:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/moire-patterns.xml</loc>
@@ -167,11 +171,15 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/regular-expression.xml</loc>
-  <lastmod>2018-02-25T09:55:00Z</lastmod>
+  <lastmod>2018-02-25T10:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/restricted-permutation.xml</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://g-ar.github.io/categories/rmsbolt.xml</loc>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/rook-polynomial.xml</loc>
@@ -219,10 +227,10 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/rss.xml</loc>
-  <lastmod>2018-02-25T09:55:00Z</lastmod>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/sitemap.xml</loc>
-  <lastmod>2018-02-25T09:55:00Z</lastmod>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </sitemap>
 </sitemapindex>

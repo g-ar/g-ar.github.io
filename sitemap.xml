@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://g-ar.github.io/</loc>
-  <lastmod>2018-01-26T10:09:00Z</lastmod>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/2012/</loc>
@@ -35,11 +35,11 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/archive.html</loc>
-  <lastmod>2018-02-25T09:55:00Z</lastmod>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/</loc>
-  <lastmod>2018-01-27T09:14:00Z</lastmod>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/categories/arm/</loc>
@@ -130,6 +130,10 @@
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
+  <loc>https://g-ar.github.io/categories/godbolt/</loc>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://g-ar.github.io/categories/infinite-series/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
@@ -210,6 +214,10 @@
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
  <url>
+  <loc>https://g-ar.github.io/categories/rmsbolt/</loc>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://g-ar.github.io/categories/rook-polynomial/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </url>
@@ -258,6 +266,10 @@
   <lastmod>2018-01-26T12:41:00Z</lastmod>
  </url>
  <url>
+  <loc>https://g-ar.github.io/index-10.html</loc>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://g-ar.github.io/index-2.html</loc>
   <lastmod>2018-01-26T12:41:00Z</lastmod>
  </url>
@@ -287,7 +299,7 @@
  </url>
  <url>
   <loc>https://g-ar.github.io/index-9.html</loc>
-  <lastmod>2018-02-25T09:55:00Z</lastmod>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/a-restricted-arrangement-of-letters-in-a-word/</loc>
@@ -372,6 +384,10 @@
  <url>
   <loc>https://g-ar.github.io/posts/installing-and-running-tensorflow-in-debian-wheezy/</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://g-ar.github.io/posts/interactive-disassembly/</loc>
+  <lastmod>2018-10-28T15:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://g-ar.github.io/posts/interactive-regexp-and-replacing-regexp-with-emacs/</loc>
