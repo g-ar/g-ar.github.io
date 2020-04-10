@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A puzzle from New Scientist | Gopinath A R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://g-ar.github.io/posts/a-puzzle-from-new-scientist/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="">
+<link rel="prev" href="../interactive-disassembly/" title="Interactive Disassembly" type="text/html">
+<meta property="og:site_name" content="Gopinath A R">
+<meta property="og:title" content="A puzzle from New Scientist">
+<meta property="og:url" content="https://g-ar.github.io/posts/a-puzzle-from-new-scientist/">
+<meta property="og:description" content="It is Tom's 7th birthday and he has a cake with seven candles on it, arranged in a circle -- but they are trick candles. If you blow on a lit candle, it will go out, but if you blow on an unlit candle">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-10T22:25:50+05:30">
+<meta property="article:tag" content="puzzle">
+<meta property="article:tag" content="sage">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://g-ar.github.io/">
+
+                <span id="blog-title">Gopinath A R</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+                </li>
+<li>
+<a href="../../stories/about-me/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">A puzzle from New Scientist</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2020-04-10T22:25:50+05:30" itemprop="datePublished" title="2020-04-10 22:25">2020-04-10 22:25</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p><em>It is Tom's 7th birthday and he has a cake with seven candles on it, arranged in a circle -- but they are trick candles. If you blow on a lit candle, it will go out, but if you blow on an unlit candle, it will relight itself.</em></p>
+<p><em>Since Tom is only 7, his aim isn't brilliant. Any time he blows on a particular candle, the two either side also get blown on as well. How can Tom blow out all the candles? What is the fewest number of puffs he can do it in?</em></p>
+<p>This is a nice candidate for the shortest path problem, which can be easily solved in Sagemath as follows:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-1"> 1</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-2"> 2</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-3"> 3</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-4"> 4</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-5"> 5</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-6"> 6</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-7"> 7</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-8"> 8</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-9"> 9</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-10">10</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-11">11</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-12">12</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-13">13</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-14">14</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-15">15</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-16">16</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-17">17</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-18">18</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-19">19</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-20">20</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-21">21</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-22">22</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-23">23</a>
+<a href="#rest_code_1a42a393c35d4286a3706b9f7306d1bd-24">24</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-1"></a><span class="n">mat</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">128</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)]</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-2"></a>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-3"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-4"></a><span class="sd">Build an adjacency matrix, where three consecutive bits of the adjacent nodes are toggled</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-5"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-6"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-7"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b111</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-8"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b1110</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-9"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b11100</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-10"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b111000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-11"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b1110000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-12"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b1100001</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-13"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b1000011</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-14"></a>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-15"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-16"></a><span class="sd">Find the shortest path, from all-lit candles to none</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-17"></a><span class="sd">Display the seven candles in binary</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-18"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-19"></a><span class="n">mx</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-20"></a><span class="n">g</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-21"></a><span class="p">[</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">127</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-22"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-23"></a><span class="sd">['1111111', '1110001', '0010000', '1100000', '0100011', '0011011', '0000111', '0000000']</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-24"></a><span class="sd">'''</span>
+</pre></td>
+</tr></table>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/puzzle/" rel="tag">puzzle</a></li>
+            <li><a class="tag p-category" href="../../categories/sage/" rel="tag">sage</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../interactive-disassembly/" rel="prev" title="Interactive Disassembly">Previous post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer"></footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
