@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/interactive-disassembly/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/a-puzzle-from-new-scientist/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,72 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interactive-disassembly/" class="u-url">Interactive Disassembly</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/a-puzzle-from-new-scientist/" class="u-url">A puzzle from New Scientist</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                
+            </span></p>
+            <p class="dateline"><a href="posts/a-puzzle-from-new-scientist/" rel="bookmark"><time class="published dt-published" datetime="2020-04-10T22:25:50+05:30" title="2020-04-10 22:25">2020-04-10 22:25</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p><em>It is Tom's 7th birthday and he has a cake with seven candles on it, arranged in a circle -- but they are trick candles. If you blow on a lit candle, it will go out, but if you blow on an unlit candle, it will relight itself.</em></p>
+<p><em>Since Tom is only 7, his aim isn't brilliant. Any time he blows on a particular candle, the two either side also get blown on as well. How can Tom blow out all the candles? What is the fewest number of puffs he can do it in?</em></p>
+<p>This is a nice candidate for the shortest path problem, which can be easily solved in Sagemath as follows:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-1"> 1</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-2"> 2</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-3"> 3</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-4"> 4</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-5"> 5</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-6"> 6</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-7"> 7</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-8"> 8</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-9"> 9</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-10">10</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-11">11</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-12">12</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-13">13</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-14">14</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-15">15</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-16">16</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-17">17</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-18">18</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-19">19</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-20">20</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-21">21</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-22">22</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-23">23</a>
+<a href="posts/a-puzzle-from-new-scientist/#rest_code_1a42a393c35d4286a3706b9f7306d1bd-24">24</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-1"></a><span class="n">mat</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">128</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)]</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-2"></a>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-3"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-4"></a><span class="sd">Build an adjacency matrix, where three consecutive bits of the adjacent nodes are toggled</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-5"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-6"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-7"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b111</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-8"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b1110</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-9"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b11100</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-10"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b111000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-11"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b1110000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-12"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b1100001</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-13"></a>    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">^^</span><span class="mb">0b1000011</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-14"></a>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-15"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-16"></a><span class="sd">Find the shortest path, from all-lit candles to none</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-17"></a><span class="sd">Display the seven candles in binary</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-18"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-19"></a><span class="n">mx</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-20"></a><span class="n">g</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-21"></a><span class="p">[</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">127</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-22"></a><span class="sd">'''</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-23"></a><span class="sd">['1111111', '1110001', '0010000', '1100000', '0100011', '0011011', '0000111', '0000000']</span>
+<a name="rest_code_1a42a393c35d4286a3706b9f7306d1bd-24"></a><span class="sd">'''</span>
+</pre></td>
+</tr></table>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interactive-disassembly/" class="u-url">Interactive Disassembly</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 
@@ -166,51 +231,6 @@ S(x) &amp;= B(x) + U(x)\\
 \end{align*}
 </div>
 <p>Read <a class="reference external" href="https://arxiv.org/abs/1204.4982">Gruber, Lee &amp; Shallit</a> for the theory.</p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/regular-expressions-and-generating-functions/" class="u-url">Regular Expressions And Generating Functions</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                
-            </span></p>
-            <p class="dateline"><a href="posts/regular-expressions-and-generating-functions/" rel="bookmark"><time class="published dt-published" datetime="2018-01-26T15:37:34+05:30" title="2018-01-26 15:37">2018-01-26 15:37</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>We'll discuss about the number of ways to generate a string of length n, matching or avoiding certain patterns as its substring.</p>
-<p>This can be easily achieved deriving an unambiguous regular expression (RE) by constructing a minimal Deterministic Finite Automaton (DFA), and then the ordinary Generating Function (GF) whose coefficients are the number of n-letter strings having the pattern.</p>
-<p>Let's look at a few examples, for the strings constructed over the set of symbols <span class="math">\(\{0, 1\}\)</span> such that</p>
-<font size="+1">1. There are no two consecutive 1's</font><p>The RE is: <span class="math">\((0+10)^*(1+\epsilon)\)</span></p>
-<p>Then, to get its GF, replace each symbol with <span class="math">\(x\)</span>, and <span class="math">\(\epsilon\)</span> with 1. Hence, the GF for the RE is</p>
-<div class="math">
-\begin{align*}
-G_1(x) &amp;= \frac{1}{1-x-x^2}\cdot (1+x)\\
-&amp;= \sum_{n\ge 0} \frac{ \left(\left(\sqrt{5}-3\right)
-   \left(1-\sqrt{5}\right)^n+\left(\sqrt{5}+3\right)
-   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}} x^n\\
-&amp;= \sum_{n\ge 0} F_{n+2} x^n
-\end{align*}
-</div>
-<p>where <span class="math">\(F_{n}\)</span> is the fibonacci number</p>
-<font size="+1">2. At least one pair of consecutive 1's as its substring</font><p>RE: <span class="math">\((0+10)^*11(0+1)^*\)</span></p>
-<div class="math">
-\begin{align*}
-G_2(x) &amp;= \frac{1}{1-x-x^2} \cdot x^2\cdot \frac{1}{1-2\, x}\\
-&amp;= \sum_{n\ge 0} \left(\frac{ \left(\left(\sqrt{5}-3\right)
-   \left(-\left(1-\sqrt{5}\right)^n\right)-\left(3+\sqrt{5}\right)
-   \left(1+\sqrt{5}\right)^n\right)}{\sqrt{5}\, 2^{n+1}}+2^n\right)\, x^n\\
-&amp;= \sum_{n\ge 0}\left(2^{n} - F_{n+2}\right) x^n
-\end{align*}
-</div>
-<p>which can also be confirmed from the first example by taking its complement, since the number of possible words are <span class="math">\(2^n\)</span></p>
-<font size="+1">3. At least one 01 as its substring</font><p>RE: <span class="math">\(1^*00^*1(0+1)^*\)</span></p>
-<div class="math">
-\begin{align*}
-G_3(x) &amp;= \frac{x^2}{(1-2 x) (1-x)^2}\\
-&amp;= \sum_{n\ge 0} \left(2^n-n-1\right) x^n
-\end{align*}
-</div>
-<p>For more, refer <a class="reference external" href="http://algo.inria.fr/flajolet/Publications/book.pdf">Analytic Combinatorics</a>, which is a treatise on Generating Functions.</p>
 </div>
     </div>
     </article>
