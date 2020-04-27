@@ -122,6 +122,10 @@
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://g-ar.github.io/categories/mastermind.xml</loc>
+  <lastmod>2020-04-26T17:21:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://g-ar.github.io/categories/mathjax.xml</loc>
   <lastmod>2018-02-25T10:46:00Z</lastmod>
  </sitemap>
@@ -136,6 +140,10 @@
  <sitemap>
   <loc>https://g-ar.github.io/categories/mypaint.xml</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://g-ar.github.io/categories/numbermind.xml</loc>
+  <lastmod>2020-04-26T17:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/optical-illusion.xml</loc>
@@ -159,7 +167,7 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/puzzle.xml</loc>
-  <lastmod>2020-04-10T17:02:00Z</lastmod>
+  <lastmod>2020-04-26T17:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/python.xml</loc>
@@ -191,15 +199,15 @@
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/sage.xml</loc>
-  <lastmod>2017-10-30T15:15:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://g-ar.github.io/categories/sagemath.xml</loc>
-  <lastmod>2020-04-10T17:02:00Z</lastmod>
+  <lastmod>2020-04-10T17:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/sailfish-os.xml</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://g-ar.github.io/categories/sat.xml</loc>
+  <lastmod>2020-04-26T17:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/serial-port.xml</loc>
@@ -208,6 +216,10 @@
  <sitemap>
   <loc>https://g-ar.github.io/categories/simulation.xml</loc>
   <lastmod>2017-09-10T17:53:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://g-ar.github.io/categories/smt.xml</loc>
+  <lastmod>2020-04-26T17:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/categories/sonic-pi.xml</loc>
@@ -234,11 +246,15 @@
   <lastmod>2017-09-10T17:53:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://g-ar.github.io/categories/z3.xml</loc>
+  <lastmod>2020-04-26T17:21:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://g-ar.github.io/rss.xml</loc>
-  <lastmod>2020-04-10T17:02:00Z</lastmod>
+  <lastmod>2020-04-26T17:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://g-ar.github.io/sitemap.xml</loc>
-  <lastmod>2020-04-10T17:02:00Z</lastmod>
+  <lastmod>2020-04-26T17:21:00Z</lastmod>
  </sitemap>
 </sitemapindex>

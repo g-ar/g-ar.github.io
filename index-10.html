@@ -76,7 +76,64 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/regular-expressions-and-generating-functions/" class="u-url">Regular Expressions And Generating Functions</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/context-free-grammars-and-generating-functions/" class="u-url">Context Free Grammars And Generating Functions</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                
+            </span></p>
+            <p class="dateline"><a href="posts/context-free-grammars-and-generating-functions/" rel="bookmark"><time class="published dt-published" datetime="2018-01-27T14:43:04+05:30" title="2018-01-27 14:43">2018-01-27 14:43</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>We saw how to get the number of ways to generate a string of length n, matching or avoiding certain patterns, from Regular Expressions (RE).</p>
+<p>But it can't help when more expressive power is required. We'll see examples on how to use Context Free Grammars (CFG) to obtain the generating functions (GF), whose coefficients in the formal power series indicate the number of parse trees possible for n-letter string for the given CFG.</p>
+<p>So, in a way, it can be used to know whether the grammar is ambiguous or not.</p>
+<p>Let's look at relatively simple examples, for the strings constructed over the set of symbols <span class="math">\(\left\{\left(, \right)\right\}\)</span></p>
+<font size="+1">1. Find the number of ways of constructing balanced parentheses</font><p>The grammar is</p>
+<div class="math">
+\begin{equation*}
+S \to (S)S\; \big| \; \epsilon
+\end{equation*}
+</div>
+<p>Then, to get its GF, replace each symbol with <span class="math">\(x\)</span>, and <span class="math">\(\epsilon\)</span> with 1. Hence, the GF for the RE is</p>
+<div class="math">
+\begin{align*}
+S(x) &amp;= x^2\, S(x)^2 + 1\\
+\implies S(x)&amp;= \frac{1-\sqrt{1-4 x^2}}{2 x^2}\\
+&amp;= \sum_{n\ge 0} \frac{1}{n+1}\binom{2\, n}{n} x^{2 n}
+\end{align*}
+</div>
+<p>and the series is the well known Catalan numbers.</p>
+<font size="+1">2. Find the number of ways of constructing balanced parentheses, which can have more opening parentheses</font><p>e.g. for <span class="math">\(n=3\)</span>, <span class="math">\((((, ((), ()(\)</span> are valid</p>
+<p>We may obtain the CFG as</p>
+<div class="math">
+\begin{equation*}
+S \to (S)S \; \big|\; (S \; \big| \; \epsilon
+\end{equation*}
+</div>
+<p>Even though the grammar describes the language, it's actually ambiguous, and the GF obtained from this counts all the extra parse trees.</p>
+<p>The right CFG is</p>
+<div class="math">
+\begin{align*}
+S &amp;\to B \;\big|\; U \\
+  B &amp;\to (\, B\, )\, B\; \big|\; \epsilon \\
+  U &amp;\to (\,  S \;\big| \;(\, B\, )\, U \\
+\end{align*}
+</div>
+<p>and we derive the GF</p>
+<div class="math">
+\begin{align*}
+S(x) &amp;= B(x) + U(x)\\
+  B(x) &amp;= B(x)^2 x^2  + 1\\
+  U(x) &amp;= S(x) x + B(x) U(x) x^2\\
+  \implies S(x) &amp;= \frac{-1+2\,x+\sqrt{1-4\,x^2}}{2\,x-4\,x^2}\\
+  &amp;= \sum_{n\ge 0} \binom{n}{\lfloor n/2 \rfloor} x^{n}
+\end{align*}
+</div>
+<p>Read <a class="reference external" href="https://arxiv.org/abs/1204.4982">Gruber, Lee &amp; Shallit</a> for the theory.</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/regular-expressions-and-generating-functions/" class="u-url">Regular Expressions And Generating Functions</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 
