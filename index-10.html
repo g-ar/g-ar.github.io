@@ -76,7 +76,28 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/context-free-grammars-and-generating-functions/" class="u-url">Context Free Grammars And Generating Functions</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" class="u-url">Interactive Regexp and Replacing Regexp with Emacs</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                
+            </span></p>
+            <p class="dateline"><a href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" rel="bookmark"><time class="published dt-published" datetime="2018-02-25T15:03:57+05:30" title="2018-02-25 15:03">2018-02-25 15:03</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>If we need to replace text based on patterns, then <tt class="docutils literal"><span class="pre">replace-regexp</span></tt> is the command.</p>
+<p>But we may not always be sure that the regular expression (RE) entered does what we wanted. Not to worry, emacs has it covered: with <tt class="docutils literal"><span class="pre">re-builder</span></tt>! As we keep entering the text, the editor progressively highlights the text in the buffer that matches. Once we are certain that all the required text has matched, we can move to enter the command to replace it.</p>
+<p>We'll look at a usecase where we need to uppercase some sql keywords, and cast the output of a function as float</p>
+<blockquote>
+<script src="https://asciinema.org/a/L6opRuaNH22ZbzdxHmlbDDRoR.js" id="asciicast-L6opRuaNH22ZbzdxHmlbDDRoR" async data-autoplay="true" data-speed="2" width="800"></script>
+</blockquote>
+<p>In <tt class="docutils literal"><span class="pre">replace-regexp</span></tt>, the matched expressions are grouped using <tt class="docutils literal">\(</tt> ... <tt class="docutils literal">\)</tt>, and the matched groups can be accessed in the result as <tt class="docutils literal">\1</tt>, <tt class="docutils literal">\2</tt>, etc.</p>
+<blockquote>
+<script src="https://asciinema.org/a/FPnVQNSBV0obVx2jgyDUJjchd.js" id="asciicast-FPnVQNSBV0obVx2jgyDUJjchd" async data-speed="2" width="800"></script>
+</blockquote>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/context-free-grammars-and-generating-functions/" class="u-url">Context Free Grammars And Generating Functions</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 

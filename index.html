@@ -22,7 +22,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/solving-mastermind-like-problems-using-z3-theorem-prover/" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/solving-a-puzzle-using-picat/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,86 @@ MathJax.Hub.Config({
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/solving-mastermind-like-problems-using-z3-theorem-prover/" class="u-url">Solving Mastermind-like Problems Using Z3 Theorem Prover</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/solving-a-puzzle-using-picat/" class="u-url">Solving a Puzzle Using Picat</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                
+            </span></p>
+            <p class="dateline"><a href="posts/solving-a-puzzle-using-picat/" rel="bookmark"><time class="published dt-published" datetime="2021-08-14T18:30:30+05:30" title="2021-08-14 18:30">2021-08-14 18:30</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p><em>Arrange the numbers 1-32, inclusive, in a circle such that the sum of any two adjacent numbers in the circular chain is a perfect square</em></p>
+<div class="line-block">
+<div class="line">Picat is a programming language for solving constraint problems, logic problems etc.</div>
+<div class="line">It's quite fast too compared to python z3 solver.</div>
+<div class="line">So, here's one way to solve the circle problem in picat</div>
+</div>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-1"> 1</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-2"> 2</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-3"> 3</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-4"> 4</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-5"> 5</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-6"> 6</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-7"> 7</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-8"> 8</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-9"> 9</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-10">10</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-11">11</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-12">12</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-13">13</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-14">14</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-15">15</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-16">16</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-17">17</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-18">18</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-19">19</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-20">20</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-21">21</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-22">22</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-23">23</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-24">24</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-25">25</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-26">26</a>
+<a href="posts/solving-a-puzzle-using-picat/#rest_code_9a80909427b4458e8ec7cd732e44e5b3-27">27</a></pre></div></td>
+<td class="code"><pre class="code text"><a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-1"></a>main =&gt; go.
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-2"></a>
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-3"></a>go =&gt;
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-4"></a>
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-5"></a>   % decision variables
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-6"></a>   N = 32,
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-7"></a>   Xs = new_list(N),
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-8"></a>
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-9"></a>   % given constraints
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-10"></a>   Xs :: 1..N,
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-11"></a>   Sq = [I**2 : I in 2..7],
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-12"></a>
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-13"></a>   % fix one number, to avoid rotation
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-14"></a>   Xs[1] #= 1,
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-15"></a>   foreach (I in 1..N-1),
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-16"></a>       sum([(Xs[I+1]+Xs[I]) #= Sq[J] : J in 1..Sq.length]) #= 1,
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-17"></a>   end,
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-18"></a>   sum([(Xs[N]+Xs[1]) #= Sq[J] : J in 1..Sq.length]) #= 1,
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-19"></a>   all_different(Xs),
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-20"></a>
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-21"></a>   % solve and print
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-22"></a>   Res = solve_all(Xs),
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-23"></a>
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-24"></a>   foreach (R in Res),
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-25"></a>      println(R),
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-26"></a>   end,
+<a name="rest_code_9a80909427b4458e8ec7cd732e44e5b3-27"></a>   nl.
+</pre></td>
+</tr></table>
+<p>References:</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://picat-lang.org/download.html">Picat Page</a></li>
+<li><a class="reference external" href="http://www.hakank.org/picat/">HakanK's page on Picat</a></li>
+</ol>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/solving-mastermind-like-problems-using-z3-theorem-prover/" class="u-url">Solving Mastermind-like Problems Using Z3 Theorem Prover</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 
@@ -312,27 +391,6 @@ x_i \neq x_j \land i &amp;\neq j\\
 <p>But it depends on nodejs and there's quite a delay between the modified input and the produced disassembly.</p>
 <p>Enter <a class="reference external" href="https://gitlab.com/jgkamat/rmsbolt">RMSBolt</a>, which is a package for emacs. It's much lighter, more powerful, and more interactive when compared to Godbolt, and perhaps the only alternative to Godbolt. Great way to learn assembly language, and fun too!</p>
 <img alt="../../images/rmsbolt.gif" src="images/rmsbolt.gif">
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" class="u-url">Interactive Regexp and Replacing Regexp with Emacs</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                
-            </span></p>
-            <p class="dateline"><a href="posts/interactive-regexp-and-replacing-regexp-with-emacs/" rel="bookmark"><time class="published dt-published" datetime="2018-02-25T15:03:57+05:30" title="2018-02-25 15:03">2018-02-25 15:03</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>If we need to replace text based on patterns, then <tt class="docutils literal"><span class="pre">replace-regexp</span></tt> is the command.</p>
-<p>But we may not always be sure that the regular expression (RE) entered does what we wanted. Not to worry, emacs has it covered: with <tt class="docutils literal"><span class="pre">re-builder</span></tt>! As we keep entering the text, the editor progressively highlights the text in the buffer that matches. Once we are certain that all the required text has matched, we can move to enter the command to replace it.</p>
-<p>We'll look at a usecase where we need to uppercase some sql keywords, and cast the output of a function as float</p>
-<blockquote>
-<script src="https://asciinema.org/a/L6opRuaNH22ZbzdxHmlbDDRoR.js" id="asciicast-L6opRuaNH22ZbzdxHmlbDDRoR" async data-autoplay="true" data-speed="2" width="800"></script>
-</blockquote>
-<p>In <tt class="docutils literal"><span class="pre">replace-regexp</span></tt>, the matched expressions are grouped using <tt class="docutils literal">\(</tt> ... <tt class="docutils literal">\)</tt>, and the matched groups can be accessed in the result as <tt class="docutils literal">\1</tt>, <tt class="docutils literal">\2</tt>, etc.</p>
-<blockquote>
-<script src="https://asciinema.org/a/FPnVQNSBV0obVx2jgyDUJjchd.js" id="asciicast-FPnVQNSBV0obVx2jgyDUJjchd" async data-speed="2" width="800"></script>
-</blockquote>
 </div>
     </div>
     </article>
